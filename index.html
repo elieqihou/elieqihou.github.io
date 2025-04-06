@@ -1,120 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-	<meta name="generator" content="Hugo 0.88.1" />
-        <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="">
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-<meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
-<link rel="canonical" href="https://elieqihou.github.io/" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELIEQIHOU</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            font-weight: bold;
+            font-size: 48px;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .wave-text {
+            display: inline-block;
+        }
+        .hover-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0; /* 初始状态为隐藏 */
+            transition: opacity 0.3s ease-in-out;
+            font-size: 48px;
+            font-weight: bold;
+            animation: colorful 2s infinite; /* 应用多彩动画 */
+            animation-play-state: paused; /* 初始状态下暂停动画 */
+        }
+        .wave-text span {
+            display: inline-block;
+            animation: wave 1s infinite ease-in-out;
+        }
+        @keyframes wave {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        /* 添加动画延迟 */
+        .wave-text span:nth-child(1) { animation-delay: 0s; }
+        .wave-text span:nth-child(2) { animation-delay: 0.1s; }
+        .wave-text span:nth-child(3) { animation-delay: 0.2s; }
+        .wave-text span:nth-child(4) { animation-delay: 0.3s; }
+        .wave-text span:nth-child(5) { animation-delay: 0.4s; }
+        .wave-text span:nth-child(6) { animation-delay: 0.5s; }
+        .wave-text span:nth-child(7) { animation-delay: 0.6s; }
+        .wave-text span:nth-child(8) { animation-delay: 0.7s; }
+        .wave-text span:nth-child(9) { animation-delay: 0.8s; }
+    }
+    /* 替换多彩渐变动画为逐渐变成蓝色的动画 */
+    @keyframes colorful {
+        0% { color: red; }
+        100% { color: blue; }
+    }
 
-
-    <title>
-        
-            ELIEQIHOU 
-        
-    </title>
-
-
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
-    type="text/css">
-
-
-
-<link rel="stylesheet" href="/main.29c2c8c3fc9cf748254138351f142ac2833b208a68e83aec126edc98b59efef2.css">
-
-
-
-
-
-
-<meta itemprop="name" content="ELIEQIHOU">
-<meta itemprop="description" content="">
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ELIEQIHOU"/>
-<meta name="twitter:description" content=""/>
-
-
-
-
-
-
-
-
-
-
-<link rel="alternate" type="application/rss+xml" href="https://elieqihou.github.io/index.xml" title="ELIEQIHOU" />
-
-
-
-
-
-
-
-    </head>
-
-    
-    <body class="">
-
-    
-        <div class="container">
-            <header class="header">
-    <span class="header__inner">
-        <a href="/" style="text-decoration: none;">
-    <div class="logo">
-        
-            <span class="logo__mark">></span>
-            <span class="logo__text">hello</span>
-            <span class="logo__cursor" style=
-                  "
-                   
-                   ">
-            </span>
-        
+</style>
+</head>
+<body>
+    <div class="container">
+        <!-- 波浪动画文本 -->
+        <div class="wave-text">
+            <span>E</span>
+            <span>L</span>
+            <span>I</span>
+            <span>E</span>
+            <span>Q</span>
+            <span>I</span>
+            <span>H</span>
+            <span>O</span>
+            <span>U</span>
+        </div>
+        <!-- 鼠标划入时显示的文字 -->
+        <div 
+            class="hover-text" 
+            onmouseenter="this.style.opacity='1'; this.style.animationPlayState='running'; document.querySelector('.wave-text').style.opacity='0';" 
+            onmouseleave="this.style.opacity='0'; this.style.animationPlayState='paused'; document.querySelector('.wave-text').style.opacity='1';"
+        >
+            @恶劣气候
+        </div>
     </div>
-</a>
-
-
-        <span class="header__right">
-            
-        </span>
-    </span>
-</header>
-
-
-            <div class="content">
-                
-    <main aria-role="main">
-        <div>
-            
-
-            <h1>ELIEQIHOU</h1>
-        </div>
-    </main>
-
-            </div>
-
-            
-                <footer class="footer">
-    
-    
-</footer>
-
-            
-        </div>
-
-        
-
-
-
-<script type="text/javascript" src="/bundle.min.599099f1f14b78b657d524b28e10e0c5098e7cd46e9c7aed73d577068a276c3ff1bb234cbf29cb313333e83cf411727b43157c91ce5b809e2ffc81664614608e.js" integrity="sha512-WZCZ8fFLeLZX1SSyjhDgxQmOfNRunHrtc9V3BoonbD/xuyNMvynLMTMz6Dz0EXJ7QxV8kc5bgJ4v/IFmRhRgjg=="></script>
-
-
-
-    </body>
+</body>
 </html>
