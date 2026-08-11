@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>盘前简报 · 2026年8月11日 星期二</title>
+<title>盘前简报 · 2026年8月11日</title>
 <style>
   :root {
     --primary: #0d1f3c;
@@ -47,14 +47,12 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ====== TOP NAV ====== */
   .topbar {
     background: var(--primary);
     height: 4px;
     width: 100%;
   }
 
-  /* ====== HEADER ====== */
   .header {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 40%, var(--primary-3) 100%);
     color: #fff;
@@ -128,7 +126,6 @@
     margin-top: 8px;
   }
 
-  /* ====== KPI STRIP ====== */
   .kpi-strip {
     background: var(--card);
     border-bottom: 1px solid var(--border);
@@ -175,17 +172,13 @@
   }
   .kpi-item .kpi-change.up { color: var(--danger); }
   .kpi-item .kpi-change.down { color: var(--success); }
-  .kpi-item .kpi-change.up .kpi-value { color: var(--danger); }
-  .kpi-item .kpi-change.down .kpi-value { color: var(--success); }
 
-  /* ====== MAIN CONTAINER ====== */
   .main {
     max-width: 1440px;
     margin: 0 auto;
     padding: 20px;
   }
 
-  /* ====== MACRO BANNER ====== */
   .macro-banner {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
     border-radius: var(--radius);
@@ -238,7 +231,6 @@
     background: var(--accent-light);
   }
 
-  /* ====== GRID LAYOUT ====== */
   .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -252,7 +244,6 @@
     margin-bottom: 16px;
   }
 
-  /* ====== CARD ====== */
   .card {
     background: var(--card);
     border-radius: var(--radius);
@@ -283,7 +274,6 @@
   }
   .card-body { padding: 16px 24px 20px; }
 
-  /* ====== TABLES ====== */
   table { width: 100%; border-collapse: collapse; font-size: 13px; }
   thead th {
     background: var(--bg-2);
@@ -320,7 +310,6 @@
   }
   .section-label:first-child { margin-top: 0; }
 
-  /* ====== NEWS LIST ====== */
   .news-list { list-style: none; }
   .news-list li {
     padding: 10px 0;
@@ -351,7 +340,6 @@
   .news-tag.geo { background: #f3e5f5; color: #7b1fa2; }
   .news-tag.warning { background: var(--warning-bg); color: #9a6700; }
 
-  /* ====== GEO ALERT ====== */
   .geo-alert {
     background: linear-gradient(135deg, #fff5f5, #fef0f0);
     border: 1px solid #fecaca;
@@ -370,7 +358,6 @@
   }
   .geo-alert .geo-item:last-child { border-bottom: none; padding-bottom: 0; }
 
-  /* ====== ADVICE GRID ====== */
   .advice-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -415,7 +402,6 @@
   }
   .advice-card .strategy strong { color: var(--text); }
 
-  /* ====== CALENDAR ====== */
   .cal-item {
     display: flex;
     align-items: center;
@@ -459,7 +445,6 @@
     margin: 4px -12px;
   }
 
-  /* ====== FOOTER ====== */
   .footer {
     max-width: 1440px;
     margin: 0 auto;
@@ -481,7 +466,6 @@
     color: var(--text-3);
   }
 
-  /* ====== RESPONSIVE ====== */
   @media (max-width: 1024px) {
     .grid-2, .grid-2-uneven { grid-template-columns: 1fr; }
     .header-inner { flex-direction: column; align-items: flex-start; }
@@ -501,98 +485,72 @@
 
 <div class="topbar"></div>
 
-<!-- ====== HEADER ====== -->
 <div class="header">
   <div class="header-inner">
     <div class="header-left">
       <h1><span class="accent-bar"></span>盘前简报</h1>
-      <div class="date">2026 年 8 月 11 日 · 星期二 · 盘前发布</div>
-      <div class="src">数据截止北京时间 08:00 | 来源：Wind / 东方财富 / 金十数据 / 新华社 / 财联社</div>
+      <div class="date">2026年8月11日 · 周二 · 盘前发布</div>
+      <div class="src">数据截止北京时间 08:45 | 来源：Wind / 东方财富 / 华尔街见闻 / 新华社 / 财联社 / 金投网</div>
     </div>
     <div class="header-right">
       <span class="badge">PRE-MARKET BRIEFING</span>
-      <div class="update-time">最后更新 08:09 CST</div>
+      <div class="update-time">最后更新 08:45 CST</div>
     </div>
   </div>
 </div>
 
-<!-- ====== KPI STRIP ====== -->
 <div class="kpi-strip">
   <div class="kpi-inner">
     <div class="kpi-item">
-      <span class="kpi-label">道琼斯</span>
-      <span class="kpi-value down">53,975.98</span>
-      <span class="kpi-change down">▼ -0.11%</span>
-    </div>
-    <div class="kpi-item">
       <span class="kpi-label">标普500</span>
-      <span class="kpi-value down">7,753.11</span>
-      <span class="kpi-change down">▼ -0.06%</span>
+      <span class="kpi-value">7,753.11</span>
+      <span class="kpi-change down">-0.06%</span>
     </div>
     <div class="kpi-item">
       <span class="kpi-label">纳斯达克</span>
-      <span class="kpi-value down">26,605.36</span>
-      <span class="kpi-change down">▼ -0.32%</span>
+      <span class="kpi-value">26,605.36</span>
+      <span class="kpi-change down">-0.32%</span>
     </div>
     <div class="kpi-item">
-      <span class="kpi-label">上证指数</span>
-      <span class="kpi-value up">3,966.59</span>
-      <span class="kpi-change up">▲ +0.67%</span>
-    </div>
-    <div class="kpi-item">
-      <span class="kpi-label">恒生指数</span>
-      <span class="kpi-value up">25,937.49</span>
-      <span class="kpi-change up">▲ +1.05%</span>
-    </div>
-    <div class="kpi-item">
-      <span class="kpi-label">WTI原油</span>
-      <span class="kpi-value up">82.30</span>
-      <span class="kpi-change up">▲ +5.27%</span>
+      <span class="kpi-label">布伦特原油</span>
+      <span class="kpi-value up">$87.72</span>
+      <span class="kpi-change up">+4.99%</span>
     </div>
     <div class="kpi-item">
       <span class="kpi-label">COMEX黄金</span>
-      <span class="kpi-value up">4,448.60</span>
-      <span class="kpi-change up">▲ +1.11%</span>
+      <span class="kpi-value up">$4,448.6</span>
+      <span class="kpi-change up">+1.11%</span>
     </div>
     <div class="kpi-item">
       <span class="kpi-label">美元指数</span>
-      <span class="kpi-value up">99.81</span>
-      <span class="kpi-change up">▲ +0.21%</span>
+      <span class="kpi-value">99.81</span>
+      <span class="kpi-change up">+0.21%</span>
     </div>
     <div class="kpi-item">
       <span class="kpi-label">在岸人民币</span>
-      <span class="kpi-value">6.7442</span>
-      <span class="kpi-change up">▲ 升值59bp</span>
-    </div>
-    <div class="kpi-item">
-      <span class="kpi-label">美10Y收益率</span>
-      <span class="kpi-value up">4.703%</span>
-      <span class="kpi-change up">▲ +5.7bp</span>
+      <span class="kpi-value down">6.7442</span>
+      <span class="kpi-change down">创42个月新高</span>
     </div>
   </div>
 </div>
 
-<!-- ====== MAIN ====== -->
 <div class="main">
 
-  <!-- MACRO BANNER -->
   <div class="macro-banner">
     <h2>宏观关键词</h2>
     <div class="macro-tags">
-      <span class="macro-tag hot">中东局势升级</span>
-      <span class="macro-tag hot">油价暴涨超5%</span>
-      <span class="macro-tag">人民币42月新高</span>
-      <span class="macro-tag">英伟达5000亿AI融资</span>
-      <span class="macro-tag">美股缩量分化</span>
+      <span class="macro-tag hot">霍尔木兹海峡僵局</span>
+      <span class="macro-tag hot">原油暴涨5%</span>
+      <span class="macro-tag hot">人民币创42个月新高</span>
       <span class="macro-tag">央行"十五五"规划</span>
-      <span class="macro-tag">宇树科技IPO引爆</span>
-      <span class="macro-tag hot">周三CPI考验</span>
+      <span class="macro-tag">宇树科技申购</span>
+      <span class="macro-tag">英伟达5000亿AI融资</span>
+      <span class="macro-tag">美国7月CPI周三来袭</span>
+      <span class="macro-tag">中东地缘风险</span>
     </div>
   </div>
 
-  <!-- ROW 1: International Markets (left, wider) + Geo Politics (right) -->
   <div class="grid-2-uneven">
-    <!-- International Markets -->
     <div class="card">
       <div class="card-header">
         <span class="icon">🌍</span>
@@ -600,185 +558,151 @@
         <span class="sub">8月10日收盘</span>
       </div>
       <div class="card-body">
-        <div class="section-label">🇺🇸 美股三大指数</div>
+        <div class="section-label">欧美股市</div>
         <table>
           <thead>
-            <tr><th>指数</th><th>收盘价</th><th>涨跌幅</th><th>涨跌点</th><th>关键品种</th></tr>
+            <tr><th>指数</th><th>收盘</th><th>涨跌</th><th>备注</th></tr>
           </thead>
           <tbody>
-            <tr>
-              <td><strong>道琼斯</strong></td>
-              <td class="num">53,975.98</td>
-              <td class="num down">-0.11%</td>
-              <td class="num down">-60.95</td>
-              <td class="sub-text">能源+4.63% / 医疗+1.68% 领涨</td>
-            </tr>
-            <tr>
-              <td><strong>标普500</strong></td>
-              <td class="num">7,753.11</td>
-              <td class="num down">-0.06%</td>
-              <td class="num down">-4.53</td>
-              <td class="sub-text">房地产-1.23% / 公用事业-1.11% 领跌</td>
-            </tr>
-            <tr>
-              <td><strong>纳斯达克</strong></td>
-              <td class="num">26,605.36</td>
-              <td class="num down">-0.32%</td>
-              <td class="num down">-85.26</td>
-              <td class="sub-text">英伟达-3% / 苹果-1% / 光通信大跌</td>
-            </tr>
-          </tbody>
-        </table>
-        <div style="font-size:12px; color:var(--text-2); margin:8px 0 0; padding-left:16px; line-height:1.8;">
-          • 科技股分化：亚马逊、微软涨超1%；英伟达跌近3%，苹果跌超1%；Coherent跌超14%，Lumentum跌超8%<br>
-          • 中概股走强：纳斯达克中国金龙指数涨1.65%，阿里巴巴涨超3%，京东、B站涨超1%
-        </div>
-
-        <div class="section-label">🇪🇺 欧洲主要股指</div>
-        <table>
-          <thead><tr><th>指数</th><th>收盘价</th><th>涨跌幅</th><th>备注</th></tr></thead>
-          <tbody>
-            <tr><td>德国 DAX30</td><td class="num">26,323.88</td><td class="num up">+0.02%</td><td class="sub-text">窄幅震荡</td></tr>
-            <tr><td>法国 CAC40</td><td class="num">8,726.03</td><td class="num up">+0.13%</td><td class="sub-text">能源板块支撑</td></tr>
-            <tr><td>英国富时100</td><td class="num">10,862.50</td><td class="num down">-0.35%</td><td class="sub-text">英镑走强拖累出口股</td></tr>
-            <tr><td>欧洲斯托克50</td><td class="num">6,523.86</td><td class="num up">+0.33%</td><td class="sub-text">整体偏强</td></tr>
+            <tr><td>道琼斯</td><td class="num">53,975.98</td><td class="down">-0.11%</td><td class="sub-text">高位小幅回落</td></tr>
+            <tr><td>标普500</td><td class="num">7,753.11</td><td class="down">-0.06%</td><td class="sub-text">科技拖累</td></tr>
+            <tr><td>纳斯达克</td><td class="num">26,605.36</td><td class="down">-0.32%</td><td class="sub-text">英伟达跌近3%</td></tr>
+            <tr><td>欧洲STOXX 600</td><td class="num">660.45</td><td class="up">+0.03%</td><td class="sub-text">基本持平</td></tr>
+            <tr><td>英国富时100</td><td class="num">10,862.50</td><td class="down">-0.35%</td><td class="sub-text">矿业股承压</td></tr>
+            <tr><td>德国DAX30</td><td class="num">26,355.07</td><td class="up">+0.14%</td><td class="sub-text">小幅收涨</td></tr>
+            <tr><td>法国CAC40</td><td class="num">8,726.03</td><td class="up">+0.13%</td><td class="sub-text">温和反弹</td></tr>
           </tbody>
         </table>
 
-        <div class="section-label">🌏 亚太股市</div>
+        <div class="section-label">亚太股市</div>
         <table>
-          <thead><tr><th>指数</th><th>收盘价</th><th>涨跌幅</th><th>说明</th></tr></thead>
+          <thead>
+            <tr><th>指数</th><th>收盘</th><th>涨跌</th><th>备注</th></tr>
+          </thead>
           <tbody>
-            <tr><td><strong>上证指数</strong></td><td class="num">3,966.59</td><td class="num up">+0.67%</td><td class="sub-text">消费/军工/医药活跃，成交2.54万亿</td></tr>
-            <tr><td>深证成指</td><td class="num">14,316.96</td><td class="num up">+0.04%</td><td class="sub-text">算力硬件调整，CPO高开低走</td></tr>
-            <tr><td>创业板指</td><td class="num">3,537.21</td><td class="num down">-0.73%</td><td class="sub-text">PCB概念疲软</td></tr>
-            <tr><td><strong>恒生指数</strong></td><td class="num">25,937.49</td><td class="num up">+1.05%</td><td class="sub-text">黄金/煤炭/消费领涨，南向净买20亿</td></tr>
-            <tr><td>恒生科技</td><td class="num">4,919.46</td><td class="num up">+1.26%</td><td class="sub-text">半导体/硬件设备逆势下挫</td></tr>
-            <tr><td><strong>日经225</strong></td><td class="num">66,970.22</td><td class="num up">+2.08%</td><td class="sub-text">半导体设备领涨，东京电子+3.5%</td></tr>
-            <tr><td>韩国KOSPI</td><td class="num">6,299.66</td><td class="num up">+0.65%</td><td class="sub-text">三星-0.9%，SK海力士-1.3%获利回吐</td></tr>
+            <tr><td>上证指数</td><td class="num">3,966.59</td><td class="up">+0.67%</td><td class="sub-text">五连阳</td></tr>
+            <tr><td>深证成指</td><td class="num">14,316.96</td><td class="up">+0.04%</td><td class="sub-text">微涨</td></tr>
+            <tr><td>创业板指</td><td class="num">3,537.21</td><td class="down">-0.73%</td><td class="sub-text">芯片算力下挫</td></tr>
+            <tr><td>恒生指数</td><td class="num">25,937.49</td><td class="up">+1.05%</td><td class="sub-text">科技股领涨</td></tr>
+            <tr><td>日经225</td><td class="num">66,970.22</td><td class="up">+2.08%</td><td class="sub-text">强势反弹</td></tr>
+            <tr><td>韩国KOSPI</td><td class="num">6,299.66</td><td class="up">+0.65%</td><td class="sub-text">半导体板块带动</td></tr>
+          </tbody>
+        </table>
+
+        <div class="section-label">债市</div>
+        <table>
+          <thead>
+            <tr><th>品种</th><th>收益率</th><th>变动</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>美国10年期国债</td><td class="num">4.703%</td><td class="up">+5.72bp</td></tr>
+            <tr><td>美国2年期国债</td><td class="num">4.235%</td><td class="up">+4.16bp</td></tr>
+            <tr><td>中国10年期国债</td><td class="num">1.699%</td><td class="down">-0.23bp</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- Geo Politics -->
     <div class="card">
       <div class="card-header">
         <span class="icon">🛡️</span>
         <h3>地缘政治焦点</h3>
-        <span class="sub">中东局势</span>
+        <span class="sub">霍尔木兹海峡</span>
       </div>
       <div class="card-body">
         <div class="geo-alert">
-          <h4>⚠️ 霍尔木兹海峡僵局升级</h4>
+          <h4>⚠️ 中东局势：协议前景不明，油价获风险溢价</h4>
           <div class="geo-item">
-            <p><strong>互相索赔：</strong>特朗普称美军已完成海峡扫雷并拥有"100%控制权"，反向要求伊朗赔偿"科尔号"等事件。伊朗开出五项条件——停止军事行动、解除封锁和制裁、归还冻结资产、赔偿损失、停止威胁。</p>
+            <p><strong>霍尔木兹海峡僵局：</strong>伊朗与阿曼就航运过境路线图达成共识，但联合声明技术细节仍在磋商，市场担忧海峡通行协议落地不及预期，原油风险溢价大幅回升。</p>
           </div>
           <div class="geo-item">
-            <p><strong>通行量暴跌：</strong>海峡日通行量从战前约60艘降至8月9日仅6艘。伊朗与阿曼就临时通航路线达成初步共识，但全面开放仍遥遥无期。</p>
+            <p><strong>美伊谈判：</strong>特朗普称与伊朗谈判"进展相当顺利"，但伊朗陆军司令强硬表态若美军踏足伊朗领土将"斩断他们的脚"，双方博弈加剧。</p>
           </div>
           <div class="geo-item">
-            <p><strong>胡塞袭击：</strong>伊朗支持的胡塞武装声称成功袭击沙特吉赞炼油厂，红海航运安全进一步恶化。以色列拒绝加沙停火协议。</p>
+            <p><strong>美国战略油储告急：</strong>美国战略石油储备自1983年以来首次跌破3亿桶，低库存进一步放大供应担忧，助推油价大涨。</p>
           </div>
           <div class="geo-item">
-            <p><strong>油价冲击：</strong>WTI涨5.27%至82.30，布伦特涨5.18%至87.88。美国SPR降至3亿桶以下（1980年代以来最低），低库存放大供应担忧。</p>
+            <p><strong>日美汇率干预：</strong>日本央行强烈暗示9月加息，促成日本和美国28年来首次联手干预日元汇率，美元兑日元反弹至159.30。</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ROW 2: A-Share News (left) + Commodities & FX (right) -->
   <div class="grid-2-uneven">
-    <!-- A-Share Pre-market -->
     <div class="card">
       <div class="card-header">
         <span class="icon">🇨🇳</span>
         <h3>A股盘前重要消息</h3>
-        <span class="sub">8月11日</span>
+        <span class="sub">8月11日早参</span>
       </div>
       <div class="card-body">
         <ul class="news-list">
-          <li>
-            <span class="news-tag policy">政策</span>
-            <span><strong>央行印发《"十五五"改革发展规划》</strong>，构建科学稳健货币政策体系，完善基础货币投放机制，配套9份细分行动方案。金融改革预期升温。</span>
-          </li>
-          <li>
-            <span class="news-tag industry">AI算力</span>
-            <span><strong>阿里云全球数据中心产能提升两倍以上</strong>，首创全模块化设计，交付工期缩短至100天，成本降低10%+。利好AIDC、算力租赁、光模块产业链。</span>
-          </li>
-          <li>
-            <span class="news-tag industry">AI算力</span>
-            <span><strong>英伟达联手华尔街巨头推进5000亿美元AI融资</strong>——Apollo、黑石、贝莱德、高盛、KKR联合参与。同步向电力基建商Lancium投资30亿美元。</span>
-          </li>
-          <li>
-            <span class="news-tag industry">机器人</span>
-            <span><strong>宇树科技IPO引爆市场</strong>，中签率0.018%创科创板新低，978万户申购创历史新高。DeepSeek战略配售锁定36个月。</span>
-          </li>
-          <li>
-            <span class="news-tag company">公司</span>
-            <span><strong>江波龙半年报：净利105.77亿，同比增71528%</strong>，营收240.88亿（+136%），拟回购4-8亿元。存储龙头业绩爆发。</span>
-          </li>
-          <li>
-            <span class="news-tag warning">监管</span>
-            <span><strong>爱丽家居停牌核查</strong>，12天11板累计涨185%，严重偏离基本面。监管降温信号明确。</span>
-          </li>
-          <li>
-            <span class="news-tag macro">海外</span>
-            <span><strong>英特尔宣布150亿美元增发</strong>，隔夜跌超4%压制全球半导体。韩国设立5万亿韩元半导体基金，日本将高端五轴机床列入出口管制。</span>
-          </li>
-          <li>
-            <span class="news-tag industry">创新药</span>
-            <span><strong>甘李药业与Menarini达成重磅BD</strong>，授予博凡格鲁肽欧盟27国商业化权利。上半年国内创新药获批31款。</span>
-          </li>
-          <li>
-            <span class="news-tag policy">政策</span>
-            <span><strong>煤炭工业"十五五"规划出台</strong>，2030年大型现代化煤矿产能比重提升至87%。高股息防守逻辑+政策支撑。</span>
-          </li>
+          <li><span class="news-tag policy">政策</span><div><strong>央行印发《"十五五"改革发展规划》</strong>：提出保持人民币汇率合理均衡稳定，高质量建设债券市场"科技板"，推进人民币国际化。</div></li>
+          <li><span class="news-tag policy">政策</span><div><strong>煤炭工业发展"十五五"规划</strong>：发改委、能源局印发规划，到2030年大型现代化煤矿产能比重提升至87%，智能化煤矿比例达75%。</div></li>
+          <li><span class="news-tag company">新股</span><div><strong>宇树科技科创板申购</strong>：发行价150.80元/股，网上最终中签率仅0.018%，创年内最低，DeepSeek获战略配售并锁定36个月。</div></li>
+          <li><span class="news-tag industry">产业</span><div><strong>阿里云大幅扩产</strong>：计划将模块化数据中心全球产能提升两倍以上，交付周期缩短至100天，建设成本降低10%以上。</div></li>
+          <li><span class="news-tag industry">产业</span><div><strong>英伟达5000亿美元AI融资</strong>：联手阿波罗、黑石、贝莱德、高盛等六家金融巨头，押注AI基础设施。</div></li>
+          <li><span class="news-tag industry">产业</span><div><strong>微软自研AI芯片</strong>：计划大幅增产Maia 300，与台积电洽谈2027年交付逾30万枚。</div></li>
+          <li><span class="news-tag company">业绩</span><div><strong>江波龙半年报炸裂</strong>：上半年净利润105.77亿元，同比增长715倍，并拟4-8亿元回购。</div></li>
+          <li><span class="news-tag company">医药</span><div><strong>甘李药业GLP-1出海</strong>：博凡格鲁肽授权意大利Menarini集团，首付款6200万欧元，潜在总额7.26亿欧元。</div></li>
+          <li><span class="news-tag warning">监管</span><div><strong>爱丽家居停牌核查</strong>：12天11板后"二进宫"，8月11日开市起停牌核查。</div></li>
+          <li><span class="news-tag macro">宏观</span><div><strong>央行逆回购净回笼</strong>：8月10日开展180亿元7天期逆回购，净回笼450亿元。</div></li>
         </ul>
       </div>
     </div>
 
-    <!-- Commodities & FX -->
     <div class="card">
       <div class="card-header">
         <span class="icon">💹</span>
         <h3>大宗商品与汇率</h3>
-        <span class="sub">8月10日收盘</span>
+        <span class="sub">8月11日早盘</span>
       </div>
       <div class="card-body">
-        <div class="section-label">大宗商品</div>
+        <div class="section-label">能源与贵金属</div>
         <table>
-          <thead><tr><th>品种</th><th>最新价</th><th>涨跌幅</th><th>驱动</th></tr></thead>
+          <thead>
+            <tr><th>品种</th><th>价格</th><th>涨跌</th></tr>
+          </thead>
           <tbody>
-            <tr><td><strong>WTI原油</strong></td><td class="num">82.30</td><td class="num up">+5.27%</td><td class="sub-text">霍尔木兹僵局+SPR新低</td></tr>
-            <tr><td><strong>布伦特原油</strong></td><td class="num">87.88</td><td class="num up">+5.18%</td><td class="sub-text">供应风险溢价回升</td></tr>
-            <tr><td><strong>COMEX黄金</strong></td><td class="num">4,448.60</td><td class="num up">+1.11%</td><td class="sub-text">降息预期+央行购金</td></tr>
-            <tr><td><strong>COMEX白银</strong></td><td class="num">65.88</td><td class="num up">+3.75%</td><td class="sub-text">贵金属全线走强</td></tr>
-            <tr><td><strong>LME铜</strong></td><td class="num">14,120</td><td class="num up">+0.31%</td><td class="sub-text">关税悬顶，逼近高位</td></tr>
-            <tr><td><strong>LME铝</strong></td><td class="num">3,335</td><td class="num up">+1.68%</td><td class="sub-text">供给端支撑</td></tr>
-            <tr><td><strong>沪铜主连</strong></td><td class="num">107,790</td><td class="num down">-0.16%</td><td class="sub-text">国内跟涨意愿弱</td></tr>
+            <tr><td>WTI原油</td><td class="num">$82.13</td><td class="up">+5.05%</td></tr>
+            <tr><td>布伦特原油</td><td class="num">$87.72</td><td class="up">+4.99%</td></tr>
+            <tr><td>COMEX黄金</td><td class="num">$4,448.6</td><td class="up">+1.11%</td></tr>
+            <tr><td>COMEX白银</td><td class="num">$65.88</td><td class="up">+3.75%</td></tr>
+            <tr><td>NYMEX天然气</td><td class="num">$2.794</td><td class="up">+4.96%</td></tr>
           </tbody>
         </table>
 
-        <div class="section-label">汇率 & 利率</div>
+        <div class="section-label">工业金属</div>
         <table>
-          <thead><tr><th>指标</th><th>最新值</th><th>变动</th><th>备注</th></tr></thead>
+          <thead>
+            <tr><th>品种</th><th>价格</th><th>涨跌</th></tr>
+          </thead>
           <tbody>
-            <tr><td>美元指数</td><td class="num">99.81</td><td class="num up">+0.21%</td><td class="sub-text">纽约尾盘</td></tr>
-            <tr><td>在岸人民币</td><td class="num">6.7442</td><td class="num up">升值59bp</td><td class="sub-text">创42个月新高</td></tr>
-            <tr><td>离岸人民币</td><td class="num">6.7451</td><td class="num down">贬值15.6bp</td><td class="sub-text">纽约尾盘</td></tr>
-            <tr><td>中间价</td><td class="num">6.7884</td><td class="num up">调升20bp</td><td class="sub-text">创2023年2月新高</td></tr>
-            <tr><td>美10Y国债</td><td class="num">4.703%</td><td class="num up">+5.7bp</td><td class="sub-text">通胀担忧推升</td></tr>
-            <tr><td>中10Y国债</td><td class="num">1.699%</td><td class="num down">-0.23bp</td><td class="sub-text">流动性充裕</td></tr>
-            <tr><td>美元/日元</td><td class="num">159.30</td><td class="num up">+0.95%</td><td class="sub-text">日央行9月加息预期升温</td></tr>
+            <tr><td>LME铜</td><td class="num">$14,120</td><td class="up">+0.70%</td></tr>
+            <tr><td>LME铝</td><td class="num">$3,335</td><td class="up">+1.99%</td></tr>
+            <tr><td>LME锌</td><td class="num">$3,735.5</td><td class="up">+0.77%</td></tr>
+            <tr><td>LME镍</td><td class="num">$16,945</td><td class="down">-0.35%</td></tr>
+          </tbody>
+        </table>
+
+        <div class="section-label">汇率</div>
+        <table>
+          <thead>
+            <tr><th>货币对</th><th>汇价</th><th>变动</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>美元指数</td><td class="num">99.81</td><td class="up">+0.21%</td></tr>
+            <tr><td>在岸人民币</td><td class="num">6.7442</td><td class="down">创42个月新高</td></tr>
+            <tr><td>离岸人民币</td><td class="num">6.7433</td><td class="down">三年高位</td></tr>
+            <tr><td>人民币中间价</td><td class="num">6.7884</td><td class="down">调升20点</td></tr>
+            <tr><td>美元兑日元</td><td class="num">159.30</td><td class="up">+0.95%</td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
 
-  <!-- ROW 3: Trading Advice (full width) -->
   <div class="card" style="margin-bottom:16px;">
     <div class="card-header">
       <span class="icon">🎯</span>
@@ -788,140 +712,96 @@
     <div class="card-body">
       <div class="advice-grid">
         <div class="advice-card bull">
-          <h4>🇨🇳 A股大盘</h4>
+          <h4>原油期货（WTI/布伦特）</h4>
           <span class="stance">偏多</span>
-          <div class="strategy">
-            央行"十五五"规划托底，阿里云扩产+英伟达5000亿融资双催化AI主线。但沪指五连阳后缩量，上方有技术压力。<br>
-            <strong>策略：</strong>逢低布局AI算力/数据中心/光模块，关注机器人板块情绪联动。高位纯题材逢高减仓，优选业绩确定性强品种。
-          </div>
+          <div class="strategy">霍尔木兹海峡通行协议前景不明+美国战略油储跌破3亿桶，供应风险溢价支撑油价。短线关注布油能否站稳88美元，逢低试多思路，止损参考85美元。</div>
         </div>
         <div class="advice-card bull">
-          <h4>🥇 黄金</h4>
+          <h4>黄金/白银</h4>
           <span class="stance">偏多</span>
-          <div class="strategy">
-            三重支撑：非农走弱→降息预期升温；全球央行持续购金；中东地缘避险。COMEX金价突破4400打开上方空间。<br>
-            <strong>策略：</strong>中线多单持有，短线不追高。关注周三CPI——若超预期回落，金价有望挑战4500。
-          </div>
-        </div>
-        <div class="advice-card bull">
-          <h4>🛢️ 原油</h4>
-          <span class="stance">偏多（警惕回调）</span>
-          <div class="strategy">
-            霍尔木兹局势为核心变量，SPR创新低放大供应风险溢价。布油单日涨超5%后短线有技术修正需求。<br>
-            <strong>策略：</strong>短线多头部分止盈，留底仓博地缘溢价。关注EIA短期能源展望及API库存数据。
-          </div>
-        </div>
-        <div class="advice-card bull">
-          <h4>💾 存储芯片</h4>
-          <span class="stance">偏多</span>
-          <div class="strategy">
-            江波龙业绩炸裂(+71528%)+回购，摩根大通上调2026-2028存储市场规模预测。景气周期确认。<br>
-            <strong>策略：</strong>关注国产存储模组、封测环节，逢回调低吸。中报窗口优选业绩兑现标的。
-          </div>
-        </div>
-        <div class="advice-card bull">
-          <h4>🤖 机器人/具身智能</h4>
-          <span class="stance">偏多</span>
-          <div class="strategy">
-            宇树科技IPO引爆情绪，DeepSeek战略配售锁定36个月，美团/红杉/经纬跟进。短线事件驱动。<br>
-            <strong>策略：</strong>关注产业链核心标的，注意IPO资金分流效应，控制追高风险。
-          </div>
+          <div class="strategy">地缘避险+降息预期+全球央行购金共振，金价突破4400美元关口。COMEX黄金短线关注4450-4500美元区间，白银弹性更大，注意仓位控制。</div>
         </div>
         <div class="advice-card wait">
-          <h4>🔧 半导体（A股）</h4>
-          <span class="stance">观望</span>
-          <div class="strategy">
-            英特尔增发+费城半导体-2.94%压制情绪，但韩国半导体基金+ADI涨价+国产替代逻辑支撑。<br>
-            <strong>策略：</strong>等待CPI落地后方向明朗。回避高位光通信，关注国产替代材料/设备。
-          </div>
+          <h4>A股大盘指数</h4>
+          <span class="stance">观望为主，结构性做多</span>
+          <div class="strategy">沪指五连阳但成交缩量，上方技术压力加大。关注AI算力/数据中心、人形机器人、创新药、煤炭高股息方向；回避高位纯题材及中报暴雷标的。</div>
         </div>
-        <div class="advice-card wait">
-          <h4>🔩 铜</h4>
-          <span class="stance">观望偏多</span>
-          <div class="strategy">
-            LME铜逼近历史高位但涨幅收窄至0.31%，沪铜逆势微跌。关税政策悬顶，追高风险收益比不佳。<br>
-            <strong>策略：</strong>已有仓位持有，无仓位等回调至14000以下再考虑。关注中国信贷数据及CPI。
-          </div>
+        <div class="advice-card bull">
+          <h4>A股：机器人/AI算力</h4>
+          <span class="stance">偏多</span>
+          <div class="strategy">宇树科技申购火爆确立估值锚，叠加英伟达5000亿AI基建、阿里云扩产催化。关注减速器、传感器、灵巧手、AIDC、液冷等细分。</div>
         </div>
         <div class="advice-card bear">
-          <h4>⚠️ 纯题材连板小票</h4>
-          <span class="stance">偏空</span>
-          <div class="strategy">
-            爱丽家居二次停牌核查，监管降温信号明确。中报披露窗口，缺乏业绩支撑的高位题材股面临回调。<br>
-            <strong>策略：</strong>规避高位纯题材股，减仓无基本面支撑的连板标的。
-          </div>
+          <h4>美股科技股/半导体</h4>
+          <span class="stance">偏空/谨慎</span>
+          <div class="strategy">英特尔150亿美元高位增发、苹果遭六家机构看空、英伟达跌近3%，科技股情绪承压。费城半导体指数大跌3%，短线回避光通信板块波动。</div>
+        </div>
+        <div class="advice-card bull">
+          <h4>人民币汇率</h4>
+          <span class="stance">偏多（人民币）</span>
+          <div class="strategy">在岸人民币创42个月新高，中间价持续走强，美元阶段性承压。出口企业注意结汇节奏，进口企业可把握美元贬值窗口。</div>
+        </div>
+        <div class="advice-card wait">
+          <h4>铜/铝</h4>
+          <span class="stance">观望</span>
+          <div class="strategy">铜价逼近历史高位，美国关税悬顶；铝价受供应端和能源成本支撑。油价大涨推升通胀预期，短线工业金属追高需谨慎。</div>
+        </div>
+        <div class="advice-card wait">
+          <h4>美债/中债</h4>
+          <span class="stance">观望</span>
+          <div class="strategy">10年期美债收益率反弹至4.70%附近，等待周三美国7月CPI指引；中债收益率维持低位，央行"科技板"政策对科创债构成中期利好。</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ROW 4: Weekly Calendar (full width) -->
   <div class="card">
     <div class="card-header">
       <span class="icon">📅</span>
       <h3>本周关键事件日历</h3>
-      <span class="sub">8月11日 — 8月17日</span>
+      <span class="sub">8月10日 - 8月16日</span>
     </div>
     <div class="card-body">
       <div class="cal-item">
         <div class="cal-date"><div class="dow">周一</div><div class="day">10</div></div>
-        <div class="cal-content">
-          <div class="title">A股收盘 + 央行金融信贷数据</div>
-          <div class="desc">上证+0.67%；日本6月经常帐时隔17个月转逆差</div>
-        </div>
-        <div class="cal-stars">★★★</div>
-      </div>
-      <div class="cal-item">
-        <div class="cal-date"><div class="dow">周二</div><div class="day">11</div></div>
-        <div class="cal-content">
-          <div class="title">澳洲联储利率决议（12:30）</div>
-          <div class="desc">预期维持4.35%不变 | 美国NFIB小企业信心指数 | 美国成屋销售 | EIA短期能源展望</div>
-        </div>
-        <div class="cal-stars">★★★</div>
+        <div class="cal-content"><div class="title">宇树科技科创板申购 | 中国7月M2货币供应年率</div><div class="desc">年内最低中签率新股，机器人板块情绪风向标</div></div>
+        <div class="cal-stars">★★★★☆</div>
       </div>
       <div class="cal-item highlight">
+        <div class="cal-date"><div class="dow">周二</div><div class="day">11</div></div>
+        <div class="cal-content"><div class="title">澳大利亚联储利率决议 | 美国财政部千亿国债标售</div><div class="desc">关注澳洲央行是否释放降息信号；美债供给压力</div></div>
+        <div class="cal-stars">★★★☆☆</div>
+      </div>
+      <div class="cal-item">
         <div class="cal-date"><div class="dow">周三</div><div class="day">12</div></div>
-        <div class="cal-content">
-          <div class="title">🇺🇸 美国7月CPI（20:30 ET）— 本周最重要数据</div>
-          <div class="desc">预期3.4%（前值3.5%），核心CPI同步关注。直接决定美联储9月政策路径 | EIA & IEA月度原油报告</div>
-        </div>
+        <div class="cal-content"><div class="title">美国7月CPI/PPI | 腾讯/京东二季报 | MSCI指数调整</div><div class="desc">本周最大风险事件，核心CPI决定美联储9月降息节奏</div></div>
         <div class="cal-stars">★★★★★</div>
       </div>
       <div class="cal-item">
         <div class="cal-date"><div class="dow">周四</div><div class="day">13</div></div>
-        <div class="cal-content">
-          <div class="title">美国7月PPI + 初请失业金（20:30 ET）</div>
-          <div class="desc">ECB会议纪要 | 英国Q2 GDP初值 | 欧元区6月工业产出 | 全球固态电池年度峰会</div>
-        </div>
-        <div class="cal-stars">★★★★</div>
-      </div>
-      <div class="cal-item highlight">
-        <div class="cal-date"><div class="dow">周五</div><div class="day">14</div></div>
-        <div class="cal-content">
-          <div class="title">🇺🇸 美国7月零售销售（"恐怖数据"）+ 密歇根消费者信心初值</div>
-          <div class="desc">零售预期-0.2%（前值+0.2%），消费支出占GDP约70% | 欧元区Q2 GDP修正值</div>
-        </div>
-        <div class="cal-stars">★★★★★</div>
+        <div class="cal-content"><div class="title">美国7月PPI | 当周初请失业金 | 谷歌Pixel 11发布会</div><div class="desc">通胀数据二连发，半导体/光通信财报密集</div></div>
+        <div class="cal-stars">★★★★☆</div>
       </div>
       <div class="cal-item">
-        <div class="cal-date"><div class="dow">全周</div><div class="day">—</div></div>
-        <div class="cal-content">
-          <div class="title">持续关注</div>
-          <div class="desc">美伊霍尔木兹谈判进展 | 宇树科技IPO申购 | 腾讯8.12 Q2财报 | A股中报密集披露</div>
-        </div>
-        <div class="cal-stars">★★★</div>
+        <div class="cal-date"><div class="dow">周五</div><div class="day">14</div></div>
+        <div class="cal-content"><div class="title">美国7月零售销售 | SEC 13F持仓披露截止</div><div class="desc">消费韧性验证，机构二季度持仓曝光</div></div>
+        <div class="cal-stars">★★★★☆</div>
+      </div>
+      <div class="cal-item">
+        <div class="cal-date"><div class="dow">周六</div><div class="day">15</div></div>
+        <div class="cal-content"><div class="title">朱雀三号遥二发射（预计）</div><div class="desc">商业航天一级垂直回收验证</div></div>
+        <div class="cal-stars">★★☆☆☆</div>
       </div>
     </div>
   </div>
 
 </div>
 
-<!-- ====== FOOTER ====== -->
 <div class="footer">
   <div class="disclaimer">
     <strong>⚠️ 免责声明：</strong>本简报仅供内部参考，不构成任何投资建议。所有数据均来自公开市场信息与联网实时搜索，尽量保证准确，但不排除个别数据存在延迟或偏差。市场有风险，投资须谨慎。据此操作，风险自担。
   </div>
-  <div class="copy">页面信息由AI生成 · 2026-08-11 08:09 更新</div>
+  <div class="copy">页面信息由AI生成 · 2026-08-11 08:45 更新</div>
 </div>
 
 </body>
