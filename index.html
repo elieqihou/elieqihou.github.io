@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>盘前简报 · 2026年8月11日</title>
+<title>盘前简报 · 2026年8月12日</title>
 <style>
   :root {
     --primary: #0d1f3c;
@@ -82,715 +82,830 @@
     z-index: 1;
   }
   .header-left h1 {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 700;
     letter-spacing: 1px;
+    margin-bottom: 4px;
   }
-  .header-left h1 .accent-bar {
-    display: inline-block;
-    width: 4px;
-    height: 22px;
-    background: var(--accent);
-    margin-right: 10px;
-    vertical-align: middle;
-    border-radius: 2px;
-  }
-  .header-left .date {
+  .header-left .subtitle {
     font-size: 14px;
-    opacity: 0.75;
-    margin-top: 6px;
-  }
-  .header-left .src {
-    font-size: 12px;
-    opacity: 0.45;
-    margin-top: 3px;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.5px;
   }
   .header-right {
     text-align: right;
-    flex-shrink: 0;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
   }
-  .header-right .badge {
-    display: inline-block;
-    background: rgba(200,164,78,0.18);
-    border: 1px solid rgba(200,164,78,0.35);
-    color: var(--accent);
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 14px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-  }
-  .header-right .update-time {
-    font-size: 12px;
-    opacity: 0.5;
-    margin-top: 8px;
-  }
-
-  .kpi-strip {
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow);
-  }
-  .kpi-inner {
-    max-width: 1440px;
-    margin: 0 auto;
-    display: flex;
-    gap: 0;
-    padding: 0 20px;
-    overflow-x: auto;
-  }
-  .kpi-item {
-    flex: 1;
-    min-width: 130px;
-    padding: 16px 18px;
-    border-right: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    transition: background var(--transition);
-    cursor: default;
-  }
-  .kpi-item:last-child { border-right: none; }
-  .kpi-item:hover { background: var(--bg-2); }
-  .kpi-item .kpi-label {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-3);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-  }
-  .kpi-item .kpi-value {
+  .header-right .date {
     font-size: 20px;
-    font-weight: 700;
-    font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
-    letter-spacing: -0.5px;
-  }
-  .kpi-item .kpi-change {
-    font-size: 12px;
     font-weight: 600;
-    font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
+    color: var(--accent-2);
+    margin-bottom: 2px;
   }
-  .kpi-item .kpi-change.up { color: var(--danger); }
-  .kpi-item .kpi-change.down { color: var(--success); }
 
-  .main {
+  .container {
     max-width: 1440px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 24px 40px 48px;
   }
 
-  .macro-banner {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
-    border-radius: var(--radius);
-    padding: 20px 28px;
-    margin-bottom: 16px;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    position: relative;
-    overflow: hidden;
-  }
-  .macro-banner::after {
-    content: '';
-    position: absolute;
-    bottom: -40%;
-    right: 3%;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(200,164,78,0.1) 0%, transparent 65%);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-  .macro-banner h2 {
-    font-size: 15px;
-    color: var(--accent);
-    letter-spacing: 1px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .macro-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .macro-tag {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 20px;
-    padding: 5px 14px;
-    font-size: 12.5px;
-    letter-spacing: 0.3px;
-    transition: all var(--transition);
-  }
-  .macro-tag:hover { background: rgba(255,255,255,0.14); }
-  .macro-tag.hot {
-    border-color: rgba(200,164,78,0.5);
-    color: var(--accent);
-    background: var(--accent-light);
-  }
-
-  .grid-2 {
+  .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
+    gap: 20px;
+    margin-bottom: 20px;
   }
-  .grid-2-uneven {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
+  .grid-full { grid-column: 1 / -1; }
 
   .card {
     background: var(--card);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    border: 1px solid var(--border);
     overflow: hidden;
     transition: box-shadow var(--transition);
   }
   .card:hover { box-shadow: var(--shadow-hover); }
+
   .card-header {
-    padding: 16px 24px 12px;
+    padding: 14px 20px;
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
     gap: 8px;
   }
-  .card-header .icon { font-size: 18px; }
-  .card-header h3 {
+  .card-header .icon {
+    width: 4px;
+    height: 18px;
+    border-radius: 2px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .card-header h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary);
+  }
+  .card-header .tag {
+    margin-left: auto;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .card-body { padding: 18px 20px; }
+
+  /* 宏观定调 */
+  .tone-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .tone-item {
+    text-align: center;
+    padding: 16px 8px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+  }
+  .tone-item .tone-label {
+    font-size: 12px;
+    color: var(--text-3);
+    margin-bottom: 6px;
+  }
+  .tone-item .tone-value {
     font-size: 15px;
     font-weight: 700;
     color: var(--primary);
-    letter-spacing: 0.5px;
   }
-  .card-header .sub {
-    font-size: 12px;
-    color: var(--text-3);
-    margin-left: auto;
-  }
-  .card-body { padding: 16px 24px 20px; }
-
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  thead th {
-    background: var(--bg-2);
-    padding: 8px 12px;
-    text-align: left;
-    font-weight: 600;
-    color: var(--text-2);
-    border-bottom: 2px solid var(--border-2);
+  .tone-item .tone-desc {
     font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    white-space: nowrap;
+    color: var(--text-2);
+    margin-top: 4px;
   }
-  tbody td {
-    padding: 8px 12px;
-    border-bottom: 1px solid var(--border);
+
+  /* 数据表格 */
+  table {
+    width: 100%;
+    border-collapse: collapse;
     font-size: 13px;
   }
-  tbody tr:last-child td { border-bottom: none; }
-  tbody tr { transition: background var(--transition); }
-  tbody tr:hover { background: var(--bg-2); }
-  .num { font-family: "SF Mono", "Cascadia Code", "Consolas", monospace; font-weight: 600; }
-  .up { color: var(--danger); }
-  .down { color: var(--success); }
-  .flat { color: var(--text-3); }
-  .sub-text { font-size: 11px; color: var(--text-3); }
-  .section-label {
-    font-size: 12px;
-    font-weight: 700;
+  table th {
+    text-align: left;
+    padding: 9px 12px;
+    background: var(--bg-2);
     color: var(--text-2);
-    margin: 14px 0 6px;
-    padding-left: 8px;
-    border-left: 3px solid var(--accent);
+    font-weight: 600;
+    font-size: 12px;
+    border-bottom: 1px solid var(--border);
   }
-  .section-label:first-child { margin-top: 0; }
+  table th.num { text-align: right; }
+  table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table tr:last-child td { border-bottom: none; }
+  table tr:hover td { background: var(--bg-2); }
 
+  .up { color: var(--danger); font-weight: 600; }
+  .down { color: var(--success); font-weight: 600; }
+  .flat { color: var(--text-3); font-weight: 600; }
+
+  /* 消息列表 */
   .news-list { list-style: none; }
   .news-list li {
     padding: 10px 0;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px dashed var(--border);
     font-size: 13px;
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    line-height: 1.6;
+    line-height: 1.7;
   }
-  .news-list li:last-child { border-bottom: none; padding-bottom: 0; }
-  .news-list li:first-child { padding-top: 0; }
-  .news-tag {
-    flex-shrink: 0;
+  .news-list li:last-child { border-bottom: none; }
+  .news-list .news-tag {
     display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-    margin-top: 1px;
+    font-size: 11px;
+    padding: 1px 7px;
+    border-radius: 3px;
+    margin-right: 6px;
+    font-weight: 600;
+    vertical-align: middle;
   }
-  .news-tag.policy { background: var(--success-bg); color: #1e7e34; }
-  .news-tag.industry { background: var(--info-bg); color: #1a6bb0; }
-  .news-tag.company { background: #fff3e0; color: #bf6516; }
-  .news-tag.macro { background: #fce4ec; color: #c62828; }
-  .news-tag.geo { background: #f3e5f5; color: #7b1fa2; }
-  .news-tag.warning { background: var(--warning-bg); color: #9a6700; }
+  .tag-bull { background: var(--success-bg); color: var(--success); }
+  .tag-bear { background: var(--danger-bg); color: var(--danger); }
+  .tag-info { background: var(--info-bg); color: var(--info); }
+  .tag-warn { background: var(--warning-bg); color: var(--warning); }
 
-  .geo-alert {
-    background: linear-gradient(135deg, #fff5f5, #fef0f0);
-    border: 1px solid #fecaca;
-    border-radius: var(--radius-sm);
-    padding: 14px 18px;
-  }
-  .geo-alert h4 {
-    font-size: 14px;
-    color: #c53030;
-    margin-bottom: 8px;
-  }
-  .geo-alert p { font-size: 12.5px; color: #742a2a; line-height: 1.7; }
-  .geo-alert .geo-item {
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(254,202,202,0.5);
-  }
-  .geo-alert .geo-item:last-child { border-bottom: none; padding-bottom: 0; }
-
+  /* 操盘建议 */
   .advice-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
   }
-  .advice-card {
-    background: var(--bg-2);
+  .advice-item {
+    padding: 14px 16px;
     border-radius: var(--radius-sm);
-    padding: 16px 18px;
     border: 1px solid var(--border);
-    border-left: 4px solid #ccc;
-    transition: all var(--transition);
+    border-left: 4px solid var(--border);
   }
-  .advice-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
+  .advice-item.bullish { border-left-color: var(--danger); }
+  .advice-item.bearish { border-left-color: var(--success); }
+  .advice-item.neutral { border-left-color: var(--warning); }
+  .advice-item .advice-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
   }
-  .advice-card.bull { border-left-color: var(--danger); }
-  .advice-card.bear { border-left-color: var(--success); }
-  .advice-card.wait { border-left-color: var(--warning); }
-  .advice-card h4 {
+  .advice-item .advice-title {
     font-size: 14px;
     font-weight: 700;
-    margin-bottom: 4px;
     color: var(--primary);
   }
-  .advice-card .stance {
+  .advice-item .advice-badge {
     font-size: 11px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    display: inline-block;
     padding: 2px 10px;
-    border-radius: 12px;
+    border-radius: 10px;
+    font-weight: 700;
   }
-  .advice-card.bull .stance { background: var(--danger-bg); color: var(--danger); }
-  .advice-card.bear .stance { background: var(--success-bg); color: var(--success); }
-  .advice-card.wait .stance { background: var(--warning-bg); color: var(--warning); }
-  .advice-card .strategy {
-    font-size: 12.5px;
+  .badge-bull { background: var(--danger-bg); color: var(--danger); }
+  .badge-bear { background: var(--success-bg); color: var(--success); }
+  .badge-neutral { background: var(--warning-bg); color: var(--warning); }
+  .advice-item .advice-text {
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.7;
+  }
+
+  /* 日历 */
+  .calendar-list { list-style: none; }
+  .calendar-list li {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .calendar-list li:last-child { border-bottom: none; }
+  .cal-date {
+    flex-shrink: 0;
+    width: 64px;
+    text-align: center;
+    padding: 6px 0;
+    border-radius: var(--radius-sm);
+    background: var(--primary);
+    color: #fff;
+  }
+  .cal-date .day { font-size: 18px; font-weight: 700; line-height: 1.2; }
+  .cal-date .weekday { font-size: 11px; opacity: 0.7; }
+  .cal-content { flex: 1; font-size: 13px; line-height: 1.7; }
+  .cal-content .cal-title { font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .cal-content .cal-detail { color: var(--text-2); font-size: 12px; }
+  .cal-impact {
+    flex-shrink: 0;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+  .impact-high { background: var(--danger-bg); color: var(--danger); }
+  .impact-med { background: var(--warning-bg); color: var(--warning); }
+
+  /* 地缘政治 */
+  .geo-box {
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+    border: 1px solid #f5d0cc;
+    margin-bottom: 12px;
+  }
+  .geo-box h3 {
+    font-size: 14px;
+    color: var(--danger);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .geo-box p {
+    font-size: 13px;
     color: var(--text-2);
     line-height: 1.75;
   }
-  .advice-card .strategy strong { color: var(--text); }
-
-  .cal-item {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    gap: 16px;
-  }
-  .cal-item:last-child { border-bottom: none; }
-  .cal-date {
-    flex-shrink: 0;
-    width: 56px;
-    text-align: center;
-  }
-  .cal-date .dow {
-    font-size: 10px;
-    color: var(--text-3);
+  .geo-box .geo-highlight {
+    color: var(--danger);
     font-weight: 600;
-    text-transform: uppercase;
-  }
-  .cal-date .day {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--primary);
-    font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
-    line-height: 1.2;
-  }
-  .cal-content { flex: 1; }
-  .cal-content .title { font-size: 13px; font-weight: 600; color: var(--text); }
-  .cal-content .desc { font-size: 12px; color: var(--text-3); margin-top: 2px; }
-  .cal-stars {
-    flex-shrink: 0;
-    font-size: 11px;
-    color: var(--accent);
-    white-space: nowrap;
-  }
-  .cal-item.highlight {
-    background: var(--accent-light);
-    border-radius: var(--radius-sm);
-    padding-left: 12px;
-    padding-right: 12px;
-    margin: 4px -12px;
   }
 
   .footer {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 16px 20px 32px;
-  }
-  .footer .disclaimer {
-    background: var(--warning-bg);
-    border: 1px solid #ffe082;
-    border-radius: var(--radius-sm);
-    padding: 12px 18px;
-    margin-bottom: 14px;
-    font-size: 12px;
-    color: #8d6e00;
-    line-height: 1.7;
-  }
-  .footer .copy {
     text-align: center;
+    padding: 32px 20px 20px;
     font-size: 12px;
     color: var(--text-3);
+    border-top: 1px solid var(--border);
+    margin-top: 16px;
+  }
+  .footer .disclaimer {
+    max-width: 800px;
+    margin: 0 auto 10px;
+    line-height: 1.7;
+  }
+  .footer .signature {
+    color: var(--text-2);
+    font-weight: 600;
   }
 
-  @media (max-width: 1024px) {
-    .grid-2, .grid-2-uneven { grid-template-columns: 1fr; }
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+    .tone-grid { grid-template-columns: repeat(2, 1fr); }
+    .advice-grid { grid-template-columns: 1fr; }
+    .container { padding: 16px 16px 32px; }
+    .header { padding: 20px 16px; }
     .header-inner { flex-direction: column; align-items: flex-start; }
     .header-right { text-align: left; }
-  }
-  @media (max-width: 640px) {
-    .header { padding: 20px 16px; }
-    .header-left h1 { font-size: 20px; }
-    .main { padding: 12px 10px; }
-    .kpi-inner { flex-wrap: wrap; }
-    .kpi-item { min-width: 50%; border-bottom: 1px solid var(--border); }
-    .advice-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
-
 <div class="topbar"></div>
 
 <div class="header">
   <div class="header-inner">
     <div class="header-left">
-      <h1><span class="accent-bar"></span>盘前简报</h1>
-      <div class="date">2026年8月11日 · 周二 · 盘前发布</div>
-      <div class="src">数据截止北京时间 08:45 | 来源：Wind / 东方财富 / 华尔街见闻 / 新华社 / 财联社 / 金投网</div>
+      <h1>盘前简报</h1>
+      <div class="subtitle">Pre-Market Daily Briefing</div>
     </div>
     <div class="header-right">
-      <span class="badge">PRE-MARKET BRIEFING</span>
-      <div class="update-time">最后更新 08:45 CST</div>
+      <div class="date">2026 / 08 / 12</div>
+      <div>星期三 · 农历六月廿九</div>
     </div>
   </div>
 </div>
 
-<div class="kpi-strip">
-  <div class="kpi-inner">
-    <div class="kpi-item">
-      <span class="kpi-label">标普500</span>
-      <span class="kpi-value">7,753.11</span>
-      <span class="kpi-change down">-0.06%</span>
-    </div>
-    <div class="kpi-item">
-      <span class="kpi-label">纳斯达克</span>
-      <span class="kpi-value">26,605.36</span>
-      <span class="kpi-change down">-0.32%</span>
-    </div>
-    <div class="kpi-item">
-      <span class="kpi-label">布伦特原油</span>
-      <span class="kpi-value up">$87.72</span>
-      <span class="kpi-change up">+4.99%</span>
-    </div>
-    <div class="kpi-item">
-      <span class="kpi-label">COMEX黄金</span>
-      <span class="kpi-value up">$4,448.6</span>
-      <span class="kpi-change up">+1.11%</span>
-    </div>
-    <div class="kpi-item">
-      <span class="kpi-label">美元指数</span>
-      <span class="kpi-value">99.81</span>
-      <span class="kpi-change up">+0.21%</span>
-    </div>
-    <div class="kpi-item">
-      <span class="kpi-label">在岸人民币</span>
-      <span class="kpi-value down">6.7442</span>
-      <span class="kpi-change down">创42个月新高</span>
-    </div>
-  </div>
-</div>
+<div class="container">
 
-<div class="main">
-
-  <div class="macro-banner">
-    <h2>宏观关键词</h2>
-    <div class="macro-tags">
-      <span class="macro-tag hot">霍尔木兹海峡僵局</span>
-      <span class="macro-tag hot">原油暴涨5%</span>
-      <span class="macro-tag hot">人民币创42个月新高</span>
-      <span class="macro-tag">央行"十五五"规划</span>
-      <span class="macro-tag">宇树科技申购</span>
-      <span class="macro-tag">英伟达5000亿AI融资</span>
-      <span class="macro-tag">美国7月CPI周三来袭</span>
-      <span class="macro-tag">中东地缘风险</span>
-    </div>
-  </div>
-
-  <div class="grid-2-uneven">
-    <div class="card">
+  <!-- 宏观定调 -->
+  <div class="grid">
+    <div class="card grid-full">
       <div class="card-header">
-        <span class="icon">🌍</span>
-        <h3>国际市场收盘速览</h3>
-        <span class="sub">8月10日收盘</span>
+        <div class="icon"></div>
+        <h2>宏观定调</h2>
+        <span class="tag">核心关键词</span>
       </div>
       <div class="card-body">
-        <div class="section-label">欧美股市</div>
-        <table>
-          <thead>
-            <tr><th>指数</th><th>收盘</th><th>涨跌</th><th>备注</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>道琼斯</td><td class="num">53,975.98</td><td class="down">-0.11%</td><td class="sub-text">高位小幅回落</td></tr>
-            <tr><td>标普500</td><td class="num">7,753.11</td><td class="down">-0.06%</td><td class="sub-text">科技拖累</td></tr>
-            <tr><td>纳斯达克</td><td class="num">26,605.36</td><td class="down">-0.32%</td><td class="sub-text">英伟达跌近3%</td></tr>
-            <tr><td>欧洲STOXX 600</td><td class="num">660.45</td><td class="up">+0.03%</td><td class="sub-text">基本持平</td></tr>
-            <tr><td>英国富时100</td><td class="num">10,862.50</td><td class="down">-0.35%</td><td class="sub-text">矿业股承压</td></tr>
-            <tr><td>德国DAX30</td><td class="num">26,355.07</td><td class="up">+0.14%</td><td class="sub-text">小幅收涨</td></tr>
-            <tr><td>法国CAC40</td><td class="num">8,726.03</td><td class="up">+0.13%</td><td class="sub-text">温和反弹</td></tr>
-          </tbody>
-        </table>
-
-        <div class="section-label">亚太股市</div>
-        <table>
-          <thead>
-            <tr><th>指数</th><th>收盘</th><th>涨跌</th><th>备注</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>上证指数</td><td class="num">3,966.59</td><td class="up">+0.67%</td><td class="sub-text">五连阳</td></tr>
-            <tr><td>深证成指</td><td class="num">14,316.96</td><td class="up">+0.04%</td><td class="sub-text">微涨</td></tr>
-            <tr><td>创业板指</td><td class="num">3,537.21</td><td class="down">-0.73%</td><td class="sub-text">芯片算力下挫</td></tr>
-            <tr><td>恒生指数</td><td class="num">25,937.49</td><td class="up">+1.05%</td><td class="sub-text">科技股领涨</td></tr>
-            <tr><td>日经225</td><td class="num">66,970.22</td><td class="up">+2.08%</td><td class="sub-text">强势反弹</td></tr>
-            <tr><td>韩国KOSPI</td><td class="num">6,299.66</td><td class="up">+0.65%</td><td class="sub-text">半导体板块带动</td></tr>
-          </tbody>
-        </table>
-
-        <div class="section-label">债市</div>
-        <table>
-          <thead>
-            <tr><th>品种</th><th>收益率</th><th>变动</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>美国10年期国债</td><td class="num">4.703%</td><td class="up">+5.72bp</td></tr>
-            <tr><td>美国2年期国债</td><td class="num">4.235%</td><td class="up">+4.16bp</td></tr>
-            <tr><td>中国10年期国债</td><td class="num">1.699%</td><td class="down">-0.23bp</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="icon">🛡️</span>
-        <h3>地缘政治焦点</h3>
-        <span class="sub">霍尔木兹海峡</span>
-      </div>
-      <div class="card-body">
-        <div class="geo-alert">
-          <h4>⚠️ 中东局势：协议前景不明，油价获风险溢价</h4>
-          <div class="geo-item">
-            <p><strong>霍尔木兹海峡僵局：</strong>伊朗与阿曼就航运过境路线图达成共识，但联合声明技术细节仍在磋商，市场担忧海峡通行协议落地不及预期，原油风险溢价大幅回升。</p>
+        <div class="tone-grid">
+          <div class="tone-item">
+            <div class="tone-label">主线</div>
+            <div class="tone-value">CPI 决战日</div>
+            <div class="tone-desc">今晚21:30 美国7月CPI</div>
           </div>
-          <div class="geo-item">
-            <p><strong>美伊谈判：</strong>特朗普称与伊朗谈判"进展相当顺利"，但伊朗陆军司令强硬表态若美军踏足伊朗领土将"斩断他们的脚"，双方博弈加剧。</p>
+          <div class="tone-item">
+            <div class="tone-label">风险</div>
+            <div class="tone-value">中东僵局</div>
+            <div class="tone-desc">霍尔木兹海峡仍关闭</div>
           </div>
-          <div class="geo-item">
-            <p><strong>美国战略油储告急：</strong>美国战略石油储备自1983年以来首次跌破3亿桶，低库存进一步放大供应担忧，助推油价大涨。</p>
+          <div class="tone-item">
+            <div class="tone-label">情绪</div>
+            <div class="tone-value">谨慎偏多</div>
+            <div class="tone-desc">科技结构性行情延续</div>
           </div>
-          <div class="geo-item">
-            <p><strong>日美汇率干预：</strong>日本央行强烈暗示9月加息，促成日本和美国28年来首次联手干预日元汇率，美元兑日元反弹至159.30。</p>
+          <div class="tone-item">
+            <div class="tone-label">汇率</div>
+            <div class="tone-value">人民币强势</div>
+            <div class="tone-desc">在岸6.7457 离岸6.7465</div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="grid-2-uneven">
+  <!-- 国际市场 & 地缘政治 -->
+  <div class="grid">
+    <!-- 美股 -->
     <div class="card">
       <div class="card-header">
-        <span class="icon">🇨🇳</span>
-        <h3>A股盘前重要消息</h3>
-        <span class="sub">8月11日早参</span>
+        <div class="icon"></div>
+        <h2>美股收盘（8/11）</h2>
+        <span class="tag">连跌两日</span>
       </div>
       <div class="card-body">
-        <ul class="news-list">
-          <li><span class="news-tag policy">政策</span><div><strong>央行印发《"十五五"改革发展规划》</strong>：提出保持人民币汇率合理均衡稳定，高质量建设债券市场"科技板"，推进人民币国际化。</div></li>
-          <li><span class="news-tag policy">政策</span><div><strong>煤炭工业发展"十五五"规划</strong>：发改委、能源局印发规划，到2030年大型现代化煤矿产能比重提升至87%，智能化煤矿比例达75%。</div></li>
-          <li><span class="news-tag company">新股</span><div><strong>宇树科技科创板申购</strong>：发行价150.80元/股，网上最终中签率仅0.018%，创年内最低，DeepSeek获战略配售并锁定36个月。</div></li>
-          <li><span class="news-tag industry">产业</span><div><strong>阿里云大幅扩产</strong>：计划将模块化数据中心全球产能提升两倍以上，交付周期缩短至100天，建设成本降低10%以上。</div></li>
-          <li><span class="news-tag industry">产业</span><div><strong>英伟达5000亿美元AI融资</strong>：联手阿波罗、黑石、贝莱德、高盛等六家金融巨头，押注AI基础设施。</div></li>
-          <li><span class="news-tag industry">产业</span><div><strong>微软自研AI芯片</strong>：计划大幅增产Maia 300，与台积电洽谈2027年交付逾30万枚。</div></li>
-          <li><span class="news-tag company">业绩</span><div><strong>江波龙半年报炸裂</strong>：上半年净利润105.77亿元，同比增长715倍，并拟4-8亿元回购。</div></li>
-          <li><span class="news-tag company">医药</span><div><strong>甘李药业GLP-1出海</strong>：博凡格鲁肽授权意大利Menarini集团，首付款6200万欧元，潜在总额7.26亿欧元。</div></li>
-          <li><span class="news-tag warning">监管</span><div><strong>爱丽家居停牌核查</strong>：12天11板后"二进宫"，8月11日开市起停牌核查。</div></li>
-          <li><span class="news-tag macro">宏观</span><div><strong>央行逆回购净回笼</strong>：8月10日开展180亿元7天期逆回购，净回笼450亿元。</div></li>
+        <table>
+          <thead>
+            <tr>
+              <th>指数</th>
+              <th class="num">收盘价</th>
+              <th class="num">涨跌幅</th>
+              <th class="num">涨跌点</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>道琼斯工业</td>
+              <td class="num">53,791.85</td>
+              <td class="num down">-0.34%</td>
+              <td class="num down">-184.13</td>
+            </tr>
+            <tr>
+              <td>标普500</td>
+              <td class="num">7,728.20</td>
+              <td class="num down">-0.32%</td>
+              <td class="num down">-24.91</td>
+            </tr>
+            <tr>
+              <td>纳斯达克</td>
+              <td class="num">26,445.45</td>
+              <td class="num down">-0.60%</td>
+              <td class="num down">-159.91</td>
+            </tr>
+            <tr>
+              <td>中概金龙指数</td>
+              <td class="num">6,532.41</td>
+              <td class="num down">-2.94%</td>
+              <td class="num">—</td>
+            </tr>
+            <tr>
+              <td>费城半导体</td>
+              <td class="num">—</td>
+              <td class="num up">+0.87%</td>
+              <td class="num">24涨6跌</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="news-list" style="margin-top:12px;">
+          <li><span class="news-tag tag-bear">领跌</span>通信服务 -2.12%，房地产 -0.86%；谷歌A -3.84%，亚马逊 -2.09%，苹果 -1.09%</li>
+          <li><span class="news-tag tag-bull">领涨</span>公用事业 +1.11%，能源 +1.06%；KKR +6.88%，阿波罗 +6.26%，Meta +0.71%</li>
+          <li><span class="news-tag tag-info">英特尔</span>增发200亿美元股权融资（55年来最大），发行价95美元/股，8月12日交割</li>
         </ul>
       </div>
     </div>
 
+    <!-- 亚太+欧股 -->
     <div class="card">
       <div class="card-header">
-        <span class="icon">💹</span>
-        <h3>大宗商品与汇率</h3>
-        <span class="sub">8月11日早盘</span>
+        <div class="icon"></div>
+        <h2>亚太 & 欧股</h2>
+        <span class="tag">8/12早盘</span>
       </div>
       <div class="card-body">
-        <div class="section-label">能源与贵金属</div>
         <table>
           <thead>
-            <tr><th>品种</th><th>价格</th><th>涨跌</th></tr>
+            <tr>
+              <th>指数</th>
+              <th class="num">最新价</th>
+              <th class="num">涨跌幅</th>
+              <th>备注</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>WTI原油</td><td class="num">$82.13</td><td class="up">+5.05%</td></tr>
-            <tr><td>布伦特原油</td><td class="num">$87.72</td><td class="up">+4.99%</td></tr>
-            <tr><td>COMEX黄金</td><td class="num">$4,448.6</td><td class="up">+1.11%</td></tr>
-            <tr><td>COMEX白银</td><td class="num">$65.88</td><td class="up">+3.75%</td></tr>
-            <tr><td>NYMEX天然气</td><td class="num">$2.794</td><td class="up">+4.96%</td></tr>
-          </tbody>
-        </table>
-
-        <div class="section-label">工业金属</div>
-        <table>
-          <thead>
-            <tr><th>品种</th><th>价格</th><th>涨跌</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>LME铜</td><td class="num">$14,120</td><td class="up">+0.70%</td></tr>
-            <tr><td>LME铝</td><td class="num">$3,335</td><td class="up">+1.99%</td></tr>
-            <tr><td>LME锌</td><td class="num">$3,735.5</td><td class="up">+0.77%</td></tr>
-            <tr><td>LME镍</td><td class="num">$16,945</td><td class="down">-0.35%</td></tr>
-          </tbody>
-        </table>
-
-        <div class="section-label">汇率</div>
-        <table>
-          <thead>
-            <tr><th>货币对</th><th>汇价</th><th>变动</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>美元指数</td><td class="num">99.81</td><td class="up">+0.21%</td></tr>
-            <tr><td>在岸人民币</td><td class="num">6.7442</td><td class="down">创42个月新高</td></tr>
-            <tr><td>离岸人民币</td><td class="num">6.7433</td><td class="down">三年高位</td></tr>
-            <tr><td>人民币中间价</td><td class="num">6.7884</td><td class="down">调升20点</td></tr>
-            <tr><td>美元兑日元</td><td class="num">159.30</td><td class="up">+0.95%</td></tr>
+            <tr>
+              <td>日经225</td>
+              <td class="num">66,994.05</td>
+              <td class="num up">+0.04%</td>
+              <td>开盘</td>
+            </tr>
+            <tr>
+              <td>韩国KOSPI</td>
+              <td class="num">6,438.50</td>
+              <td class="num up">+1.50%</td>
+              <td>开盘</td>
+            </tr>
+            <tr>
+              <td>恒生指数</td>
+              <td class="num">25,652.82</td>
+              <td class="num down">-1.10%</td>
+              <td>8/11收盘</td>
+            </tr>
+            <tr>
+              <td>恒生科技</td>
+              <td class="num">4,824.42</td>
+              <td class="num down">-1.93%</td>
+              <td>8/11收盘</td>
+            </tr>
+            <tr>
+              <td>英国富时100</td>
+              <td class="num">10,844.19</td>
+              <td class="num down">-0.17%</td>
+              <td>8/11收盘</td>
+            </tr>
+            <tr>
+              <td>德国DAX</td>
+              <td class="num">26,391.42</td>
+              <td class="num up">+0.26%</td>
+              <td>8/11收盘</td>
+            </tr>
+            <tr>
+              <td>法国CAC40</td>
+              <td class="num">8,714.94</td>
+              <td class="num down">-0.13%</td>
+              <td>8/11收盘</td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
 
-  <div class="card" style="margin-bottom:16px;">
-    <div class="card-header">
-      <span class="icon">🎯</span>
-      <h3>今日操盘建议</h3>
-      <span class="sub">按品种分类</span>
-    </div>
-    <div class="card-body">
-      <div class="advice-grid">
-        <div class="advice-card bull">
-          <h4>原油期货（WTI/布伦特）</h4>
-          <span class="stance">偏多</span>
-          <div class="strategy">霍尔木兹海峡通行协议前景不明+美国战略油储跌破3亿桶，供应风险溢价支撑油价。短线关注布油能否站稳88美元，逢低试多思路，止损参考85美元。</div>
-        </div>
-        <div class="advice-card bull">
-          <h4>黄金/白银</h4>
-          <span class="stance">偏多</span>
-          <div class="strategy">地缘避险+降息预期+全球央行购金共振，金价突破4400美元关口。COMEX黄金短线关注4450-4500美元区间，白银弹性更大，注意仓位控制。</div>
-        </div>
-        <div class="advice-card wait">
-          <h4>A股大盘指数</h4>
-          <span class="stance">观望为主，结构性做多</span>
-          <div class="strategy">沪指五连阳但成交缩量，上方技术压力加大。关注AI算力/数据中心、人形机器人、创新药、煤炭高股息方向；回避高位纯题材及中报暴雷标的。</div>
-        </div>
-        <div class="advice-card bull">
-          <h4>A股：机器人/AI算力</h4>
-          <span class="stance">偏多</span>
-          <div class="strategy">宇树科技申购火爆确立估值锚，叠加英伟达5000亿AI基建、阿里云扩产催化。关注减速器、传感器、灵巧手、AIDC、液冷等细分。</div>
-        </div>
-        <div class="advice-card bear">
-          <h4>美股科技股/半导体</h4>
-          <span class="stance">偏空/谨慎</span>
-          <div class="strategy">英特尔150亿美元高位增发、苹果遭六家机构看空、英伟达跌近3%，科技股情绪承压。费城半导体指数大跌3%，短线回避光通信板块波动。</div>
-        </div>
-        <div class="advice-card bull">
-          <h4>人民币汇率</h4>
-          <span class="stance">偏多（人民币）</span>
-          <div class="strategy">在岸人民币创42个月新高，中间价持续走强，美元阶段性承压。出口企业注意结汇节奏，进口企业可把握美元贬值窗口。</div>
-        </div>
-        <div class="advice-card wait">
-          <h4>铜/铝</h4>
-          <span class="stance">观望</span>
-          <div class="strategy">铜价逼近历史高位，美国关税悬顶；铝价受供应端和能源成本支撑。油价大涨推升通胀预期，短线工业金属追高需谨慎。</div>
-        </div>
-        <div class="advice-card wait">
-          <h4>美债/中债</h4>
-          <span class="stance">观望</span>
-          <div class="strategy">10年期美债收益率反弹至4.70%附近，等待周三美国7月CPI指引；中债收益率维持低位，央行"科技板"政策对科创债构成中期利好。</div>
+  <!-- 地缘政治 -->
+  <div class="grid">
+    <div class="card grid-full">
+      <div class="card-header">
+        <div class="icon" style="background:var(--danger);"></div>
+        <h2>地缘政治 · 中东局势</h2>
+        <span class="tag" style="background:var(--danger-bg);color:var(--danger);">高风险</span>
+      </div>
+      <div class="card-body">
+        <div class="geo-box">
+          <h3>⚠️ 霍尔木兹海峡持续关闭 · 美伊博弈进入"中局"</h3>
+          <p>
+            <strong>伊朗立场强硬：</strong>伊朗最高领袖顾问穆赫贝尔及最高国家安全委员会秘书雷扎伊8月11日均表态称，<span class="geo-highlight">在美国满足伊朗条件之前，霍尔木兹海峡不会开放</span>。伊方要求包括：永久停止军事行动、解除海上封锁和全部制裁、归还冻结资产并赔偿损失等五项条件。
+          </p>
+          <p style="margin-top:8px;">
+            <strong>美军行动升级：</strong>美国中央司令部证实，美军直升机在阿曼湾向一艘试图突破封锁的悬挂巴拿马国旗的货轮"Vela Nova"号<span class="geo-highlight">开火</span>，致使该船停航。截至8月11日，美军已迫使55艘商船改道，3艘船只失去行动能力。
+          </p>
+          <p style="margin-top:8px;">
+            <strong>外交斡旋进行中：</strong>巴基斯坦国防部长阿西夫11日称"美伊已接近达成某种安排"，巴内政部长纳克维当日抵达德黑兰与伊朗官员会晤。卡塔尔方面称阿曼与伊朗谈判已进入"高级阶段"。<span class="geo-highlight">60天谈判期限将于8月18日到期</span>，市场密切关注后续进展。
+          </p>
+          <p style="margin-top:8px;">
+            <strong>油价风险：</strong>Jefferies警告若僵局持续至本周末，油价难以维持温和走势；Capital Economics认为若海峡长期关闭，油价或升至<span class="geo-highlight">120-140美元/桶</span>。
+          </p>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="card">
-    <div class="card-header">
-      <span class="icon">📅</span>
-      <h3>本周关键事件日历</h3>
-      <span class="sub">8月10日 - 8月16日</span>
+  <!-- A股盘前 -->
+  <div class="grid">
+    <div class="card grid-full">
+      <div class="card-header">
+        <div class="icon"></div>
+        <h2>A股盘前要闻</h2>
+        <span class="tag">8/12</span>
+      </div>
+      <div class="card-body">
+        <table style="margin-bottom:16px;">
+          <thead>
+            <tr>
+              <th>A股指数（8/11收盘）</th>
+              <th class="num">收盘价</th>
+              <th class="num">涨跌幅</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>上证指数</td>
+              <td class="num">3,934.09</td>
+              <td class="num down">-0.82%</td>
+              <td>成交额超2.3万亿</td>
+            </tr>
+            <tr>
+              <td>深证成指</td>
+              <td class="num">14,259.44</td>
+              <td class="num down">-0.40%</td>
+              <td>超3500只个股下跌</td>
+            </tr>
+            <tr>
+              <td>创业板指</td>
+              <td class="num">3,549.16</td>
+              <td class="num up">+0.34%</td>
+              <td>MLCC概念领涨</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="news-list">
+          <li><span class="news-tag tag-bull">政策定调</span>中央政治局8月11日召开会议，强调实施更加积极的财政政策和适度宽松的货币政策，全面实施"人工智能+"行动，稳定房地产市场及化解地方债风险</li>
+          <li><span class="news-tag tag-bull">上海规划</span>上海印发《软件和信息服务业发展"十五五"规划》：2030年产业规模力争4万亿元，实施"百千万"智算集群工程，布局十万卡级超大规模智算集群，聚焦GPU/NPU、CPO、HBM等核心环节</li>
+          <li><span class="news-tag tag-bull">央行规划</span>央行印发《"十五五"改革发展规划》及9份配套行动方案，构建科学稳健的货币政策体系，保持人民币汇率基本稳定</li>
+          <li><span class="news-tag tag-bull">煤炭规划</span>发改委、能源局印发《煤炭工业发展"十五五"规划》，目标2030年大型现代化煤矿产能比重升至87%</li>
+          <li><span class="news-tag tag-bull">存储扩产</span>SK海力士重启大连NAND闪存2号工厂建设，产能扩大约50%，年底前引入设备，明年上半年投产</li>
+          <li><span class="news-tag tag-bull">业绩亮眼</span>工业富联半年报：上半年营收5578.6亿元(+54.6%)，归母净利润237.4亿元(+96%)，创历史新高；云服务商AI服务器营收同比增长2.3倍</li>
+          <li><span class="news-tag tag-info">AI动态</span>字节跳动成立一级部门"AI数据与安全"；英伟达开发万亿参数开源模型；英伟达联手华尔街六巨头筹资5000亿美元AI基建</li>
+          <li><span class="news-tag tag-bull">涨价</span>国民技术自10月1日起上调部分MCU产品价格10%-20%</li>
+          <li><span class="news-tag tag-bull">回购</span>江波龙获建行7.2亿元回购专项贷款承诺；佰维存储拟回购2亿-2.5亿元股份</li>
+          <li><span class="news-tag tag-info">IPO</span>宇树科技科创板申购中签号出炉，共19414个中签号码，中签率仅0.018%</li>
+          <li><span class="news-tag tag-info">经济数据</span>中国7月CPI同比上涨0.5%，环比下降0.1%，核心CPI同比上涨0.9%；前7个月进出口超30万亿元</li>
+        </ul>
+      </div>
     </div>
-    <div class="card-body">
-      <div class="cal-item">
-        <div class="cal-date"><div class="dow">周一</div><div class="day">10</div></div>
-        <div class="cal-content"><div class="title">宇树科技科创板申购 | 中国7月M2货币供应年率</div><div class="desc">年内最低中签率新股，机器人板块情绪风向标</div></div>
-        <div class="cal-stars">★★★★☆</div>
+  </div>
+
+  <!-- 大宗商品与汇率 -->
+  <div class="grid">
+    <div class="card">
+      <div class="card-header">
+        <div class="icon"></div>
+        <h2>大宗商品</h2>
+        <span class="tag">8/11收盘</span>
       </div>
-      <div class="cal-item highlight">
-        <div class="cal-date"><div class="dow">周二</div><div class="day">11</div></div>
-        <div class="cal-content"><div class="title">澳大利亚联储利率决议 | 美国财政部千亿国债标售</div><div class="desc">关注澳洲央行是否释放降息信号；美债供给压力</div></div>
-        <div class="cal-stars">★★★☆☆</div>
+      <div class="card-body">
+        <table>
+          <thead>
+            <tr>
+              <th>品种</th>
+              <th class="num">价格</th>
+              <th class="num">涨跌幅</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>WTI原油（9月）</td>
+              <td class="num">$83.20/桶</td>
+              <td class="num up">+1.30%</td>
+            </tr>
+            <tr>
+              <td>布伦特原油（10月）</td>
+              <td class="num">$88.91/桶</td>
+              <td class="num up">+1.36%</td>
+            </tr>
+            <tr>
+              <td>COMEX黄金</td>
+              <td class="num">$4,427.80/oz</td>
+              <td class="num up">+0.18%</td>
+            </tr>
+            <tr>
+              <td>COMEX白银</td>
+              <td class="num">$64.86/oz</td>
+              <td class="num down">-0.63%</td>
+            </tr>
+            <tr>
+              <td>现货黄金</td>
+              <td class="num">$4,369.80/oz</td>
+              <td class="num down">-0.49%</td>
+            </tr>
+            <tr>
+              <td>LME期铜</td>
+              <td class="num">$14,153/吨</td>
+              <td class="num down">-0.05%</td>
+            </tr>
+            <tr>
+              <td>LME期铝</td>
+              <td class="num">$3,362.50/吨</td>
+              <td class="num up">+1.36%</td>
+            </tr>
+            <tr>
+              <td>LME期锌</td>
+              <td class="num">$3,734.50/吨</td>
+              <td class="num down">-0.08%</td>
+            </tr>
+            <tr>
+              <td>LME期镍</td>
+              <td class="num">$16,820/吨</td>
+              <td class="num down">-0.62%</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="cal-item">
-        <div class="cal-date"><div class="dow">周三</div><div class="day">12</div></div>
-        <div class="cal-content"><div class="title">美国7月CPI/PPI | 腾讯/京东二季报 | MSCI指数调整</div><div class="desc">本周最大风险事件，核心CPI决定美联储9月降息节奏</div></div>
-        <div class="cal-stars">★★★★★</div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="icon"></div>
+        <h2>汇率与利率</h2>
+        <span class="tag">8/11收盘</span>
       </div>
-      <div class="cal-item">
-        <div class="cal-date"><div class="dow">周四</div><div class="day">13</div></div>
-        <div class="cal-content"><div class="title">美国7月PPI | 当周初请失业金 | 谷歌Pixel 11发布会</div><div class="desc">通胀数据二连发，半导体/光通信财报密集</div></div>
-        <div class="cal-stars">★★★★☆</div>
+      <div class="card-body">
+        <table>
+          <thead>
+            <tr>
+              <th>指标</th>
+              <th class="num">数值</th>
+              <th class="num">变动</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>美元指数</td>
+              <td class="num">99.81</td>
+              <td class="num flat">持平</td>
+            </tr>
+            <tr>
+              <td>美元/人民币（在岸）</td>
+              <td class="num">6.7457</td>
+              <td class="num down">-15bp</td>
+            </tr>
+            <tr>
+              <td>美元/人民币（离岸）</td>
+              <td class="num">6.7465</td>
+              <td class="num down">-10bp</td>
+            </tr>
+            <tr>
+              <td>人民币中间价</td>
+              <td class="num">6.7900</td>
+              <td class="num down">-16bp</td>
+            </tr>
+            <tr>
+              <td>欧元/美元</td>
+              <td class="num">1.1543</td>
+              <td class="num flat">持平</td>
+            </tr>
+            <tr>
+              <td>美元/日元</td>
+              <td class="num">159.29</td>
+              <td class="num up">+0.02%</td>
+            </tr>
+            <tr>
+              <td>美国10年期国债收益率</td>
+              <td class="num">4.683%</td>
+              <td class="num down">-0.32%</td>
+            </tr>
+            <tr>
+              <td>中国10年期国债收益率</td>
+              <td class="num">1.701%</td>
+              <td class="num up">+0.06%</td>
+            </tr>
+            <tr>
+              <td>DR007</td>
+              <td class="num">1.3925%</td>
+              <td class="num">—</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="cal-item">
-        <div class="cal-date"><div class="dow">周五</div><div class="day">14</div></div>
-        <div class="cal-content"><div class="title">美国7月零售销售 | SEC 13F持仓披露截止</div><div class="desc">消费韧性验证，机构二季度持仓曝光</div></div>
-        <div class="cal-stars">★★★★☆</div>
+    </div>
+  </div>
+
+  <!-- 操盘建议 -->
+  <div class="grid">
+    <div class="card grid-full">
+      <div class="card-header">
+        <div class="icon"></div>
+        <h2>操盘建议</h2>
+        <span class="tag">仅供参考</span>
       </div>
-      <div class="cal-item">
-        <div class="cal-date"><div class="dow">周六</div><div class="day">15</div></div>
-        <div class="cal-content"><div class="title">朱雀三号遥二发射（预计）</div><div class="desc">商业航天一级垂直回收验证</div></div>
-        <div class="cal-stars">★★☆☆☆</div>
+      <div class="card-body">
+        <div class="advice-grid">
+          <div class="advice-item bullish">
+            <div class="advice-head">
+              <div class="advice-title">A股 · 科技成长</div>
+              <div class="advice-badge badge-bull">偏多</div>
+            </div>
+            <div class="advice-text">
+              政治局会议定调"AI+"行动，上海4万亿软件规划利好智算产业链。关注AI算力（GPU/CPO/HBM）、存储芯片（SK海力士扩产催化）、人形机器人（宇树IPO+世界机器人大会临近）三条主线。操作上逢回调左侧布局，仓位5-7成。
+            </div>
+          </div>
+
+          <div class="advice-item bearish">
+            <div class="advice-head">
+              <div class="advice-title">A股 · 有色金属</div>
+              <div class="advice-badge badge-bear">偏空</div>
+            </div>
+            <div class="advice-text">
+              8/11有色板块集体杀跌，洛阳钼业、紫金矿业、赤峰黄金等大幅下挫。LME铜库存流向美国引发供应端不确定性，短期建议规避有色周期股，等待企稳信号再做打算。
+            </div>
+          </div>
+
+          <div class="advice-item bullish">
+            <div class="advice-head">
+              <div class="advice-title">原油</div>
+              <div class="advice-badge badge-bull">偏多</div>
+            </div>
+            <div class="advice-text">
+              霍尔木兹海峡持续关闭，美军对涉伊船只开火，供应风险溢价高企。美国SPR降至3亿桶以下创1980年代以来最低。若CPI数据低于预期引发风险偏好回升，油价有望进一步上行。布油关注90美元关键阻力位，突破则看100美元。
+            </div>
+          </div>
+
+          <div class="advice-item neutral">
+            <div class="advice-head">
+              <div class="advice-title">黄金</div>
+              <div class="advice-badge badge-neutral">观望</div>
+            </div>
+            <div class="advice-text">
+              COMEX黄金在4428美元附近窄幅震荡，地缘避险支撑 vs 今晚CPI数据不确定性形成拉锯。高盛预计7月核心CPI环比仅+0.19%，若兑现将利好黄金突破前高。建议数据公布前维持现有仓位，不宜追高。
+            </div>
+          </div>
+
+          <div class="advice-item neutral">
+            <div class="advice-head">
+              <div class="advice-title">美股</div>
+              <div class="advice-badge badge-neutral">观望</div>
+            </div>
+            <div class="advice-text">
+              三大指数连跌两日，今晚CPI为本周最大变量。市场预期整体CPI同比3.4%（前值3.5%），核心CPI同比2.5%（前值2.6%）。若数据低于预期，有望推动"金发姑娘行情"普涨；若超预期则加息预期升温，科技股承压。建议数据前减仓观望。
+            </div>
+          </div>
+
+          <div class="advice-item bullish">
+            <div class="advice-head">
+              <div class="advice-title">人民币汇率</div>
+              <div class="advice-badge badge-bull">偏多</div>
+            </div>
+            <div class="advice-text">
+              在岸6.7457、离岸6.7465，人民币维持强势。美元指数99.81持续偏弱，央行"十五五"规划强调汇率基本稳定。短期人民币有望在6.73-6.76区间震荡偏强，关注今晚CPI对美元的影响。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 本周关键事件日历 -->
+  <div class="grid">
+    <div class="card grid-full">
+      <div class="card-header">
+        <div class="icon"></div>
+        <h2>本周关键事件日历</h2>
+        <span class="tag">8/12 - 8/16</span>
+      </div>
+      <div class="card-body">
+        <ul class="calendar-list">
+          <li>
+            <div class="cal-date">
+              <div class="day">12</div>
+              <div class="weekday">周三</div>
+            </div>
+            <div class="cal-content">
+              <div class="cal-title">美国7月CPI数据 · OPEC月报 · 腾讯业绩</div>
+              <div class="cal-detail">21:30公布7月CPI（预期同比3.4%，核心2.5%）；OPEC月度原油市场报告；腾讯控股二季报；CoreWeave/Lumentum财报；MSCI 8月指数调整公告</div>
+            </div>
+            <div class="cal-impact impact-high">高</div>
+          </li>
+          <li>
+            <div class="cal-date">
+              <div class="day">13</div>
+              <div class="weekday">周四</div>
+            </div>
+            <div class="cal-content">
+              <div class="cal-title">美国7月PPI · 初请失业金 · 京东业绩 · 谷歌发布会</div>
+              <div class="cal-detail">20:30公布7月PPI（预期同比5.4%）及截至8/8当周初请失业金人数（预期20.5万）；京东二季报；谷歌Pixel 11新品发布会</div>
+            </div>
+            <div class="cal-impact impact-high">高</div>
+          </li>
+          <li>
+            <div class="cal-date">
+              <div class="day">14</div>
+              <div class="weekday">周五</div>
+            </div>
+            <div class="cal-content">
+              <div class="cal-title">美国7月零售销售 · SEC 13F截止 · 国内油价调整</div>
+              <div class="cal-detail">20:30公布7月零售销售（预期环比+0.3%）；美国SEC 13F季度持仓文件披露截止；国内成品油新一轮调价窗口</div>
+            </div>
+            <div class="cal-impact impact-med">中</div>
+          </li>
+          <li>
+            <div class="cal-date">
+              <div class="day">15</div>
+              <div class="weekday">周六</div>
+            </div>
+            <div class="cal-content">
+              <div class="cal-title">朱雀三号遥二发射 · 《生态环境法典》施行</div>
+              <div class="cal-detail">朱雀三号遥二预计8月中旬发射，拟再次验证一级垂直回收；《中华人民共和国生态环境法典》正式施行</div>
+            </div>
+            <div class="cal-impact impact-med">中</div>
+          </li>
+          <li>
+            <div class="cal-date" style="background:var(--danger);">
+              <div class="day">18</div>
+              <div class="weekday">周一</div>
+            </div>
+            <div class="cal-content">
+              <div class="cal-title">⚠️ 美伊60天谈判期限到期</div>
+              <div class="cal-detail">6月18日起算的60天谈判期限到期，霍尔木兹海峡问题迎来关键节点，可能对油价及全球市场产生重大影响</div>
+            </div>
+            <div class="cal-impact impact-high">高</div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -798,10 +913,10 @@
 </div>
 
 <div class="footer">
-  <div class="disclaimer">
-    <strong>⚠️ 免责声明：</strong>本简报仅供内部参考，不构成任何投资建议。所有数据均来自公开市场信息与联网实时搜索，尽量保证准确，但不排除个别数据存在延迟或偏差。市场有风险，投资须谨慎。据此操作，风险自担。
-  </div>
-  <div class="copy">页面信息由AI生成 · 2026-08-11 08:45 更新</div>
+  <p class="disclaimer">
+    本简报所载信息均来源于公开渠道实时搜索，包括新华社、证券时报、东方财富、财联社、金十数据、华尔街见闻等。内容仅供参考，不构成任何投资建议。投资者据此操作，风险自担。
+  </p>
+  <p class="signature">页面信息由AI生成</p>
 </div>
 
 </body>
