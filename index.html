@@ -3,754 +3,859 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>盘前简报 · 2026年8月31日</title>
+<title>2026-08-31 · A 股盘前简报</title>
 <style>
-  :root {
-    --primary: #0d1f3c;
-    --primary-2: #15294a;
-    --primary-3: #1e3a66;
-    --accent: #c8a44e;
-    --accent-2: #d4af37;
-    --accent-light: rgba(200,164,78,0.12);
-    --danger: #e74c3c;
-    --danger-bg: #fdf2f2;
-    --success: #27ae60;
-    --success-bg: #f0faf3;
-    --warning: #f39c12;
-    --warning-bg: #fef9e7;
-    --info: #3498db;
-    --info-bg: #ebf5fb;
-    --bg: #eef1f6;
-    --bg-2: #f5f7fa;
-    --card: #ffffff;
-    --text: #1e2d3d;
-    --text-2: #5a6877;
-    --text-3: #8896a6;
-    --border: #e1e6ee;
-    --border-2: #d1d9e6;
-    --radius: 10px;
-    --radius-sm: 6px;
-    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.04);
-    --shadow-hover: 0 4px 16px rgba(0,0,0,0.08);
-    --transition: 0.2s ease;
-  }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+    background: #f4f6fa;
+    color: #1a1a2e;
     line-height: 1.65;
+    padding: 24px 16px;
     -webkit-font-smoothing: antialiased;
   }
+  .container { max-width: 1100px; margin: 0 auto; }
 
-  /* ====== TOP NAV ====== */
-  .topbar {
-    background: var(--primary);
-    height: 4px;
-    width: 100%;
-  }
-
-  /* ====== HEADER ====== */
+  /* Header */
   .header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 40%, var(--primary-3) 100%);
+    background: linear-gradient(135deg, #0a1f44 0%, #14306b 55%, #1e3a8a 100%);
     color: #fff;
-    padding: 28px 40px 24px;
+    padding: 38px 36px 30px;
+    border-radius: 14px 14px 0 0;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 24px rgba(10, 31, 68, 0.18);
   }
   .header::before {
-    content: '';
-    position: absolute;
-    top: -60%;
-    right: -5%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(200,164,78,0.12) 0%, transparent 65%);
+    content: "";
+    position: absolute; top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, transparent 65%);
     border-radius: 50%;
-    pointer-events: none;
   }
-  .header-inner {
-    max-width: 1440px;
-    margin: 0 auto;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 24px;
-    position: relative;
-    z-index: 1;
+  .header::after {
+    content: "";
+    position: absolute; bottom: -100px; left: 30%;
+    width: 400px; height: 200px;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
   }
-  .header-left h1 {
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 1px;
-  }
-  .header-left h1 .accent-bar {
+  .header .tag {
     display: inline-block;
-    width: 4px;
-    height: 22px;
-    background: var(--accent);
-    margin-right: 10px;
-    vertical-align: middle;
-    border-radius: 2px;
-  }
-  .header-left .date {
-    font-size: 14px;
-    opacity: 0.75;
-    margin-top: 6px;
-  }
-  .header-left .src {
-    font-size: 12px;
-    opacity: 0.45;
-    margin-top: 3px;
-  }
-  .header-right {
-    text-align: right;
-    flex-shrink: 0;
-  }
-  .header-right .badge {
-    display: inline-block;
-    background: rgba(200,164,78,0.18);
-    border: 1px solid rgba(200,164,78,0.35);
-    color: var(--accent);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.1));
+    border: 1px solid rgba(212, 175, 55, 0.55);
+    color: #f5d76e;
     font-size: 12px;
     font-weight: 600;
-    padding: 4px 14px;
-    border-radius: 20px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 14px;
+    letter-spacing: 2px;
+  }
+  .header h1 {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #fff 0%, #f5d76e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header .subtitle {
+    font-size: 14px;
+    color: #b8c5db;
+    font-weight: 400;
     letter-spacing: 0.5px;
   }
-  .header-right .update-time {
-    font-size: 12px;
-    opacity: 0.5;
-    margin-top: 8px;
-  }
-
-  /* ====== KPI STRIP ====== */
-  .kpi-strip {
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow);
-  }
-  .kpi-inner {
-    max-width: 1440px;
-    margin: 0 auto;
+  .header .meta {
     display: flex;
-    gap: 0;
-    padding: 0 20px;
-    overflow-x: auto;
+    gap: 22px;
+    margin-top: 18px;
+    font-size: 13px;
+    color: #d4d9e6;
+    flex-wrap: wrap;
+  }
+  .header .meta span { display: flex; align-items: center; gap: 6px; }
+  .header .meta b { color: #f5d76e; font-weight: 600; }
+
+  /* KPI Strip */
+  .kpi-strip {
+    background: linear-gradient(180deg, #ffffff 0%, #fafbfd 100%);
+    border-bottom: 1px solid #e3e8f0;
+    padding: 18px 36px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
   }
   .kpi-item {
-    flex: 1;
-    min-width: 130px;
-    padding: 16px 18px;
-    border-right: 1px solid var(--border);
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    transition: background var(--transition);
-    cursor: default;
+    padding: 6px 8px;
+    border-left: 3px solid transparent;
+    transition: all .2s;
   }
-  .kpi-item:last-child { border-right: none; }
-  .kpi-item:hover { background: var(--bg-2); }
-  .kpi-item .kpi-label {
+  .kpi-item:hover {
+    border-left-color: #d4af37;
+    background: #f8faff;
+  }
+  .kpi-item .label {
     font-size: 11px;
+    color: #6b7280;
+    margin-bottom: 6px;
     font-weight: 600;
-    color: var(--text-3);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.5px;
   }
-  .kpi-item .kpi-value {
-    font-size: 20px;
+  .kpi-item .value {
+    font-size: 18px;
     font-weight: 700;
-    font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
-    letter-spacing: -0.5px;
+    color: #0a1f44;
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
+    line-height: 1.2;
   }
-  .kpi-item .kpi-change {
+  .kpi-item .change {
     font-size: 12px;
     font-weight: 600;
-    font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
-  }
-  .kpi-item .kpi-change.up { color: var(--danger); }
-  .kpi-item .kpi-change.down { color: var(--success); }
-  .kpi-item .kpi-change.up .kpi-value { color: var(--danger); }
-  .kpi-item .kpi-change.down .kpi-value { color: var(--success); }
-
-  /* ====== MAIN CONTAINER ====== */
-  .main {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 20px;
+    margin-top: 4px;
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
   }
 
-  /* ====== MACRO BANNER ====== */
-  .macro-banner {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
-    border-radius: var(--radius);
-    padding: 20px 28px;
-    margin-bottom: 16px;
+  /* Section */
+  .section {
+    background: #ffffff;
+    border-radius: 0;
+    margin-bottom: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(10, 31, 68, 0.05);
+  }
+  .section:last-of-type { border-radius: 0 0 14px 14px; }
+  .section-header {
+    padding: 16px 28px;
+    font-size: 16px;
+    font-weight: 700;
     color: #fff;
     display: flex;
     align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
     position: relative;
-    overflow: hidden;
   }
-  .macro-banner::after {
-    content: '';
+  .section-header::before {
+    content: "";
     position: absolute;
-    bottom: -40%;
-    right: 3%;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(200,164,78,0.1) 0%, transparent 65%);
-    border-radius: 50%;
-    pointer-events: none;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, #d4af37, #f5d76e);
   }
-  .macro-banner h2 {
-    font-size: 15px;
-    color: var(--accent);
-    letter-spacing: 1px;
-    white-space: nowrap;
-    flex-shrink: 0;
+  .section-header .title {
+    display: flex; align-items: center; gap: 10px;
   }
+  .section-header .icon { font-size: 18px; }
+  .section-header .date-tag {
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  .sh-1 { background: linear-gradient(135deg, #1e3a8a 0%, #2c4999 100%); }
+  .sh-2 { background: linear-gradient(135deg, #5b21b6 0%, #6d28d9 100%); }
+  .sh-3 { background: linear-gradient(135deg, #b91c1c 0%, #dc2626 100%); }
+  .sh-4 { background: linear-gradient(135deg, #0e7490 0%, #0891b2 100%); }
+  .sh-5 { background: linear-gradient(135deg, #047857 0%, #059669 100%); }
+  .sh-6 { background: linear-gradient(135deg, #92400e 0%, #b45309 100%); }
+  .sh-7 { background: linear-gradient(135deg, #9d174d 0%, #be185d 100%); }
+  .section-body { padding: 22px 28px; }
+
+  /* Macro tags */
   .macro-tags {
     display: flex;
+    gap: 10px;
     flex-wrap: wrap;
-    gap: 8px;
+    margin-bottom: 18px;
   }
   .macro-tag {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 20px;
-    padding: 5px 14px;
-    font-size: 12.5px;
-    letter-spacing: 0.3px;
-    transition: all var(--transition);
-  }
-  .macro-tag:hover { background: rgba(255,255,255,0.14); }
-  .macro-tag.hot {
-    border-color: rgba(200,164,78,0.5);
-    color: var(--accent);
-    background: var(--accent-light);
-  }
-
-  /* ====== GRID LAYOUT ====== */
-  .grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-  .grid-2-uneven {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-
-  /* ====== CARD ====== */
-  .card {
-    background: var(--card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    overflow: hidden;
-    transition: box-shadow var(--transition);
-  }
-  .card:hover { box-shadow: var(--shadow-hover); }
-  .card-header {
-    padding: 16px 24px 12px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-  }
-  .card-header .icon { font-size: 18px; }
-  .card-header h3 {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--primary);
-    letter-spacing: 0.5px;
-  }
-  .card-header .sub {
+    gap: 6px;
+    padding: 6px 14px;
+    background: #f1f3f8;
+    border: 1px solid #dde2ec;
+    border-radius: 16px;
     font-size: 12px;
-    color: var(--text-3);
-    margin-left: auto;
+    color: #475569;
+    font-weight: 500;
   }
-  .card-body { padding: 16px 24px 20px; }
+  .macro-tag.hot {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-color: #d4af37;
+    color: #92400e;
+    font-weight: 700;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+  }
+  .macro-tag.hot::before { content: "🔥"; }
 
-  /* ====== TABLES ====== */
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  thead th {
-    background: var(--bg-2);
-    padding: 8px 12px;
-    text-align: left;
-    font-weight: 600;
-    color: var(--text-2);
-    border-bottom: 2px solid var(--border-2);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    white-space: nowrap;
-  }
-  tbody td {
-    padding: 8px 12px;
-    border-bottom: 1px solid var(--border);
+  /* Table */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
     font-size: 13px;
+    margin-bottom: 14px;
+    background: #ffffff;
   }
-  tbody tr:last-child td { border-bottom: none; }
-  tbody tr { transition: background var(--transition); }
-  tbody tr:hover { background: var(--bg-2); }
-  .num { font-family: "SF Mono", "Cascadia Code", "Consolas", monospace; font-weight: 600; }
-  .up { color: var(--danger); }
-  .down { color: var(--success); }
-  .flat { color: var(--text-3); }
-  .sub-text { font-size: 11px; color: var(--text-3); }
-  .section-label {
-    font-size: 12px;
+  .data-table thead tr {
+    background: linear-gradient(180deg, #f8faff 0%, #eef1f7 100%);
+  }
+  .data-table th {
+    color: #475569;
     font-weight: 700;
-    color: var(--text-2);
-    margin: 14px 0 6px;
-    padding-left: 8px;
-    border-left: 3px solid var(--accent);
+    text-align: left;
+    padding: 11px 14px;
+    border-bottom: 2px solid #d4af37;
+    font-size: 12px;
+    letter-spacing: 0.3px;
   }
-  .section-label:first-child { margin-top: 0; }
+  .data-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid #eef1f7;
+    color: #2d3748;
+  }
+  .data-table tbody tr:hover { background: #fafbff; }
+  .data-table tbody tr:last-child td { border-bottom: none; }
+  .data-table .num {
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
+    font-weight: 600;
+    text-align: right;
+  }
+  .data-table .name {
+    font-weight: 600;
+    color: #0a1f44;
+  }
 
-  /* ====== NEWS LIST ====== */
+  /* Number colors — 涨红跌绿 (Chinese stock convention) */
+  .up { color: #dc2626; }
+  .down { color: #059669; }
+  .flat { color: #6b7280; }
+
+  /* News list */
   .news-list { list-style: none; }
   .news-list li {
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    line-height: 1.6;
-  }
-  .news-list li:last-child { border-bottom: none; padding-bottom: 0; }
-  .news-list li:first-child { padding-top: 0; }
-  .news-tag {
-    flex-shrink: 0;
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-    margin-top: 1px;
-  }
-  .news-tag.policy { background: var(--success-bg); color: #1e7e34; }
-  .news-tag.industry { background: var(--info-bg); color: #1a6bb0; }
-  .news-tag.company { background: #fff3e0; color: #bf6516; }
-  .news-tag.macro { background: #fce4ec; color: #c62828; }
-  .news-tag.geo { background: #f3e5f5; color: #7b1fa2; }
-  .news-tag.warning { background: var(--warning-bg); color: #9a6700; }
-
-  /* ====== GEO ALERT ====== */
-  .geo-alert {
-    background: linear-gradient(135deg, #fff5f5, #fef0f0);
-    border: 1px solid #fecaca;
-    border-radius: var(--radius-sm);
-    padding: 14px 18px;
-  }
-  .geo-alert h4 {
+    padding: 12px 0;
+    border-bottom: 1px dashed #e8ebf2;
     font-size: 14px;
-    color: #c53030;
-    margin-bottom: 8px;
+    color: #2d3748;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
   }
-  .geo-alert p { font-size: 12.5px; color: #742a2a; line-height: 1.7; }
-  .geo-alert .geo-item {
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(254,202,202,0.5);
+  .news-list li:last-child { border-bottom: none; }
+  .news-list .badge {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-top: 1px;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
   }
-  .geo-alert .geo-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .badge-policy { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+  .badge-industry { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+  .badge-company { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+  .badge-macro { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+  .badge-geo { background: #fdf4ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+  .news-list .content { flex: 1; line-height: 1.7; }
+  .news-list .content strong { color: #0a1f44; font-weight: 700; }
 
-  /* ====== ADVICE GRID ====== */
+  /* Advice cards */
   .advice-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 4px;
   }
   .advice-card {
-    background: var(--bg-2);
-    border-radius: var(--radius-sm);
-    padding: 16px 18px;
-    border: 1px solid var(--border);
-    border-left: 4px solid #ccc;
-    transition: all var(--transition);
+    background: linear-gradient(180deg, #ffffff 0%, #fafbff 100%);
+    border-radius: 10px;
+    padding: 18px 20px;
+    border: 1px solid #e3e8f0;
+    border-top: 4px solid #cbd5e1;
+    position: relative;
+    transition: transform .2s, box-shadow .2s;
   }
   .advice-card:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
+    box-shadow: 0 6px 16px rgba(10, 31, 68, 0.08);
   }
-  .advice-card.bull { border-left-color: var(--danger); }
-  .advice-card.bear { border-left-color: var(--success); }
-  .advice-card.wait { border-left-color: var(--warning); }
-  .advice-card h4 {
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 4px;
-    color: var(--primary);
+  .advice-card.bull {
+    border-top-color: #dc2626;
+    background: linear-gradient(180deg, #fef2f2 0%, #ffffff 60%);
   }
-  .advice-card .stance {
-    font-size: 11px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 12px;
+  .advice-card.bear {
+    border-top-color: #059669;
+    background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 60%);
   }
-  .advice-card.bull .stance { background: var(--danger-bg); color: var(--danger); }
-  .advice-card.bear .stance { background: var(--success-bg); color: var(--success); }
-  .advice-card.wait .stance { background: var(--warning-bg); color: var(--warning); }
-  .advice-card .strategy {
-    font-size: 12.5px;
-    color: var(--text-2);
-    line-height: 1.75;
+  .advice-card.wait {
+    border-top-color: #d4af37;
+    background: linear-gradient(180deg, #fffbeb 0%, #ffffff 60%);
   }
-  .advice-card .strategy strong { color: var(--text); }
-
-  /* ====== CALENDAR ====== */
-  .cal-item {
+  .advice-card .card-head {
     display: flex;
     align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    gap: 16px;
+    justify-content: space-between;
+    margin-bottom: 12px;
   }
-  .cal-item:last-child { border-bottom: none; }
-  .cal-date {
-    flex-shrink: 0;
-    width: 56px;
-    text-align: center;
-  }
-  .cal-date .dow {
-    font-size: 10px;
-    color: var(--text-3);
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-  .cal-date .day {
-    font-size: 22px;
+  .advice-card .card-head h4 {
+    font-size: 15px;
     font-weight: 700;
-    color: var(--primary);
-    font-family: "SF Mono", "Cascadia Code", "Consolas", monospace;
-    line-height: 1.2;
+    color: #0a1f44;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
-  .cal-content { flex: 1; }
-  .cal-content .title { font-size: 13px; font-weight: 600; color: var(--text); }
-  .cal-content .desc { font-size: 12px; color: var(--text-3); margin-top: 2px; }
-  .cal-stars {
-    flex-shrink: 0;
+  .advice-card .stance-tag {
     font-size: 11px;
-    color: var(--accent);
-    white-space: nowrap;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+    color: #fff;
+    letter-spacing: 0.5px;
   }
-  .cal-item.highlight {
-    background: var(--accent-light);
-    border-radius: var(--radius-sm);
-    padding-left: 12px;
-    padding-right: 12px;
-    margin: 4px -12px;
-  }
-
-  /* ====== FOOTER ====== */
-  .footer {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 16px 20px 32px;
-  }
-  .footer .disclaimer {
-    background: var(--warning-bg);
-    border: 1px solid #ffe082;
-    border-radius: var(--radius-sm);
-    padding: 12px 18px;
-    margin-bottom: 14px;
-    font-size: 12px;
-    color: #8d6e00;
+  .stance-bull { background: linear-gradient(135deg, #dc2626, #ef4444); }
+  .stance-bear { background: linear-gradient(135deg, #059669, #10b981); }
+  .stance-wait { background: linear-gradient(135deg, #b45309, #d97706); }
+  .advice-card .strategy {
+    font-size: 13px;
+    color: #374151;
     line-height: 1.7;
+    margin-top: 8px;
   }
-  .footer .copy {
-    text-align: center;
+  .advice-card .strategy strong { color: #0a1f44; }
+  .advice-card .targets {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed #e3e8f0;
     font-size: 12px;
-    color: var(--text-3);
+    color: #475569;
+  }
+  .advice-card .targets b { color: #0a1f44; }
+
+  /* Calendar */
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  .calendar-item {
+    background: #fafbff;
+    border: 1px solid #e3e8f0;
+    border-radius: 8px;
+    padding: 14px 14px 12px;
+    text-align: left;
+    transition: all .2s;
+  }
+  .calendar-item:hover { border-color: #d4af37; }
+  .calendar-item.highlight {
+    background: linear-gradient(135deg, #fef3c7 0%, #fffbeb 100%);
+    border: 2px solid #d4af37;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.12);
+    position: relative;
+  }
+  .calendar-item.highlight::before {
+    content: "今日";
+    position: absolute;
+    top: -10px;
+    right: 8px;
+    background: linear-gradient(135deg, #d4af37, #f5d76e);
+    color: #0a1f44;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 8px;
+    letter-spacing: 0.5px;
+  }
+  .calendar-item .weekday {
+    font-size: 11px;
+    color: #6b7280;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .calendar-item.highlight .weekday { color: #92400e; font-weight: 700; }
+  .calendar-item .date {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0a1f44;
+    margin-bottom: 8px;
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
+  }
+  .calendar-item.highlight .date { color: #92400e; }
+  .calendar-item ul { list-style: none; font-size: 12px; color: #374151; }
+  .calendar-item ul li {
+    padding: 4px 0;
+    line-height: 1.5;
+    border-bottom: 1px dotted #e3e8f0;
+  }
+  .calendar-item ul li:last-child { border-bottom: none; }
+  .calendar-item .event-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  .tag-red { background: #fef2f2; color: #b91c1c; }
+  .tag-blue { background: #eff6ff; color: #1e40af; }
+  .tag-green { background: #f0fdf4; color: #15803d; }
+  .tag-purple { background: #fdf4ff; color: #7e22ce; }
+
+  /* Subheading */
+  .sub-h {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0a1f44;
+    margin: 14px 0 10px;
+    padding-left: 12px;
+    border-left: 3px solid #d4af37;
+  }
+  .sub-h:first-child { margin-top: 0; }
+
+  /* Geo block */
+  .geo-block {
+    background: linear-gradient(135deg, #fdf4ff 0%, #faf5ff 100%);
+    border: 1px solid #e9d5ff;
+    border-radius: 10px;
+    padding: 18px 22px;
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.8;
+  }
+  .geo-block strong { color: #7e22ce; }
+  .geo-block .lead {
+    font-weight: 700;
+    color: #7e22ce;
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
-  /* ====== RESPONSIVE ====== */
-  @media (max-width: 1024px) {
-    .grid-2, .grid-2-uneven { grid-template-columns: 1fr; }
-    .header-inner { flex-direction: column; align-items: flex-start; }
-    .header-right { text-align: left; }
+  /* Highlight box */
+  .highlight-box {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border: 1px solid #fde68a;
+    border-left: 4px solid #d4af37;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+    font-size: 13px;
+    line-height: 1.75;
+    color: #78350f;
   }
-  @media (max-width: 640px) {
-    .header { padding: 20px 16px; }
-    .header-left h1 { font-size: 20px; }
-    .main { padding: 12px 10px; }
-    .kpi-inner { flex-wrap: wrap; }
-    .kpi-item { min-width: 50%; border-bottom: 1px solid var(--border); }
+  .highlight-box .title {
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: 8px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .highlight-box strong { color: #5b21b6; }
+
+  /* Footer */
+  .footer {
+    background: linear-gradient(135deg, #0a1f44 0%, #14306b 100%);
+    color: #b8c5db;
+    padding: 22px 28px;
+    border-radius: 0 0 14px 14px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.85;
+    position: relative;
+  }
+  .footer::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  }
+  .footer .brand { color: #f5d76e; font-weight: 700; letter-spacing: 1px; }
+  .footer .disclaimer {
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(212, 175, 55, 0.25);
+    color: #8898aa;
+    font-size: 11px;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .kpi-strip { grid-template-columns: repeat(3, 1fr); padding: 16px 20px; }
     .advice-grid { grid-template-columns: 1fr; }
+    .calendar-grid { grid-template-columns: repeat(2, 1fr); }
+    .header h1 { font-size: 22px; }
+    .header { padding: 28px 22px; }
+    .section-body { padding: 18px 20px; }
+  }
+  @media (max-width: 600px) {
+    body { padding: 12px 8px; }
+    .kpi-strip { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .calendar-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
+<div class="container">
 
-<div class="topbar"></div>
-
-<!-- ====== HEADER ====== -->
-<div class="header">
-  <div class="header-inner">
-    <div class="header-left">
-      <h1><span class="accent-bar"></span>盘前简报</h1>
-      <div class="date">2026年8月31日 · 星期一 · 盘前发布</div>
-      <div class="src">数据截止北京时间 08:00 | 来源：Wind / 东方财富 / 金十数据 / 新华社 / 财联社</div>
-    </div>
-    <div class="header-right">
-      <span class="badge">PRE-MARKET BRIEFING</span>
-      <div class="update-time">最后更新 08:00 CST</div>
-    </div>
-  </div>
-</div>
-
-<!-- ====== KPI STRIP ====== -->
-<div class="kpi-strip">
-  <div class="kpi-inner">
-    <div class="kpi-item"><div class="kpi-label">标普500</div><div class="kpi-value">7,711.76</div><div class="kpi-change down">-0.25%</div></div><div class="kpi-item"><div class="kpi-label">纳斯达克</div><div class="kpi-value">26,402.42</div><div class="kpi-change down">-0.52%</div></div><div class="kpi-item"><div class="kpi-label">布伦特原油</div><div class="kpi-value">$89.43</div><div class="kpi-change up">+1.7%</div></div><div class="kpi-item"><div class="kpi-label">COMEX黄金</div><div class="kpi-value">$4,504.10</div><div class="kpi-change down">-3.43%</div></div><div class="kpi-item"><div class="kpi-label">美元指数</div><div class="kpi-value">99.68</div><div class="kpi-change up">+0.55%</div></div><div class="kpi-item"><div class="kpi-label">在岸人民币</div><div class="kpi-value">6.7199</div><div class="kpi-change down">-0.01%</div></div>
-  </div>
-</div>
-
-<!-- ====== MAIN ====== -->
-<div class="main">
-
-  <!-- MACRO BANNER -->
-  <div class="macro-banner">
-    <h2>宏观关键词</h2>
-    <div class="macro-tags">
-      <span class="macro-tag hot">🔥 美军空袭伊朗拉腊克岛 伊朗导弹反击</span><span class="macro-tag hot">🔥 沃什杰克逊霍尔首秀放鹰 9月加息概率飙至60%</span><span class="macro-tag hot">🔥 中国8月PMI今日公布 预期49.5%</span><span class="macro-tag hot">🔥 A股中报披露今日收官 长鑫/三桶油炸裂</span><span class="macro-tag">G20财长会议8/31开幕</span><span class="macro-tag">房贷期限延至40年</span><span class="macro-tag">MSCI中国调整生效</span><span class="macro-tag">现货黄金周跌148美元</span><span class="macro-tag">英伟达-4.57%拖累费半</span><span class="macro-tag">巴菲特96岁生日</span>
+  <!-- 1. Header -->
+  <div class="header">
+    <span class="tag">PRE-MARKET BRIEFING · 每日盘前</span>
+    <h1>A 股盘前简报 · 2026年8月31日</h1>
+    <div class="subtitle">上周末国际市场 · 今晨盘前要闻 · 本周事件展望</div>
+    <div class="meta">
+      <span>📅 <b>2026年8月31日</b> · 星期一</span>
+      <span>🕘 最后更新 <b>08:36</b> 北京时间</span>
+      <span>📊 数据基准：A 股 9:30 开盘前</span>
+      <span>🌐 信息源：多源交叉验证</span>
     </div>
   </div>
 
-  <!-- ROW 1: International Markets (left, wider) + Geo Politics (right) -->
-  <div class="grid-2-uneven">
-    <!-- International Markets -->
-    <div class="card">
-      <div class="card-header">
-        <span class="icon">🌍</span>
-        <h3>国际市场收盘速览</h3>
-        <span class="sub">8月28日(周五)收盘</span>
-      </div>
-      <div class="card-body">
-        <div class="section-label">美股三大指数 (8/28周五收盘)</div>
-<table>
-  <thead>
-    <tr><th>指数</th><th>收盘</th><th>涨跌</th><th>涨跌幅</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>道琼斯工业指数</td><td class="num">53,559.99</td><td class="num down">-9.45</td><td class="num down">-0.02%</td></tr>
-    <tr><td>标普500指数</td><td class="num">7,711.76</td><td class="num down">-19.23</td><td class="num down">-0.25%</td></tr>
-    <tr><td>纳斯达克综合</td><td class="num">26,402.42</td><td class="num down">-138.93</td><td class="num down">-0.52%</td></tr>
-    <tr><td>费城半导体</td><td class="num">—</td><td class="num down">—</td><td class="num down">-3.47%</td></tr>
-  </tbody>
-</table>
-<p class="sub-text" style="margin-top:6px;">周累涨：道指+0.53% / 标普+0.49% / 纳指+0.85%；美股连续四周新高后回调。</p>
-<div class="section-label">美股科技股 & 中概股</div>
-<table>
-  <thead>
-    <tr><th>标的</th><th>涨跌幅</th><th>驱动因素</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>英伟达 NVDA</td><td class="num down">-4.57%</td><td>前一交易日+8.74%后获利回吐；沃什鹰派讲话压制成长股估值；迈威尔-10%拖累</td></tr>
-    <tr><td>迈威尔 MRVL</td><td class="num down">-10.3%</td><td>AI芯片收入确认时点疑虑；费半-3.47%领跌</td></tr>
-    <tr><td>ARM</td><td class="num down">-6%+</td><td>半导体板块集体承压，应用材料-4% / Lumentum-6% / Coherent-5%</td></tr>
-    <tr><td>PayPal</td><td class="num down">-12.7%</td><td>Advent与Stripe放弃收购计划，拖累标普500</td></tr>
-    <tr><td>亚马逊 / 微软 / 谷歌</td><td class="num up">+1%~+4%</td><td>亚马逊+4%领涨大型科技；微软六连阳全周+6%</td></tr>
-    <tr><td>Gap</td><td class="num up">+13%</td><td>新CEO上任+上调年度利润预期</td></tr>
-    <tr><td>中概:阿里/贝壳/房多多</td><td class="num up">+2%~+37%</td><td>中概金龙+0.44%，房多多+37% / 贝壳+3% / 阿里+2% / 霸王茶姬+4%</td></tr>
-  </tbody>
-</table>
-<div class="section-label">欧股 (8/28收盘)</div>
-<table>
-  <thead>
-    <tr><th>指数</th><th>收盘</th><th>涨跌幅</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>德国DAX30</td><td class="num">26,515.01</td><td class="num up">+0.56%</td></tr>
-    <tr><td>法国CAC40</td><td class="num">8,404.80</td><td class="num up">+1.02%</td></tr>
-    <tr><td>英国富时100</td><td class="num">10,824.26</td><td class="num up">+0.29%</td></tr>
-    <tr><td>欧洲斯托克600</td><td class="num">654.18</td><td class="num up">+0.59%</td></tr>
-  </tbody>
-</table>
-<div class="section-label">亚太市场 (8/28收盘)</div>
-<table>
-  <thead>
-    <tr><th>指数</th><th>收盘点位</th><th>涨跌幅</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>日经225</td><td class="num">66,405.56</td><td class="num up">+0.41%</td></tr>
-    <tr><td>韩国KOSPI</td><td class="num">6,788.88</td><td class="num down">-1.79%</td></tr>
-    <tr><td>上证指数</td><td class="num">3,952.18</td><td class="num down">-0.11%</td></tr>
-    <tr><td>深证成指</td><td class="num">13,953.07</td><td class="num down">-0.68%</td></tr>
-    <tr><td>创业板指</td><td class="num">3,424.40</td><td class="num down">-1.41%</td></tr>
-    <tr><td>恒生指数</td><td class="num">25,584.79</td><td class="num up">+0.07%</td></tr>
-    <tr><td>恒生科技</td><td class="num">4,605.15</td><td class="num down">-0.33%</td></tr>
-    <tr><td>台湾加权</td><td class="num">46,331.45</td><td class="num up">+0.77%</td></tr>
-  </tbody>
-</table>
-<p class="sub-text" style="margin-top:6px;">注: KOSPI受三星-3.38%/SK海力士-4.45%拖累，外资净卖出1.76万亿韩元；A股冲高回落(沪指周涨1.20%)，算力硬件利好兑现集体调整，资金切向农业/化工/地产链。</p>
-      </div>
+  <!-- 2. KPI Strip -->
+  <div class="kpi-strip">
+    <div class="kpi-item">
+      <div class="label">标普 500</div>
+      <div class="value">7,711.76</div>
+      <div class="change down">▼ 19.23 (-0.25%)</div>
     </div>
+    <div class="kpi-item">
+      <div class="label">纳斯达克</div>
+      <div class="value">26,402.42</div>
+      <div class="change down">▼ 138.93 (-0.52%)</div>
+    </div>
+    <div class="kpi-item">
+      <div class="label">布伦特原油</div>
+      <div class="value">88.29</div>
+      <div class="change down">▼ 0.23 (-0.26%)</div>
+    </div>
+    <div class="kpi-item">
+      <div class="label">COMEX 黄金</div>
+      <div class="value">4,504.10</div>
+      <div class="change down">▼ 160 (-3.43%)</div>
+    </div>
+    <div class="kpi-item">
+      <div class="label">美元指数</div>
+      <div class="value">99.68</div>
+      <div class="change up">▲ 0.55 (+0.55%)</div>
+    </div>
+    <div class="kpi-item">
+      <div class="label">在岸人民币</div>
+      <div class="value">6.7204</div>
+      <div class="change up">▲ 升值 5 基点</div>
+    </div>
+  </div>
 
-    <!-- Geo Politics -->
-    <div class="card">
-      <div class="card-header">
-        <span class="icon">🛡️</span>
-        <h3>地缘政治焦点</h3>
-        <span class="sub">美军突袭伊朗 / 沃什鹰派讲话 / G20开幕</span>
+  <!-- 3. 核心摘要 / 宏观关键词 -->
+  <div class="section">
+    <div class="section-header sh-1">
+      <div class="title"><span class="icon">🎯</span><span>核心摘要与宏观关键词</span></div>
+      <span class="date-tag">星期一</span>
+    </div>
+    <div class="section-body">
+      <div class="macro-tags">
+        <span class="macro-tag hot">美联储沃什鹰派 9月加息概率冲至60%</span>
+    <span class="macro-tag">美以袭击伊朗拉腊克岛</span>
+    <span class="macro-tag">地产新政组合拳（房贷延至40年）</span>
+    <span class="macro-tag">长鑫存储营收+873%扭亏为盈</span>
+    <span class="macro-tag">全国一体化算力网提速</span>
+    <span class="macro-tag">农业/粮食危机主题升温</span>
+    <span class="macro-tag">今日 9:30 中国 8 月 PMI</span>
+    <span class="macro-tag">周五美国 8 月非农压轴</span>
       </div>
-      <div class="card-body">
-        <div class="geo-alert">
-  <h4>🚨 美军突袭伊朗拉腊克岛 伊朗导弹反击中东局势急剧升级</h4>
-  <p><strong>北京时间8月30日22时</strong>，美军对伊朗南部霍尔木兹甘省拉腊克岛两处伊朗伊斯兰革命卫队发射装置实施精确打击，<strong>这是美军一个月来首次对伊朗采取军事行动</strong>。31日凌晨拉腊克岛再次传出爆炸声。伊朗革命卫队31日凌晨发表声明称"敌人对拉腊克岛的侵略必将遭到报复"，伊朗媒体称伊朗向霍尔木兹海峡美军舰艇及约旦美军基地发射了弹道导弹；伊朗外交部谴责美国"新经济威胁"并呼吁所有国家不要执行。</p>
-  <div class="geo-item" style="margin-top:8px;"><strong>市场即时反应（8/31亚市早盘）</strong>: WTI原油跳空高开+2%报$84.29，布伦特+1.7%报$89.43一度突破90美元；现货黄金跳空低开$4,436(-0.4%)后回升至$4,464；现货白银$65.65(-1%)；美股期货盘初纳指+0.08% / 道指-0.1%；比特币突破$7.8万后短线下跌。</div>
-  <div class="geo-item"><strong>霍尔木兹海峡僵局</strong>: 伊朗副外长8/29表示霍尔木兹海峡"目前完全关闭"，任何船只通过均需伊朗协调许可；伊朗总统称阿曼方面同意霍尔木兹海峡应根据伊斯兰堡谅解备忘录管理；美国希望到9月中旬拓宽主航道；伊朗革命卫队"伊朗向约旦美军基地发射导弹"持续扰动航运；高盛此前称流量已恢复至战前2/3。</div>
-  <div class="geo-item"><strong>沃什鹰派讲话余波</strong>: 美联储主席沃什8/28杰克逊霍尔首秀"还有工作要做"，9月加息概率从35%飙升至近60%(巴克莱/法兴预计9月加息25bp+12月可能再加)；2Y美债收益率飙升12.2bp至4.366%；美元指数99.68(+0.55%)创两个月最大单日涨幅；现货黄金周跌148美元失守4500，COMEX黄金-3.43%报$4,504.10。</div>
-  <div class="geo-item"><strong>G20财长会议8/31开幕</strong>: 8/31-9/1在美国北卡阿什维尔举行，贝森特主持将向G20成员国施压要求切断伊朗经济命脉；美国财政部拒绝向彭博、华尔街日报、纽约时报等多家主流媒体发放采访证。同日<strong>上合组织峰会8/31-9/1</strong>在吉尔吉斯斯坦比什凯克举行（成立25周年）。</div>
-</div>
+      <div class="highlight-box">
+        <div class="title">📌 盘前一句话</div>
+        沃什鹰派表态推升美联储 9 月加息预期至 57%–60%，美股科技股与芯片股承压；今晨美以袭击伊朗拉腊克岛、伊朗反击约旦美军基地，地缘冲突推升原油 +2%、金价回升；国内地产组合拳叠加大行中报稳健，长鑫存储业绩炸裂，A股呈"外围偏空+国内托底"格局，预计沪指 3920–3960 点低开震荡、关注 9:30 PMI 走向。
       </div>
     </div>
   </div>
 
-  <!-- ROW 2: A-Share News (left) + Commodities & FX (right) -->
-  <div class="grid-2-uneven">
-    <!-- A-Share Pre-market -->
-    <div class="card">
-      <div class="card-header">
-        <span class="icon">🇨🇳</span>
-        <h3>A股盘前重要消息</h3>
-        <span class="sub">8月28日收盘 · 周末要闻</span>
-      </div>
-      <div class="card-body">
-        <ul class="news-list">
-  <li><span class="news-tag macro">宏观</span><strong>🔥 中国8月PMI今日9:30公布</strong>: 制造业前值49.2%（预期49.5%，机构普遍预期小幅回升）；非制造业前值49.0%；综合PMI前值49.3%。数据若低于预期可能加剧市场对货币/财政加码预期；若回升至50以上则提振风险偏好。同日8/31 9:45公布8月财新制造业PMI（前值50.9）。</li>
-  <li><span class="news-tag warning">风险</span><strong>🔥 A股2026半年报今日收官</strong>: 截至8/30已有5,548家上市公司披露（披露率~85%），8/31约160只个股压哨披露含<strong>23只市值超500亿权重股</strong>。全A/全A非金融H1净利累计同比+16.86%/+16.70%；电子/有色金属/非银金融居前；<strong>剔除扭亏股，江波龙"增长王"同比+71,528.66%</strong>。</li>
-  <li><span class="news-tag macro">宏观</span><strong>MSCI中国指数调整今日收盘后生效</strong>: 新纳入33只标的（其中31只为A股），含<strong>智谱等</strong>。新纳入标的将面临被动资金调仓，相关权重股或迎增量配置；A股在国际指数权重持续抬升。</li>
-  <li><span class="news-tag policy">政策</span><strong>🔥 房地产新政"三箭齐发"</strong>: ①<strong>央行/金融监管总局</strong>将个人住房贷款期限由最长30年延长至最长40年，月供可降约600元；开发贷实行主办银行制，预售项目贷款≤5年/现房≤7年；②<strong>三部门</strong>推行商品房现房销售"交房即交证"，购房资金全部存监管账户；③<strong>证监会</strong>支持房企再融资/并购重组/CMBS/ABS/REITs扩募，正式取消"三条红线"，融资逻辑"看主体"→"看项目"。</li>
-  <li><span class="news-tag company">公司</span><strong>长鑫科技H1营收1503亿(+873.64%)净利776亿扭亏</strong>: 总市值3.98万亿居A股之首，总资产4680.8亿、净资产半年翻倍至1347.2亿；经营性现金流1311.6亿；LPDDR6首发搭载小米18 Fold为全球首次商用；公司管理层称<strong>全球DRAM供不应求格局下半年延续</strong>。存储芯片紧缺周期预期持续至2027年（IDC）或2030年底（SK海力士CEO）。</li>
-  <li><span class="news-tag company">公司</span><strong>三桶油半年报集体亮相</strong>: 中国石油营收1.53万亿(+5.3%)/<strong>净利1039.36亿(+22%)首破千亿</strong>；中国海油净利858.18亿(+23.4%)/油气净产量398.7百万桶油当量(+3.7%)/拟派0.94港元/股；中国石化净利256亿；三家合计净赚超2,100亿元。招商局能源运输H1净利高增，依托VLCC规模化运营捕捉霍尔木兹海峡封锁红利。</li>
-  <li><span class="news-tag company">公司</span><strong>国有六大行中报净利合计7,126亿元全部正增长</strong>: 净息差企稳回升信号明确，资产质量稳健，多家银行同步推出中期分红方案。招商银行营收1781.81亿/净利764.45亿(+2.02%)；建行净利+5.56%。</li>
-  <li><span class="news-tag industry">产业</span><strong>中芯国际H1净利+94%，明确Q3提价效果将更明显</strong>: AI配套芯片需求持续旺盛；华虹宏力H1营收95.74亿(+19.41%)创历史新高；今年前7月中国集成电路出口额已超去年全年，存储芯片为最大拉动力；上游封装设备订单排到2028年，下游PCB产能全线满载。</li>
-  <li><span class="news-tag industry">产业</span><strong>国家数据局：研究探索"词元"增值订阅等商业模式</strong>: 算力服务商业化路径明晰；2026数博会8/28贵阳开幕，1.6万人注册+372家企业+87项成果，贵州算力176.57EFLOPS(智算占比98.35%)稳居全国第一。</li>
-  <li><span class="news-tag policy">政策</span><strong>9/1起多项新规正式实施</strong>: ①<strong>禁止非法买卖流通中人民币</strong>；②新版《国家基本药物目录(2026年版)》正式施行(8年来最大修订，新增109个品种，创新药首次大规模入围)；③<strong>财政部等</strong>个人转让限售股所得按"财产转让所得"20%税率。</li>
-  <li><span class="news-tag macro">宏观</span><strong>央行连续呵护跨月流动性</strong>: 8/29开展7,829亿7天逆回购；本周公开市场到期超1.4万亿元；DR001回落至1.36%附近；LPR 1Y/5Y连续15个月不变(3.0%/3.5%)；9月资金面整体平稳。</li>
-  <li><span class="news-tag industry">产业</span><strong>8/31-9/2第十四届半导体设备材料展 + 第十八届集成电路封测产业链创新发展论坛</strong>在无锡举办，聚焦国产化进展；9/2华为慕尼黑全球创新产品发布会；9/3-4世界动力电池大会（四川宜宾）；9/4-5太原能源低碳发展论坛；同期APEC中小企业部长会议（广州）/ 中国国际消费电子博览会（青岛）。</li>
-  <li><span class="news-tag industry">产业</span><strong>新股申购：今日北交所百迈科申购（外科手术器械+多肽制药设备）</strong>；9/2科创板燧原科技申购（云端AI芯片，<strong>国产GPU四小龙齐聚资本市场</strong>）；9/3科创板信诺维申购（肿瘤/抗感染创新药）。大商所焦炭期权9/2上市。</li>
-  <li><span class="news-tag macro">宏观</span><strong>沃什鹰派讲话冲击A股</strong>: 8/28 A股冲高回落，沪指-0.11%报3,952.18，深成指-0.68%，创业板-1.41%报3,424.40；两市成交2.10万亿缩量242亿。资金高低切换：算力硬件利好兑现集体调整（中际旭创-0.9%/胜宏科技-8%+），农业（万向德农4连板）/化工（10只涨停）/黄金股（深中华A 7连板）/地产链逆势活跃。<strong>全周沪指+1.20% / 创业板-3.42%</strong>。</li>
-  <li><span class="news-tag company">公司</span><strong>比亚迪H1营收3,448亿(-7.1%)净利123亿(-20.5%)</strong>: 受汽车业务拖累；海外成核心驱动，出口79.2万辆，境外收入占比超一半，<strong>高端品牌销量+61%</strong>，研发投入289亿。美团Q2营收+14.4%，调整后净利大幅超预期，AI嵌入业务转型。五粮液H1净利87.53亿(+89.30%)，上年低基数+春节旺季动销驱动。</li>
-  <li><span class="news-tag warning">风险</span><strong>特朗普政府考虑对服务器/笔记本/游戏机等含芯片成品加征新一轮关税</strong>（Politico 8/27报道）；海外半导体链情绪受挫，韩国KOSPI 8/28大跌1.79%报6,788.88，三星电子-3.38%/SK海力士-4.45%。</li>
-  <li><span class="news-tag geo">地缘</span><strong>乌方称俄或筹划向基辅发动新地面攻势</strong>；CBOT小麦本周累涨12.05%、玉米+5.46%升至三年高位，食品通胀担忧再起；<strong>厄瓜多尔宣布全国红色警戒应对厄尔尼诺现象</strong>；西藏吉隆8·26泥石流灾害16人遇难/546人失联。</li>
-  <li><span class="news-tag macro">宏观</span><strong>8/29-9/1央行开展隔夜逆回购</strong>（不超6000亿/日）呵护跨月；日本财务省7/30-8/26累计动用15.4万亿日元（约964亿美元）干预汇市创单月纪录；<strong>日元跌破160关口</strong>（8/26日本干预以来首次）；美元/日元160.14。</li>
-</ul>
-      </div>
+  <!-- 4. 国际市场收盘 -->
+  <div class="section">
+    <div class="section-header sh-2">
+      <div class="title"><span class="icon">🌍</span><span>上周国际市场收盘一览</span></div>
+      <span class="date-tag">8月29日(周五)收盘 · 8月31日(周一)亚太早盘</span>
     </div>
+    <div class="section-body">
+      <div class="sub-h">📊 美股 · 上周五（8/29）收盘</div>
+      <table class="data-table">
+        <thead><tr><th>指数</th><th>收盘点位</th><th>涨跌点数</th><th>涨跌幅</th><th>本周累计</th></tr></thead>
+        <tbody>
+          <tr><td class="name">道琼斯工业</td><td class="num">53,559.99</td><td class="num down">-9.45</td><td class="num down">-0.02%</td><td class="num up">+0.53%</td></tr>
+          <tr><td class="name">标普500</td><td class="num">7,711.76</td><td class="num down">-19.23</td><td class="num down">-0.25%</td><td class="num up">+0.49%</td></tr>
+          <tr><td class="name">纳斯达克</td><td class="num">26,402.42</td><td class="num down">-138.93</td><td class="num down">-0.52%</td><td class="num up">+0.85%</td></tr>
+          <tr><td class="name">费城半导体（SOX）</td><td class="num">—</td><td class="num">—</td><td class="num down">-3.47%</td><td class="num">—</td></tr>
+          <tr><td class="name">纳斯达克金龙中国</td><td class="num">6,210.91</td><td class="num up">+27.20</td><td class="num up">+0.44%</td><td class="num down">-0.05%</td></tr>
+        </tbody>
+      </table>
 
-    <!-- Commodities & FX -->
-    <div class="card">
-      <div class="card-header">
-        <span class="icon">💹</span>
-        <h3>大宗商品与汇率</h3>
-        <span class="sub">8月28日(周五)收 · 8月31日亚盘</span>
-      </div>
-      <div class="card-body">
-        <table>
-  <thead>
-    <tr><th>品种</th><th>最新价</th><th>涨跌</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>WTI原油 (10月)</td><td class="num">$84.29/桶</td><td class="num up">+2.0% (8/31亚盘高开)</td></tr>
-    <tr><td>布伦特原油 (10月)</td><td class="num">$89.43/桶</td><td class="num up">+1.7% (一度破90)</td></tr>
-    <tr><td>WTI原油 (8/28收)</td><td class="num">$83.40/桶</td><td class="num down">-0.16% (周跌4.20%)</td></tr>
-    <tr><td>布伦特原油 (8/28收)</td><td class="num">$88.10/桶</td><td class="num down">-0.47% (周跌5.38%)</td></tr>
-    <tr><td>现货黄金</td><td class="num">$4,464/盎司</td><td class="num up">回升 (8/31亚盘)</td></tr>
-    <tr><td>COMEX黄金 (9月)</td><td class="num">$4,504.10/盎司</td><td class="num down">-3.43% (周跌3.77%)</td></tr>
-    <tr><td>现货白银</td><td class="num">$65.65/盎司</td><td class="num down">-1.00% (8/31亚盘)</td></tr>
-    <tr><td>COMEX白银 (9月)</td><td class="num">$66.995/盎司</td><td class="num down">-3.51% (周跌3.65%)</td></tr>
-    <tr><td>LME铜</td><td class="num">$14,285/吨</td><td class="num up">+0.02%</td></tr>
-    <tr><td>NYMEX天然气</td><td class="num">$2.89/百万英热</td><td class="num down">-0.89%</td></tr>
-    <tr><td>CBOT小麦</td><td class="num">784美分/蒲式耳</td><td class="num up">+3.06% (三年高位)</td></tr>
-  </tbody>
-</table>
-<p class="sub-text" style="margin-top:6px;">⚠️ <strong>双线博弈</strong>: 沃什鹰派讲话→加息预期升温+美元走强→贵金属承压（黄金周跌148美元/失守4500）；但8/31凌晨美军突袭伊朗→地缘风险溢价回吐→亚盘原油跳涨+2%、黄金自低位回升。8/29国内金饰价格集体下调：周生生足金1344元/克(跌37元)/老庙1345元/老凤祥1348元；但中国央行已连续21个月增持黄金。</p>
-<div class="section-label">外汇</div>
-<table>
-  <thead>
-    <tr><th>货币对</th><th>最新价</th><th>涨跌</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>美元指数 DXY</td><td class="num">99.68</td><td class="num up">+0.55% (两个月最大涨幅)</td></tr>
-    <tr><td>USD/CNY 在岸</td><td class="num">6.7199</td><td class="num down">-5bp (创2023年1月来新高)</td></tr>
-    <tr><td>USD/CNY 中间价</td><td class="num">6.7811</td><td class="num down">-29bp (调升/升值)</td></tr>
-    <tr><td>USD/CNH 离岸</td><td class="num">6.7314</td><td class="num down">-121bp (周跌/升值)</td></tr>
-    <tr><td>EUR/USD</td><td class="num">1.1580</td><td class="num down">-0.65%</td></tr>
-    <tr><td>USD/JPY</td><td class="num">160.14</td><td class="num up">+0.4% (跌破160)</td></tr>
-    <tr><td>GBP/USD</td><td class="num">1.3593</td><td class="num down">-0.03%</td></tr>
-  </tbody>
-</table>
-<p class="sub-text" style="margin-top:6px;">⚠️ <strong>日本历史级干预</strong>: 财务省7/30-8/26累计动用15.4万亿日元（约964亿美元）创单月干预规模历史纪录；贝森特致信参议院为支撑日元辩护，称日元失序可能推高美国利率。</p>
-<div class="section-label">美债收益率</div>
-<table>
-  <thead>
-    <tr><th>期限</th><th>收益率</th><th>变化</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>2年期</td><td class="num">4.366%</td><td class="num up">+12.2bp (一个月新高)</td></tr>
-    <tr><td>10年期</td><td class="num">4.728%</td><td class="num up">+4.7bp (周累计-1bp)</td></tr>
-    <tr><td>30年期</td><td class="num">5.210%</td><td class="num flat">基本持平</td></tr>
-  </tbody>
-</table>
-<p class="sub-text" style="margin-top:6px;">⚠️ 沃什鹰派讲话后<strong>短端跳涨、曲线趋平</strong>；30Y 5.21%仍逼近2007年金融危机前水位；中国10Y国债1.70%；中美10Y利差倒挂约-303bp。</p>
+      <div class="sub-h">📊 欧股 · 上周五（8/29）收盘</div>
+      <table class="data-table">
+        <thead><tr><th>指数</th><th>收盘点位</th><th>涨跌幅</th><th>本周累计</th></tr></thead>
+        <tbody>
+          <tr><td class="name">德国 DAX</td><td class="num">26,569.99</td><td class="num up">+0.77%</td><td class="num up">+1.66%</td></tr>
+          <tr><td class="name">法国 CAC40</td><td class="num">8,401.18</td><td class="num up">+0.98%</td><td class="num down">-0.98%</td></tr>
+          <tr><td class="name">英国 FTSE100</td><td class="num">10,824.26</td><td class="num up">+0.29%</td><td class="num up">+0.07%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-h">📊 亚太早盘 · 今日（8/31）开盘</div>
+      <table class="data-table">
+        <thead><tr><th>指数</th><th>最新点位</th><th>涨跌幅</th><th>关键个股</th></tr></thead>
+        <tbody>
+          <tr><td class="name">日经 225</td><td class="num">64,860.54</td><td class="num down">-2.30%</td><td class="num">软银 -4.8% / 东京电子 -4.4%</td></tr>
+          <tr><td class="name">韩国 KOSPI</td><td class="num">6,562.61</td><td class="num down">-3.20%</td><td class="num">SK海力士 -4.2% / 三星电子 -3.1%</td></tr>
+          <tr><td class="name">A50 期指主连</td><td class="num">14,650</td><td class="num down">-0.31%</td><td class="num">夜盘收盘，富时中国A50指数</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-h">🔍 重点美股个股（上周五）</div>
+      <table class="data-table">
+        <thead><tr><th>个股</th><th>涨跌幅</th><th>驱动因素</th></tr></thead>
+        <tbody>
+          <tr><td class="name">英伟达 (NVDA)</td><td class="num down">-4.57%</td><td>AI 芯片估值担忧 + 沃什鹰派</td></tr>
+          <tr><td class="name">迈威尔 (MRVL)</td><td class="num down">-10.28%</td><td>AI 芯片收入确认疑虑</td></tr>
+          <tr><td class="name">亚马逊 / 苹果 / 谷歌</td><td class="num up">+1.5% ~ +4.0%</td><td>大型科技股多数上涨</td></tr>
+          <tr><td class="name">阿里巴巴 / 贝壳 / 霸王茶姬</td><td class="num up">+2% ~ +4.4%</td><td>中概股多数上涨，金龙指数 +0.44%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 5. 地缘政治 -->
+  <div class="section">
+    <div class="section-header sh-3">
+      <div class="title"><span class="icon">⚔️</span><span>地缘政治焦点</span></div>
+      <span class="date-tag">本周跟踪</span>
+    </div>
+    <div class="section-body">
+      <div class="geo-block">
+        <div class="lead">🔥 美以袭击伊朗拉腊克岛 · 伊朗反击向约旦美军基地发射弹道导弹 · 霍尔木兹海峡危机升级</div>
+        <p style="margin-bottom: 10px;"><strong>📍 事件进展</strong>：当地时间 8 月 30 日晚—8 月 31 日凌晨，美军空袭伊朗南部霍尔木兹甘省拉腊克岛上两处伊斯兰革命卫队发射装置；伊朗革命卫队随即宣布，已向位于约旦境内的美军穆瓦法克·萨尔蒂空军基地发射弹道导弹作为报复。</p>
+        <p style="margin-bottom: 10px;"><strong>💥 市场即时反应</strong>：纽约原油暗盘突破 85 美元/桶（+2.5%），布伦特原油突破 90 美元/桶（+2.17%）；现货黄金自 8/29 暴跌的 4,454 美元/盎司回升至 4,466 美元/盎司，亚太股市全线低开，日经 / 韩国 KOSPI 早盘跌幅扩大至 -2.3% 与 -3% 以上。</p>
+        <p><strong>⚠️ 持续跟踪</strong>：伊朗革命卫队警告"未经协调船只不得通过霍尔木兹海峡"；昨日通过的大宗商品船仅 7 艘，远低于冲突前日均水平；高盛估计海湾地区总出口量仍较战前水平低 700–800 万桶/日。本周关注卡塔尔斡旋进展、美方下一轮应对，以及委内瑞拉"美国获取 650 亿桶储量控制权"协议对油市的传导效应。</p>
       </div>
     </div>
   </div>
 
-  <!-- ROW 3: Trading Advice (full width) -->
-  <div class="card" style="margin-bottom:16px;">
-    <div class="card-header">
-      <span class="icon">🎯</span>
-      <h3>今日操盘建议</h3>
-      <span class="sub">按品种分类</span>
+  <!-- 6. A 股盘前消息 -->
+  <div class="section">
+    <div class="section-header sh-4">
+      <div class="title"><span class="icon">🇨🇳</span><span>A 股盘前重要消息</span></div>
+      <span class="date-tag">2026年8月31日 · 周一盘前</span>
     </div>
-    <div class="card-body">
+    <div class="section-body">
+      <ul class="news-list">
+        <li><span class="badge badge-policy">政策</span><span class="content"><strong>三部门房地产新政落地</strong>：央行/金监局联合印发《关于改革完善房地产信贷管理的意见》，明确个人住房贷款期限由最长 30 年延长至 40 年，现房销售项目贷款期限最长 7 年，预售项目最长 5 年；证监会同步支持上市房企并购重组。地产链/银行/建材直接受益。</span></li>
+        <li><span class="badge badge-company">公司</span><span class="content"><strong>长鑫存储三箭齐发</strong>：上半年营收 1,503.10 亿元（+873.64%），净利 776.05 亿元大幅扭亏为盈；LPDDR6 内存正式量产，小米 18 Fold 与玄戒 O3 首发搭载；同步起诉美国国防部，国产替代主题再获催化。</span></li>
+        <li><span class="badge badge-industry">行业</span><span class="content"><strong>全国一体化算力网提速</strong>：20 余家算力调度主体正式入驻监测调度试验验证平台，已有 145 万 PFLOPS 智能算力纳入监测；工信部公布国家算力互联互通区域节点建设名单。算力租赁 / 液冷 / 国资云链条利好。</span></li>
+        <li><span class="badge badge-macro">宏观</span><span class="content"><strong>8 月制造业 PMI 数据今日 9:30 公布</strong>：市场预期中值约 49.6（前值 49.2）；若重返 50 上方，顺周期（机械 / 建材 / 化工）承接增强；若低于 49，资金继续抱团防御。</span></li>
+        <li><span class="badge badge-macro">宏观</span><span class="content"><strong>词元经济顶层定调</strong>：求是网 8/30 发文《充分发挥词元驱动智能经济高质量发展的引擎作用》；国家数据局刘烈宏在 2026 数博会表示要研究探索词元增值订阅、按效付费等商业模式。截至 7 月底全国智算总规模达 245 万 PFLOPS。</span></li>
+        <li><span class="badge badge-policy">政策</span><span class="content"><strong>证监会支持房企合理融资</strong>：明确满足房地产企业合理融资需求，助力构建房地产发展新模式；金管局印发房地产融资五办法，规范开发 / 购买 / 运营阶段全周期金融服务。</span></li>
+        <li><span class="badge badge-company">公司</span><span class="content"><strong>六大行中报披露完毕</strong>：工 / 农 / 中 / 建 / 交 / 邮储上半年净利润增速均超 4%，工行归母净利 1,736.82 亿元领跑；券商业中期拟派现金额超 273 亿元。高股息 / 大行板块防御属性突出。</span></li>
+        <li><span class="badge badge-industry">行业</span><span class="content"><strong>PCB 材料涨价潮</strong>：建滔积层板即日对所有产品涨价 10%–20%，反映上游铜箔 / 玻纤布供应紧张；央视财经报道芯片封装设备订单排到 2028 年，国产封装厂商业绩弹性显现。</span></li>
+        <li><span class="badge badge-macro">宏观</span><span class="content"><strong>国家外汇局</strong>：7 月国际收支货物和服务贸易进出口规模 51,462 亿元，顺差 912 亿美元；<strong>农业法完成修订</strong>，2027 年 1 月 1 日起施行。粮食安全主题再获政策背书。</span></li>
+        <li><span class="badge badge-company">公司</span><span class="content"><strong>海外消息</strong>：①蒂姆·库克（Tim Cook）将于 9/1 正式卸任苹果 CEO，由硬件工程高级副总裁约翰·特努斯接任；②Anthropic 计划 9/7 美国劳动节后公开 IPO 招股书；③软银正寻求 100 亿美元贷款支持 OpenAI 投资；④长鑫 LPDDR6 起诉美国防部硬刚，若胜诉可正面挑战美光 / SK 海力士。</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 7. 大宗商品与汇率 -->
+  <div class="section">
+    <div class="section-header sh-5">
+      <div class="title"><span class="icon">💱</span><span>大宗商品与外汇</span></div>
+      <span class="date-tag">8月29日(周五)收盘 · 8月31日(周一)今晨</span>
+    </div>
+    <div class="section-body">
+      <div class="sub-h">🛢️ 能源</div>
+      <table class="data-table">
+        <thead><tr><th>品种</th><th>最新价</th><th>涨跌幅</th><th>驱动</th></tr></thead>
+        <tbody>
+          <tr><td class="name">WTI 原油主力</td><td class="num">83.44 美元/桶</td><td class="num down">-0.11%</td><td>周跌 4.16%；今晨地缘推升至 85+ 美元</td></tr>
+          <tr><td class="name">布伦特原油</td><td class="num">88.29 美元/桶</td><td class="num down">-0.26%</td><td>周跌 5.06%；今晨突破 90 美元（+2.17%）</td></tr>
+          <tr><td class="name">LME 铜</td><td class="num">14,285 美元/吨</td><td class="num up">+0.02%</td><td>本周累计 +0.49%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-h">🥇 贵金属</div>
+      <table class="data-table">
+        <thead><tr><th>品种</th><th>最新价</th><th>涨跌幅</th><th>驱动</th></tr></thead>
+        <tbody>
+          <tr><td class="name">COMEX 黄金</td><td class="num">4,504.10 美元/盎司</td><td class="num down">-3.43%</td><td>周跌 3.77%；沃什鹰派打压</td></tr>
+          <tr><td class="name">现货黄金（今晨）</td><td class="num">4,465.97 美元/盎司</td><td class="num up">+0.26%</td><td>地缘冲突回升 +11.63 美元</td></tr>
+          <tr><td class="name">COMEX 白银</td><td class="num">67.09 美元/盎司</td><td class="num down">-4.48%</td><td>周跌 3.51%；今晨 66.30</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-h">💵 外汇</div>
+      <table class="data-table">
+        <thead><tr><th>货币对</th><th>最新价</th><th>涨跌</th><th>关键点位</th></tr></thead>
+        <tbody>
+          <tr><td class="name">美元指数 DXY</td><td class="num">99.68</td><td class="num up">+0.55%</td><td>周涨 0.9%（10 周最佳），创 8 月以来新高</td></tr>
+          <tr><td class="name">在岸人民币</td><td class="num">6.7204</td><td class="num up">升值 5 基点</td><td>周五 16:30 收盘；夜盘 6.7307</td></tr>
+          <tr><td class="name">离岸人民币</td><td class="num">6.7314</td><td class="num down">-121 基点</td><td>纽约尾盘</td></tr>
+          <tr><td class="name">人民币中间价</td><td class="num">6.7811</td><td class="num up">调升 29 基点</td><td>本周累计调升 6 基点</td></tr>
+          <tr><td class="name">美元 / 日元</td><td class="num">160.11</td><td class="num up">+0.44%</td><td>东京核心 CPI 连续 3 个月加速</td></tr>
+          <tr><td class="name">欧元 / 美元</td><td class="num">1.1582</td><td class="num down">-0.60%</td><td>创 8 月 19 日以来最低</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 8. 操盘建议 -->
+  <div class="section">
+    <div class="section-header sh-6">
+      <div class="title"><span class="icon">🧭</span><span>今日操盘建议</span></div>
+      <span class="date-tag">策略参考</span>
+    </div>
+    <div class="section-body">
       <div class="advice-grid">
-        <div class="advice-card bull"><h4>AI算力 / 半导体国产化链</h4><span class="stance">偏多</span><div class="strategy"><strong>驱动：</strong>中芯国际H1净利+94%明确Q3提价更明显；长鑫H1营收+873.64%/净利776亿验证存储高景气；存储紧缺周期预期延至2027-2030年底；前7月中国集成电路出口超去年全年；国家数据局探索"词元"增值订阅商业模式；MSCI调整新纳入31只A股。<br><strong>操作：</strong>逢回调加仓<strong>存储(长鑫/兆易/澜起/江波龙)、国产算力(寒武纪/海光/燧原)、PCB/CCL(胜宏/生益)、光模块(中际/新易盛/天孚)、半导体设备(北方华创/中微)</strong>。短期受美伊地缘+沃什鹰派扰动但中期逻辑未变，分批建仓不追高。<br><strong>风险：</strong>关注9/15-16 FOMC会议，若加息则成长股估值承压。</div></div><div class="advice-card bear"><h4>黄金股 / 高估值消费 / 创新药</h4><span class="stance">偏空</span><div class="strategy"><strong>驱动：</strong>沃什"还有工作要做"鹰派信号明确，9月加息概率飙升至近60%；现货黄金周跌148美元失守4500，COMEX黄金-3.43%报$4,504；2Y美债收益率飙12bp，实际利率走高压制贵金属；PayPal -12.7%/迈威尔-10%等高估值科技股回调。<br><strong>操作：</strong>短期<strong>减仓黄金股(山东黄金/招金/中金黄金)及黄金ETF</strong>，待回踩$4,400-4,420企稳再回补；高估值消费(白酒一线/医美)/创新药(港股Biotech)继续承压。但需注意<strong>地缘升级对冲</strong>：若美伊冲突扩大金价或反弹，逢高减仓不留隔夜敞口。<br><strong>对冲：</strong>沃什若9月落地加息，可考虑做空贵金属/做多美元的交叉对冲。</div></div><div class="advice-card wait"><h4>原油 / 大宗商品 / 地产链</h4><span class="stance">观望</span><div class="strategy"><strong>驱动：</strong><strong>双线博弈白热化</strong>：①沃什鹰派→美元走强+加息预期→油价压制；②美军突袭拉腊克岛+伊朗导弹反击→地缘溢价飙升→8/31亚盘油价跳涨+2%破90。中长期看霍尔木兹流量已恢复至战前2/3、委内瑞拉潜在增产100年租约谈判，原油中枢或下移。<br><strong>操作：</strong><strong>不追高也不做空</strong>，等"事实落地"：确认二级制裁扩大+实质断供才追多$90+，确认霍尔木兹实质重开才空$78-82。当前$84-89属"僵局溢价+沃什加息"双向拉扯区。<br><strong>地产链</strong>：房贷期限延至40年+取消三道红线+证监会支持再融资，<strong>地产(万科A/保利)/建材(东方雨虹)/家电(美的/格力)/银行(工建中农)</strong>短期或反弹，但中长期需求未稳建议波段操作。<br><strong>关注：</strong>9:30中国8月PMI、9/1欧元区CPI+美国ISM、9/4美国非农、9/15-16 FOMC。</div></div>
+        <div class="advice-card bull">
+          <div class="card-head">
+            <h4>🟥 偏多方向</h4>
+            <span class="stance-tag stance-bull">BULL</span>
+          </div>
+          <div class="strategy">
+            <strong>地产链 / 大行 / 农业 / 算力国产化</strong> 等内需+防御+国产替代三大主线。<br>
+            • 房地产新政直接利好<strong>银行、地产、建材、家居、家电</strong>；<br>
+            • <strong>长鑫存储 LPDDR6 量产 + 起诉美国防部</strong>催化国产算力链（华为 / 中芯 / 长鑫概念）；<br>
+            • 农业法修订 + 厄尔尼诺粮食危机预警 → <strong>种业 / 化肥 / 农药</strong>。
+          </div>
+          <div class="targets">
+            <b>关键催化</b>：9:30 PMI 是否重返 50 · 长鑫概念龙头盘中承接 · 房地产 ETF 走势
+          </div>
+        </div>
+
+        <div class="advice-card bear">
+          <div class="card-head">
+            <h4>🟩 偏空方向</h4>
+            <span class="stance-tag stance-bear">BEAR</span>
+          </div>
+          <div class="strategy">
+            <strong>高位半导体 / CPO / PCB / AI 硬件</strong>面临外部芯片股跌 3.47% 与沃什鹰派双重压力。<br>
+            • 英伟达 -4.57%、迈威尔 -10.28% 拖累 <strong>CPO/光模块/存储</strong>；<br>
+            • 9 月美联储加息预期升至 57%–60%，<strong>高 PE 成长股估值压力大</strong>；<br>
+            • 中报披露尾期，<strong>暴雷股坚决回避</strong>，警惕高估值题材股抛压。
+          </div>
+          <div class="targets">
+            <b>关键催化</b>：芯片股龙头低开高走确认承接 · A50 期指当日表现 · 9 月 PMI 方向
+          </div>
+        </div>
+
+        <div class="advice-card wait">
+          <div class="card-head">
+            <h4>🟨 观望方向</h4>
+            <span class="stance-tag stance-wait">WAIT</span>
+          </div>
+          <div class="strategy">
+            <strong>指数层面 / 主题热门 / 资金面</strong>三重大事件前夜，整体<strong>仓位控制 ≤ 60%</strong>。<br>
+            • <strong>9:30 中国 8 月 PMI</strong>未定调前不追高；<br>
+            • <strong>周五美国非农</strong>前夜全球资金观望，沪指参考区间 3920–3960；<br>
+            • 美伊地缘冲突 <strong>油价 / 金价波动加剧</strong>，今日成交若守 2 万亿则承接不弱。
+          </div>
+          <div class="targets">
+            <b>关键催化</b>：PMI 实际值 vs 预期 · MSCI 调仓尾盘异动 · 本周 31 股解禁合计市值 178 亿
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ROW 4: Weekly Calendar (full width) -->
-  <div class="card">
-    <div class="card-header">
-      <span class="icon">📅</span>
-      <h3>本周关键事件日历</h3>
-      <span class="sub">第36周 (8/31 - 9/5)</span>
+  <!-- 9. 本周事件日历 -->
+  <div class="section">
+    <div class="section-header sh-7">
+      <div class="title"><span class="icon">📅</span><span>本周重要事件日历</span></div>
+      <span class="date-tag">8月31日 — 9月4日</span>
     </div>
-    <div class="card-body">
-      <div class="cal-item highlight"><div class="cal-date"><div class="dow">MON</div><div class="day">31</div></div><div class="cal-content"><div class="title">🔥 中国8月官方制造业PMI / A股中报收官 / G20财长会议开幕</div><div class="desc">9:30制造业PMI前值49.2%(预期49.5%)；约160只个股含23只500亿权重股压哨披露；MSCI中国指数调整收盘后生效；G20财长会议(美国北卡阿什维尔)+ 上合峰会(吉尔吉斯斯坦比什凯克)；新股百迈科申购</div></div><div class="cal-stars">★★★★★</div></div><div class="cal-item"><div class="cal-date"><div class="dow">TUE</div><div class="day">01</div></div><div class="cal-content"><div class="title">中国8月财新制造业PMI / 欧元区+德国8月CPI / 美国8月ISM制造业PMI / 加拿大央行决议</div><div class="desc">9:45财新PMI前值50.9；欧元区CPI预期3.2%(前值2.9%)/核心2.5%；美国ISM预期55(前值55.6)/就业52.5(前值52.8)；JOLTS预期739万(前值735.9万)；加央行预期维持2.25%不变；9/1起禁非法买卖流通人民币+新版基药目录施行+限售股个税新规</div></div><div class="cal-stars">★★★★★</div></div><div class="cal-item"><div class="cal-date"><div class="dow">WED</div><div class="day">02</div></div><div class="cal-content"><div class="title">美国8月ADP就业("小非农") / 美联储褐皮书 / 燧原科技申购</div><div class="desc">ADP预期+4.7万(前值+4.4万)；褐皮书揭示地区需求/工资/定价；燧原科创板申购(国产GPU四小龙齐聚)；大商所焦炭期权上市；华为慕尼黑全球创新产品发布会</div></div><div class="cal-stars">★★★★</div></div><div class="cal-item"><div class="cal-date"><div class="dow">THU</div><div class="day">03</div></div><div class="cal-content"><div class="title">美国初请失业金 / 8月ISM服务业PMI / 2026世界动力电池大会(宜宾)</div><div class="desc">初请预期20.5万(前值20.3万)；ISM服务业预期54.1(前值54.1)；信诺维申购(肿瘤/抗感染创新药)</div></div><div class="cal-stars">★★★</div></div><div class="cal-item"><div class="cal-date"><div class="dow">FRI</div><div class="day">04</div></div><div class="cal-content"><div class="title">🔥 美国8月非农就业报告 / 失业率 / 时薪</div><div class="desc">非农预期+5.8万(前值-2.3万)；失业率预期4.1%(前值4.1%)；时薪环比预期+0.3%——<strong>9月FOMC前最重要数据</strong>；博通财报披露最新业绩；太原能源低碳发展论坛；APEC中小企业部长会议(广州)</div></div><div class="cal-stars">★★★★★</div></div><div class="cal-item"><div class="cal-date"><div class="dow">SAT</div><div class="day">05</div></div><div class="cal-content"><div class="title">全球市场消化非农冲击 / 华尔街重新定价美联储路径</div><div class="desc">周末全球休市，机构集中研判非农与PMI数据，重新定价9月FOMC降息/加息幅度；跟踪地缘局势(美伊)和国际能源大宗商品头寸调整</div></div><div class="cal-stars">★★★</div></div>
+    <div class="section-body">
+      <div class="calendar-grid">
+        <div class="calendar-item highlight">
+          <div class="weekday">周一 · 8/31</div>
+          <div class="date">8月31日</div>
+          <ul>
+            <li><span class="event-tag tag-red">重磅</span>中国 8 月官方制造业 PMI</li>
+            <li><span class="event-tag tag-blue">数据</span>德国 8 月 CPI 年率初值</li>
+            <li><span class="event-tag tag-blue">数据</span>美国 8 月达拉斯联储指数</li>
+            <li><span class="event-tag tag-purple">会议</span>G20 财长与央行行长会议</li>
+            <li><span class="event-tag tag-red">地缘</span>美伊冲突跟踪 / 油价波动</li>
+          </ul>
+        </div>
+
+        <div class="calendar-item">
+          <div class="weekday">周二</div>
+          <div class="date">9月1日</div>
+          <ul>
+            <li><span class="event-tag tag-red">重磅</span>美国 8 月 ISM 制造业 PMI</li>
+            <li><span class="event-tag tag-blue">数据</span>美国 7 月 JOLTs 职位空缺</li>
+            <li><span class="event-tag tag-blue">数据</span>欧元区 8 月 CPI 初值</li>
+            <li><span class="event-tag tag-purple">人事</span>库克正式卸任苹果 CEO</li>
+            <li><span class="event-tag tag-green">财报</span>戴尔 (DELL) 盘后财报</li>
+          </ul>
+        </div>
+
+        <div class="calendar-item">
+          <div class="weekday">周三</div>
+          <div class="date">9月2日</div>
+          <ul>
+            <li><span class="event-tag tag-red">重磅</span>美国 8 月 ADP 就业人数</li>
+            <li><span class="event-tag tag-purple">决议</span>加拿大央行利率决议</li>
+            <li><span class="event-tag tag-blue">数据</span>澳大利亚 Q2 GDP</li>
+            <li><span class="event-tag tag-green">财报</span>博通 (AVGO) · Snowflake · HPE</li>
+            <li><span class="event-tag tag-blue">数据</span>美国 7 月工厂订单</li>
+          </ul>
+        </div>
+
+        <div class="calendar-item">
+          <div class="weekday">周四</div>
+          <div class="date">9月3日</div>
+          <ul>
+            <li><span class="event-tag tag-red">重磅</span>美国 8 月 ISM 非制造业 PMI</li>
+            <li><span class="event-tag tag-blue">数据</span>美国至 8/29 初请失业金人数</li>
+            <li><span class="event-tag tag-purple">讲话</span>美联储理事沃勒访谈</li>
+            <li><span class="event-tag tag-blue">数据</span>欧元区 7 月 PPI 月率</li>
+            <li><span class="event-tag tag-green">财报</span>Lululemon (LULU) 盘前</li>
+          </ul>
+        </div>
+
+        <div class="calendar-item">
+          <div class="weekday">周五</div>
+          <div class="date">9月4日</div>
+          <ul>
+            <li><span class="event-tag tag-red">压轴</span>美国 8 月非农就业报告</li>
+            <li><span class="event-tag tag-blue">数据</span>美国 8 月失业率 / 时薪</li>
+            <li><span class="event-tag tag-blue">数据</span>加拿大 8 月就业数据</li>
+            <li><span class="event-tag tag-purple">讲话</span>英国央行行长贝利</li>
+            <li><span class="event-tag tag-red">预期</span>非农前值意外 -23K，市场预期 +58K</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Footer -->
+  <div class="footer">
+    <div>
+      <span class="brand">2026年8月31日 · A 股盘前简报</span>
+      · 最后更新 08:36 · 数据截至 A 股 9:30 开盘前
+    </div>
+    <div class="disclaimer">
+      页面信息由 AI 生成，数据来源于公开财经媒体多源交叉验证，仅供研究参考，不构成任何投资建议。<br>
+      市场有风险，决策需谨慎。© 2026 2026-08-31 · 每日盘前简报
     </div>
   </div>
 
 </div>
-
-<!-- ====== FOOTER ====== -->
-<div class="footer">
-  <div class="disclaimer">
-    <strong>⚠️ 免责声明：</strong>本简报仅供内部参考，不构成任何投资建议。所有数据均来自公开市场信息与联网实时搜索，尽量保证准确，但不排除个别数据存在延迟或偏差。市场有风险，投资须谨慎。据此操作，风险自担。
-  </div>
-  <div class="copy">页面信息由AI生成 · 2026-08-31 08:00 更新</div>
-</div>
-
 </body>
 </html>
