@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>提马早报 · 2026.09.23</title>
+<title>提马早报 · 2026.09.24</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* 工作日默认版 */
+    /* 工作日默认版令牌（节气/节日主题由 apply_theme.py 追加覆盖，勿把主题色写死在这里） */
     --paper: #f7f3ec;
     --ink: #1c1b17;
     --ink-soft: #4c4a42;
     --ink-faint: #8a867a;
     --line: #d9d2c3;
     --card: #fffdf8;
-    --accent: #1c1b17;
+    --accent: #1c1b17; --accent-soft: #4c4a42;
     --c-intl: #1d4ed8; --c-intl-deep: #1e3fa8;
     --c-dom: #cf2f1e; --c-dom-deep: #a02315;
     --c-fin: #b45309; --c-fin-deep: #8a3f06;
@@ -226,14 +226,6 @@
     .cal-pop { right: auto; left: 0; }
   }
 </style>
-<style id="theme-css">
-/* 节气版·秋分（微调：只换纸色与点缀色） */
-  /* 节气版：纸色转暖，点缀色转稻金 */
-  :root { --paper:#f8f4e6; --line:#ded4bd; --accent:#a8801f; --accent-soft:#c9a447; }
-  .mast-date small { color: var(--accent); }
-</style>
-
-
 </head>
 <body>
 <div class="wrap">
@@ -241,12 +233,12 @@
   <header class="masthead">
     <div class="mast-meta">
       <span class="kicker">提马早报<small>TIMAB DAILY</small></span>
-      <span>星期三 · 农历八月十三 · 秋分 · timab.cn</span>
+      <span>星期四 · 农历八月十四 · 秋分 · timab.cn</span>
     </div>
     <div class="mast-title-row">
       <h1 class="mast-title">提马<em>早报</em></h1>
       <div class="mast-side">
-        <div class="mast-date">2026.09.23<small>DAILY BRIEFING</small></div>
+        <div class="mast-date">2026.09.24<small>DAILY BRIEFING</small></div>
         <div class="cal-anchor">
           <button class="cal-link" id="calBtn" type="button" aria-haspopup="dialog" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
@@ -280,9 +272,9 @@
 
   <section class="spotlight" id="pick">
     <div class="badge"><i></i>精 选</div>
-    <h2><a class="lk" href="https://www.bing.com/search?q=%E6%97%B6%E9%9A%94+11+%E5%B9%B4%E5%86%8D%E8%AE%BF%E7%BE%8E%EF%BC%9A%E4%B8%AD%E7%BE%8E%E5%85%83%E9%A6%96%E5%8D%8E%E7%9B%9B%E9%A1%BF%E4%BC%9A%E6%99%A4%EF%BC%8C%E5%8D%8A%E5%B9%B4%E5%86%85%E5%AE%8C%E6%88%90%E4%BA%92%E8%AE%BF" target="_blank" rel="noopener">时隔 11 年再访美：<span class="hl">中美元首华盛顿会晤</span>，半年内完成互访</a></h2>
-    <div class="body">应特朗普总统邀请，习近平主席 9 月 23 日至 25 日对美国进行国事访问，这是中国最高领导人时隔 11 年再次对美国进行国事访问，中美两国元首在半年内实现互访，被国际社会称为历史性、里程碑事件。会晤聚焦经贸、人工智能、台湾等议题；此前中美经贸团队已在纽约举行新一轮磋商，并就人工智能有关问题举行专门对话。</div>
-    <div class="why"><b>看点：</b>全球前两大经济体在半年内完成元首互访，经贸磋商成果与 AI 竞争分歧如何在一个屋顶下平衡，将决定未来数年中美关系与全球市场的基调。</div>
+    <h2><a class="lk" href="https://www.bing.com/search?q=%E4%B9%A0%E7%89%B9%E4%BC%9A%E5%8D%8E%E7%9B%9B%E9%A1%BF%E5%BC%80%E5%9C%BA%EF%BC%9A%E7%89%B9%E6%9C%97%E6%99%AE%E4%BA%B2%E8%B5%B4%E6%9C%BA%E5%9C%BA%E8%BF%8E%E6%8E%A5%EF%BC%8C%E7%BE%8E%E6%96%B9%E9%85%9D%E9%85%BF%E2%80%9C%E6%9B%B4%E5%A4%A7%E5%8D%8F%E8%AE%AE%E2%80%9D" target="_blank" rel="noopener">习特会华盛顿开场：特朗普亲赴机场迎接，<span class="hl">美方酝酿“更大协议”</span></a></h2>
+    <div class="body">9 月 23 日下午，习近平乘专机离京开启对美国的国事访问，当晚抵达华盛顿，特朗普专程前往安德鲁斯空军基地迎接——距上次北京“庄园会”仅半年，中美元首即完成互访。南华早报援引知情人士称，美方正评估一份规模比此前釜山协议更大的贸易方案；皮尤同期调查显示，美国民众对华好感度明显回升。</div>
+    <div class="why"><b>看点：</b>这是年内全球最重要的一场双边峰会，关税、科技出口管制与稀土暂停期（11 月 10 日到期）都会被摆上桌，峰会的任何一句口径变化，都足以牵动第二天的全球市场。</div>
   </section>
 
   <div class="grid">
@@ -291,33 +283,33 @@
       <div class="sec-head"><span class="sec-num">01</span><h3>国际时事</h3><span class="en">World</span></div>
 
       <div class="item">
-        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E7%89%B9%E6%9C%97%E6%99%AE%EF%BC%9A%E4%B8%AD%E6%9C%9F%E9%80%89%E4%B8%BE%E5%90%8E%E6%88%96%E4%B8%8E%E4%BC%8A%E6%9C%97%E8%BE%BE%E6%88%90%E5%8D%8F%E8%AE%AE%EF%BC%8C%E4%BC%8A%E6%96%B9%E5%BC%80%E5%87%BA%E9%87%8D%E5%BC%80%E6%B5%B7%E5%B3%A1%E6%9D%A1%E4%BB%B6" target="_blank" rel="noopener">特朗普：中期选举后或与伊朗达成协议，伊方开出重开海峡条件</a></div>
-        <div class="d">特朗普在第 81 届联大表示，美国可能在 11 月中期选举后与伊朗达成协议，并预计冲突结束后油价将大跌。伊朗外长与美特使威特科夫在联大期间再度会晤，伊方开出重开霍尔木兹海峡的条件：立即解除海上封锁、释放被冻结资产、结束所有“抵抗前线”的战争。</div>
-        <div class="why"><b>看点：</b>和谈预期已成为油价与航运市场最大的单一变量，“中期选举时间表”意味着这场博弈至少还要延续数周。</div>
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E4%BC%8A%E6%9C%97%E6%80%BB%E7%BB%9F%E8%81%94%E5%A4%A7%E6%94%BE%E8%AF%9D%E2%80%9C%E7%BB%9D%E4%B8%8D%E4%BD%8E%E5%A4%B4%E2%80%9D%EF%BC%8C%E7%89%B9%E6%9C%97%E6%99%AE%E5%A8%81%E8%83%81%E2%80%9C%E6%AF%81%E7%81%AD%E2%80%9D%E4%BC%8A%E6%9C%97" target="_blank" rel="noopener">伊朗总统联大放话“绝不低头”，特朗普威胁“毁灭”伊朗</a></div>
+        <div class="d">佩泽希齐扬在第 81 届联大一般性辩论表态：伊朗愿谈判与合作，但绝不接受强权、制裁或军事威胁下的让步；前一天特朗普在同一讲坛警告可能“毁灭”伊朗，同时预计中期选举后能达成协议。而伊外长与美特使的接触被国内媒体称“未经授权”，伊朗外交部已要求作出解释。</div>
+        <div class="why"><b>看点：</b>纽约外交密集但分歧依旧，美伊缓和进一退二；联大期间伊朗代表一度退场，油价随即重回 92 美元，双方措辞将继续主导本周能源市场。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E6%9C%9D%E9%B2%9C%E4%B8%A4%E5%90%8D%E4%BA%9A%E8%BF%90%E4%BB%A3%E8%A1%A8%E5%9B%A2%E6%88%90%E5%91%98%E5%9C%A8%E6%97%A5%E6%9C%AC%E7%94%B3%E8%AF%B7%E5%BA%87%E6%8A%A4" target="_blank" rel="noopener">朝鲜两名亚运代表团成员在日本申请庇护</a></div>
-        <div class="d">据日本媒体援引官方消息称，在约 180 人规模的爱知·名古屋亚运朝鲜代表团中，有两名成员向日方寻求庇护。此事发生在朝鲜刚成功试射新型武器、半岛局势敏感之际。</div>
-        <div class="why"><b>看点：</b>国际综合性赛事代表团内出逃极其罕见，两名成员的身份与后续处置将牵动日朝关系与半岛神经。</div>
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E9%9C%8D%E5%B0%94%E6%9C%A8%E5%85%B9%E6%B5%B7%E5%B3%A1%E8%B4%A7%E8%BD%AE%E9%81%87%E8%A2%AD%E8%B5%B7%E7%81%AB%EF%BC%8C2+%E5%90%8D%E8%88%B9%E5%91%98%E5%8F%97%E4%BC%A4" target="_blank" rel="noopener">霍尔木兹海峡货轮遇袭起火，2 名船员受伤</a></div>
+        <div class="d">英国海上贸易行动办公室 23 日通报，一艘货轮在霍尔木兹海峡被不明飞行物击中起火，2 人受伤、全体船员撤离，袭击来源不明。此前伊朗刚开出“减轻军事压力并解除海上封锁，可在 7 天内重开海峡”的条件。</div>
+        <div class="why"><b>看点：</b>海峡局势稍有缓和即再添变数，袭击方不明让航运保险与绕行成本难以回落，这条水道仍是全球油价最大的单一变量。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E5%8F%B0%E9%A3%8E%E2%80%9C%E6%9D%9C%E9%B9%83%E2%80%9D%E9%87%8D%E5%88%9B%E6%97%A5%E6%9C%AC%E5%85%B3%E4%B8%9C%EF%BC%9A%E7%A0%B4%E7%BA%AA%E5%BD%95%E9%99%8D%E9%9B%A8%EF%BC%8C%E5%B7%B2%E8%87%B4+6+%E6%AD%BB+6+%E5%A4%B1%E8%81%94" target="_blank" rel="noopener">台风“杜鹃”重创日本关东：破纪录降雨，已致 6 死 6 失联</a></div>
-        <div class="d">台风“杜鹃”带来破纪录降雨，关东地区山体滑坡与大面积内涝并发，东京圈交通大面积中断，已造成至少 6 人死亡、6 人失踪；亚运会部分赛程也在风雨中照常进行。</div>
-        <div class="why"><b>看点：</b>亚运正好办在风灾核心区域，极端天气对大型国际赛事保障体系是一场实时压力测试。</div>
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E7%AB%8B%E9%99%B6%E5%AE%9B%E6%8B%9F%E4%BF%AE%E5%AE%AA%E8%A7%A3%E9%99%A4%E6%A0%B8%E6%AD%A6%E5%99%A8%E9%83%A8%E7%BD%B2%E7%A6%81%E4%BB%A4%EF%BC%8C%E4%BF%84%E6%96%B9%E8%AD%A6%E5%91%8A%E9%87%8D%E5%A4%A7%E5%90%8E%E6%9E%9C" target="_blank" rel="noopener">立陶宛拟修宪解除核武器部署禁令，俄方警告重大后果</a></div>
+        <div class="d">立陶宛议会 22 日通过宪法修正案提案，拟解除“禁止在本国部署核武器和外国军事基地”的宪法条款；俄对外情报局同时指控欧盟计划动用被冻结的俄主权资产援乌，俄方警告此举将带来重大安全影响。</div>
+        <div class="why"><b>看点：</b>北约东翼安全议题急速升温，核部署禁区松动是俄乌冲突外溢的标志性信号，直接牵动欧洲安全架构与市场避险情绪。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=DeepSeek%E3%80%81OpenAI%E3%80%81Anthropic+%E5%B0%86%E5%90%91%E8%81%94%E5%90%88%E5%9B%BD%E5%AE%89%E7%90%86%E4%BC%9A%E9%80%9A%E6%8A%A5+AI+%E8%AE%AE%E9%A2%98" target="_blank" rel="noopener">DeepSeek、OpenAI、Anthropic 将向联合国安理会通报 AI 议题</a></div>
-        <div class="d">本周联合国安理会举行 AI 专题会议，OpenAI CEO 奥特曼计划出席通报，DeepSeek、Anthropic 高层亦将参与；此前特朗普在联大明确表示美国“完全拒绝”任何全球性 AI 管控机制，称不想扼杀这项可能“比工业革命还伟大”的技术。</div>
-        <div class="why"><b>看点：</b>AI 治理的“多边路线”与“美国优先路线”正面相撞，头部实验室首次以“准国家行为体”身份走进安理会。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E9%B2%81%E6%AF%94%E5%A5%A5%E4%BC%9A%E8%A7%81%E4%BF%84%E5%A4%96%E9%95%BF%EF%BC%9A%E4%BF%84%E4%B9%8C%E5%9D%87%E5%AF%B9%E6%9C%89%E9%99%90%E5%81%9C%E7%81%AB%E2%80%9C%E6%84%9F%E5%85%B4%E8%B6%A3%E2%80%9D" target="_blank" rel="noopener">鲁比奥会见俄外长：俄乌均对有限停火“感兴趣”</a></div>
+        <div class="d">美国国务卿鲁比奥会见俄外长拉夫罗夫后表示，俄乌双方均对有限停火感兴趣，美方愿推动能源设施谈判；俄方称俄美应尽快“修复双边关系”。同日基辅遭袭，受伤人数已增至 13 人。</div>
+        <div class="why"><b>看点：</b>美方绕开基辅与莫斯科直接接触的节奏明显加快，“有限停火＋能源谈判”若成形，将直接影响全球油气与粮食供应链预期。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E7%89%B9%E6%9C%97%E6%99%AE%E7%AD%BE%E7%BD%B2%E6%A0%BC%E9%99%B5%E5%85%B0%E5%8D%8F%E8%AE%AE%EF%BC%8C%E7%BE%8E%E5%9B%BD%E5%B0%86%E5%BB%BA%E4%B8%A4%E5%BA%A7%E5%86%9B%E4%BA%8B%E5%9F%BA%E5%9C%B0" target="_blank" rel="noopener">特朗普签署格陵兰协议，美国将建两座军事基地</a></div>
-        <div class="d">美国签署格陵兰防务相关协议，计划在格陵兰设立两座军事基地、扩大美军在北极的存在，但格陵兰仍处于丹麦主权之下；丹麦方面表示，北约将依约分担北极安全责任。</div>
-        <div class="why"><b>看点：</b>随着冰层消融，北极航道与资源的价值快速上升，大国在北极的军事布局开始从口号进入落地阶段。</div>
+        <div class="t"><span class="idx">05</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E5%8F%B0%E9%A3%8E%E2%80%9C%E6%9D%9C%E9%B9%83%E2%80%9D%E5%B7%B2%E8%87%B4%E6%97%A5%E6%9C%AC+10+%E4%BA%BA%E6%AD%BB%E4%BA%A1%EF%BC%8C%E7%81%BE%E5%90%8E%E6%81%A2%E5%A4%8D%E7%BC%93%E6%85%A2" target="_blank" rel="noopener">台风“杜鹃”已致日本 10 人死亡，灾后恢复缓慢</a></div>
+        <div class="d">台风“杜鹃”袭击日本关东地区造成的死亡人数已升至 10 人，此前一度有 6 人失联，灾区电力与交通恢复缓慢；日本气象厅提示部分地区仍需防范地质灾害。</div>
+        <div class="why"><b>看点：</b>日本是本轮全球供应链的关键节点，亚运赛程与汽车零部件物流均曾受波及，灾情数据仍在滚动更新。</div>
       </div>
     </section>
 
@@ -325,33 +317,33 @@
       <div class="sec-head"><span class="sec-num">02</span><h3>国内要闻</h3><span class="en">China</span></div>
 
       <div class="item">
-        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=2026+%E5%8C%97%E4%BA%AC%E6%96%87%E5%8C%96%E8%AE%BA%E5%9D%9B%E5%BC%80%E5%B9%95%EF%BC%9A44+%E5%9B%BD+600+%E4%BD%99%E5%98%89%E5%AE%BE%E5%85%B1%E8%AE%AE%E2%80%9C%E6%96%87%E5%8C%96%E9%81%97%E4%BA%A7%E4%B8%8E%E6%96%87%E6%98%8E%E4%BA%92%E9%89%B4%E2%80%9D" target="_blank" rel="noopener">2026 北京文化论坛开幕：44 国 600 余嘉宾共议“文化遗产与文明互鉴”</a></div>
-        <div class="d">论坛 22 日在京开幕，中宣部部长李书磊发表主旨演讲，来自 44 个国家和地区的 600 多位嘉宾出席，聚焦文化遗产保护国际合作、联合考古与古迹修复，推动完善文化遗产保护全球治理。</div>
-        <div class="why"><b>看点：</b>文化遗产首次成为论坛核心主题，中国的全球叙事正在从经贸合作延伸到文明对话领域。</div>
+        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E6%95%99%E8%82%B2%E9%83%A8%EF%BC%9A%E6%AF%8F%E5%91%A8%E8%87%B3%E5%B0%91%E5%8D%8A%E5%A4%A9%E6%A0%A1%E5%A4%96%E5%AE%9E%E8%B7%B5%EF%BC%8C%E2%80%9C%E5%8F%8C%E4%B8%80%E6%B5%81%E2%80%9D%E6%9C%AC%E7%A7%91%E5%9B%9B%E5%B9%B4%E6%89%A9%E5%AE%B9+7.6+%E4%B8%87%E4%BA%BA" target="_blank" rel="noopener">教育部：每周至少半天校外实践，“双一流”本科四年扩容 7.6 万人</a></div>
+        <div class="d">教育部 23 日在国新办发布会介绍，“十五五”期间将在全国推行每周至少半天校外实践教学，纳入学校教育教学计划；2027 至 2030 年“双一流”高校本科招生数还将扩容 7.6 万人，同步启动教师发展国家行动。</div>
+        <div class="why"><b>看点：</b>高等教育学龄人口持续增加背景下的扩容计划，直接影响未来四年的升学格局与高校基建、师资需求，家长群体关注度极高。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E6%9D%8E%E5%BC%BA%E5%9C%A8%E4%B8%8A%E6%B5%B7%E8%B0%83%E7%A0%94%EF%BC%9A%E7%BA%B5%E6%B7%B1%E6%8E%A8%E8%BF%9B%E2%80%9C%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%2B%E5%88%B6%E9%80%A0%E2%80%9D" target="_blank" rel="noopener">李强在上海调研：纵深推进“人工智能+制造”</a></div>
-        <div class="d">22 日李强在上海调研时强调，坚持智能化、绿色化、融合化方向，把制造业和数智技术两方面优势结合起来，大力发展新一代智能制造，加快培育壮大新兴产业和未来产业，带动更多行业全面数智化转型。</div>
-        <div class="why"><b>看点：</b>“人工智能+制造”被放到产业政策的中心位置，为 10 月下旬五中全会前的产业主线定下基调。</div>
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E9%93%81%E8%B7%AF%E4%B8%AD%E7%A7%8B%E5%9B%BD%E5%BA%86%E5%81%87%E6%9C%9F%E8%BF%90%E8%BE%93%E5%90%AF%E5%8A%A8%EF%BC%9A16+%E5%A4%A9%E9%A2%84%E8%AE%A1%E5%8F%91%E9%80%81+2.84+%E4%BA%BF%E4%BA%BA%E6%AC%A1" target="_blank" rel="noopener">铁路中秋国庆假期运输启动：16 天预计发送 2.84 亿人次</a></div>
+        <div class="d">国铁集团 23 日启动为期 16 天的假期运输（9 月 23 日至 10 月 8 日），预计发送旅客 2.84 亿人次，10 月 1 日为客流最高峰；今起可买 10 月 5 至 6 日返程票。今年中秋 3 天假期不调休，高速公路也不免费。</div>
+        <div class="why"><b>看点：</b>双节不调休带来“短假出行”新结构，铁路客流创新高的同时，自驾分流与返程机票“一天一个价”是节中讨论度最高的话题。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E5%85%A8%E5%9B%BD%E5%9B%BD%E5%BA%86%E6%96%87%E5%8C%96%E5%92%8C%E6%97%85%E6%B8%B8%E6%B6%88%E8%B4%B9%E6%9C%88%E5%90%AF%E5%8A%A8%EF%BC%8C%E2%80%9C%E5%8F%8C%E8%8A%82%E2%80%9D%E6%B6%88%E8%B4%B9%E5%A4%A7%E5%B9%95%E6%8B%89%E5%BC%80" target="_blank" rel="noopener">全国国庆文化和旅游消费月启动，“双节”消费大幕拉开</a></div>
-        <div class="d">中秋、国庆临近，全国国庆文化和旅游消费月正式启动，各地将推出系列文旅促消费活动；同期高盛报告提示，今年中秋白酒需求整体谨慎、品牌分化加剧，茅台批发价逆势上行。</div>
-        <div class="why"><b>看点：</b>假期消费是四季度内需的第一次大考，文旅热度与传统消费的冷热分化，将给出最直观的答案。</div>
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E6%B6%89%E9%BB%91%E5%A4%B4%E7%9B%AE%E9%BB%84%E5%A4%A7%E5%8F%91%E7%AD%89+28+%E4%BA%BA%E4%BA%8C%E5%AE%A1%E5%AE%A3%E5%88%A4%EF%BC%9A%E7%BB%B4%E6%8C%81%E6%AD%BB%E5%88%91%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C" target="_blank" rel="noopener">涉黑头目黄大发等 28 人二审宣判：维持死刑立即执行</a></div>
+        <div class="d">23 日，湖北省高级人民法院对黄大发等 28 名被告人涉黑案二审公开宣判，驳回上诉、维持原判，黄大发被判处死刑立即执行。该案此前牵出的大量基层治理问题已引发全国关注。</div>
+        <div class="why"><b>看点：</b>从地方横行到终审死刑，这起标志性涉黑案的落地，被视为对基层扫黑成果的一次公开检验。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E9%95%BF%E5%BE%81%E8%83%9C%E5%88%A9+90+%E5%91%A8%E5%B9%B4%E4%B8%BB%E9%A2%98%E5%B1%95%E8%A7%88%E5%9C%A8%E5%86%9B%E5%8D%9A%E5%BC%80%E5%B9%95" target="_blank" rel="noopener">长征胜利 90 周年主题展览在军博开幕</a></div>
-        <div class="d">“伟大的远征——纪念中国工农红军长征胜利 90 周年主题展览”22 日上午在中国人民革命军事博物馆开幕，系统呈现长征历史与长征精神。</div>
-        <div class="why"><b>看点：</b>90 周年节点叠加五中全会临近，这场重量级主题展为四季度的重大主题宣传定下基调。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%89%E9%83%A8%E9%97%A8%E6%98%8E%E7%A1%AE%E8%8A%AC%E5%A4%AA%E5%B0%BC%E7%B1%BB%E7%89%A9%E8%B4%A8%E5%AE%9A%E7%BD%AA%E9%87%8F%E5%88%91%E6%A0%87%E5%87%86" target="_blank" rel="noopener">三部门明确芬太尼类物质定罪量刑标准</a></div>
+        <div class="d">最高法、最高检、公安部联合印发意见，将芬太尼类物质分为药用和非药用两类，非药用芬太尼类物质参照刑法中海洛因的数量标准定罪量刑，依法从严惩治；公安部等同时将奥啡类物质整类列入管制目录。</div>
+        <div class="why"><b>看点：</b>芬太尼既是禁毒战场也是中美执法合作议题，量刑标准落地填补了此类案件“同罪不同罚”的空白。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%9A%E6%89%80%E2%80%9C%E5%8F%8C%E4%B8%80%E6%B5%81%E2%80%9D%E9%AB%98%E6%A0%A1%E6%96%B0%E6%A0%A1%E5%8C%BA%E6%98%8E%E5%B9%B4+9+%E6%9C%88%E9%9B%84%E5%AE%89%E5%BC%80%E5%AD%A6" target="_blank" rel="noopener">多所“双一流”高校新校区明年 9 月雄安开学</a></div>
-        <div class="d">国家发展改革委表示，我国正加大“双一流”高校新校区建设，扩大优质本科教育招生规模和研究生培养规模，多所高校新校区预计将于明年 9 月在雄安新区开学。</div>
-        <div class="why"><b>看点：</b>顶尖高教资源向雄安整体疏解，是京津冀协同十年来最具标志性的一步，也将直接改变招生格局与城市人口结构。</div>
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E2%80%9C%E5%8D%81%E4%BA%94%E4%BA%94%E2%80%9D%E5%B0%86%E6%8E%A8%E5%8A%A8%E5%88%B6%E5%AE%9A%E5%85%BB%E8%80%81%E6%9C%8D%E5%8A%A1%E6%B3%95" target="_blank" rel="noopener">“十五五”将推动制定养老服务法</a></div>
+        <div class="d">民政部在国新办发布会上介绍，“十四五”以来全国慈善组织总量近 1.6 万家、比“十三五”末增长 69%；“十五五”时期将推动修订老年人权益保障法、制定养老服务法，健全分级分类、普惠可及、覆盖城乡的养老服务体系。</div>
+        <div class="why"><b>看点：</b>养老立法进入倒计时，近 3 亿老年人口的服务体系怎么建、普惠托位与适老化改造怎么补，是“十五五”最贴近民生的政策线。</div>
       </div>
     </section>
 
@@ -359,33 +351,33 @@
       <div class="sec-head"><span class="sec-num">03</span><h3>金融要闻</h3><span class="en">Finance</span></div>
 
       <div class="item">
-        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E2%80%9C9%C2%B724+%E8%A1%8C%E6%83%85%E2%80%9D%E4%B8%A4%E5%91%A8%E5%B9%B4%EF%BC%9AA+%E8%82%A1%E5%B8%82%E5%80%BC%E4%B8%A4%E5%B9%B4%E5%A2%9E%E7%BA%A6+48+%E4%B8%87%E4%BA%BF%EF%BC%8C%E7%94%B5%E5%AD%90%E5%B8%82%E5%80%BC%E9%A6%96%E8%B6%85%E9%93%B6%E8%A1%8C" target="_blank" rel="noopener">“9·24 行情”两周年：A 股市值两年增约 48 万亿，电子市值首超银行</a></div>
-        <div class="d">2024 年 9 月 24 日三部门联合出手开启本轮行情，两年来上证指数累计上涨 44%、创业板指涨 121%、科创 50 涨 156%；A 股总市值从 81 万亿元增至 129 万亿元，电子行业市值历史首次超越银行成为行业冠军。</div>
-        <div class="why"><b>看点：</b>两年节点正逢沪指在 3950 点附近蓄势，“924 式快速拉升”能否在四季度重演，是当前多空分歧的核心议题。</div>
+        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%AE%E8%A1%8C+8000+%E4%BA%BF%E5%85%83+MLF+%E5%8A%A0%E9%87%8F%E7%BB%AD%E5%81%9A%EF%BC%8C%E8%8A%82%E5%89%8D%E6%B5%81%E5%8A%A8%E6%80%A7%E5%AE%89%E6%8E%92%E5%88%B0%E4%BD%8D" target="_blank" rel="noopener">央行 8000 亿元 MLF 加量续做，节前流动性安排到位</a></div>
+        <div class="d">央行 24 日开展 8000 亿元 1 年期 MLF 操作，9 月中期流动性操作合计加量 2000 亿元、连续第三个月净投放；并将在 9 月 28 日至 10 月 8 日开展隔夜逆回购，每日操作量不超过 1 万亿元，为长假资金面兜底。</div>
+        <div class="why"><b>看点：</b>“加量 MLF＋长假逆回购”组合拳给出明确维稳信号，跨节资金成本与节后债市开盘表现都以此锚定。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=A+%E8%82%A1%E7%BC%A9%E9%87%8F%E5%9B%9E%E8%B0%83%EF%BC%9A%E6%B2%AA%E6%8C%87%E8%B7%8C+0.19%25+%E6%8A%A5+3944.60%EF%BC%8C%E7%8E%BB%E7%92%83%E5%9F%BA%E6%9D%BF%E4%B8%8E%E6%88%BF%E5%9C%B0%E4%BA%A7%E9%80%86%E5%8A%BF%E6%B4%BB%E8%B7%83" target="_blank" rel="noopener">A 股缩量回调：沪指跌 0.19% 报 3944.60，玻璃基板与房地产逆势活跃</a></div>
-        <div class="d">23 日三大股指集体收跌，沪指跌 0.19% 报 3944.60 点；玻璃基板概念领涨——京东方宣布未来五年研发投入超 800 亿元、一年内敲定玻璃基钙钛矿与玻璃基封装载板两条量产线投资；房地产板块因上海二手房成交放量走强，我爱我家 3 连板。</div>
-        <div class="why"><b>看点：</b>指数虽歇、题材未散，AI 硬件与地产链的轮动仍是短线主基调，机构已在喊四季度“吃饭行情”。</div>
+        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E6%B2%B9%E4%BB%B7%E9%9A%94%E5%A4%9C%E5%8F%8D%E5%BC%B9%E7%BA%A6+3%25%EF%BC%8C%E4%BB%8A%E6%99%9A+24+%E6%97%B6%E6%88%90%E5%93%81%E6%B2%B9%E4%B8%8A%E8%B0%83%E7%BA%A6+0.41-0.49+%E5%85%83%2F%E5%8D%87" target="_blank" rel="noopener">油价隔夜反弹约 3%，今晚 24 时成品油上调约 0.41-0.49 元/升</a></div>
+        <div class="d">利比亚减产叠加美伊谈判生变，隔夜 WTI 收涨 2.42% 报 92.71 美元/桶、布油涨 3.04% 报 98.31 美元/桶；国内成品油调价窗口 24 日 24 时开启，机构预计汽柴油上调约 540 元/吨，50 升油箱加满多花 20 元出头，最终以发改委公告为准。</div>
+        <div class="why"><b>看点：</b>两天前市场还在讨论“布油失守 100 美元”，供应端反复让油价重新逼近关口，节前最后一夜的调价直接影响双节出行成本。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">03</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E6%B2%B9%E4%BB%B7%E5%86%8D%E4%B8%8B%E5%8F%B0%E9%98%B6%EF%BC%9AWTI+%E5%A4%B1%E5%AE%88+90+%E7%BE%8E%E5%85%83%EF%BC%8C%E5%B8%83%E6%B2%B9%E8%B7%8C%E8%87%B3+94.76+%E7%BE%8E%E5%85%83" target="_blank" rel="noopener">油价再下台阶：WTI 失守 90 美元，布油跌至 94.76 美元</a></div>
-        <div class="d">沙特东西输油管道重启、延布港出口恢复在即，叠加美伊和谈预期发酵：WTI 收跌 2.73% 报 89.85 美元/桶，布伦特收跌 1.54% 报 94.76 美元/桶，续创两周新低，较 9 月 22 日的 99.25 美元再下一个台阶。</div>
-        <div class="why"><b>看点：</b>油价正从“地缘溢价”快速切换到“和谈折价”，若布油进一步失守 90 美元，全球通胀预期与能源股定价都将重估。</div>
+        <div class="t"><span class="idx">03</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=A+%E8%82%A1%E8%8A%82%E5%89%8D%E7%BC%A9%E9%87%8F%E6%95%B4%E7%90%86%EF%BC%9A%E6%B2%AA%E6%8C%87%E8%B7%8C+0.39%25+%E6%8A%A5+3936.52+%E7%82%B9" target="_blank" rel="noopener">A 股节前缩量整理：沪指跌 0.39% 报 3936.52 点</a></div>
+        <div class="d">23 日 A 股高开低走，沪指收跌 0.39% 报 3936.52 点，创业板指跌 0.60%，成交 1.78 万亿元、较前日缩量 3705 亿元，超 3500 只个股下跌；PET 铜箔、玻璃基板、CRO 领涨，煤炭、影视院线领跌。港股恒指跌 1.01% 失守 25000 点。</div>
+        <div class="why"><b>看点：</b>持币过节资金持续撤退，量能萎缩至 1.8 万亿下方；机构普遍认为反弹可在节后延续，“节前看拥挤度、节后看空间”成为共识。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%8A%E6%B5%B7%E4%BA%8C%E6%89%8B%E6%88%BF+9+%E6%9C%88%E6%88%90%E4%BA%A4%E5%90%8C%E6%AF%94%E6%B6%A8+28%25%EF%BC%8C%E5%8D%95%E6%97%A5%E7%BD%91%E7%AD%BE%E5%88%9B%E4%B8%8B%E5%8D%8A%E5%B9%B4%E6%96%B0%E9%AB%98" target="_blank" rel="noopener">上海二手房 9 月成交同比涨 28%，单日网签创下半年新高</a></div>
-        <div class="d">网上房地产数据显示，9 月 19 日上海二手房（含商业）单日网签 1495 套，创 2026 年下半年以来单日新高；9 月累计成交超 1.55 万套，同比上涨 28%，地产股应声拉升，中华企业直线涨停。</div>
-        <div class="why"><b>看点：</b>一线城市二手房“以量换价”式企稳，是检验本轮地产政策成色最直接的温度计。</div>
+        <div class="t"><span class="idx">04</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E7%BE%8E%E8%81%94%E5%82%A8%E5%8A%A0%E6%81%AF%E9%A2%84%E6%9C%9F%E5%8D%87%E6%B8%A9%EF%BC%9A%E7%BE%8E%E5%80%BA%E6%94%B6%E7%9B%8A%E7%8E%87%E7%A0%B4+5%25%EF%BC%8C%E9%87%91%E4%BB%B7%E5%9B%9E%E8%90%BD%E8%87%B3+4322+%E7%BE%8E%E5%85%83" target="_blank" rel="noopener">美联储加息预期升温：美债收益率破 5%，金价回落至 4322 美元</a></div>
+        <div class="d">美国 9 月制造业 PMI 创 52 个月新高，美联储理事称“可能需要进一步加息”，10 年期美债收益率重上 5%、多期限涨近 20 个基点；美股三大指数收跌、纳指跌 1.13%，COMEX 黄金跌 1.23% 报 4322.70 美元/盎司。上金所同步上调保证金比例，光大银行等超 10 家银行停办代理贵金属业务。</div>
+        <div class="why"><b>看点：</b>从“降息交易”切换到“加息预期”不过数日，实际利率跳升直接压制无息资产，高位追金与追美债的投资者正迎来压力测试。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%8C%97%E4%BA%A4%E6%89%80%E6%96%B0%E8%82%A1%E5%87%AF%E8%BE%BE%E9%87%8D%E5%B7%A5%E9%A6%96%E6%97%A5%E6%9A%B4%E6%B6%A8+580%25%EF%BC%8C%E9%87%91%E4%BB%B7%E7%AB%99%E4%B8%8A+4396+%E7%BE%8E%E5%85%83%E9%AB%98%E4%BD%8D" target="_blank" rel="noopener">北交所新股凯达重工首日暴涨 580%，金价站上 4396 美元高位</a></div>
-        <div class="d">北交所新股凯达重工 23 日上市，发行价 4.26 元，开盘大涨 580.75% 报 29 元；同日 COMEX 黄金期货收涨 0.28% 报 4396.2 美元/盎司，继续运行在历史高位区。</div>
-        <div class="why"><b>看点：</b>打新赚钱效应与黄金新高并存，资金在“追弹性”与“避险”两条线上同时下注，风险偏好分裂得很有代表性。</div>
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=12+%E8%8B%B1%E5%AF%B8%E7%A1%85%E7%89%87%E9%95%BF%E7%BA%A6%E6%B6%A8%E4%BB%B7%E7%A1%AE%E7%AB%8B%EF%BC%9A%E6%8A%9B%E5%85%89%E7%89%87%E6%88%96%E6%B6%A8+40%25%EF%BC%8C%E5%8F%B0%E7%A7%AF%E7%94%B5+2027+%E5%B9%B4%E5%86%8D%E8%B0%83%E4%BB%B7" target="_blank" rel="noopener">12 英寸硅片长约涨价确立：抛光片或涨 40%，台积电 2027 年再调价</a></div>
+        <div class="d">业界调查显示半导体 12 英寸硅片供需趋紧，2027 年新长约外延片预计上涨 15%-25%，抛光硅片涨幅或超 40%；台积电订单能见度已至 2030 年，确定自 2027 年 1 月起按制程调涨晶圆代工价格约 3%-6%。高通同期发布 2 纳米骁龙 8 至尊版，手机 CPU 主频首破 5GHz。</div>
+        <div class="why"><b>看点：</b>从硅片到代工价的全面上修，坐实“存储—材料—代工”涨价链的传导，是 A 股半导体设备与材料板块最直接的景气度证据。</div>
       </div>
     </section>
 
@@ -393,33 +385,33 @@
       <div class="sec-head"><span class="sec-num">04</span><h3>体育竞技</h3><span class="en">Sports</span></div>
 
       <div class="item">
-        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E5%BE%90%E5%98%89%E4%BD%99+14+%E9%87%91%E8%BF%BD%E5%B9%B3%E7%8E%8B%E4%B9%89%E5%A4%AB%EF%BC%8C%E5%B9%B6%E5%88%97%E4%BA%9A%E8%BF%90%E5%8E%86%E5%8F%B2%E2%80%9C%E9%87%91%E7%89%8C%E7%8E%8B%E2%80%9D" target="_blank" rel="noopener">徐嘉余 14 金追平王义夫，并列亚运历史“金牌王”</a></div>
-        <div class="d">亚运第三日中国队再夺 9 金，以 32 金 13 银 8 铜断层领跑。男子 4×100 米混合泳接力实现亚运四连冠后，徐嘉余个人亚运金牌数达到 14 枚，追平射击名宿王义夫，并列亚运会历史金牌王；射击赛场开赛三日诞生的四项世界纪录全部由中国选手创造。</div>
-        <div class="why"><b>看点：</b>“金牌王”头衔与四项世界纪录同日达成，中国游泳与射击的集团优势已从“夺金”升级为“改写纪录”。</div>
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E5%BE%90%E5%98%89%E4%BD%99+15+%E9%87%91%E5%8A%A0%E5%86%95%EF%BC%9A%E6%88%90%E4%B8%BA%E4%B8%AD%E5%9B%BD%E4%BA%9A%E8%BF%90%E5%8E%86%E5%8F%B2%E2%80%9C%E9%87%91%E7%89%8C%E7%8E%8B%E2%80%9D" target="_blank" rel="noopener">徐嘉余 15 金加冕：成为中国亚运历史“金牌王”</a></div>
+        <div class="d">男女混合 4×100 米混合泳接力决赛，徐嘉余领衔中国队以 3 分 40 秒 38 夺冠、实现亚运三连冠，个人亚运金牌数达到 15 枚，超越射击名将王义夫，独居中国运动员亚运金牌榜第一。被问及纪录会不会被超越时，他笑答：“展硕他可能很快就能超过我了。”</div>
+        <div class="why"><b>看点：</b>四届亚运熬成历史第一人，“被 19 岁后辈追赶”的这句回答比金牌本身更有传播力；中国游泳队前四个比赛日已豪取 21 金。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E4%BD%93%E6%93%8D%E5%A5%B3%E5%AD%90%E5%85%A8%E8%83%BD+13+%E8%BF%9E%E5%86%A0%E7%BB%88%E7%BB%93%EF%BC%9A%E6%9F%AF%E6%B2%81%E6%B2%81+0.4+%E5%88%86%E4%B9%8B%E5%B7%AE%E6%91%98%E9%93%B6" target="_blank" rel="noopener">体操女子全能 13 连冠终结：柯沁沁 0.4 分之差摘银</a></div>
-        <div class="d">16 岁小将柯沁沁以 55.199 分获得亚运体操女子个人全能银牌，0.4 分之差不敌日本老将杉原爱子——这是 1974 年中国队首次参加亚运会以来，该项目金牌首次旁落。</div>
-        <div class="why"><b>看点：</b>一项横跨 52 年的连冠纪录戛然而止，比丢金本身更值得关注的，是全能项目人才深度的断层警报。</div>
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E4%BD%93%E6%93%8D%E7%94%B7%E5%A5%B3%E5%9B%A2%E5%8F%8C%E6%9D%80%E6%97%A5%E6%9C%AC%EF%BC%9A%E7%94%B7%E5%9B%A2+13+%E5%86%A0%E3%80%81%E5%A5%B3%E5%9B%A2+14+%E8%BF%9E%E5%86%A0" target="_blank" rel="noopener">体操男女团双杀日本：男团 13 冠、女团 14 连冠</a></div>
+        <div class="d">男团决赛，张博恒、邹敬园率队以 255.095 分力压东道主日本队 1.269 分夺冠，实现亚运三连冠、队史第 13 个男团冠军，张博恒带伤比满六项；女团以 166.462 分险胜日本 1.1 分，自 1974 年以来从未让该项目金牌旁落，达成 14 连冠，资格赛屡屡失误的平衡木三人全部顺利完成。</div>
+        <div class="why"><b>看点：</b>亚运体操含金量最高的两天：男团逆转复仇、女团续写 52 年不败，中日对决的悬念与国歌两次奏响同时到位。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E9%83%AD%E8%8E%89%E5%90%8C%E7%A7%92%E5%86%B2%E7%BA%BF%E6%83%8A%E9%99%A9%E5%A4%BA%E9%87%91%EF%BC%8C%E4%B8%AD%E5%9B%BD%E5%85%AC%E8%B7%AF%E8%87%AA%E8%A1%8C%E8%BD%A6+32+%E5%B9%B4%E5%86%8D%E7%99%BB%E9%A1%B6" target="_blank" rel="noopener">郭莉同秒冲线惊险夺金，中国公路自行车 32 年再登顶</a></div>
-        <div class="d">亚运女子公路个人赛，郭莉与阿富汗选手哈希米成绩同为 2 小时 50 分 05 秒，凭借前轮率先过线的微弱优势夺冠——这是中国自行车队首次在亚运会该项目摘金，也是 1994 年广岛亚运会后时隔 32 年再夺该项目冠军。</div>
-        <div class="why"><b>看点：</b>以“前轮论胜负”的方式改写队史，戏剧性与含金量兼备，堪称本届亚运最极限的夺冠画面。</div>
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E5%BC%A0%E5%B1%95%E7%A1%95+200+%E8%87%AA%E7%A0%B4%E4%BA%9A%E6%B4%B2%E7%BA%AA%E5%BD%95%E6%88%90%E2%80%9C%E5%9B%9B%E9%87%91%E7%8E%8B%E2%80%9D%EF%BC%8C13+%E5%B2%81%E4%BA%8E%E5%AD%90%E8%BF%AA%E8%B1%AA%E5%8F%96%E7%AC%AC+3+%E9%87%91" target="_blank" rel="noopener">张展硕 200 自破亚洲纪录成“四金王”，13 岁于子迪豪取第 3 金</a></div>
+        <div class="d">男子 200 米自由泳决赛，张展硕以 1 分 43 秒 49 打破亚洲纪录夺冠，收获个人本届第 4 金；13 岁的于子迪以 4 分 28 秒 56 破亚运会纪录夺得女子 400 米个人混合泳金牌，本届报名 3 个单项全部登顶，教育部公开回应“非常了不起”。</div>
+        <div class="why"><b>看点：</b>一位 19 岁在最后 5 米逆转，一位 13 岁三发三中——“张展硕恐怖如斯”与“小孩姐于子迪”正成为本届亚运游泳的双顶流。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=16+%E5%B2%81%E6%B3%B0%E5%9B%BD%E5%B0%8F%E5%B0%86%E7%88%86%E5%86%B7%E6%9E%97%E8%AF%97%E6%A0%8B%EF%BC%8C%E7%8E%8B%E6%A5%9A%E9%92%A6+3-0+%E6%95%91%E4%B8%BB%E9%80%81%E5%9B%BD%E4%B9%92%E8%BF%9B%E5%9B%9B%E5%BC%BA" target="_blank" rel="noopener">16 岁泰国小将爆冷林诗栋，王楚钦 3-0 救主送国乒进四强</a></div>
-        <div class="d">亚运乒乓球男团 1/4 决赛，世界排名仅 275 位的泰国 16 岁小将普里查扬 3-2 爆冷击败林诗栋；王楚钦随后 3-0 横扫普里查扬稳住局面，中国队总比分 3-1 晋级四强，女团同样 3-0 轻取对手过关。</div>
-        <div class="why"><b>看点：</b>冷门与救主同场上演，“亚运无弱旅”再次应验，也给国乒团体赛的排兵布阵敲了记警钟。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E7%9F%B3%E5%8D%87%E5%90%89%E5%A4%BA%E7%94%B0%E5%BE%84%E9%A6%96%E9%87%91%EF%BC%9A%E4%B8%AD%E5%9B%BD%E7%94%B0%E5%BE%84%E4%BA%9A%E8%BF%90%E5%8E%86%E5%8F%B2%E7%AC%AC+200+%E9%87%91" target="_blank" rel="noopener">石升吉夺田径首金：中国田径亚运历史第 200 金</a></div>
+        <div class="d">19 岁的石升吉以 1 小时 23 分 32 秒力压世界纪录保持者、日本名将山西利和，夺得男子半程马拉松竞走金牌——这是本届亚运田径首金，也是中国田径队在亚运会历史上的第 200 枚金牌；杨柳静随后包揽女子项目金牌。</div>
+        <div class="why"><b>看点：</b>在日本的传统优势项目上正面击败世界纪录保持者，“第 200 金”的里程碑数字让这条新闻天然刷屏。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%9B%BD%E7%BE%BD%E7%94%B7%E5%9B%A2+1-2+%E7%BB%9D%E5%A2%83%E5%A4%A7%E9%80%86%E8%BD%AC%EF%BC%8C3-2+%E9%99%A9%E8%83%9C%E9%9F%A9%E5%9B%BD%E8%BF%9B%E5%9B%9B%E5%BC%BA" target="_blank" rel="noopener">国羽男团 1-2 绝境大逆转，3-2 险胜韩国进四强</a></div>
-        <div class="d">亚运羽毛球男团 1/4 决赛，中国队在 1 比 2 落后的绝境下连扳两盘，3-2 逆转韩国晋级半决赛；女团 3-0 完胜泰国同样过关，两队今日向决赛发起冲击。</div>
-        <div class="why"><b>看点：</b>汤姆斯杯级别的强度提前在 1/4 决赛上演，这场五盘大战的消耗，将直接考验国羽男队的体能与排阵续航。</div>
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%9B%BD%E4%B9%92%E5%9B%BD%E7%BE%BD%E4%BB%8A%E6%97%A5%E5%86%B3%E6%88%98%E6%97%A5%E6%9C%AC%EF%BC%8C%E7%94%B7%E8%B6%B3%E5%B0%8F%E7%BB%84%E7%AC%AC%E4%B8%80%E6%8C%BA%E8%BF%9B+8+%E5%BC%BA" target="_blank" rel="noopener">国乒国羽今日决战日本，男足小组第一挺进 8 强</a></div>
+        <div class="d">24 日乒乓球男团、女团决赛与羽毛球男团、女团决赛陆续打响，国乒两队对手均为日本队，国羽男团对阵印度尼西亚、女团对阵日本；此前男足 0-0 战平阿联酋、以小组头名晋级 8 强，华天完成马术三项赛个人卫冕。今日全天将产生 55 金，朝鲜举重选手李盛金刷新女子 49 公斤级三项世界纪录。</div>
+        <div class="why"><b>看点：</b>四大团体项目同日冲金，中国代表团金牌数有望再上台阶；“打平即出线”魔咒首次平稳破解的男足，能走多远同样牵动人心。</div>
       </div>
     </section>
 
@@ -427,33 +419,33 @@
       <div class="sec-head"><span class="sec-num">05</span><h3>网络热点</h3><span class="en">Trending</span></div>
 
       <div class="item">
-        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E5%BC%A0%E5%AE%B6%E9%BD%90%E8%87%AA%E6%9B%9D%E9%93%B6%E8%A1%8C%E5%8D%A1%E9%83%BD%E5%9C%A8%E7%88%B6%E6%AF%8D%E6%89%8B%E9%87%8C%EF%BC%8C%E2%80%9C%E5%AD%98%E6%AC%BE%E8%A2%AB%E7%88%B8%E5%A6%88%E8%8A%B1%E5%AE%8C%E2%80%9D%E5%86%B2%E4%B8%8A%E7%83%AD%E6%90%9C" target="_blank" rel="noopener">张家齐自曝银行卡都在父母手里，“存款被爸妈花完”冲上热搜</a></div>
-        <div class="d">跳水奥运冠军张家齐在综艺中透露，三张银行卡都在父母手里，退役后想取回部分奖金学习理财却被母亲以“你不懂”拒绝；律师指出，未成年时期所获奖金依法属其个人财产，父母只是代为保管，成年后她有权要求返还。</div>
-        <div class="why"><b>看点：</b>从“天才少女”到“钱在谁手里”，运动员财产权益这个长期被绕开的话题，第一次被如此直白地摆上台面。</div>
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E6%9C%88%E9%A5%BC%E5%91%8A%E5%88%AB%E2%80%9C%E7%A4%BC%E8%B5%A0%E6%97%B6%E4%BB%A3%E2%80%9D%EF%BC%9A29.9+%E5%85%83%E7%AE%80%E8%A3%85%E5%8D%96%E7%88%86+200+%E4%B8%87%E4%BB%B6" target="_blank" rel="noopener">月饼告别“礼赠时代”：29.9 元简装卖爆 200 万件</a></div>
+        <div class="d">“月饼为什么卖不动”继续霸榜：200 元以上高价礼盒普遍打 7-9 折仍少人问津，而 29.9 元简装礼盒已售出约 200 万件；数据显示“自己日常食用”占比达 50.4%，首次超过“送礼”的 42.5%，低糖月饼搜索量同比飙升 320%。行业整体规模约 290 亿元、同比微增 2.7%——卖不动的只是虚高的面子。</div>
+        <div class="why"><b>看点：</b>从“销售额跌 45%”到“结构重塑”，月饼市场用数据完成了从“礼赠面子”到“食品里子”的转身，是观察节日消费理性化的最佳样本。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E2%80%9C%E5%85%89%E9%9D%A0%E5%B9%B2%E9%A5%AD%E5%B0%B1%E2%80%9D%E7%88%86%E7%81%AB%EF%BC%9A%E7%BD%91%E5%8F%8B%E6%8A%A2%E7%9D%80%E4%B8%BA%E7%9B%9B%E6%9D%8E%E8%B1%AA%E2%80%9C%E6%8E%A5%E5%90%8E%E5%8D%8A%E5%8F%A5%E2%80%9D" target="_blank" rel="noopener">“光靠干饭就”爆火：网友抢着为盛李豪“接后半句”</a></div>
-        <div class="d">盛李豪亚运三金、两破世界纪录后，其微博 ID“光靠干饭就”再掀玩梗热潮，“光靠干饭就打破了世界纪录”冲上热搜第二。反差的是，他每天要穿 4.5 公斤射击服重复举枪约 400 次，已是中国男子步枪首位奥运、世锦赛、世界杯、亚运、全运会个人金牌“全满贯”得主。</div>
-        <div class="why"><b>看点：</b>“干饭”人设与硬核实力的反差是天然传播素材，每次破纪录都自动生成新梗，是亚运期间最可持续的话题机器。</div>
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E8%8B%B9%E6%9E%9C%E5%87%BA%E6%8B%9B%E2%80%9C%E6%91%87%E4%B8%80%E6%91%87%E2%80%9D%E5%B9%BF%E5%91%8A%EF%BC%9A%E7%B3%BB%E7%BB%9F%E7%BA%A7%E5%88%87%E6%96%AD%E8%BF%90%E5%8A%A8%E6%95%B0%E6%8D%AE%E6%9D%83%E9%99%90" target="_blank" rel="noopener">苹果出招“摇一摇”广告：系统级切断运动数据权限</a></div>
+        <div class="d">苹果在最新测试版中面向中国区新增“限制运动数据”功能，可将 App 列入名单、切断其读取加速度计与陀螺仪的权限——“摇一摇”跳转广告赖以触发的技术条件被从系统底层切断。媒体实测安卓、鸿蒙早已具备类似能力，还可设定“仅开屏时禁止”等情境。</div>
+        <div class="why"><b>看点：</b>“10 次打开 8 次跳转”的全民怨念迎来系统级解法，开发者“摇一摇获客”模式面临洗牌，关闭教程正在各平台疯传。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E6%AD%A6%E6%B1%89+13+%E5%B2%81%E5%A5%B3%E7%94%9F%E5%86%9B%E5%8D%9A%E2%80%9C%E5%A4%96%E4%BA%A4%E5%AE%98%E5%BC%8F%E5%8F%91%E8%A8%80%E2%80%9D%E7%88%86%E7%81%AB" target="_blank" rel="noopener">武汉 13 岁女生军博“外交官式发言”爆火</a></div>
-        <div class="d">武汉 13 岁女生周梓妍在中国人民革命军事博物馆内模拟外交官发言的视频全网走红，沉稳从容的表达被网友称赞“有外交官气场”；她表示心中念着边关战士，未来想成为撒贝宁那样的主持人。</div>
-        <div class="why"><b>看点：</b>“别人家的孩子”叙事永远有市场，视频背后的国防教育与表达力培养，正是家长圈最愿意转发的那一类内容。</div>
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E2%80%9C%E5%8D%81%E4%BA%94%E7%9A%84%E6%9C%88%E4%BA%AE%E5%8D%81%E4%B8%83%E5%9C%86%E2%80%9D%EF%BC%9A%E4%BB%8A%E5%B9%B4%E4%B8%AD%E7%A7%8B%E6%9C%80%E5%9C%86%E6%9C%88%E8%A6%81%E5%88%B0+9+%E6%9C%88+27+%E6%97%A5" target="_blank" rel="noopener">“十五的月亮十七圆”：今年中秋最圆月要到 9 月 27 日</a></div>
+        <div class="d">天文科普专家介绍，今年中秋（9 月 25 日）当晚月亮并非最圆，最圆时刻将出现在农历八月十七（9 月 27 日）；中秋假日期间华西至黄淮多降雨，东北和华北北部有降雨和弱冷空气，赏月窗口需提前看好天气地图。</div>
+        <div class="why"><b>看点：</b>年年刷屏的天文冷知识今年撞上“不调休三日假”，最圆月落在假期最后一天，赏月安排与实用谈资一举两得。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=45+%E5%8E%98%E7%B1%B3%E8%B6%85%E9%95%BF%E8%82%89%E5%A4%B9%E9%A6%8D%E5%9C%A8%E6%AD%A6%E6%B1%89%E8%B5%B0%E7%BA%A2%EF%BC%8C20+%E5%85%83%E5%8F%AF%E4%BE%9B+3+%E4%BA%BA%E5%88%86%E9%A3%9F" target="_blank" rel="noopener">45 厘米超长肉夹馍在武汉走红，20 元可供 3 人分食</a></div>
-        <div class="d">继 60 厘米超长蛋挞爆火后，武汉又一款 45 厘米超长肉夹馍走红社交平台，售价 20 元、可供 3 人以上食用。业内人士分析，年轻人消费更看重体验感和情绪价值，“新奇+可分享”已成为网红食品的出圈公式。</div>
-        <div class="why"><b>看点：</b>从超长蛋挞到超长肉夹馍，“猎奇式联名”正在批量复制，但热闹之后能留下多少复购，才是真正的考题。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E9%A9%AC%E6%96%AF%E5%85%8B%E5%A4%AE%E8%A7%86%E4%B8%93%E8%AE%BF%EF%BC%9A%E2%80%9C%E4%B8%AD%E5%9B%BD+AI+%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%8D%95%E4%BD%8D%E7%AE%97%E5%8A%9B%E4%BA%A7%E5%87%BA%E5%87%A0%E4%B9%8E%E6%98%AF%E5%85%A8%E7%90%83%E9%A1%B6%E5%B0%96%E2%80%9D" target="_blank" rel="noopener">马斯克央视专访：“中国 AI 大模型单位算力产出几乎是全球顶尖”</a></div>
+        <div class="d">马斯克在央视专访中表示，中国 AI 大模型的单位算力产出性能几乎达到全球顶尖水平，预计两到三年内中国就能依靠光刻与芯片制造补齐算力缺口；他预测 10 年内人形机器人至少有 10 亿台，并再度“安利中国游”，称上海工厂的成功靠的是中国员工。</div>
+        <div class="why"><b>看点：</b>中美峰会前夕的关键表态自带话题度，“连体双胞胎”式的中美贸易比喻与机器人预测，既是产业信号也是流量密码。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%8C%BB%E9%99%A2%E9%80%9A%E6%8A%A5%E2%80%9C%E9%81%97%E4%BD%93%E6%BB%9E%E7%95%99+ICU+10+%E5%B0%8F%E6%97%B6%E2%80%9D%EF%BC%8C%E6%AD%A4%E5%89%8D%E5%AE%89%E4%BF%9D%E4%B8%8E%E5%AE%B6%E5%B1%9E%E5%86%B2%E7%AA%81%E5%BC%95%E5%85%B3%E6%B3%A8" target="_blank" rel="noopener">医院通报“遗体滞留 ICU 10 小时”，此前安保与家属冲突引关注</a></div>
-        <div class="d">针对网友反映的“患者死亡后遗体被滞留 ICU 长达 10 小时”一事，武汉江夏区第一人民医院发布通报；此前现场视频显示安保人员与家属发生肢体冲突，场面混乱，引发广泛讨论。</div>
-        <div class="why"><b>看点：</b>临终处置流程与医患沟通的边界问题再度进入公共视野，通报能否回答“为什么滞留 10 小时”，将决定事件后续走向。</div>
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%B0%8F%E7%B1%B3+18+Pro+%E5%8F%91%E5%B8%83%EF%BC%9A5999+%E5%85%83%E8%B5%B7%E8%AF%95%E6%B0%B4%E5%9B%BD%E4%BA%A7%E7%9B%B4%E6%9D%BF%E6%97%97%E8%88%B0%E4%BB%B7%E6%A0%BC%E5%A4%A9%E8%8A%B1%E6%9D%BF" target="_blank" rel="noopener">小米 18 Pro 发布：5999 元起试水国产直板旗舰价格天花板</a></div>
+        <div class="d">小米秋季发布会一口气带来 9 款新品：小米 18 Pro/Pro Max 起售价 5999/6999 元，透明特别版顶配 10999 元，总裁卢伟冰称这是“小米用 AI 全面改造智能手机的开始”。此前 OPPO Find X10（4999 元起）、vivo X500（5499 元起）接连发布。</div>
+        <div class="why"><b>看点：</b>国产旗舰集体冲上 5000-7000 元价位带与 iPhone 18 正面对线，“AI 叙事值不值这个价”的争论已冲上多平台热搜。</div>
       </div>
     </section>
 
@@ -461,33 +453,33 @@
       <div class="sec-head"><span class="sec-num">06</span><h3>娱乐八卦</h3><span class="en">Entertainment</span></div>
 
       <div class="item">
-        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E8%BF%AA%E4%B8%BD%E7%83%AD%E5%B7%B4%E8%A7%81%E9%9D%A2%E4%BC%9A%E2%80%9C%E6%B5%AA%E6%BC%AB%E5%88%B0%E7%8A%AF%E8%A7%84%E2%80%9D%EF%BC%8C%E7%B2%89%E4%B8%9D%EF%BC%9A%E4%BD%A0%E8%AE%A9%E6%88%91%E4%BB%A5%E5%90%8E%E6%80%8E%E4%B9%88%E5%AB%81%E4%BA%BA" target="_blank" rel="noopener">迪丽热巴见面会“浪漫到犯规”，粉丝：你让我以后怎么嫁人</a></div>
-        <div class="d">迪丽热巴个人粉丝见面会被布置成约会现场：玫红鲜花、主题蛋糕、超大伴手礼一应俱全，她身着繁花礼裙为粉丝屈膝行公主礼、亲手戴戒指、飞吻互动，话题随即冲上热搜——这是粉丝玩梗式夸赞，把浪漫期待值直接拉满。</div>
-        <div class="why"><b>看点：</b>免费见面会做成“顶配约会”，艺人与粉丝的双向奔赴正在成为新的营业范式，也顺带定义了粉丝经济的情绪价值天花板。</div>
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%AE%E8%A7%86%E4%B8%AD%E7%A7%8B%E6%99%9A%E4%BC%9A%E5%85%A8%E9%98%B5%E5%AE%B9%E5%AE%98%E5%AE%A3%EF%BC%9A%E8%8E%8E%E6%8B%89%C2%B7%E5%B8%83%E8%8E%B1%E6%9B%BC%E5%8A%A0%E7%9B%9F%EF%BC%8C%E6%B0%B4%E4%B8%8A%E2%80%9C%E5%AE%A3%E7%BA%B8%E2%80%9D%E8%88%9E%E5%8F%B0%E4%BA%AE%E7%9B%B8%E6%B7%AE%E5%8D%97" target="_blank" rel="noopener">央视中秋晚会全阵容官宣：莎拉·布莱曼加盟，水上“宣纸”舞台亮相淮南</a></div>
+        <div class="d">央视秋晚 25 日 20:00 在安徽淮南人民公园湖区播出，主舞台以非遗宣纸为灵感打造“一卷宣纸绘淮月”水上实景；周深连续第七年登台、李宇春第六次加盟，于和伟、孙楠、毛不易、陈楚生、陈丽君与“月光女神”莎拉·布莱曼等数十位嘉宾确认，鲁健、孟盛楠、任鲁豫、侯佩岑、谢楠联袂主持。</div>
+        <div class="why"><b>看点：</b>《淮南子》故里办嫦娥主题秋晚，国际歌唱家与老中青三代同台的“神仙阵容”已把期待值拉满，节目单悬念留到开播前最后一刻。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%AD%E7%A7%8B%E6%99%9A%E4%BC%9A%E2%80%9C%E5%A4%A7%E6%88%98%E2%80%9D%E4%BB%8A%E6%99%9A%E6%89%93%E5%93%8D%EF%BC%9A%E5%A4%AE%E8%A7%86%E5%91%A8%E6%B7%B1%E6%9D%8E%E5%AE%87%E6%98%A5%E5%9D%90%E9%95%87%EF%BC%8C%E6%B2%B3%E5%8D%97%E2%80%9C%E5%A5%87%E5%A6%99%E6%B8%B8%E2%80%9D%E5%85%88%E5%A3%B0%E5%A4%BA%E4%BA%BA" target="_blank" rel="noopener">中秋晚会“大战”今晚打响：央视周深李宇春坐镇，河南“奇妙游”先声夺人</a></div>
-        <div class="d">六台中秋晚会陆续官宣：央视秋晚 25 日 20 点播出，周深、李宇春、毛不易、白宇等加盟；河南“中秋奇妙游”今晚 19:30 网络端先播，延续网剧式叙事；湖南卫视魏大勋、张远助阵，天津“海河升明月”海河两岸实景录制。</div>
-        <div class="why"><b>看点：</b>中秋假期第二晚就是晚会“神仙打架”，各台的差异化打法与嘉宾阵容的流量对赌，将决定假期社交平台的话题归属。</div>
+        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E6%B2%B3%E5%8D%97%E5%8D%AB%E8%A7%86%E2%80%9C%E4%B8%AD%E7%A7%8B%E5%A5%87%E5%A6%99%E6%B8%B8%E2%80%9D%E4%BB%8A%E6%99%9A%E5%85%88%E6%92%AD%EF%BC%9A%E6%9D%8E%E4%B8%80%E6%A1%90%E3%80%81%E5%88%98%E5%AE%87%E5%8A%A0%E7%9B%9F" target="_blank" rel="noopener">河南卫视“中秋奇妙游”今晚先播：李一桐、刘宇加盟</a></div>
+        <div class="d">河南卫视“中秋奇妙游”9 月 24 日 20:30 电视端播出（网络端 19:30 先行），马建超、王佑硕、兰西雅、刘宇、吴素真、李一桐、严屹宽、林依轮、骆文博等参演；北京卫视《居庸山月》文脉中秋晚会 25 日 20:20 跟上，天津秋晚 25 至 26 日分端播出。</div>
+        <div class="why"><b>看点：</b>“奇妙游”系列的非遗叙事一直是晚会界的口碑担当，多台晚会错峰排播，中秋夜观众第一次有了完整的“遥控器选择权”。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E6%9D%8E%E7%8E%B0%E3%80%81%E6%9D%8E%E4%B8%80%E6%A1%90%E3%80%8A%E6%88%91%E4%B8%8D%E6%98%AF%E5%A4%A7%E5%B8%88%E3%80%8B%E4%BB%8A%E6%99%9A%E5%BC%80%E6%92%AD%EF%BC%9A%E6%B0%91%E5%9B%BD%E6%82%AC%E7%96%91%E2%80%9C%E5%B1%80%E4%B8%AD%E5%B1%80%E2%80%9D" target="_blank" rel="noopener">李现、李一桐《我不是大师》今晚开播：民国悬疑“局中局”</a></div>
-        <div class="d">民国悬疑剧《我不是大师》9 月 24 日上线，李现、李一桐主演，以单元剧形式串联民俗猎奇、连环骗术、荒诞喜剧与高智商博弈，每集结尾埋设引子，整体呈“局中局、骗中骗”的烧脑结构。</div>
-        <div class="why"><b>看点：</b>李现首度挑战民国悬疑，“骗局+喜剧”的混搭能否打破悬疑剧的严肃定式，今晚见分晓。</div>
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E6%9C%B1%E5%86%9B%E8%91%A3%E5%8D%BF%E4%B8%AD%E7%A7%8B%E8%AF%97%E4%BC%9A%E5%90%8C%E5%8F%B0%EF%BC%8C%E6%80%80%E6%97%A7%E4%B8%8E%E4%BA%89%E8%AE%AE%E9%BD%90%E9%A3%9E" target="_blank" rel="noopener">朱军董卿中秋诗会同台，怀旧与争议齐飞</a></div>
+        <div class="d">9 月 24 日晚，国家图书馆艺术中心举办《月华万里·诗韵常青》中秋诗会，62 岁的朱军与董卿以朗诵嘉宾身份同台，陈铎、张凯丽等参演；活动为线下惠民演出、不设直播。消息传出后，一边是“当年晚会味道回来了”的怀旧刷屏，另一边是对两人过往争议的质疑声不断。</div>
+        <div class="why"><b>看点：</b>一场小型诗会能冲上热搜，靠的全是两位央视名嘴身上的集体记忆——复出话题的舆论分化，本身就是一场大型民意测试。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E7%8E%8B%E4%B8%80%E5%8D%9A%E5%AE%98%E5%AE%A3%E6%88%90%E4%B8%BA%E4%BB%A5%E7%BA%AF%E5%85%A8%E7%90%83%E5%93%81%E7%89%8C%E4%BB%A3%E8%A8%80%E4%BA%BA" target="_blank" rel="noopener">王一博官宣成为以纯全球品牌代言人</a></div>
-        <div class="d">9 月 22 日，国民服饰品牌以纯官宣王一博出任全球品牌代言人。从顶奢到国民品牌，王一博的代言版图进一步下沉扩张，商业号召力再次得到验证。</div>
-        <div class="why"><b>看点：</b>“顶流×国民品牌”是双刃剑：既能收割大众市场，也可能稀释高端调性，粉丝购买力转化率将成为行业观察样本。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E9%9F%A6%E6%81%A9%E6%96%AF%E5%9D%A6%E7%BA%BD%E7%BA%A6%E6%80%A7%E4%BE%B5%E9%87%8D%E5%AE%A1%E8%8E%B7%E5%88%91+15+%E5%B9%B4" target="_blank" rel="noopener">韦恩斯坦纽约性侵重审获刑 15 年</a></div>
+        <div class="d">当地时间 23 日，好莱坞制片人哈维·韦恩斯坦在纽约性侵案重审中被判处 15 年监禁。此前陪审团对其一项罪名成立、另一项未达成一致；73 岁的他仍在加州另案服刑，自 2020 年首次定罪以来刑期不断累加。</div>
+        <div class="why"><b>看点：</b>#MeToo 运动的标志性案件再度宣判，“电影之王”的彻底落幕与好莱坞权力结构的清算仍在继续。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E2%80%9C%E6%9C%A8%E7%94%9F%E6%B7%91%E6%9F%94%E2%80%9D%E4%B8%AD%E7%A7%8B%E5%A4%9C%E9%87%8D%E9%80%A2%EF%BC%9A%E7%94%B5%E5%BD%B1%E6%84%8F%E9%9A%BE%E5%B9%B3%E5%B0%86%E5%9C%A8%E6%B9%96%E5%8D%97%E5%8D%AB%E8%A7%86%E7%A7%8B%E6%99%9A%E6%94%B9%E5%86%99" target="_blank" rel="noopener">“木生淑柔”中秋夜重逢：电影意难平将在湖南卫视秋晚改写</a></div>
-        <div class="d">催泪电影《给阿嬷的情书》主演王彦桐、王晓慧将在 25 日湖南卫视中秋之夜再度合体，携手张远与汕头话剧团呈现情景歌舞《月下煮茶》，以一封侨批为线索，让戏中未能重逢的“木生淑柔”在月下相拥。</div>
-        <div class="why"><b>看点：</b>“把电影意难平搬上秋晚补完”是罕见的情感营销操作，团圆夜+意难平改写，泪点与话题度都已拉满。</div>
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E3%80%8A%E5%85%B0%E9%A6%99%E5%A6%82%E6%95%85%E3%80%8B%E7%83%AD%E5%BA%A6%E7%8B%82%E9%A3%99%EF%BC%8C%E2%80%9C%E5%A4%A7%E5%A4%AA%E5%A4%AA%E6%8C%91%E5%84%BF%E5%AA%B3%E2%80%9D%E6%88%90%E5%85%A8%E7%BD%91%E5%90%8D%E5%9C%BA%E9%9D%A2" target="_blank" rel="noopener">《兰香如故》热度狂飙，“大太太挑儿媳”成全网名场面</a></div>
+        <div class="d">古装剧《兰香如故》播出期间热度持续登顶多平台剧集榜，剧中大太太“挑儿媳眼光”等桥段被逐帧解读，相关词条在中国台湾地区同样霸榜；同期对打剧《一瓯春》因表演与编剧问题被观众拿来对比，“一瓯春被兰香如故吊打”话题再添一把火。</div>
+        <div class="why"><b>看点：</b>一部剧带火一门“儿媳学”，评论区大型解读现场让正剧与竞品一起上桌，古偶口碑分化从未如此直观。</div>
       </div>
     </section>
 
@@ -498,8 +490,8 @@
 
 <script>
 (function () {
-  var ARCHIVE_DATES = [/*__ARCHIVE_DATES__*//*__END__*/];
-  var PAGE_DATE = "2026-09-23";
+  var ARCHIVE_DATES = [/*__ARCHIVE_DATES__*/"260923"/*__END__*/];
+  var PAGE_DATE = "2026-09-24";
   var HIST_BASE = /\/history\//.test(location.pathname) ? "./" : "history/";
 
   var btn = document.getElementById("calBtn");
