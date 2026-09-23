@@ -9,22 +9,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #f7f3ec;
+    /* 秋分 · 节气版：纸色转暖，点缀色转稻金 */
+    --paper: #f8f4e6;
     --ink: #1c1b17;
     --ink-soft: #4c4a42;
     --ink-faint: #8a867a;
-    --line: #d9d2c3;
+    --line: #ded4bd;
     --card: #fffdf8;
+    --accent: #a8801f; --accent-soft: #c9a447;
     --c-intl: #1d4ed8; --c-intl-deep: #1e3fa8;
     --c-dom: #cf2f1e; --c-dom-deep: #a02315;
     --c-fin: #b45309; --c-fin-deep: #8a3f06;
+    --c-spo: #15803d; --c-spo-deep: #105c2c;
     --c-hot: #6d28d9; --c-hot-deep: #551dab;
     --c-ent: #db2777; --c-ent-deep: #ab1d5d;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: “Noto Sans SC”, sans-serif;
+    font-family: "Noto Sans SC", sans-serif;
     background: var(--paper);
     color: var(--ink);
     line-height: 1.7;
@@ -32,13 +35,13 @@
     position: relative;
   }
   body::before {
-    content: “”; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .35;
-    background-image: url(“data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E”);
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .35;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
   }
   .wrap { max-width: 1120px; margin: 0 auto; position: relative; z-index: 1; }
 
   /* ===== 报头 ===== */
-  .masthead { padding: 34px 0 0; border-bottom: 3px double var(--ink); }
+  .masthead { padding: 34px 0 0; border-bottom: 3px double var(--accent); }
   .mast-meta {
     display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
     border-bottom: 1px solid var(--line); padding-bottom: 10px;
@@ -51,18 +54,76 @@
     gap: 24px; padding: 26px 0 22px;
   }
   .mast-title {
-    font-family: “Noto Serif SC”, serif; font-weight: 900;
+    font-family: "Noto Serif SC", serif; font-weight: 900;
     font-size: clamp(44px, 7vw, 76px); line-height: 1.05; letter-spacing: .1em;
   }
   .mast-title em { font-style: normal; color: var(--c-dom); }
+  .mast-side { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
   .mast-date {
-    font-family: “Playfair Display”, serif; font-style: italic; font-weight: 600;
+    font-family: "Playfair Display", serif; font-style: italic; font-weight: 600;
     font-size: clamp(30px, 4.6vw, 52px); color: var(--ink); white-space: nowrap; line-height: 1;
   }
   .mast-date small {
-    display: block; font-family: “Noto Sans SC”, sans-serif; font-style: normal;
-    font-size: 12px; letter-spacing: .3em; color: var(--ink-faint); margin-top: 8px; text-align: right;
+    display: block; font-family: "Noto Sans SC", sans-serif; font-style: normal;
+    font-size: 12px; letter-spacing: .3em; color: var(--accent); margin-top: 8px; text-align: right;
   }
+
+  /* ===== 往期日历 ===== */
+  .cal-anchor { position: relative; }
+  .cal-link {
+    display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+    font-family: inherit; font-size: 13px; font-weight: 700; letter-spacing: .1em;
+    color: var(--ink-soft); background: var(--card);
+    border: 1.5px solid var(--line); border-radius: 999px; padding: 5px 15px 5px 12px;
+    transition: all .2s ease;
+  }
+  .cal-link:hover { border-color: var(--accent); color: var(--accent); }
+  .cal-link svg { width: 14px; height: 14px; display: block; }
+  .cal-pop {
+    position: absolute; top: calc(100% + 10px); right: 0; z-index: 60;
+    width: 274px; padding: 14px 14px 10px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 18px 44px -18px rgba(28, 27, 23, .45), 0 2px 8px rgba(28, 27, 23, .06);
+    animation: calIn .18s ease both;
+  }
+  .cal-pop[hidden] { display: none; }
+  @keyframes calIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .cal-title { font-size: 14px; font-weight: 700; letter-spacing: .08em; color: var(--ink); }
+  .cal-nav {
+    width: 26px; height: 26px; line-height: 1; cursor: pointer;
+    font-family: inherit; font-size: 17px; color: var(--ink-soft);
+    background: transparent; border: 1px solid var(--line); border-radius: 8px;
+    transition: all .18s ease;
+  }
+  .cal-nav:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .cal-week, .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .cal-week span {
+    text-align: center; font-size: 11px; letter-spacing: .06em;
+    color: var(--ink-faint); padding-bottom: 6px;
+  }
+  .cal-cell {
+    position: relative; height: 32px; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: var(--ink-faint); border-radius: 8px;
+    transition: background .18s ease, color .18s ease;
+  }
+  .cal-cell.is-empty { visibility: hidden; }
+  .cal-cell.has { color: var(--ink); font-weight: 700; cursor: pointer; }
+  .cal-cell.has::after {
+    content: ""; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
+  }
+  .cal-cell.has:hover, .cal-cell.has:focus-visible {
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+    color: var(--accent); outline: none;
+  }
+  .cal-cell.is-today { box-shadow: inset 0 0 0 1.5px var(--line); color: var(--ink-soft); }
+  .cal-foot {
+    margin-top: 9px; padding-top: 8px; border-top: 1px dashed var(--line);
+    font-size: 11.5px; color: var(--ink-faint); letter-spacing: .04em;
+  }
+
+  /* ===== 导航 ===== */
   .nav-chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 0 18px; }
   .nav-chips a {
     text-decoration: none; font-size: 13.5px; font-weight: 700; letter-spacing: .08em;
@@ -76,12 +137,12 @@
   /* ===== 精选 ===== */
   .spotlight {
     margin-top: 30px; border-radius: 18px; overflow: hidden;
-    background: linear-gradient(118deg, #0f766e 0%, #115e59 46%, #134e4a 100%);
+    background: linear-gradient(120deg, #0f766e 0%, #115e59 46%, #134e4a 100%);
     color: #f2fbfa; padding: 34px 38px 30px; position: relative;
     box-shadow: 0 18px 44px -18px rgba(15, 118, 110, .55);
   }
   .spotlight::after {
-    content: “”; position: absolute; right: -60px; top: -60px; width: 240px; height: 240px;
+    content: ""; position: absolute; right: -60px; top: -60px; width: 240px; height: 240px;
     border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.14), transparent 68%);
   }
   .spotlight .badge {
@@ -96,7 +157,7 @@
   }
   @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1);} 50% { opacity: .45; transform: scale(.78);} }
   .spotlight h2 {
-    font-family: “Noto Serif SC”, serif; font-weight: 900;
+    font-family: "Noto Serif SC", serif; font-weight: 900;
     font-size: clamp(24px, 3.4vw, 34px); line-height: 1.35; margin-bottom: 14px;
   }
   .spotlight h2 .hl { color: #99f6e4; border-bottom: 3px solid rgba(153, 246, 228, .5); padding-bottom: 2px; }
@@ -119,19 +180,19 @@
   }
   .card:nth-child(1) { animation-delay: .05s; } .card:nth-child(2) { animation-delay: .12s; }
   .card:nth-child(3) { animation-delay: .19s; } .card:nth-child(4) { animation-delay: .26s; }
-  .card:nth-child(5) { animation-delay: .33s; }
+  .card:nth-child(5) { animation-delay: .33s; } .card:nth-child(6) { animation-delay: .40s; }
   @keyframes rise { from { opacity: 0; transform: translateY(16px);} to { opacity: 1; transform: none;} }
   .card:hover { transform: translateY(-3px); transition: transform .25s ease; }
   .sec-head {
     display: flex; align-items: center; gap: 12px; margin-bottom: 6px;
     padding-bottom: 12px; border-bottom: 1px solid var(--line);
   }
-  .sec-num { font-family: “Playfair Display”, serif; font-style: italic; font-weight: 700; font-size: 26px; color: var(--ac); line-height: 1; }
-  .sec-head h3 { font-family: “Noto Serif SC”, serif; font-weight: 900; font-size: 21px; letter-spacing: .1em; color: var(--ink); }
+  .sec-num { font-family: "Playfair Display", serif; font-style: italic; font-weight: 700; font-size: 26px; color: var(--ac); line-height: 1; }
+  .sec-head h3 { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 21px; letter-spacing: .1em; color: var(--ink); }
   .sec-head .en { margin-left: auto; font-size: 11px; letter-spacing: .22em; color: var(--ink-faint); text-transform: uppercase; }
   .item { padding: 14px 0 12px; border-bottom: 1px dashed var(--line); }
   .item:last-child { border-bottom: none; }
-  .item .idx { font-family: “Playfair Display”, serif; font-style: italic; font-weight: 700; font-size: 15px; color: var(--ac); margin-right: 8px; }
+  .item .idx { font-family: "Playfair Display", serif; font-style: italic; font-weight: 700; font-size: 15px; color: var(--ac); margin-right: 8px; }
   .item .t { font-size: 15.5px; font-weight: 700; color: var(--ink); line-height: 1.5; }
   .item .t .tag {
     display: inline-block; font-size: 11px; font-weight: 700; color: #fff;
@@ -158,6 +219,12 @@
   .item .t a.lk:hover { color: var(--ac-deep); text-decoration-color: currentColor; }
   .spotlight h2 a.lk { text-decoration-color: rgba(242, 251, 250, .35); }
   .spotlight h2 a.lk:hover { text-decoration-color: rgba(242, 251, 250, .95); }
+
+  @media (max-width: 640px) {
+    .mast-title-row { flex-wrap: wrap; }
+    .mast-side { align-items: flex-start; }
+    .cal-pop { right: auto; left: 0; }
+  }
 </style>
 </head>
 <body>
@@ -170,13 +237,34 @@
     </div>
     <div class="mast-title-row">
       <h1 class="mast-title">提马<em>早报</em></h1>
-      <div class="mast-date">2026.09.23<small>DAILY BRIEFING</small></div>
+      <div class="mast-side">
+        <div class="mast-date">2026.09.23<small>DAILY BRIEFING</small></div>
+        <div class="cal-anchor">
+          <button class="cal-link" id="calBtn" type="button" aria-haspopup="dialog" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+              <path d="M3 10h18M8 3v4M16 3v4"></path>
+            </svg>往期日历
+          </button>
+          <div class="cal-pop" id="calPop" role="dialog" aria-label="往期日历" hidden>
+            <div class="cal-head">
+              <button class="cal-nav" id="calPrev" type="button" aria-label="上一个月">‹</button>
+              <span class="cal-title" id="calTitle"></span>
+              <button class="cal-nav" id="calNext" type="button" aria-label="下一个月">›</button>
+            </div>
+            <div class="cal-week"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div>
+            <div class="cal-grid" id="calGrid"></div>
+            <div class="cal-foot">带圆点的日期可查看当日存档</div>
+          </div>
+        </div>
+      </div>
     </div>
     <nav class="nav-chips">
       <a class="chip-pick" href="#pick">精选</a>
       <a href="#intl" style="border-color:#1d4ed8;color:#1e3fa8">国际时事</a>
       <a href="#dom" style="border-color:#cf2f1e;color:#a02315">国内要闻</a>
       <a href="#fin" style="border-color:#b45309;color:#8a3f06">金融要闻</a>
+      <a href="#spo" style="border-color:#15803d;color:#105c2c">体育竞技</a>
       <a href="#hot" style="border-color:#6d28d9;color:#551dab">网络热点</a>
       <a href="#ent" style="border-color:#db2777;color:#ab1d5d">娱乐八卦</a>
     </nav>
@@ -281,54 +369,88 @@
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E5%85%AC%E5%8B%9F%E5%9F%BA%E9%87%91%E5%87%80%E5%80%BC+39.63+%E4%B8%87%E4%BA%BF%E5%88%9B%E6%96%B0%E9%AB%98%EF%BC%8CAI+%E5%9F%BA%E9%87%91%E6%94%BE%E5%AE%BD%E7%94%B3%E8%B4%AD" target="_blank" rel="noopener">公募基金净值 39.63 万亿创新高，AI 基金放宽申购</a></div>
-        <div class="d">中基协数据显示，截至 8 月底我国公募基金资产净值合计 39.63 万亿元，较 7 月底增长超 5200 亿元；易方达两只信息产业基金将单账户大额申购上限由 1 万元大幅上调至 50 万元。</div>
-        <div class="why"><b>看点：</b>头部 AI 主题基金从“限购”转向“放量”，反映管理机构对科技主线的信心与增量资金入场的信号。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E5%85%A8%E7%90%83%E5%8D%8A%E5%AF%BC%E4%BD%93%E8%90%A5%E6%94%B6%E5%8D%95%E5%AD%A3%E7%A0%B4+4250+%E4%BA%BF%E7%BE%8E%E5%85%83%EF%BC%8C%E8%8B%B9%E6%9E%9C%E5%B8%82%E5%80%BC%E4%B8%80%E5%BA%A6%E7%A0%B4+5+%E4%B8%87%E4%BA%BF" target="_blank" rel="noopener">全球半导体营收单季破 4250 亿美元，苹果市值一度破 5 万亿</a></div>
+        <div class="d">Omdia 报告显示 2026 年二季度全球半导体营收突破 4250 亿美元，环比增长 31.4% 创历史纪录；隔夜纳指再创新高，苹果公司市值一度突破 5 万亿美元，纽铜六连涨收创史上次高。</div>
+        <div class="why"><b>看点：</b>海外算力与金属（铜）景气共振，为 A 股存储、铜缆、算力硬件板块提供跨市场联动支撑。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%85%A8%E7%90%83%E5%8D%8A%E5%AF%BC%E4%BD%93%E8%90%A5%E6%94%B6%E5%8D%95%E5%AD%A3%E7%A0%B4+4250+%E4%BA%BF%E7%BE%8E%E5%85%83%EF%BC%8C%E8%8B%B9%E6%9E%9C%E5%B8%82%E5%80%BC%E4%B8%80%E5%BA%A6%E7%A0%B4+5+%E4%B8%87%E4%BA%BF" target="_blank" rel="noopener">全球半导体营收单季破 4250 亿美元，苹果市值一度破 5 万亿</a></div>
-        <div class="d">Omdia 报告显示 2026 年二季度全球半导体营收突破 4250 亿美元，环比增长 31.4% 创历史纪录；隔夜纳指再创新高，苹果公司市值一度突破 5 万亿美元，纽铜六连涨收创史上次高。</div>
-        <div class="why"><b>看点：</b>海外算力与金属（铜）景气共振，为 A 股存储、铜缆、算力硬件板块提供跨市场联动支撑。</div>
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%9A%E5%AE%B6%E4%B8%AD%E5%B0%8F%E9%93%B6%E8%A1%8C%E9%80%86%E5%8A%BF%E4%B8%8A%E8%B0%83%E5%AD%98%E6%AC%BE%E5%88%A9%E7%8E%87" target="_blank" rel="noopener">多家中小银行逆势上调存款利率</a></div>
+        <div class="d">9 月以来，微众银行 3 年期定存利率上调 15 个基点至 1.75%，湖北监利农商银行、广东五华惠民村镇银行等中小银行也上调大额存单和长期定期存款利率，与当前普遍降息背景形成反差。</div>
+        <div class="why"><b>看点：</b>“利率倒挂”反映中小银行负债端揽储压力，储户可关注区域中小行的阶段性高息窗口，同时需留意其资产质量风险。</div>
+      </div>
+    </section>
+
+    <section class="card" id="spo" style="--ac:#15803d; --ac-deep:#105c2c;">
+      <div class="sec-head"><span class="sec-num">04</span><h3>体育竞技</h3><span class="en">Sports</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%AD%E5%9B%BD%E5%A5%B3%E6%8E%92+3-0+%E6%A8%AA%E6%89%AB%E6%97%A5%E6%9C%AC%EF%BC%8C%E5%8A%A0%E5%86%95%E4%BA%9A%E8%BF%90%E2%80%9C%E5%8D%81%E5%86%A0%E7%8E%8B%E2%80%9D" target="_blank" rel="noopener">中国女排 3-0 横扫日本，加冕亚运“十冠王”</a></div>
+        <div class="d">22 日爱知·名古屋亚运会女排决赛，中国队 3-0 击败东道主日本队，实现亚运三连冠、队史第十枚亚运金牌（半决赛曾五局逆转泰国）。中国代表团当日再夺 9 金，以 32 金 14 银 6 铜断层领跑金牌榜和奖牌榜，日本 11 金居第二、韩国 6 金第三。</div>
+        <div class="why"><b>看点：</b>金牌数比日韩两队之和还多出 10 枚，女排成为本届赛事最大的国民情绪出口；日本队颁奖礼全员黑脸的画面对比，正是社交平台二次传播的爆点。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E7%9B%9B%E6%9D%8E%E8%B1%AA%2F%E7%8E%8B%E5%AD%90%E8%8F%B2%E7%A0%B4%E4%B8%96%E7%95%8C%E7%BA%AA%E5%BD%95%E5%A4%BA%E5%86%A0%EF%BC%8C%E5%8D%95%E6%97%A5%E8%AF%9E%E7%94%9F%E4%BA%94%E4%BD%8D%E2%80%9C%E4%B8%89%E5%86%A0%E7%8E%8B%E2%80%9D" target="_blank" rel="noopener">盛李豪/王子菲破世界纪录夺冠，单日诞生五位“三冠王”</a></div>
+        <div class="d">10 米气步枪混合团体资格赛，盛李豪/王子菲以 638.9 环打破资格赛世界纪录；决赛再以 507.1 环刷新决赛世界纪录（原 506.7 环）夺冠。同日盛李豪、李冰洁、徐嘉余、潘展乐、张展硕五位选手各取三金；彭旭玮女子 200 米仰泳以 2 分 05 秒 77 破亚洲纪录，男子 4×100 米混合泳接力实现亚运四连冠。</div>
+        <div class="why"><b>看点：</b>亚运赛场出现超越多数世界大赛的竞争水准，射击与游泳的“集团优势”已是稳定标签，而非单点爆发。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=U23+%E7%94%B7%E8%B6%B3%E4%BB%8A%E6%97%A5%E8%BF%8E%E6%88%98%E9%98%BF%E8%81%94%E9%85%8B%EF%BC%8C%E8%B5%A2%E7%90%83%E5%8D%B3%E9%94%81%E5%AE%9A%E5%87%BA%E7%BA%BF" target="_blank" rel="noopener">U23 男足今日迎战阿联酋，赢球即锁定出线</a></div>
+        <div class="d">13:30 亚运男足小组赛中国 U23 对阵阿联酋 U23。中国队目前 1 胜 1 平积 4 分，因净胜球劣势列小组第二，此战获胜即可确定小组出线；同日下午 16:00 羽毛球男子团体半决赛，中国队对阵零封日本队的印度队。</div>
+        <div class="why"><b>看点：</b>三大球里最牵动舆论的一支队伍，出线与否直接决定节后体育话题的走向。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E7%94%B0%E5%BE%84%E3%80%81%E4%B8%BE%E9%87%8D%E4%BB%8A%E6%97%A5%E5%BC%80%E8%B5%9B%EF%BC%8C%E4%BD%93%E6%93%8D%E5%A5%B3%E5%9B%A2%E5%86%B2%E5%87%BB%E4%BA%9A%E8%BF%90+14+%E8%BF%9E%E5%86%A0" target="_blank" rel="noopener">田径、举重今日开赛，体操女团冲击亚运 14 连冠</a></div>
+        <div class="d">23 日亚运赛场共产生 33 枚金牌。上午 6:30 田径首个项目半程马拉松竞走决赛开跑，中国队有望冲击代表团亚运田径第 200 金；18:00 乒乓球男女团半决赛，男乒对阵中国台北、女乒对阵朝鲜；20:00 体操女子团体决赛，中国女团冲击亚运 14 连冠。</div>
+        <div class="why"><b>看点：</b>田径与举重开赛意味着金牌产出进入高峰日，体操女团的连冠纪录是当日最具确定性的“必看项”。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E8%8B%B1%E8%B6%85%EF%BC%9A%E6%9B%BC%E8%81%94+29+%E5%B0%84%E4%BB%85+1+%E7%90%83%EF%BC%8C5+%E8%BD%AE+5+%E5%88%86%E5%B9%B6%E5%88%97%E9%98%9F%E5%8F%B2%E6%9C%80%E5%B7%AE%E5%BC%80%E5%B1%80" target="_blank" rel="noopener">英超：曼联 29 射仅 1 球，5 轮 5 分并列队史最差开局</a></div>
+        <div class="d">英超第 5 轮，曼联客场 1-1 平富勒姆：全场 29 次射门、上半场就轰出 26 脚，13 比 3 的角球优势，却直到第 89 分钟才由库尼亚一脚折射远射绝平（预期进球值仅 0.02）。门将莱诺全场 6 次扑救，成为富勒姆守住平局的关键。曼联 5 轮积 5 分，与 2014-15 赛季并列队史英超同期最差开局。</div>
+        <div class="why"><b>看点：</b>“数据碾压却拿不到分”的老问题再次暴露，主帅卡里克的换人时点被反复讨论，曼联的赛季走向已成为英超最具流量的话题之一。</div>
       </div>
     </section>
 
     <section class="card" id="hot" style="--ac:#6d28d9; --ac-deep:#551dab;">
-      <div class="sec-head"><span class="sec-num">04</span><h3>网络热点</h3><span class="en">Trending</span></div>
+      <div class="sec-head"><span class="sec-num">05</span><h3>网络热点</h3><span class="en">Trending</span></div>
 
       <div class="item">
-        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%AD%E5%9B%BD%E5%A5%B3%E6%8E%92+3-0+%E6%A8%AA%E6%89%AB%E6%97%A5%E6%9C%AC%EF%BC%8C%E6%88%90%E5%B0%B1%E4%BA%9A%E8%BF%90%E2%80%9C%E5%8D%81%E5%86%A0%E7%8E%8B%E2%80%9D" target="_blank" rel="noopener">中国女排 3-0 横扫日本，成就亚运“十冠王”</a></div>
-        <div class="d">22 日亚运会女子排球决赛，中国队 3-0 击败东道主日本队夺冠，队史第十枚亚运金牌、实现三连冠；同日游泳赛场中国队再夺 4 金，男子 4×100 混合泳接力实现亚运四连冠，射击 10 米气步枪混合团体破世界纪录夺金。</div>
-        <div class="why"><b>看点：</b>与前一日中国男篮创历史最差成绩形成强反差，女排“十冠王”成为全网最大正能量话题。</div>
+        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E8%8B%B9%E6%9E%9C%E4%B8%8D%E5%BB%BA%E8%AE%AE%E7%BB%99+iPhone+%E8%B4%B4%E8%86%9C%EF%BC%8CiPhone+18+%E5%93%81%E6%8E%A7%E5%86%8D%E9%81%AD%E5%90%90%E6%A7%BD" target="_blank" rel="noopener">苹果不建议给 iPhone 贴膜，iPhone 18 品控再遭吐槽</a></div>
+        <div class="d">苹果硬件工程副总裁 Tom Marieb 在采访中明确不建议普通用户额外贴膜，称团队在屏幕耐刮耐磨上投入大量研发，“每次看到有人贴膜都会感到不自在”。该表态登上微博热搜第一；另一边，iPhone 18 系列发售后仍有用户反映死机、自动重启、外壳掉漆变形等问题。</div>
+        <div class="why"><b>看点：</b>“建议归建议，贴膜的手不会停”——官方表态与用户习惯的错位自带笑点，但品控争议若持续，将直接冲击首销期口碑。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E2%80%9C%E6%9C%88%E9%A5%BC%E5%8D%96%E4%B8%8D%E5%8A%A8%E2%80%9D%E5%86%B2%E4%B8%8A%E7%83%AD%E6%90%9C%EF%BC%9A%E9%94%80%E5%94%AE%E9%A2%9D%E5%90%8C%E6%AF%94%E4%B8%8B%E6%BB%91+45%25" target="_blank" rel="noopener">“月饼卖不动”冲上热搜：销售额同比下滑 45%</a></div>
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E2%80%9C%E6%8A%8A%E9%85%8D%E6%96%99%E8%A1%A8%E4%B8%AD%E7%9A%84%E7%99%BD%E7%A0%82%E7%B3%96%E8%BF%98%E7%BB%99%E6%88%91%E4%BB%AC%E2%80%9D%E5%86%B2%E4%B8%8A%E7%83%AD%E6%90%9C" target="_blank" rel="noopener">“把配料表中的白砂糖还给我们”冲上热搜</a></div>
+        <div class="d">不少消费者发现，大量饮料、调味品乃至糕点已悄悄把白砂糖换成成本更低的果葡糖浆，相关话题登上微博热搜。医生提醒果葡糖浆过量摄入可能增加代谢负担，消费者则呼吁配料表更透明、标注更醒目。</div>
+        <div class="why"><b>看点：</b>“配料表侦探”正在成为新的消费维权方式，健康诉求已经从“看热量”深入到“看糖的种类”，这也是食品品牌下一步配方与营销的必答题。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E2%80%9C%E6%9C%88%E9%A5%BC%E5%8D%96%E4%B8%8D%E5%8A%A8%E2%80%9D%E5%86%B2%E4%B8%8A%E7%83%AD%E6%90%9C%EF%BC%9A%E9%94%80%E5%94%AE%E9%A2%9D%E5%90%8C%E6%AF%94%E4%B8%8B%E6%BB%91+45%25" target="_blank" rel="noopener">“月饼卖不动”冲上热搜：销售额同比下滑 45%</a></div>
         <div class="d">数据显示 8 月 14 日至 9 月 13 日主要门店月饼销售额同比下滑 45.17%，95 后对月饼兴趣不高；记者实探武汉商超发现美心流心奶黄月饼从 320 元两连降至 268 元，市场整体遇冷。</div>
         <div class="why"><b>看点：</b>传统节令食品的礼盒经济正在失灵，年轻消费偏好变化将倒逼食品行业产品与营销转型。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E8%A5%BF%E8%B4%9D%E2%80%9C%E5%80%92%E9%97%AD%E2%80%9D%E4%BC%A0%E8%A8%80%E5%8F%91%E9%85%B5%EF%BC%8C%E9%92%9F%E8%96%9B%E9%AB%98%E5%88%9B%E5%A7%8B%E4%BA%BA%E7%9B%B4%E6%92%AD%E5%8A%9B%E6%8C%BA" target="_blank" rel="noopener">西贝“倒闭”传言发酵，钟薛高创始人直播力挺</a></div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E8%A5%BF%E8%B4%9D%E2%80%9C%E5%80%92%E9%97%AD%E2%80%9D%E4%BC%A0%E8%A8%80%E5%8F%91%E9%85%B5%EF%BC%8C%E9%92%9F%E8%96%9B%E9%AB%98%E5%88%9B%E5%A7%8B%E4%BA%BA%E7%9B%B4%E6%92%AD%E5%8A%9B%E6%8C%BA" target="_blank" rel="noopener">西贝“倒闭”传言发酵，钟薛高创始人直播力挺</a></div>
         <div class="d">西贝被传“将倒闭”引发热议，钟薛高创始人林盛直播力挺称“西贝要是倒了是中国餐饮行业的倒退”，钟薛高“复活”后同步开启降价；B 站等平台则出现“西贝困局罗永浩是否担责”的追责讨论。</div>
         <div class="why"><b>看点：</b>事件已从单一品牌危机演变为餐饮行业信任与“企业家抱团”之争，消费降级背景下的连锁经营困境具有普遍样本意义。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%9A%E5%AE%B6%E4%B8%AD%E5%B0%8F%E9%93%B6%E8%A1%8C%E9%80%86%E5%8A%BF%E4%B8%8A%E8%B0%83%E5%AD%98%E6%AC%BE%E5%88%A9%E7%8E%87" target="_blank" rel="noopener">多家中小银行逆势上调存款利率</a></div>
-        <div class="d">9 月以来，微众银行 3 年期定存利率上调 15 个基点至 1.75%，湖北监利农商银行、广东五华惠民村镇银行等中小银行也上调大额存单和长期定期存款利率，与当前普遍降息背景形成反差。</div>
-        <div class="why"><b>看点：</b>“利率倒挂”反映中小银行负债端揽储压力，储户可关注区域中小行的阶段性高息窗口，同时需留意其资产质量风险。</div>
-      </div>
-
-      <div class="item">
-        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%BE%AE%E4%BF%A1%E4%B8%8A%E7%BA%BF%E6%9C%8B%E5%8F%8B%E5%9C%88%E2%80%9C%E7%A7%81%E5%AF%86%E5%8F%91%E8%A1%A8%E2%80%9D%EF%BC%9BiPhone+18+%E9%81%AD%E9%A6%96%E6%89%B9%E7%94%A8%E6%88%B7%E5%90%90%E6%A7%BD" target="_blank" rel="noopener">微信上线朋友圈“私密发表”；iPhone 18 遭首批用户吐槽</a></div>
-        <div class="d">微信 8.0.78 版本新增“私密发表”功能，发表后自动转为“仅自己可见”；另一边，iPhone 18 系列发售后不少用户反映新机死机、自动重启、外壳掉漆变形等问题。</div>
-        <div class="why"><b>看点：</b>社交产品向“低压力分享”演进是重要产品趋势；iPhone 18 品控争议则可能影响其首销期口碑与销量。</div>
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%BE%AE%E4%BF%A1%E4%B8%8A%E7%BA%BF%E6%9C%8B%E5%8F%8B%E5%9C%88%E2%80%9C%E7%A7%81%E5%AF%86%E5%8F%91%E8%A1%A8%E2%80%9D" target="_blank" rel="noopener">微信上线朋友圈“私密发表”</a></div>
+        <div class="d">微信 8.0.78 版本新增“私密发表”功能，发表后自动转为“仅自己可见”，用户可以先记录、再决定是否公开。这是继“三天可见”“不给谁看”之后，微信对社交压力的又一次产品级回应。</div>
+        <div class="why"><b>看点：</b>社交产品正集体向“低压力分享”演进——把表达权和隐私权同时交还用户，是年轻用户留存的关键变量。</div>
       </div>
     </section>
 
     <section class="card" id="ent" style="--ac:#db2777; --ac-deep:#ab1d5d;">
-      <div class="sec-head"><span class="sec-num">05</span><h3>娱乐八卦</h3><span class="en">Entertainment</span></div>
+      <div class="sec-head"><span class="sec-num">06</span><h3>娱乐八卦</h3><span class="en">Entertainment</span></div>
 
       <div class="item">
         <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E7%8E%8B%E7%8E%89%E9%9B%AF%E4%BA%B2%E5%8F%A3%E8%AF%81%E5%AE%9E%E4%B8%8E%E6%9D%A8%E7%8E%8F%E4%BA%94%E5%B9%B4%E6%81%8B%E6%83%85%EF%BC%8C%E5%90%A6%E8%AE%A4%E2%80%9C%E7%BB%93%E5%A9%9A%E5%8F%88%E7%A6%BB%E5%A9%9A%E2%80%9D" target="_blank" rel="noopener">王玉雯亲口证实与杨玏五年恋情，否认“结婚又离婚”</a></div>
@@ -349,9 +471,15 @@
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E5%A7%9A%E6%99%AF%E5%85%83%E6%97%B6%E9%9A%94%E4%B8%83%E5%B9%B4%E4%B8%BA%E5%88%98%E8%80%80%E6%96%87%E5%BA%86%E7%94%9F%EF%BC%8C%E2%80%9C%E5%86%99%E9%94%99%E5%B9%B4%E9%BE%84%E2%80%9D%E4%B8%8A%E7%83%AD%E6%90%9C" target="_blank" rel="noopener">姚景元时隔七年为刘耀文庆生，“写错年龄”上热搜</a></div>
-        <div class="d">23 日凌晨，姚景元在刘耀文 21 岁生日微博下留言“20 了，生日快乐”，四分钟后更正并自嘲“我脑子”，登上热搜；上一次他公开为刘耀文送祝福还是在 2019 年。</div>
-        <div class="why"><b>看点：</b>台风少年团旧队友的“回忆杀”互动持续带动话题热度，转型演员的姚景元借待播作品《宝珠》《耀眼》稳步回归公众视野。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E2%80%9C923+%E7%94%9F%E6%97%A5%E5%A4%A9%E5%9B%A2%E2%80%9D%EF%BC%9A%E7%99%BD%E9%B9%BF%E3%80%81%E5%AE%8B%E9%9B%A8%E7%90%A6%E3%80%81%E8%B5%96%E5%86%A0%E9%9C%96%E3%80%81%E5%88%98%E8%80%80%E6%96%87%E5%90%8C%E6%97%A5%E5%BA%86%E7%94%9F" target="_blank" rel="noopener">“923 生日天团”：白鹿、宋雨琦、赖冠霖、刘耀文同日庆生</a></div>
+        <div class="d">白鹿（1994）、宋雨琦（1999）、赖冠霖（2001）、刘耀文（2005）四人生日都是 9 月 23 日，横跨演员、唱跳、偶像多个赛道，被网友称为“923 生日天团”，同日多条生日话题一起冲上热搜。其中姚景元在刘耀文生日微博下留言“20 了，生日快乐”，四分钟后更正并自嘲“我脑子”，也顺势登上热搜。</div>
+        <div class="why"><b>看点：</b>一天之内多位艺人“扎堆”庆生，是内娱少见的平和名场面；旧队友的互动则继续带动台风少年团的“回忆杀”流量。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%BC%A0%E7%99%BE%E4%B9%94%C3%97%E4%B8%87%E5%AE%81%E5%8F%94%E5%90%88%E4%BD%93%E5%BC%95%E7%88%86%E2%80%9C%E7%88%B7%E9%9D%92%E5%9B%9E%E2%80%9D%EF%BC%8C%E4%B8%A5%E6%95%8F%E6%96%B0%E7%BB%BC%E8%89%BA%E5%AE%98%E5%AE%A3" target="_blank" rel="noopener">张百乔×万宁叔合体引爆“爷青回”，严敏新综艺官宣</a></div>
+        <div class="d">9 月 21 日张百乔发布 30 岁生日短视频，搭档万宁叔惊喜出镜为其庆生，评论区被“等这一天等疯了”刷屏，点赞高达 87 万；两人早前自制综艺被反复呼吁“再拍一季”，而严敏执导的新综艺《好好好，你这么整是吧？！》已于 9 月 19 日官宣，张百乔、万宁叔出现在常驻阵容中，黄晓明、姜妍、郭艾伦等跨圈加入。</div>
+        <div class="why"><b>看点：</b>“网红熟人＋去游戏化叙事”正在成为综艺的新配方，粉丝自发请愿直接促成节目落地，是一次典型的流量反向定制。</div>
       </div>
     </section>
 
@@ -359,5 +487,85 @@
 
   <footer class="risk">风险提示：本简报仅作信息汇总，其中涉及的数据不构成任何投资建议。</footer>
 </div>
+
+<script>
+(function () {
+  var ARCHIVE_DATES = [/*__ARCHIVE_DATES__*/"260922"/*__END__*/];
+  var PAGE_DATE = "2026-09-23";
+  var HIST_BASE = /\/history\//.test(location.pathname) ? "./" : "history/";
+
+  var btn = document.getElementById("calBtn");
+  var pop = document.getElementById("calPop");
+  var grid = document.getElementById("calGrid");
+  var title = document.getElementById("calTitle");
+  if (!btn || !pop || !grid || !title) { return; }
+
+  var parts = PAGE_DATE.split("-");
+  var todayKey = parts[0].slice(2) + parts[1] + parts[2];
+  var cur = { y: +parts[0], m: +parts[1] };
+
+  var has = {};
+  for (var i = 0; i < ARCHIVE_DATES.length; i++) { has[ARCHIVE_DATES[i]] = 1; }
+
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  function key(y, m, d) { return String(y).slice(2) + pad(m) + pad(d); }
+
+  function render() {
+    title.textContent = cur.y + " 年 " + cur.m + " 月";
+    grid.innerHTML = "";
+
+    var start = new Date(cur.y, cur.m - 1, 1).getDay();
+    var days = new Date(cur.y, cur.m, 0).getDate();
+
+    for (var b = 0; b < start; b++) {
+      var blank = document.createElement("span");
+      blank.className = "cal-cell is-empty";
+      grid.appendChild(blank);
+    }
+
+    for (var d = 1; d <= days; d++) {
+      var k = key(cur.y, cur.m, d);
+      var cell = document.createElement("span");
+      cell.className = "cal-cell" + (has[k] ? " has" : "") + (k === todayKey ? " is-today" : "");
+      cell.textContent = d;
+      if (has[k]) {
+        cell.setAttribute("role", "link");
+        cell.setAttribute("tabindex", "0");
+        cell.title = cur.y + "-" + pad(cur.m) + "-" + pad(d) + " 存档";
+        (function (target) {
+          var go = function () { window.open(HIST_BASE + target + ".html", "_blank", "noopener"); };
+          cell.addEventListener("click", go);
+          cell.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
+          });
+        })(k);
+      }
+      grid.appendChild(cell);
+    }
+  }
+
+  function toggle(open) {
+    pop.hidden = !open;
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) { render(); }
+  }
+
+  btn.addEventListener("click", function (e) { e.stopPropagation(); toggle(pop.hidden); });
+  document.getElementById("calPrev").addEventListener("click", function () {
+    cur.m--; if (cur.m < 1) { cur.m = 12; cur.y--; } render();
+  });
+  document.getElementById("calNext").addEventListener("click", function () {
+    cur.m++; if (cur.m > 12) { cur.m = 1; cur.y++; } render();
+  });
+  document.addEventListener("click", function (e) {
+    if (!pop.hidden && !pop.contains(e.target)) { toggle(false); }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !pop.hidden) { toggle(false); }
+  });
+
+  render();
+})();
+</script>
 </body>
 </html>
