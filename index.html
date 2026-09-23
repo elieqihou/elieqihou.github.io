@@ -3,237 +3,355 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日要闻简报 · 2026年9月23日</title>
+<title>提马早报 · 2026.09.23</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --paper: #f7f3ec;
+    --ink: #1c1b17;
+    --ink-soft: #4c4a42;
+    --ink-faint: #8a867a;
+    --line: #d9d2c3;
+    --card: #fffdf8;
+    --c-intl: #1d4ed8; --c-intl-deep: #1e3fa8;
+    --c-dom: #cf2f1e; --c-dom-deep: #a02315;
+    --c-fin: #b45309; --c-fin-deep: #8a3f06;
+    --c-hot: #6d28d9; --c-hot-deep: #551dab;
+    --c-ent: #db2777; --c-ent-deep: #ab1d5d;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
-    font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
-    background: #f4f6fa;
-    color: #2b3445;
-    line-height: 1.65;
-    padding: 40px 16px 32px;
+    font-family: “Noto Sans SC”, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    padding: 0 16px 48px;
+    position: relative;
   }
-  .wrap { max-width: 1080px; margin: 0 auto; }
-  header.page-head { text-align: center; margin-bottom: 36px; }
-  header.page-head h1 {
-    font-size: 30px; font-weight: 700; letter-spacing: 2px; color: #1c2534;
+  body::before {
+    content: “”; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .35;
+    background-image: url(“data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E”);
   }
-  header.page-head .date-line {
-    margin-top: 10px; font-size: 15px; color: #7a8496; letter-spacing: 1px;
+  .wrap { max-width: 1120px; margin: 0 auto; position: relative; z-index: 1; }
+
+  /* ===== 报头 ===== */
+  .masthead { padding: 34px 0 0; border-bottom: 3px double var(--ink); }
+  .mast-meta {
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+    border-bottom: 1px solid var(--line); padding-bottom: 10px;
+    font-size: 12.5px; letter-spacing: .18em; color: var(--ink-faint);
   }
-  .grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 22px;
+  .mast-meta .kicker { font-weight: 700; color: var(--ink-soft); }
+  .mast-meta .kicker small { font-weight: 400; letter-spacing: .3em; margin-left: 8px; color: var(--ink-faint); }
+  .mast-title-row {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 24px; padding: 26px 0 22px;
   }
-  @media (max-width: 1080px) { .grid { grid-template-columns: 1fr; } }
+  .mast-title {
+    font-family: “Noto Serif SC”, serif; font-weight: 900;
+    font-size: clamp(44px, 7vw, 76px); line-height: 1.05; letter-spacing: .1em;
+  }
+  .mast-title em { font-style: normal; color: var(--c-dom); }
+  .mast-date {
+    font-family: “Playfair Display”, serif; font-style: italic; font-weight: 600;
+    font-size: clamp(30px, 4.6vw, 52px); color: var(--ink); white-space: nowrap; line-height: 1;
+  }
+  .mast-date small {
+    display: block; font-family: “Noto Sans SC”, sans-serif; font-style: normal;
+    font-size: 12px; letter-spacing: .3em; color: var(--ink-faint); margin-top: 8px; text-align: right;
+  }
+  .nav-chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 0 18px; }
+  .nav-chips a {
+    text-decoration: none; font-size: 13.5px; font-weight: 700; letter-spacing: .08em;
+    color: var(--ink-soft); border: 1.5px solid var(--line);
+    border-radius: 999px; padding: 5px 16px; transition: all .2s ease;
+  }
+  .nav-chips a:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .nav-chips a.chip-pick { border-color: #0f766e; color: #0b5a54; }
+  .nav-chips a.chip-pick:hover { background: #0f766e; color: #fff; }
+
+  /* ===== 精选 ===== */
+  .spotlight {
+    margin-top: 30px; border-radius: 18px; overflow: hidden;
+    background: linear-gradient(118deg, #0f766e 0%, #115e59 46%, #134e4a 100%);
+    color: #f2fbfa; padding: 34px 38px 30px; position: relative;
+    box-shadow: 0 18px 44px -18px rgba(15, 118, 110, .55);
+  }
+  .spotlight::after {
+    content: “”; position: absolute; right: -60px; top: -60px; width: 240px; height: 240px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.14), transparent 68%);
+  }
+  .spotlight .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12.5px; font-weight: 700; letter-spacing: .3em;
+    border: 1.5px solid rgba(242, 251, 250, .55); border-radius: 999px;
+    padding: 5px 18px 5px 20px; margin-bottom: 18px;
+  }
+  .spotlight .badge i {
+    width: 8px; height: 8px; border-radius: 50%; background: #5eead4; display: inline-block;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1);} 50% { opacity: .45; transform: scale(.78);} }
+  .spotlight h2 {
+    font-family: “Noto Serif SC”, serif; font-weight: 900;
+    font-size: clamp(24px, 3.4vw, 34px); line-height: 1.35; margin-bottom: 14px;
+  }
+  .spotlight h2 .hl { color: #99f6e4; border-bottom: 3px solid rgba(153, 246, 228, .5); padding-bottom: 2px; }
+  .spotlight .body { font-size: 15px; color: #d3efec; max-width: 62em; }
+  .spotlight .why {
+    margin-top: 18px; padding: 14px 18px; border-left: 3px solid #5eead4;
+    background: rgba(255,255,255,.07); border-radius: 0 10px 10px 0;
+    font-size: 14px; color: #e8fbf9; max-width: 62em;
+  }
+  .spotlight .why b { color: #99f6e4; font-weight: 700; }
+
+  /* ===== 分类卡片 ===== */
+  .grid { margin-top: 30px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  @media (max-width: 880px) { .grid { grid-template-columns: 1fr; } .spotlight { padding: 26px 22px; } }
   .card {
-    background: #ffffff; border-radius: 14px; padding: 22px 24px 16px;
-    box-shadow: 0 2px 10px rgba(30, 41, 59, 0.06);
-    border-top: 4px solid var(--ac);
+    background: var(--card); border-radius: 4px 4px 14px 14px;
+    box-shadow: 0 1px 3px rgba(28, 27, 23, .07), 0 12px 30px -22px rgba(28,27,23,.35);
+    padding: 24px 26px 12px; position: relative; border-top: 6px solid var(--ac);
+    animation: rise .6s ease both;
   }
-  .card h2 {
-    font-size: 19px; font-weight: 700; color: var(--ac-deep);
-    display: flex; align-items: center; gap: 8px; margin-bottom: 14px;
+  .card:nth-child(1) { animation-delay: .05s; } .card:nth-child(2) { animation-delay: .12s; }
+  .card:nth-child(3) { animation-delay: .19s; } .card:nth-child(4) { animation-delay: .26s; }
+  .card:nth-child(5) { animation-delay: .33s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px);} to { opacity: 1; transform: none;} }
+  .card:hover { transform: translateY(-3px); transition: transform .25s ease; }
+  .sec-head {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 6px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--line);
   }
-  .card h2 .dot {
-    width: 10px; height: 10px; border-radius: 50%; background: var(--ac); flex-shrink: 0;
-  }
-  .item { padding: 12px 0; border-bottom: 1px dashed #e6eaf1; }
+  .sec-num { font-family: “Playfair Display”, serif; font-style: italic; font-weight: 700; font-size: 26px; color: var(--ac); line-height: 1; }
+  .sec-head h3 { font-family: “Noto Serif SC”, serif; font-weight: 900; font-size: 21px; letter-spacing: .1em; color: var(--ink); }
+  .sec-head .en { margin-left: auto; font-size: 11px; letter-spacing: .22em; color: var(--ink-faint); text-transform: uppercase; }
+  .item { padding: 14px 0 12px; border-bottom: 1px dashed var(--line); }
   .item:last-child { border-bottom: none; }
-  .item .t {
-    font-size: 15.5px; font-weight: 700; color: #232c3d; margin-bottom: 5px;
-  }
+  .item .idx { font-family: “Playfair Display”, serif; font-style: italic; font-weight: 700; font-size: 15px; color: var(--ac); margin-right: 8px; }
+  .item .t { font-size: 15.5px; font-weight: 700; color: var(--ink); line-height: 1.5; }
   .item .t .tag {
-    display: inline-block; font-size: 11.5px; font-weight: 600; color: #ffffff;
-    background: var(--ac); border-radius: 4px; padding: 1px 7px; margin-right: 7px;
-    vertical-align: 2px;
+    display: inline-block; font-size: 11px; font-weight: 700; color: #fff;
+    background: var(--ac); border-radius: 3px; padding: 1px 7px; margin-right: 7px;
+    vertical-align: 2px; letter-spacing: .06em;
   }
-  .item .d { font-size: 14px; color: #45506a; }
+  .item .d { margin-top: 6px; font-size: 14px; color: var(--ink-soft); }
   .item .why {
-    margin-top: 6px; font-size: 13.5px; color: #6b7488;
-    padding-left: 12px; border-left: 3px solid var(--ac); line-height: 1.55;
+    margin-top: 9px; font-size: 13.5px; color: var(--ink-faint);
+    padding: 8px 12px; border-left: 3px solid var(--ac);
+    background: color-mix(in srgb, var(--ac) 6%, transparent);
+    border-radius: 0 8px 8px 0;
   }
   .item .why b { color: var(--ac-deep); font-weight: 700; }
-  footer.risk {
-    margin-top: 30px; text-align: center; font-size: 12.5px; color: #9aa3b4;
+  .risk { margin-top: 40px; text-align: center; font-size: 12.5px; color: var(--ink-faint); letter-spacing: .08em; }
+
+  /* 标题外链（Bing 搜索） */
+  .item .t a.lk, .spotlight h2 a.lk {
+    color: inherit; text-decoration: underline;
+    text-decoration-thickness: 1px; text-underline-offset: 4px;
+    text-decoration-color: color-mix(in srgb, currentColor 32%, transparent);
+    transition: text-decoration-color .18s ease, color .18s ease;
   }
+  .item .t a.lk:hover { color: var(--ac-deep); text-decoration-color: currentColor; }
+  .spotlight h2 a.lk { text-decoration-color: rgba(242, 251, 250, .35); }
+  .spotlight h2 a.lk:hover { text-decoration-color: rgba(242, 251, 250, .95); }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <header class="page-head">
-    <h1>每日要闻简报</h1>
-    <div class="date-line">2026年9月23日 · 星期三 · 农历八月十三 · 秋分</div>
+  <header class="masthead">
+    <div class="mast-meta">
+      <span class="kicker">提马早报<small>TIMAB DAILY</small></span>
+      <span>星期三 · 农历八月十三 · 秋分 · timab.cn</span>
+    </div>
+    <div class="mast-title-row">
+      <h1 class="mast-title">提马<em>早报</em></h1>
+      <div class="mast-date">2026.09.23<small>DAILY BRIEFING</small></div>
+    </div>
+    <nav class="nav-chips">
+      <a class="chip-pick" href="#pick">精选</a>
+      <a href="#intl" style="border-color:#1d4ed8;color:#1e3fa8">国际时事</a>
+      <a href="#dom" style="border-color:#cf2f1e;color:#a02315">国内要闻</a>
+      <a href="#fin" style="border-color:#b45309;color:#8a3f06">金融要闻</a>
+      <a href="#hot" style="border-color:#6d28d9;color:#551dab">网络热点</a>
+      <a href="#ent" style="border-color:#db2777;color:#ab1d5d">娱乐八卦</a>
+    </nav>
   </header>
+
+  <section class="spotlight" id="pick">
+    <div class="badge"><i></i>精 选</div>
+    <h2><a class="lk" href="https://www.bing.com/search?q=%E9%87%91%E8%B1%86%E6%94%92%E4%B8%8D%E5%8A%A8%E4%BA%86%EF%BC%9F%E4%B8%AD%E5%9B%BD%E5%89%8D+8+%E4%B8%AA%E6%9C%88%E9%BB%84%E9%87%91%E8%BF%9B%E5%8F%A3%E7%A0%B4+1000+%E5%90%A8%EF%BC%8C%E8%B6%85+2025+%E5%85%A8%E5%B9%B4%E6%80%BB%E5%92%8C" target="_blank" rel="noopener">金豆攒不动了？<span class="hl">中国前 8 个月黄金进口破 1000 吨</span>，超 2025 全年总和</a></h2>
+    <div class="body">海关数据显示，今年前 8 个月中国黄金进口量突破 1000 吨，已超 2025 年全年；8 月央行购金量创 2023 年以来单月最高。世界黄金协会指出，中国买家正在重塑全球黄金供需格局，而社交平台上“每月攒一颗金豆”的年轻攒金族，正是这波需求里最活跃的增量。</div>
+    <div class="why"><b>看点：</b>金价 4300 美元/盎司的历史高位下，“攒金豆”已从小众爱好变成年轻人的理财社交货币——它背后是这代人对不确定性的集体应对方式。金价何时回调、金豆回收溢价是否靠谱，都是自带流量的讨论点。</div>
+  </section>
 
   <div class="grid">
 
-    <!-- 国际时事 -->
-    <section class="card" style="--ac:#2563eb; --ac-deep:#1d4ed8;">
-      <h2><span class="dot"></span>国际时事</h2>
+    <section class="card" id="intl" style="--ac:#1d4ed8; --ac-deep:#1e3fa8;">
+      <div class="sec-head"><span class="sec-num">01</span><h3>国际时事</h3><span class="en">World</span></div>
 
       <div class="item">
-        <div class="t"><span class="tag">进展</span>美伊纽约会谈三小时，特朗普称"富有成效"</div>
-        <div class="d">伊朗外长阿拉格齐与美国总统特使威特科夫在纽约举行约三小时会晤，特朗普称会谈"非常有建设性"，预计中期选举后可与伊朗达成协议，双方近期将再次会谈。伊朗提出重开霍尔木兹海峡的条件：美国立即解除海上封锁、解冻全部伊朗资产、结束地区各战线战争。</div>
-        <div class="why"><b>值得关注：</b>这是持续近七个月的美伊冲突以来最高级别的直接接触，若和谈落地，全球能源与航运格局将迎来重大转折。</div>
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E7%BE%8E%E4%BC%8A%E7%BA%BD%E7%BA%A6%E4%BC%9A%E8%B0%88%E4%B8%89%E5%B0%8F%E6%97%B6%EF%BC%8C%E7%89%B9%E6%9C%97%E6%99%AE%E7%A7%B0%E2%80%9C%E5%AF%8C%E6%9C%89%E6%88%90%E6%95%88%E2%80%9D" target="_blank" rel="noopener">美伊纽约会谈三小时，特朗普称“富有成效”</a></div>
+        <div class="d">伊朗外长阿拉格齐与美国总统特使威特科夫在纽约举行约三小时会晤，特朗普称会谈“非常有建设性”，预计中期选举后可与伊朗达成协议，双方近期将再次会谈。伊朗提出重开霍尔木兹海峡的条件：美国立即解除海上封锁、解冻全部伊朗资产、结束地区各战线战争。</div>
+        <div class="why"><b>看点：</b>持续近七个月的美伊冲突迎来最高级别直接接触，若和谈落地，全球能源与航运格局将迎来重大转折。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="tag">进展</span>伊朗拟重罚未授权过境霍尔木兹船只</div>
-        <div class="d">伊朗议会国家安全委员会批准海峡通行新法条：违规船只除缴纳相当于货值20%的罚款外还将被暂扣，直至罚款缴清；伊朗将设专门司法分支执行，武装部队每三个月报告执行情况。船舶追踪机构数据显示，21日仅有2艘商船通过海峡，较前一日10艘进一步骤降。</div>
-        <div class="why"><b>值得关注：</b>海峡通行量已近"冰封"，20%货值罚款将大幅推高绕行与保险成本，直接影响全球油气运输链和我国进口成本。</div>
+        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E4%BC%8A%E6%9C%97%E6%8B%9F%E9%87%8D%E7%BD%9A%E6%9C%AA%E6%8E%88%E6%9D%83%E8%BF%87%E5%A2%83%E9%9C%8D%E5%B0%94%E6%9C%A8%E5%85%B9%E8%88%B9%E5%8F%AA" target="_blank" rel="noopener">伊朗拟重罚未授权过境霍尔木兹船只</a></div>
+        <div class="d">伊朗议会国家安全委员会批准海峡通行新法条：违规船只除缴纳相当于货值 20% 的罚款外还将被暂扣，直至罚款缴清。船舶追踪数据显示，21 日仅 2 艘商船通过海峡，较前一日 10 艘进一步骤降。</div>
+        <div class="why"><b>看点：</b>海峡通行量已近“冰封”，巨额罚款将大幅推高绕行与保险成本，直接影响全球油气运输链和进口成本。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="tag">进展</span>沙特东西输油管道传重启，延布港最快本周恢复出口</div>
-        <div class="d">沙特阿美正加紧修复受损泵站，延布港已出现油轮抵达迹象，目标最快本周恢复原油出口；至少三家亚洲炼油企业获非正式保证称装载将很快重启。沙特寻求数日内将管道恢复至约一半产能，约六周内达满负荷。</div>
-        <div class="why"><b>值得关注：</b>若红海替代通道打通，全球供应中断压力将明显缓解，是观察油价能否回稳的关键风向标。</div>
+        <div class="t"><span class="idx">03</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E6%B2%99%E7%89%B9%E4%B8%9C%E8%A5%BF%E8%BE%93%E6%B2%B9%E7%AE%A1%E9%81%93%E4%BC%A0%E9%87%8D%E5%90%AF%EF%BC%8C%E5%BB%B6%E5%B8%83%E6%B8%AF%E6%9C%80%E5%BF%AB%E6%9C%AC%E5%91%A8%E6%81%A2%E5%A4%8D%E5%87%BA%E5%8F%A3" target="_blank" rel="noopener">沙特东西输油管道传重启，延布港最快本周恢复出口</a></div>
+        <div class="d">沙特阿美正加紧修复受损泵站，延布港已出现油轮抵达迹象，目标最快本周恢复原油出口；至少三家亚洲炼油企业获非正式保证称装载将很快重启，管道力争约六周内达满负荷。</div>
+        <div class="why"><b>看点：</b>若红海替代通道打通，全球供应中断压力将明显缓解，是观察油价能否回稳的关键风向标。</div>
       </div>
 
       <div class="item">
-        <div class="t">古特雷斯联大"告别演讲"，呼吁停火止战、监管AI</div>
-        <div class="d">9月22日，联合国秘书长古特雷斯在第81届联大发表其任内最后一次讲话，敦促各国领导人结束战争、监管人工智能、应对气候变化，并推动联合国机构全面改革，称"世界的断层正在扩大"。</div>
-        <div class="why"><b>值得关注：</b>多边体系对AI全球治理的立场正在成形，与美国"拒绝全球性AI管控机制"的态度形成鲜明对撞，将为后续国际科技规则博弈定调。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E5%8F%A4%E7%89%B9%E9%9B%B7%E6%96%AF%E8%81%94%E5%A4%A7%E2%80%9C%E5%91%8A%E5%88%AB%E6%BC%94%E8%AE%B2%E2%80%9D%EF%BC%8C%E5%91%BC%E5%90%81%E5%81%9C%E7%81%AB%E6%AD%A2%E6%88%98%E3%80%81%E7%9B%91%E7%AE%A1+AI" target="_blank" rel="noopener">古特雷斯联大“告别演讲”，呼吁停火止战、监管 AI</a></div>
+        <div class="d">9 月 22 日，联合国秘书长古特雷斯在第 81 届联大发表其任内最后一次讲话，敦促各国领导人结束战争、监管人工智能、应对气候变化，并推动联合国机构全面改革，称“世界的断层正在扩大”。</div>
+        <div class="why"><b>看点：</b>多边体系对 AI 全球治理的立场正在成形，与美国“拒绝全球性 AI 管控机制”的态度形成鲜明对撞。</div>
       </div>
 
       <div class="item">
-        <div class="t">韩国前总统夫人金建希"卖官鬻爵"案二审改判5年</div>
-        <div class="d">当地时间22日，首尔高等法院对金建希涉嫌"卖官鬻爵"案作出二审判决，将一审的7年有期徒刑改判为5年，没收受贿财物并追缴2440万韩元。</div>
-        <div class="why"><b>值得关注：</b>韩国政坛震荡仍在延续，判决结果将影响尹锡悦案的司法走向与韩国保守派政治格局。</div>
-      </div>
-    </section>
-
-    <!-- 国内要闻 -->
-    <section class="card" style="--ac:#dc2626; --ac-deep:#b91c1c;">
-      <h2><span class="dot"></span>国内要闻</h2>
-
-      <div class="item">
-        <div class="t">习近平向全国广大农民致农民丰收节祝贺</div>
-        <div class="d">在第九个"中国农民丰收节"（9月23日秋分）到来之际，习近平总书记代表党中央向全国农民和"三农"战线同志致以节日祝贺，指出今年夏粮产量再创新高、早稻保持稳产、秋粮丰收在望，要求扎实推进乡村全面振兴、拓宽农民增收致富渠道。</div>
-        <div class="why"><b>值得关注：</b>"十五五"开局之年的丰收节致辞释放了粮食安全与乡村振兴政策连续性的明确信号。</div>
-      </div>
-
-      <div class="item">
-        <div class="t">2026中国民营企业500强发布：京东、阿里、恒力前三</div>
-        <div class="d">22日全国工商联在天津发布"2026中国民营企业500强"，京东集团、阿里巴巴（中国）、恒力集团位居前三；500强营业收入总额44.93万亿元，户均898.51亿元，较上年增长4.35%，净利润合计1.83万亿元。</div>
-        <div class="why"><b>值得关注：</b>在消费与外需波动背景下民企龙头营收、利润仍双增，头部格局变化反映电商、制造与AI产业的实力消长。</div>
-      </div>
-
-      <div class="item">
-        <div class="t">我国首条跨海市域铁路宁象线通车</div>
-        <div class="d">22日，宁波至象山市域铁路（宁象线）通车运营，线路全长61.45公里，最高运行时速160公里，象山半岛由此结束不通轨道交通的历史，实现宁波与象山半小时通勤。</div>
-        <div class="why"><b>值得关注：</b>跨海市域铁路是都市圈"轨道上的长三角"的标志性突破，为后续跨海通勤线路提供工程与运营范本。</div>
-      </div>
-
-      <div class="item">
-        <div class="t">《轻工纺织产业发展"十五五"规划》发布</div>
-        <div class="d">工信部、商务部、市场监管总局联合发布规划，提出到2030年规模以上企业营业收入突破30万亿元，加快智能化绿色化转型、推动人工智能赋能，并实施"纺织+"行动。</div>
-        <div class="why"><b>值得关注：</b>传统优势产业的"AI+转型"路径首次以五年规划形式明确，利好纺织装备、产业互联网与品牌出海链条。</div>
-      </div>
-
-      <div class="item">
-        <div class="t">四川省委原常委宋朝华受贿案一审被判死缓</div>
-        <div class="d">22日，四川省人大常委会原党组成员、副主任宋朝华受贿案一审公开宣判，被告人被判处死刑，缓期二年执行。</div>
-        <div class="why"><b>值得关注：</b>反腐高压态势持续，死缓判决力度罕见，对地方"一把手"权力监督具有强烈警示意义。</div>
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E9%9F%A9%E5%9B%BD%E5%89%8D%E6%80%BB%E7%BB%9F%E5%A4%AB%E4%BA%BA%E9%87%91%E5%BB%BA%E5%B8%8C%E2%80%9C%E5%8D%96%E5%AE%98%E9%AC%BB%E7%88%B5%E2%80%9D%E6%A1%88%E4%BA%8C%E5%AE%A1%E6%94%B9%E5%88%A4+5+%E5%B9%B4" target="_blank" rel="noopener">韩国前总统夫人金建希“卖官鬻爵”案二审改判 5 年</a></div>
+        <div class="d">当地时间 22 日，首尔高等法院对金建希涉嫌“卖官鬻爵”案作出二审判决，将一审的 7 年有期徒刑改判为 5 年，没收受贿财物并追缴 2440 万韩元。</div>
+        <div class="why"><b>看点：</b>韩国政坛震荡延续，判决结果将影响尹锡悦案的司法走向与韩国保守派政治格局。</div>
       </div>
     </section>
 
-    <!-- 金融要闻 -->
-    <section class="card" style="--ac:#d97706; --ac-deep:#b45309;">
-      <h2><span class="dot"></span>金融要闻</h2>
+    <section class="card" id="dom" style="--ac:#cf2f1e; --ac-deep:#a02315;">
+      <div class="sec-head"><span class="sec-num">02</span><h3>国内要闻</h3><span class="en">China</span></div>
 
       <div class="item">
-        <div class="t"><span class="tag">进展</span>原油五连跌，布油两周来首次收跌破100美元</div>
-        <div class="d">受美伊和谈希望及霍尔木兹海峡重开前景影响，原油反弹失利盘中转跌：WTI收跌1.24%报94.59美元/桶，布伦特收跌1.09%报99.25美元/桶，创两周新低；美元指数两连涨创逾一个半月新高，离岸人民币盘中一度失守6.70。</div>
-        <div class="why"><b>值得关注：</b>油价正从"地缘溢价"向"和谈折价"切换，布油失守100美元关口是通胀预期与能源股定价的重要分水岭。</div>
+        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E4%B9%A0%E8%BF%91%E5%B9%B3%E5%90%91%E5%85%A8%E5%9B%BD%E5%B9%BF%E5%A4%A7%E5%86%9C%E6%B0%91%E8%87%B4%E5%86%9C%E6%B0%91%E4%B8%B0%E6%94%B6%E8%8A%82%E7%A5%9D%E8%B4%BA" target="_blank" rel="noopener">习近平向全国广大农民致农民丰收节祝贺</a></div>
+        <div class="d">在第九个“中国农民丰收节”（9 月 23 日秋分）到来之际，习近平总书记代表党中央向全国农民和“三农”战线同志致以节日祝贺，指出今年夏粮产量再创新高、早稻保持稳产、秋粮丰收在望，要求扎实推进乡村全面振兴、拓宽农民增收致富渠道。</div>
+        <div class="why"><b>看点：</b>“十五五”开局之年的丰收节致辞释放了粮食安全与乡村振兴政策连续性的明确信号。</div>
       </div>
 
       <div class="item">
-        <div class="t">阿里云栖大会全面加码AI基建，国产芯片真武V900发布</div>
-        <div class="d">阿里CEO吴泳铭在云栖大会宣布全力投入AI基础设施建设，目标2032年阿里云全球数据中心规模超20GW，并计划训练参数规模5至10万亿的新一代AI模型；平头哥发布新一代AI芯片真武V900，算力较前代M890提升3倍。</div>
-        <div class="why"><b>值得关注：</b>20GW数据中心目标与自研芯片放量，直接催化算力租赁、光模块、电力设备等A股AI基建主线，是本周科技板块最强催化之一。</div>
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=2026+%E4%B8%AD%E5%9B%BD%E6%B0%91%E8%90%A5%E4%BC%81%E4%B8%9A+500+%E5%BC%BA%E5%8F%91%E5%B8%83%EF%BC%9A%E4%BA%AC%E4%B8%9C%E3%80%81%E9%98%BF%E9%87%8C%E3%80%81%E6%81%92%E5%8A%9B%E5%89%8D%E4%B8%89" target="_blank" rel="noopener">2026 中国民营企业 500 强发布：京东、阿里、恒力前三</a></div>
+        <div class="d">22 日全国工商联发布“2026 中国民营企业 500 强”，京东集团、阿里巴巴（中国）、恒力集团位居前三；500 强营业收入总额 44.93 万亿元，户均 898.51 亿元，较上年增长 4.35%，净利润合计 1.83 万亿元。</div>
+        <div class="why"><b>看点：</b>消费与外需波动下民企龙头营收、利润仍双增，头部格局变化反映电商、制造与 AI 产业的实力消长。</div>
       </div>
 
       <div class="item">
-        <div class="t">A股缩量震荡：沪指微涨0.06%，文化传媒逆势领涨</div>
-        <div class="d">22日A股高开低走，上证指数收涨0.06%报3952.13点，创业板指涨0.01%，两市成交2.15万亿元（放量1055亿），超3000只个股下跌；文化传媒、AI视频、短剧游戏板块领涨（受《出版业发展"十五五"规划》催化），旅游酒店、港口航运领跌，长假前资金趋于谨慎。</div>
-        <div class="why"><b>值得关注：</b>节前获利了结与主线轮动并存，政策催化型主题（出版、文旅）接棒AI硬件，短线风格切换信号明显。</div>
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E6%88%91%E5%9B%BD%E9%A6%96%E6%9D%A1%E8%B7%A8%E6%B5%B7%E5%B8%82%E5%9F%9F%E9%93%81%E8%B7%AF%E5%AE%81%E8%B1%A1%E7%BA%BF%E9%80%9A%E8%BD%A6" target="_blank" rel="noopener">我国首条跨海市域铁路宁象线通车</a></div>
+        <div class="d">22 日，宁波至象山市域铁路（宁象线）通车运营，线路全长 61.45 公里，最高运行时速 160 公里，象山半岛结束不通轨道交通的历史，实现宁波与象山半小时通勤。</div>
+        <div class="why"><b>看点：</b>跨海市域铁路是“轨道上的长三角”标志性突破，为后续跨海通勤线路提供工程与运营范本。</div>
       </div>
 
       <div class="item">
-        <div class="t">公募基金净值39.63万亿创新高，AI基金放宽申购</div>
-        <div class="d">中基协数据显示，截至8月底我国公募基金资产净值合计39.63万亿元，较7月底增长超5200亿元；易方达两只信息产业基金将单账户大额申购上限由1万元大幅上调至50万元，为6月限购后首次放开。</div>
-        <div class="why"><b>值得关注：</b>头部AI主题基金从"限购"转向"放量"，反映管理机构对科技主线的信心与增量资金入场的信号。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E3%80%8A%E8%BD%BB%E5%B7%A5%E7%BA%BA%E7%BB%87%E4%BA%A7%E4%B8%9A%E5%8F%91%E5%B1%95%E2%80%9C%E5%8D%81%E4%BA%94%E4%BA%94%E2%80%9D%E8%A7%84%E5%88%92%E3%80%8B%E5%8F%91%E5%B8%83" target="_blank" rel="noopener">《轻工纺织产业发展“十五五”规划》发布</a></div>
+        <div class="d">工信部、商务部、市场监管总局联合发布规划，提出到 2030 年规模以上企业营业收入突破 30 万亿元，加快智能化绿色化转型、推动人工智能赋能，并实施“纺织+”行动。</div>
+        <div class="why"><b>看点：</b>传统优势产业的“AI+转型”路径首次以五年规划形式明确，利好纺织装备、产业互联网与品牌出海链条。</div>
       </div>
 
       <div class="item">
-        <div class="t">全球半导体营收单季破4250亿美元，苹果市值一度破5万亿</div>
-        <div class="d">Omdia报告显示2026年二季度全球半导体营收突破4250亿美元，环比增长31.4%创历史纪录；隔夜纳指再创新高，苹果公司市值一度突破5万亿美元，纽铜六连涨收创史上次高。</div>
-        <div class="why"><b>值得关注：</b>海外算力与金属（铜）景气共振，为A股存储、铜缆、算力硬件板块提供跨市场联动支撑。</div>
-      </div>
-    </section>
-
-    <!-- 网络热点 -->
-    <section class="card" style="--ac:#7c3aed; --ac-deep:#6d28d9;">
-      <h2><span class="dot"></span>网络热点</h2>
-
-      <div class="item">
-        <div class="t">中国女排3-0横扫日本，成就亚运"十冠王"</div>
-        <div class="d">22日亚运会女子排球决赛，中国队3-0击败东道主日本队夺冠，队史第十枚亚运金牌、实现三连冠；同日游泳赛场中国队再夺4金，男子4×100混合泳接力实现亚运四连冠，射击10米气步枪混合团体破世界纪录夺金。</div>
-        <div class="why"><b>值得关注：</b>与昨日中国男篮创历史最差成绩形成强反差，女排"十冠王"成为全网最大正能量话题，也再次引发对三大球资源投入的讨论。</div>
-      </div>
-
-      <div class="item">
-        <div class="t">"月饼卖不动"冲上热搜：销售额同比下滑45%</div>
-        <div class="d">数据显示8月14日至9月13日主要门店月饼销售额同比下滑45.17%，95后对月饼兴趣不高；记者实探武汉商超发现美心流心奶黄月饼从320元两连降至268元，市场整体遇冷。</div>
-        <div class="why"><b>值得关注：</b>传统节令食品的礼盒经济正在失灵，年轻消费群体偏好变化将倒逼食品行业产品与营销转型，中秋消费数据值得关注。</div>
-      </div>
-
-      <div class="item">
-        <div class="t">西贝"倒闭"传言发酵，钟薛高创始人直播力挺</div>
-        <div class="d">西贝被传"将倒闭"引发热议，钟薛高创始人林盛直播力挺称"西贝要是倒了是中国餐饮行业的倒退"，钟薛高"复活"后同步开启降价；B站等平台则出现"西贝困局罗永浩是否担责"的追责讨论。</div>
-        <div class="why"><b>值得关注：</b>事件已从单一品牌危机演变为餐饮行业信任与"企业家抱团"之争，消费降级背景下餐饮连锁经营困境具有普遍样本意义。</div>
-      </div>
-
-      <div class="item">
-        <div class="t">多家中小银行逆势上调存款利率</div>
-        <div class="d">9月以来，微众银行3年期定存利率上调15个基点至1.75%，湖北监利农商银行、广东五华惠民村镇银行等中小银行也上调大额存单和长期定期存款利率，与当前普遍降息背景形成反差。</div>
-        <div class="why"><b>值得关注：</b>"利率倒挂"反映中小银行负债端揽储压力，储户可关注区域中小行的阶段性高息窗口，同时需留意其资产质量风险。</div>
-      </div>
-
-      <div class="item">
-        <div class="t">微信上线朋友圈"私密发表"；iPhone 18遭首批用户吐槽</div>
-        <div class="d">微信8.0.78版本新增"私密发表"功能，发表后自动转为"仅自己可见"，并支持用表情包在"大家在搜"表态；另一边，iPhone 18系列发售后不少用户反映新机死机、自动重启、外壳掉漆变形等问题。</div>
-        <div class="why"><b>值得关注：</b>社交产品向"低压力分享"演进是重要产品趋势；iPhone 18品控争议则可能影响其首销期口碑与销量。</div>
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%9B%9B%E5%B7%9D%E7%9C%81%E5%A7%94%E5%8E%9F%E5%B8%B8%E5%A7%94%E5%AE%8B%E6%9C%9D%E5%8D%8E%E5%8F%97%E8%B4%BF%E6%A1%88%E4%B8%80%E5%AE%A1%E8%A2%AB%E5%88%A4%E6%AD%BB%E7%BC%93" target="_blank" rel="noopener">四川省委原常委宋朝华受贿案一审被判死缓</a></div>
+        <div class="d">22 日，四川省人大常委会原党组成员、副主任宋朝华受贿案一审公开宣判，被告人被判处死刑，缓期二年执行。</div>
+        <div class="why"><b>看点：</b>反腐高压态势持续，死缓判决力度罕见，对地方“一把手”权力监督具有强烈警示意义。</div>
       </div>
     </section>
 
-    <!-- 娱乐八卦 -->
-    <section class="card" style="--ac:#db2777; --ac-deep:#be185d;">
-      <h2><span class="dot"></span>娱乐八卦</h2>
+    <section class="card" id="fin" style="--ac:#b45309; --ac-deep:#8a3f06;">
+      <div class="sec-head"><span class="sec-num">03</span><h3>金融要闻</h3><span class="en">Finance</span></div>
 
       <div class="item">
-        <div class="t">王玉雯亲口证实与杨玏五年恋情，否认"结婚又离婚"</div>
-        <div class="d">王玉雯23日发文证实与杨玏因合作《纵有疾风起》相识相恋五年，2024年上半年因人生规划错位和平分手，并明确否认网传"结婚又离婚"谣言，表示目前单身、重心放在拍戏。</div>
-        <div class="why"><b>值得关注：</b>艺人主动"自曝式"澄清罕见，双方无互撕、无炒作被网友称为"内娱体面分手范本"，也再次把AI编造明星谣言的治理问题推向台前。</div>
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E5%8E%9F%E6%B2%B9%E4%BA%94%E8%BF%9E%E8%B7%8C%EF%BC%8C%E5%B8%83%E6%B2%B9%E4%B8%A4%E5%91%A8%E6%9D%A5%E9%A6%96%E6%AC%A1%E6%94%B6%E8%B7%8C%E7%A0%B4+100+%E7%BE%8E%E5%85%83" target="_blank" rel="noopener">原油五连跌，布油两周来首次收跌破 100 美元</a></div>
+        <div class="d">受美伊和谈希望及霍尔木兹海峡重开前景影响，原油反弹失利：WTI 收跌 1.24% 报 94.59 美元/桶，布伦特收跌 1.09% 报 99.25 美元/桶，创两周新低；美元指数两连涨创逾一个半月新高，离岸人民币盘中一度失守 6.70。</div>
+        <div class="why"><b>看点：</b>油价正从“地缘溢价”向“和谈折价”切换，布油失守 100 美元关口是通胀预期与能源股定价的重要分水岭。</div>
       </div>
 
       <div class="item">
-        <div class="t">章子怡出任湾区升明月"和平大使"，多年传闻被官方澄清</div>
-        <div class="d">9月20日电影频道融媒体中心官宣章子怡出任2026大湾区电影音乐晚会"和平大使"，晚会上她以《愿世界和平》主题独白压轴；央媒发文使流传十余年的"被调查、限制出境"传闻不攻自破。</div>
-        <div class="why"><b>值得关注：</b>国家级文化盛典的荣誉身份被视为最权威的"背景背书"，此事标志着艺人舆论污名化治理的一次标志性转折。</div>
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E9%98%BF%E9%87%8C%E4%BA%91%E6%A0%96%E5%A4%A7%E4%BC%9A%E5%85%A8%E9%9D%A2%E5%8A%A0%E7%A0%81+AI+%E5%9F%BA%E5%BB%BA%EF%BC%8C%E5%9B%BD%E4%BA%A7%E8%8A%AF%E7%89%87%E7%9C%9F%E6%AD%A6+V900+%E5%8F%91%E5%B8%83" target="_blank" rel="noopener">阿里云栖大会全面加码 AI 基建，国产芯片真武 V900 发布</a></div>
+        <div class="d">阿里 CEO 吴泳铭在云栖大会宣布全力投入 AI 基础设施建设，目标 2032 年阿里云全球数据中心规模超 20GW，并计划训练参数规模 5 至 10 万亿的新一代 AI 模型；平头哥发布新一代 AI 芯片真武 V900，算力较前代 M890 提升 3 倍。</div>
+        <div class="why"><b>看点：</b>20GW 数据中心目标与自研芯片放量，直接催化算力租赁、光模块、电力设备等 A 股 AI 基建主线。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="tag">进展</span>林心如古巨基苏有朋时隔26年同台合唱</div>
-        <div class="d">在湾区升明月2026大湾区电影音乐晚会上，《情深深雨濛濛》三大主演林心如、古巨基、苏有朋时隔26年再度同台合唱主题曲，林心如晒出2000年片场旧照与2026后台合照对比，话题冲上热搜。</div>
-        <div class="why"><b>值得关注：</b>该晚会此前因假唱争议处于舆论风口（前日已推送），"回忆杀"话题成功对冲负面，怀旧IP的商业价值再次得到验证。</div>
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=A+%E8%82%A1%E7%BC%A9%E9%87%8F%E9%9C%87%E8%8D%A1%EF%BC%9A%E6%B2%AA%E6%8C%87%E5%BE%AE%E6%B6%A8+0.06%25%EF%BC%8C%E6%96%87%E5%8C%96%E4%BC%A0%E5%AA%92%E9%80%86%E5%8A%BF%E9%A2%86%E6%B6%A8" target="_blank" rel="noopener">A 股缩量震荡：沪指微涨 0.06%，文化传媒逆势领涨</a></div>
+        <div class="d">22 日 A 股高开低走，上证指数收涨 0.06% 报 3952.13 点，两市成交 2.15 万亿元，超 3000 只个股下跌；文化传媒、AI 视频、短剧游戏板块领涨（《出版业发展“十五五”规划》催化），旅游酒店、港口航运领跌，长假前资金趋于谨慎。</div>
+        <div class="why"><b>看点：</b>节前获利了结与主线轮动并存，政策催化型主题（出版、文旅）接棒 AI 硬件，短线风格切换信号明显。</div>
       </div>
 
       <div class="item">
-        <div class="t">姚景元时隔七年为刘耀文庆生，"写错年龄"上热搜</div>
-        <div class="d">23日凌晨，姚景元在刘耀文21岁生日微博下留言"20了，生日快乐"，四分钟后更正并自嘲"我脑子"，登上热搜；上一次他公开为刘耀文送祝福还是在2019年。</div>
-        <div class="why"><b>值得关注：</b>台风少年团旧队友的"回忆杀"互动持续带动话题热度，转型演员的姚景元借综艺与待播作品（《宝珠》《耀眼》）稳步回归公众视野。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E5%85%AC%E5%8B%9F%E5%9F%BA%E9%87%91%E5%87%80%E5%80%BC+39.63+%E4%B8%87%E4%BA%BF%E5%88%9B%E6%96%B0%E9%AB%98%EF%BC%8CAI+%E5%9F%BA%E9%87%91%E6%94%BE%E5%AE%BD%E7%94%B3%E8%B4%AD" target="_blank" rel="noopener">公募基金净值 39.63 万亿创新高，AI 基金放宽申购</a></div>
+        <div class="d">中基协数据显示，截至 8 月底我国公募基金资产净值合计 39.63 万亿元，较 7 月底增长超 5200 亿元；易方达两只信息产业基金将单账户大额申购上限由 1 万元大幅上调至 50 万元。</div>
+        <div class="why"><b>看点：</b>头部 AI 主题基金从“限购”转向“放量”，反映管理机构对科技主线的信心与增量资金入场的信号。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%85%A8%E7%90%83%E5%8D%8A%E5%AF%BC%E4%BD%93%E8%90%A5%E6%94%B6%E5%8D%95%E5%AD%A3%E7%A0%B4+4250+%E4%BA%BF%E7%BE%8E%E5%85%83%EF%BC%8C%E8%8B%B9%E6%9E%9C%E5%B8%82%E5%80%BC%E4%B8%80%E5%BA%A6%E7%A0%B4+5+%E4%B8%87%E4%BA%BF" target="_blank" rel="noopener">全球半导体营收单季破 4250 亿美元，苹果市值一度破 5 万亿</a></div>
+        <div class="d">Omdia 报告显示 2026 年二季度全球半导体营收突破 4250 亿美元，环比增长 31.4% 创历史纪录；隔夜纳指再创新高，苹果公司市值一度突破 5 万亿美元，纽铜六连涨收创史上次高。</div>
+        <div class="why"><b>看点：</b>海外算力与金属（铜）景气共振，为 A 股存储、铜缆、算力硬件板块提供跨市场联动支撑。</div>
+      </div>
+    </section>
+
+    <section class="card" id="hot" style="--ac:#6d28d9; --ac-deep:#551dab;">
+      <div class="sec-head"><span class="sec-num">04</span><h3>网络热点</h3><span class="en">Trending</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%AD%E5%9B%BD%E5%A5%B3%E6%8E%92+3-0+%E6%A8%AA%E6%89%AB%E6%97%A5%E6%9C%AC%EF%BC%8C%E6%88%90%E5%B0%B1%E4%BA%9A%E8%BF%90%E2%80%9C%E5%8D%81%E5%86%A0%E7%8E%8B%E2%80%9D" target="_blank" rel="noopener">中国女排 3-0 横扫日本，成就亚运“十冠王”</a></div>
+        <div class="d">22 日亚运会女子排球决赛，中国队 3-0 击败东道主日本队夺冠，队史第十枚亚运金牌、实现三连冠；同日游泳赛场中国队再夺 4 金，男子 4×100 混合泳接力实现亚运四连冠，射击 10 米气步枪混合团体破世界纪录夺金。</div>
+        <div class="why"><b>看点：</b>与前一日中国男篮创历史最差成绩形成强反差，女排“十冠王”成为全网最大正能量话题。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E2%80%9C%E6%9C%88%E9%A5%BC%E5%8D%96%E4%B8%8D%E5%8A%A8%E2%80%9D%E5%86%B2%E4%B8%8A%E7%83%AD%E6%90%9C%EF%BC%9A%E9%94%80%E5%94%AE%E9%A2%9D%E5%90%8C%E6%AF%94%E4%B8%8B%E6%BB%91+45%25" target="_blank" rel="noopener">“月饼卖不动”冲上热搜：销售额同比下滑 45%</a></div>
+        <div class="d">数据显示 8 月 14 日至 9 月 13 日主要门店月饼销售额同比下滑 45.17%，95 后对月饼兴趣不高；记者实探武汉商超发现美心流心奶黄月饼从 320 元两连降至 268 元，市场整体遇冷。</div>
+        <div class="why"><b>看点：</b>传统节令食品的礼盒经济正在失灵，年轻消费偏好变化将倒逼食品行业产品与营销转型。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E8%A5%BF%E8%B4%9D%E2%80%9C%E5%80%92%E9%97%AD%E2%80%9D%E4%BC%A0%E8%A8%80%E5%8F%91%E9%85%B5%EF%BC%8C%E9%92%9F%E8%96%9B%E9%AB%98%E5%88%9B%E5%A7%8B%E4%BA%BA%E7%9B%B4%E6%92%AD%E5%8A%9B%E6%8C%BA" target="_blank" rel="noopener">西贝“倒闭”传言发酵，钟薛高创始人直播力挺</a></div>
+        <div class="d">西贝被传“将倒闭”引发热议，钟薛高创始人林盛直播力挺称“西贝要是倒了是中国餐饮行业的倒退”，钟薛高“复活”后同步开启降价；B 站等平台则出现“西贝困局罗永浩是否担责”的追责讨论。</div>
+        <div class="why"><b>看点：</b>事件已从单一品牌危机演变为餐饮行业信任与“企业家抱团”之争，消费降级背景下的连锁经营困境具有普遍样本意义。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%9A%E5%AE%B6%E4%B8%AD%E5%B0%8F%E9%93%B6%E8%A1%8C%E9%80%86%E5%8A%BF%E4%B8%8A%E8%B0%83%E5%AD%98%E6%AC%BE%E5%88%A9%E7%8E%87" target="_blank" rel="noopener">多家中小银行逆势上调存款利率</a></div>
+        <div class="d">9 月以来，微众银行 3 年期定存利率上调 15 个基点至 1.75%，湖北监利农商银行、广东五华惠民村镇银行等中小银行也上调大额存单和长期定期存款利率，与当前普遍降息背景形成反差。</div>
+        <div class="why"><b>看点：</b>“利率倒挂”反映中小银行负债端揽储压力，储户可关注区域中小行的阶段性高息窗口，同时需留意其资产质量风险。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%BE%AE%E4%BF%A1%E4%B8%8A%E7%BA%BF%E6%9C%8B%E5%8F%8B%E5%9C%88%E2%80%9C%E7%A7%81%E5%AF%86%E5%8F%91%E8%A1%A8%E2%80%9D%EF%BC%9BiPhone+18+%E9%81%AD%E9%A6%96%E6%89%B9%E7%94%A8%E6%88%B7%E5%90%90%E6%A7%BD" target="_blank" rel="noopener">微信上线朋友圈“私密发表”；iPhone 18 遭首批用户吐槽</a></div>
+        <div class="d">微信 8.0.78 版本新增“私密发表”功能，发表后自动转为“仅自己可见”；另一边，iPhone 18 系列发售后不少用户反映新机死机、自动重启、外壳掉漆变形等问题。</div>
+        <div class="why"><b>看点：</b>社交产品向“低压力分享”演进是重要产品趋势；iPhone 18 品控争议则可能影响其首销期口碑与销量。</div>
+      </div>
+    </section>
+
+    <section class="card" id="ent" style="--ac:#db2777; --ac-deep:#ab1d5d;">
+      <div class="sec-head"><span class="sec-num">05</span><h3>娱乐八卦</h3><span class="en">Entertainment</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E7%8E%8B%E7%8E%89%E9%9B%AF%E4%BA%B2%E5%8F%A3%E8%AF%81%E5%AE%9E%E4%B8%8E%E6%9D%A8%E7%8E%8F%E4%BA%94%E5%B9%B4%E6%81%8B%E6%83%85%EF%BC%8C%E5%90%A6%E8%AE%A4%E2%80%9C%E7%BB%93%E5%A9%9A%E5%8F%88%E7%A6%BB%E5%A9%9A%E2%80%9D" target="_blank" rel="noopener">王玉雯亲口证实与杨玏五年恋情，否认“结婚又离婚”</a></div>
+        <div class="d">王玉雯 23 日发文证实与杨玏因合作《纵有疾风起》相识相恋五年，2024 年上半年因人生规划错位和平分手，并明确否认网传“结婚又离婚”谣言，表示目前单身、重心放在拍戏。</div>
+        <div class="why"><b>看点：</b>艺人主动“自曝式”澄清罕见，双方无互撕、无炒作被称为“内娱体面分手范本”，也再次把 AI 编造明星谣言的治理问题推向台前。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E7%AB%A0%E5%AD%90%E6%80%A1%E5%87%BA%E4%BB%BB%E6%B9%BE%E5%8C%BA%E5%8D%87%E6%98%8E%E6%9C%88%E2%80%9C%E5%92%8C%E5%B9%B3%E5%A4%A7%E4%BD%BF%E2%80%9D%EF%BC%8C%E5%A4%9A%E5%B9%B4%E4%BC%A0%E9%97%BB%E8%A2%AB%E5%AE%98%E6%96%B9%E6%BE%84%E6%B8%85" target="_blank" rel="noopener">章子怡出任湾区升明月“和平大使”，多年传闻被官方澄清</a></div>
+        <div class="d">9 月 20 日电影频道融媒体中心官宣章子怡出任 2026 大湾区电影音乐晚会“和平大使”，晚会上她以《愿世界和平》主题独白压轴；央媒发文使流传十余年的“被调查、限制出境”传闻不攻自破。</div>
+        <div class="why"><b>看点：</b>国家级文化盛典的荣誉身份被视为最权威的“背景背书”，此事标志着艺人舆论污名化治理的一次标志性转折。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E6%9E%97%E5%BF%83%E5%A6%82%E5%8F%A4%E5%B7%A8%E5%9F%BA%E8%8B%8F%E6%9C%89%E6%9C%8B%E6%97%B6%E9%9A%94+26+%E5%B9%B4%E5%90%8C%E5%8F%B0%E5%90%88%E5%94%B1" target="_blank" rel="noopener">林心如古巨基苏有朋时隔 26 年同台合唱</a></div>
+        <div class="d">在湾区升明月 2026 大湾区电影音乐晚会上，《情深深雨濛濛》三大主演林心如、古巨基、苏有朋时隔 26 年再度同台合唱主题曲，林心如晒出 2000 年片场旧照与 2026 后台合照对比，话题冲上热搜。</div>
+        <div class="why"><b>看点：</b>该晚会此前因假唱争议处于舆论风口，“回忆杀”话题成功对冲负面，怀旧 IP 的商业价值再次得到验证。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E5%A7%9A%E6%99%AF%E5%85%83%E6%97%B6%E9%9A%94%E4%B8%83%E5%B9%B4%E4%B8%BA%E5%88%98%E8%80%80%E6%96%87%E5%BA%86%E7%94%9F%EF%BC%8C%E2%80%9C%E5%86%99%E9%94%99%E5%B9%B4%E9%BE%84%E2%80%9D%E4%B8%8A%E7%83%AD%E6%90%9C" target="_blank" rel="noopener">姚景元时隔七年为刘耀文庆生，“写错年龄”上热搜</a></div>
+        <div class="d">23 日凌晨，姚景元在刘耀文 21 岁生日微博下留言“20 了，生日快乐”，四分钟后更正并自嘲“我脑子”，登上热搜；上一次他公开为刘耀文送祝福还是在 2019 年。</div>
+        <div class="why"><b>看点：</b>台风少年团旧队友的“回忆杀”互动持续带动话题热度，转型演员的姚景元借待播作品《宝珠》《耀眼》稳步回归公众视野。</div>
       </div>
     </section>
 
