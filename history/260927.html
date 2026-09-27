@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>提马早报 · 2026.09.27</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* 工作日默认版令牌（节气/节日主题由 apply_theme.py 追加覆盖，勿把主题色写死在这里） */
+    --paper: #f7f3ec;
+    --ink: #1c1b17;
+    --ink-soft: #4c4a42;
+    --ink-faint: #8a867a;
+    --line: #d9d2c3;
+    --card: #fffdf8;
+    --accent: #1c1b17; --accent-soft: #4c4a42;
+    --c-intl: #1d4ed8; --c-intl-deep: #1e3fa8;
+    --c-dom: #cf2f1e; --c-dom-deep: #a02315;
+    --c-fin: #b45309; --c-fin-deep: #8a3f06;
+    --c-spo: #15803d; --c-spo-deep: #105c2c;
+    --c-hot: #6d28d9; --c-hot-deep: #551dab;
+    --c-ent: #db2777; --c-ent-deep: #ab1d5d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Sans SC", sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    padding: 0 16px 48px;
+    position: relative;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .35;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; position: relative; z-index: 1; }
+
+  /* ===== 报头 ===== */
+  .masthead { padding: 34px 0 0; border-bottom: 3px double var(--accent); }
+  .mast-meta {
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+    border-bottom: 1px solid var(--line); padding-bottom: 10px;
+    font-size: 12.5px; letter-spacing: .18em; color: var(--ink-faint);
+  }
+  .mast-meta .kicker { font-weight: 700; color: var(--ink-soft); }
+  .mast-meta .kicker small { font-weight: 400; letter-spacing: .3em; margin-left: 8px; color: var(--ink-faint); }
+  .mast-title-row {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 24px; padding: 26px 0 22px;
+  }
+  .mast-title {
+    font-family: "Noto Serif SC", serif; font-weight: 900;
+    font-size: clamp(44px, 7vw, 76px); line-height: 1.05; letter-spacing: .1em;
+  }
+  .mast-title em { font-style: normal; color: var(--c-dom); }
+  .mast-side { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+  .mast-date {
+    font-family: "Playfair Display", serif; font-style: italic; font-weight: 600;
+    font-size: clamp(30px, 4.6vw, 52px); color: var(--ink); white-space: nowrap; line-height: 1;
+  }
+  .mast-date small {
+    display: block; font-family: "Noto Sans SC", sans-serif; font-style: normal;
+    font-size: 12px; letter-spacing: .3em; color: var(--accent); margin-top: 8px; text-align: right;
+  }
+
+  /* ===== 往期日历 ===== */
+  .cal-anchor { position: relative; }
+  .cal-link {
+    display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+    font-family: inherit; font-size: 13px; font-weight: 700; letter-spacing: .1em;
+    color: var(--ink-soft); background: var(--card);
+    border: 1.5px solid var(--line); border-radius: 999px; padding: 5px 15px 5px 12px;
+    transition: all .2s ease;
+  }
+  .cal-link:hover { border-color: var(--accent); color: var(--accent); }
+  .cal-link svg { width: 14px; height: 14px; display: block; }
+  .cal-pop {
+    position: absolute; top: calc(100% + 10px); right: 0; z-index: 60;
+    width: 274px; padding: 14px 14px 10px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 18px 44px -18px rgba(28, 27, 23, .45), 0 2px 8px rgba(28, 27, 23, .06);
+    animation: calIn .18s ease both;
+  }
+  .cal-pop[hidden] { display: none; }
+  @keyframes calIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .cal-title { font-size: 14px; font-weight: 700; letter-spacing: .08em; color: var(--ink); }
+  .cal-nav {
+    width: 26px; height: 26px; line-height: 1; cursor: pointer;
+    font-family: inherit; font-size: 17px; color: var(--ink-soft);
+    background: transparent; border: 1px solid var(--line); border-radius: 8px;
+    transition: all .18s ease;
+  }
+  .cal-nav:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .cal-week, .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .cal-week span {
+    text-align: center; font-size: 11px; letter-spacing: .06em;
+    color: var(--ink-faint); padding-bottom: 6px;
+  }
+  .cal-cell {
+    position: relative; height: 32px; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: var(--ink-faint); border-radius: 8px;
+    transition: background .18s ease, color .18s ease;
+  }
+  .cal-cell.is-empty { visibility: hidden; }
+  .cal-cell.has { color: var(--ink); font-weight: 700; cursor: pointer; }
+  .cal-cell.has::after {
+    content: ""; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
+  }
+  .cal-cell.has:hover, .cal-cell.has:focus-visible {
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+    color: var(--accent); outline: none;
+  }
+  .cal-cell.is-today { box-shadow: inset 0 0 0 1.5px var(--line); color: var(--ink-soft); }
+  .cal-foot {
+    margin-top: 9px; padding-top: 8px; border-top: 1px dashed var(--line);
+    font-size: 11.5px; color: var(--ink-faint); letter-spacing: .04em;
+  }
+
+  /* ===== 导航 ===== */
+  .nav-chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 0 18px; }
+  .nav-chips a {
+    text-decoration: none; font-size: 13.5px; font-weight: 700; letter-spacing: .08em;
+    color: var(--ink-soft); border: 1.5px solid var(--line);
+    border-radius: 999px; padding: 5px 16px; transition: all .2s ease;
+  }
+  .nav-chips a:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .nav-chips a.chip-pick { border-color: #0f766e; color: #0b5a54; }
+  .nav-chips a.chip-pick:hover { background: #0f766e; color: #fff; }
+
+  /* ===== 精选 ===== */
+  .spotlight {
+    margin-top: 30px; border-radius: 18px; overflow: hidden;
+    background: linear-gradient(120deg, #0f766e 0%, #115e59 46%, #134e4a 100%);
+    color: #f2fbfa; padding: 34px 38px 30px; position: relative;
+    box-shadow: 0 18px 44px -18px rgba(15, 118, 110, .55);
+  }
+  .spotlight::after {
+    content: ""; position: absolute; right: -60px; top: -60px; width: 240px; height: 240px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.14), transparent 68%);
+  }
+  .spotlight .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12.5px; font-weight: 700; letter-spacing: .3em;
+    border: 1.5px solid rgba(242, 251, 250, .55); border-radius: 999px;
+    padding: 5px 18px 5px 20px; margin-bottom: 18px;
+  }
+  .spotlight .badge i {
+    width: 8px; height: 8px; border-radius: 50%; background: #5eead4; display: inline-block;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1);} 50% { opacity: .45; transform: scale(.78);} }
+  .spotlight h2 {
+    font-family: "Noto Serif SC", serif; font-weight: 900;
+    font-size: clamp(24px, 3.4vw, 34px); line-height: 1.35; margin-bottom: 14px;
+  }
+  .spotlight h2 .hl { color: #99f6e4; border-bottom: 3px solid rgba(153, 246, 228, .5); padding-bottom: 2px; }
+  .spotlight .body { font-size: 15px; color: #d3efec; max-width: 62em; }
+  .spotlight .why {
+    margin-top: 18px; padding: 14px 18px; border-left: 3px solid #5eead4;
+    background: rgba(255,255,255,.07); border-radius: 0 10px 10px 0;
+    font-size: 14px; color: #e8fbf9; max-width: 62em;
+  }
+  .spotlight .why b { color: #99f6e4; font-weight: 700; }
+
+  /* ===== 分类卡片 ===== */
+  .grid { margin-top: 30px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  @media (max-width: 880px) { .grid { grid-template-columns: 1fr; } .spotlight { padding: 26px 22px; } }
+  .card {
+    background: var(--card); border-radius: 4px 4px 14px 14px;
+    box-shadow: 0 1px 3px rgba(28, 27, 23, .07), 0 12px 30px -22px rgba(28,27,23,.35);
+    padding: 24px 26px 12px; position: relative; border-top: 6px solid var(--ac);
+    animation: rise .6s ease both;
+  }
+  .card:nth-child(1) { animation-delay: .05s; } .card:nth-child(2) { animation-delay: .12s; }
+  .card:nth-child(3) { animation-delay: .19s; } .card:nth-child(4) { animation-delay: .26s; }
+  .card:nth-child(5) { animation-delay: .33s; } .card:nth-child(6) { animation-delay: .40s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px);} to { opacity: 1; transform: none;} }
+  .card:hover { transform: translateY(-3px); transition: transform .25s ease; }
+  .sec-head {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 6px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--line);
+  }
+  .sec-num { font-family: "Playfair Display", serif; font-style: italic; font-weight: 700; font-size: 26px; color: var(--ac); line-height: 1; }
+  .sec-head h3 { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 21px; letter-spacing: .1em; color: var(--ink); }
+  .sec-head .en { margin-left: auto; font-size: 11px; letter-spacing: .22em; color: var(--ink-faint); text-transform: uppercase; }
+  .item { padding: 14px 0 12px; border-bottom: 1px dashed var(--line); }
+  .item:last-child { border-bottom: none; }
+  .item .idx { font-family: "Playfair Display", serif; font-style: italic; font-weight: 700; font-size: 15px; color: var(--ac); margin-right: 8px; }
+  .item .t { font-size: 15.5px; font-weight: 700; color: var(--ink); line-height: 1.5; }
+  .item .t .tag {
+    display: inline-block; font-size: 11px; font-weight: 700; color: #fff;
+    background: var(--ac); border-radius: 3px; padding: 1px 7px; margin-right: 7px;
+    vertical-align: 2px; letter-spacing: .06em;
+  }
+  .item .d { margin-top: 6px; font-size: 14px; color: var(--ink-soft); }
+  .item .why {
+    margin-top: 9px; font-size: 13.5px; color: var(--ink-faint);
+    padding: 8px 12px; border-left: 3px solid var(--ac);
+    background: color-mix(in srgb, var(--ac) 6%, transparent);
+    border-radius: 0 8px 8px 0;
+  }
+  .item .why b { color: var(--ac-deep); font-weight: 700; }
+  .risk { margin-top: 40px; text-align: center; font-size: 12.5px; color: var(--ink-faint); letter-spacing: .08em; }
+
+  /* 标题外链（Bing 搜索） */
+  .item .t a.lk, .spotlight h2 a.lk {
+    color: inherit; text-decoration: underline;
+    text-decoration-thickness: 1px; text-underline-offset: 4px;
+    text-decoration-color: color-mix(in srgb, currentColor 32%, transparent);
+    transition: text-decoration-color .18s ease, color .18s ease;
+  }
+  .item .t a.lk:hover { color: var(--ac-deep); text-decoration-color: currentColor; }
+  .spotlight h2 a.lk { text-decoration-color: rgba(242, 251, 250, .35); }
+  .spotlight h2 a.lk:hover { text-decoration-color: rgba(242, 251, 250, .95); }
+
+  @media (max-width: 640px) {
+    .mast-title-row { flex-wrap: wrap; }
+    .mast-side { align-items: flex-start; }
+    .cal-pop { right: auto; left: 0; }
+  }
+</style>
+<style id="theme-css">
+/* 周末版 */
+  /* 周末版：版面更松弛 */
+  :root { --paper:#f7f3ec; --line:#d9d2c3; }
+  .card { border-radius: 6px 6px 16px 16px; }
+  body { line-height: 1.76; }
+  .item { padding: 16px 0 13px; }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="mast-meta">
+      <span class="kicker">提马早报<small>TIMAB DAILY</small></span>
+      <span>星期日 · 农历八月十七 · timab.cn</span>
+    </div>
+    <div class="mast-title-row">
+      <h1 class="mast-title">提马<em>早报</em></h1>
+      <div class="mast-side">
+        <div class="mast-date">2026.09.27<small>DAILY BRIEFING</small></div>
+        <div class="cal-anchor">
+          <button class="cal-link" id="calBtn" type="button" aria-haspopup="dialog" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+              <path d="M3 10h18M8 3v4M16 3v4"></path>
+            </svg>往期日历
+          </button>
+          <div class="cal-pop" id="calPop" role="dialog" aria-label="往期日历" hidden>
+            <div class="cal-head">
+              <button class="cal-nav" id="calPrev" type="button" aria-label="上一个月">‹</button>
+              <span class="cal-title" id="calTitle"></span>
+              <button class="cal-nav" id="calNext" type="button" aria-label="下一个月">›</button>
+            </div>
+            <div class="cal-week"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div>
+            <div class="cal-grid" id="calGrid"></div>
+            <div class="cal-foot">带圆点的日期可查看当日存档</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="nav-chips">
+      <a class="chip-pick" href="#pick">精选</a>
+      <a href="#intl" style="border-color:#1d4ed8;color:#1e3fa8">国际时事</a>
+      <a href="#dom" style="border-color:#cf2f1e;color:#a02315">国内要闻</a>
+      <a href="#fin" style="border-color:#b45309;color:#8a3f06">金融要闻</a>
+      <a href="#spo" style="border-color:#15803d;color:#105c2c">体育竞技</a>
+      <a href="#hot" style="border-color:#6d28d9;color:#551dab">网络热点</a>
+      <a href="#ent" style="border-color:#db2777;color:#ab1d5d">娱乐八卦</a>
+    </nav>
+  </header>
+
+  <section class="spotlight" id="pick">
+    <div class="badge"><i></i>精 选</div>
+    <h2><a class="lk" href="https://www.bing.com/search?q=%E4%B8%AD%E5%9B%BD%E7%94%B7%E8%B6%B3+3%3A0+%E6%B3%B0%E5%9B%BD%EF%BC%8C%E6%97%B6%E9%9A%94+28+%E5%B9%B4%E9%87%8D%E8%BF%94%E4%BA%9A%E8%BF%90%E5%9B%9B%E5%BC%BA" target="_blank" rel="noopener">中国男足 3:0 泰国，<span class="hl">时隔 28 年重返亚运四强</span></a></h2>
+    <div class="body">名古屋亚运会男足四分之一决赛，中国队变阵出击：上半场补时阶段彭啸射门造成对手乌龙，下半场胡荷韬禁区破门、替补登场的张玉宁再进一球，3:0 完胜泰国队。这是自 1998 年曼谷亚运会以来，中国男足时隔 28 年再次打入亚运会四强，半决赛将对阵韩国队。主教练安东尼奥赛后说：“我们很开心能给中国足球继续带来这种欢乐、乐观的情绪。”</div>
+    <div class="why"><b>看点：</b>三大球里最牵动舆论的一支队伍，在外界最低的预期里踢出了最提气的一战；赛前几乎无人看好的变阵收下大胜，半决赛再遇老对手韩国，“中国男足”四个字罕见地以正面姿势冲回热搜，话题热度只会更高。</div>
+  </section>
+
+  <div class="grid">
+
+    <section class="card" id="intl" style="--ac:#1d4ed8; --ac-deep:#1e3fa8;">
+      <div class="sec-head"><span class="sec-num">01</span><h3>国际时事</h3><span class="en">World</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E7%89%B9%E6%9C%97%E6%99%AE%E6%8B%92%E7%BB%9D%E4%BC%8A%E6%9C%97%E2%80%9C%E4%B8%83%E5%A4%A9%E6%96%B9%E6%A1%88%E2%80%9D%EF%BC%8C%E7%A7%B0%E4%B8%AD%E6%9C%9F%E9%80%89%E4%B8%BE%E5%90%8E%E6%88%96%E6%81%A2%E5%A4%8D%E8%BD%B0%E7%82%B8" target="_blank" rel="noopener">特朗普拒绝伊朗“七天方案”，称中期选举后或恢复轰炸</a></div>
+        <div class="d">美国总统特朗普 26 日称，已拒绝伊朗提出的七日内重开霍尔木兹海峡的停火提议，并告诉助手可能在 11 月美国国会中期选举后恢复对伊朗轰炸，称美方“完全控制了霍尔木兹海峡”，大量石油正从海峡流出。而就在两天前，美方还在形容与伊方的讨论“积极且富有建设性”。</div>
+        <div class="why"><b>看点：</b>从“48 小时近 4000 万桶过海峡”的和谈氛围到当场翻脸，美伊局势再度滑向敌对边缘，油价与航运市场将率先给出反应。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E4%BC%8A%E6%9C%97%E6%80%BB%E7%BB%9F%EF%BC%9A%E4%B8%8D%E5%86%8D%E4%BF%A1%E4%BB%BB%E4%B8%8E%E7%BE%8E%E5%9B%BD%E5%AF%B9%E8%AF%9D%EF%BC%8C%E6%B5%B7%E5%B3%A1%E5%BC%80%E6%94%BE%E5%8F%96%E5%86%B3%E4%BA%8E%E4%BC%8A%E6%96%B9%E6%9D%A1%E4%BB%B6" target="_blank" rel="noopener">伊朗总统：不再信任与美国对话，海峡开放取决于伊方条件</a></div>
+        <div class="d">伊朗总统佩泽希齐扬 26 日表示，鉴于每一轮谈判后美国都会发动袭击并实施制裁，伊朗不再信任与美国的对话。外长阿拉格齐 27 日强调，伊朗不会在既定条件上让步，霍尔木兹海峡的开放取决于伊方条件是否得到满足。伊方此前还在联大披露，美以对伊朗的侵略已造成超过 5000 人丧生。</div>
+        <div class="why"><b>看点：</b>德黑兰的接连表态意味着和谈窗口正在收窄，“边谈边打”的循环何时终结，是节后全球市场最大的不确定项。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E6%8B%89%E5%A4%AB%E7%BD%97%E5%A4%AB%E8%81%94%E5%A4%A7%E5%8F%91%E8%A8%80%EF%BC%9A%E8%A5%BF%E6%96%B9%E4%B8%BA%E9%81%8F%E5%88%B6%E4%BF%84%E7%BD%97%E6%96%AF%E2%80%9C%E4%BA%B2%E6%89%8B%E6%91%A7%E6%AF%81%E6%AC%A7%E6%B4%B2%E5%AE%89%E5%85%A8%E4%BD%93%E7%B3%BB%E2%80%9D" target="_blank" rel="noopener">拉夫罗夫联大发言：西方为遏制俄罗斯“亲手摧毁欧洲安全体系”</a></div>
+        <div class="d">俄外长拉夫罗夫 26 日在第 81 届联合国大会一般性辩论中表示，欧洲正竭尽全力阻挠乌克兰问题和平解决，西方幻想让俄罗斯遭受战略失败，最终只会把战争挑唆者引入战略死胡同。普京同日表态：俄罗斯没有任何理由与现实动机与欧洲发生任何形式的军事冲突。</div>
+        <div class="why"><b>看点：</b>俄方在联大声调转硬，与此前俄美乌三方会晤的传闻形成对照，俄乌和谈前景再度变得模糊。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E4%BB%A5%E5%86%9B%E7%A9%BA%E8%A2%AD%E9%BB%8E%E5%8D%97%E9%83%A8%E7%9C%9F%E4%B8%BB%E5%85%9A%E6%AD%A6%E5%99%A8%E5%82%A8%E5%AD%98%E8%AE%BE%E6%96%BD%EF%BC%8C%E4%B8%AD%E4%B8%9C%E5%A4%9A%E7%82%B9%E7%B4%A7%E5%BC%A0%E6%9C%AA%E5%87%8F" target="_blank" rel="noopener">以军空袭黎南部真主党武器储存设施，中东多点紧张未减</a></div>
+        <div class="d">当地时间 26 日，以色列国防军对黎巴嫩南部一处黎巴嫩真主党武器储存设施发动空袭。中东战事外溢效应持续：巴基斯坦总理谢里夫警告，任何试图改变巴方应得河流水资源份额的行为都将被视为“战争行为”。</div>
+        <div class="why"><b>看点：</b>战线从海峡谈判桌延伸到黎以边境与南亚水权，任何一处的擦枪走火都可能再度点燃油价。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E6%AC%A7%E7%9B%9F%E5%90%8C%E6%84%8F+66+%E4%BA%BF%E6%AC%A7%E5%85%83%E5%AF%B9%E4%B9%8C%E5%86%9B%E6%8F%B4%EF%BC%8C%E5%86%85%E9%83%A8%E6%96%87%E4%BB%B6%E7%A7%B0%E2%80%9C%E7%BE%8E%E5%9B%BD%E5%B7%B2%E4%B8%8D%E5%86%8D%E6%98%AF%E7%9B%9F%E5%8F%8B%E2%80%9D" target="_blank" rel="noopener">欧盟同意 66 亿欧元对乌军援，内部文件称“美国已不再是盟友”</a></div>
+        <div class="d">欧盟同意向乌克兰拨付 66 亿欧元，用于提供军事支持。与此同时，比利时一份内部文件曝光，称“美国已不再是盟友”，欧洲开始为防范美国进行布局。</div>
+        <div class="why"><b>看点：</b>援乌加码与“防美”叙事同时出现，欧洲的安全观正在发生静悄悄的转向，跨大西洋关系进入微妙的重新定价期。</div>
+      </div>
+    </section>
+
+    <section class="card" id="dom" style="--ac:#cf2f1e; --ac-deep:#a02315;">
+      <div class="sec-head"><span class="sec-num">02</span><h3>国内要闻</h3><span class="en">China</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E4%B9%A0%E8%BF%91%E5%B9%B3%E7%BB%93%E6%9D%9F%E8%AE%BF%E7%BE%8E%E5%9B%9E%E5%88%B0%E5%8C%97%E4%BA%AC%EF%BC%8C%E5%85%AB%E7%82%B9%E6%88%90%E6%9E%9C%E5%85%B1%E8%AF%86%E7%BB%86%E8%8A%82%E6%8A%AB%E9%9C%B2" target="_blank" rel="noopener">习近平结束访美回到北京，八点成果共识细节披露</a></div>
+        <div class="d">国家主席习近平 26 日下午圆满结束对美国的国事访问回到北京。两国元首达成八点成果共识：构建“基于尊重、公平、对等的中美建设性战略稳定关系”；达成“300 亿美元”对等降税安排、延期吉隆坡经贸磋商成果并建立贸易理事会；明确任何国家或机构不得对国际水道征收通行费；建立中美人工智能对话（下次对话今年 11 月举行）并建立 AI 事件沟通渠道。</div>
+        <div class="why"><b>看点：</b>从“贸易休战延长”到八点共识落地清单，成果已从原则宣示进入可执行细节，11 月的 AI 对话与降税落实是下一批观察点。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E7%81%AB%E8%BD%A6%E7%A5%A8%E9%A2%84%E7%BA%A6%E8%B4%AD%E7%A5%A8%E8%B0%83%E6%95%B4%EF%BC%9A%E6%9C%80%E8%BF%9C%E9%A2%84%E7%BA%A6%E6%97%A5%E6%9C%9F%E7%94%B1+60+%E5%A4%A9%E9%80%90%E6%AD%A5%E8%B0%83%E8%87%B3+30+%E5%A4%A9" target="_blank" rel="noopener">火车票预约购票调整：最远预约日期由 60 天逐步调至 30 天</a></div>
+        <div class="d">9 月 26 日起，铁路部门对京沪高铁、京沪铁路试点的预约购票服务日期范围进行调整，从开车前第 60 天至第 17 天，逐步调整为开车前第 30 天至第 17 天。</div>
+        <div class="why"><b>看点：</b>“抢 60 天后的票”的老攻略作废，预约窗口收窄后行程确定性更高，商务差旅与探远途出行族的购票节奏需要重排。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%AD%E7%A7%8B%E5%81%87%E6%9C%9F%E7%AC%AC%E4%BA%8C%E5%A4%A9%E5%85%A8%E7%A4%BE%E4%BC%9A%E8%B7%A8%E5%8C%BA%E5%9F%9F%E4%BA%BA%E5%91%98%E6%B5%81%E5%8A%A8%E9%87%8F%E8%B6%85+2.1+%E4%BA%BF%E4%BA%BA%E6%AC%A1" target="_blank" rel="noopener">中秋假期第二天全社会跨区域人员流动量超 2.1 亿人次</a></div>
+        <div class="d">交通运输部数据显示，26 日中秋假期第二天全社会跨区域人员流动量预计超 2.1 亿人次，出行客流保持高位运行。另据农业农村部农情调度，全国秋粮收获近两成，其中西南收获过半、长江中下游收获过三成。</div>
+        <div class="why"><b>看点：</b>假日经济数据继续验证消费韧性；秋粮收获进度则关系四季度粮价与物价预期，两条线都值得盯着看。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E9%A6%96%E6%89%B9%E6%95%B0%E6%8D%AE%E4%BA%A7%E6%9D%83%E7%99%BB%E8%AE%B0%E5%87%AD%E8%AF%81%E5%8F%91%E6%94%BE%EF%BC%8C56+%E5%AE%B6%E4%BC%81%E4%B8%9A%E5%92%8C%E6%9C%BA%E6%9E%84%E2%80%9C%E6%8C%81%E8%AF%81%E2%80%9D" target="_blank" rel="noopener">首批数据产权登记凭证发放，56 家企业和机构“持证”</a></div>
+        <div class="d">国家数据局消息，我国首批数据产权登记凭证陆续发放，56 家企业和机构获得相关数据的持有权、使用权和经营权，数据要素确权从制度文件走向可流转的权益凭证。</div>
+        <div class="why"><b>看点：</b>数据确权是数据交易与资产入表的前提，凭证落地将实质性激活数据要素市场，为数字经济与 AI 产业补上底层制度拼图。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E6%B8%9D%E4%B8%87%E9%AB%98%E9%93%81%E7%9F%B3%E6%B2%B1%E9%95%BF%E6%B1%9F%E5%A4%A7%E6%A1%A5%E5%90%88%E9%BE%99%EF%BC%8C%E4%B8%96%E7%95%8C%E6%8A%80%E8%83%BD%E5%A4%A7%E8%B5%9B%E4%B8%8A%E6%B5%B7%E9%97%AD%E5%B9%95" target="_blank" rel="noopener">渝万高铁石沱长江大桥合龙，世界技能大赛上海闭幕</a></div>
+        <div class="d">26 日，渝万高铁全线控制性工程石沱长江大桥公路桥顺利合龙，为全线按期建成通车创造条件。同日，第 48 届世界技能大赛在上海收官：机器人系统集成、轨道车辆技术、软件测试等新兴赛项大量融入 AI 考核，选手可调用本地大模型辅助完成测试任务。</div>
+        <div class="why"><b>看点：</b>基建节点与技能大赛同日刷新存在感——世界技能组织主席直言“AI 已渗透所有技能职业”，AI 时代的技能标准正在被赛场提前定义。</div>
+      </div>
+    </section>
+
+    <section class="card" id="fin" style="--ac:#b45309; --ac-deep:#8a3f06;">
+      <div class="sec-head"><span class="sec-num">03</span><h3>金融要闻</h3><span class="en">Finance</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E7%BE%8E%E8%81%94%E5%82%A8%E4%B8%89%E5%B9%B4%E6%9D%A5%E9%A6%96%E6%AC%A1%E5%8A%A0%E6%81%AF%E8%90%BD%E5%9C%B0%EF%BC%8C%E5%A4%9A%E4%BD%8D%E5%AE%98%E5%91%98%E5%AF%86%E9%9B%86%E6%94%BE%E9%B9%B0" target="_blank" rel="noopener">美联储三年来首次加息落地，多位官员密集放鹰</a></div>
+        <div class="d">自美联储近日实施三年来首次加息以来，多位官员呼吁进一步收紧政策：仅上周五一天就有三位联储官员就通胀风险发出警告。克利夫兰联储主席哈玛克表示，担心持续高企的通胀让美国公众逐渐把高物价视作常态，“美联储绝不能让这种情况发生”。</div>
+        <div class="why"><b>看点：</b>此前市场还在消化“加息预期升温”，如今已进入“加完还要加”的定价阶段，美债收益率与成长股估值继续承压。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E9%AB%98%E7%9B%9B%EF%BC%9AAI+Agent+%E6%B5%AA%E6%BD%AE%E4%B8%8E%E7%BE%8E%E5%80%BA%E5%88%A9%E7%8E%87%E6%AD%A3%E6%8A%8A%E7%BE%8E%E8%82%A1%E2%80%9C%E6%92%95%E6%88%90%E4%B8%A4%E4%B8%AA%E4%B8%96%E7%95%8C%E2%80%9D" target="_blank" rel="noopener">高盛：AI Agent 浪潮与美债利率正把美股“撕成两个世界”</a></div>
+        <div class="d">Meta 发布 Agentic AI 模型 Muse 后单周市值暴增 2200 亿美元，带动纳斯达克 100 成为表现最强的主要股指；但剔除 AI 标的，标普 500 本周实际下跌 1%，纽交所新低股票数量连续 9 日超新高。高盛建议：若坚持持有股票多头，需同步做空美债对冲利率风险。</div>
+        <div class="why"><b>看点：</b>“指数没跌、个股普跌”的扩散交易终结信号，是判断这轮 AI 行情能否扛住 5% 美债收益率的关键坐标。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E6%B5%B7%E5%A4%96%E8%B5%84%E9%87%91%E7%96%AF%E6%B6%8C%E7%BE%8E%E8%82%A1%EF%BC%9A12+%E4%B8%AA%E6%9C%88%E5%87%80%E4%B9%B0%E5%85%A5+9420+%E4%BA%BF%E7%BE%8E%E5%85%83%E5%88%9B%E7%BA%AA%E5%BD%95" target="_blank" rel="noopener">海外资金疯涌美股：12 个月净买入 9420 亿美元创纪录</a></div>
+        <div class="d">美国财政部数据显示，截至今年 7 月的过去 12 个月，海外投资者对美国股票及投资基金份额的净购买额达 9420 亿美元，创 1985 年有记录以来最高的滚动 12 个月总量；二季度单季净购买 4260 亿美元，较去年同期大涨 62%，刷新 2022 年创下的单季纪录。</div>
+        <div class="why"><b>看点：</b>全球资金用脚投票押注美股 AI 叙事，但单边拥挤本身即是风险——一旦利率或盈利预期反转，回撤可能被同向放大。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=SK+%E6%B5%B7%E5%8A%9B%E5%A3%AB%E6%97%97%E4%B8%8B+Solidigm+%E7%AD%B9%E5%88%92%E8%B5%B4%E7%BE%8E%E4%B8%8A%E5%B8%82%EF%BC%8C%E7%9B%AE%E6%A0%87%E4%BC%B0%E5%80%BC+1500+%E4%BA%BF%E7%BE%8E%E5%85%83" target="_blank" rel="noopener">SK 海力士旗下 Solidigm 筹划赴美上市，目标估值 1500 亿美元</a></div>
+        <div class="d">SK 海力士固态存储子公司 Solidigm 正筹划赴美上市，目标估值高达 1500 亿美元、拟募资 150 亿美元，有望刷新美股半导体 IPO 纪录。同期智能戒指制造商 Oura 的 IPO 获约 4 倍超额认购，按发行价上限计算市值约 141 亿美元，成为近期美股 IPO 市场的一抹亮色。</div>
+        <div class="why"><b>看点：</b>存储涨价链的资本化进入收官期，A 股存储链（模组、接口芯片、封测）与硬件 IPO 的情绪映射值得关注。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E6%AC%A7%E7%9B%9F%E5%91%8A%E8%AD%A6%E8%83%BD%E6%BA%90%E2%80%9C%E4%BB%B7%E6%A0%BC%E5%8D%B1%E6%9C%BA%E2%80%9D%EF%BC%8C%E5%88%9B%E7%BA%AA%E5%BD%95%E6%9F%B4%E6%B2%B9%E4%BB%B7%E6%88%96%E6%B8%97%E9%80%8F%E6%A0%B8%E5%BF%83%E9%80%9A%E8%83%80" target="_blank" rel="noopener">欧盟告警能源“价格危机”，创纪录柴油价或渗透核心通胀</a></div>
+        <div class="d">欧盟能源委员约根森表示，受伊朗战事对全球油气市场的影响，欧盟正面临能源“价格危机”，呼吁成员国考虑措施减少天然气和电力需求以应对过冬。阿波罗全球管理首席经济学家斯洛克同时警告，创纪录的柴油价格将通过运输链渗透进核心 CPI，对通胀的威胁可能远超美联储目前评估。</div>
+        <div class="why"><b>看点：</b>能源溢价正从加油站的“看得见”转入运输成本的“看不见”，全球通胀二次抬头的风险正在假期里悄悄累积。</div>
+      </div>
+    </section>
+
+    <section class="card" id="spo" style="--ac:#15803d; --ac-deep:#105c2c;">
+      <div class="sec-head"><span class="sec-num">04</span><h3>体育竞技</h3><span class="en">Sports</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%AD%E5%9B%BD%E4%BB%A3%E8%A1%A8%E5%9B%A2%E9%87%91%E7%89%8C%E7%A0%B4%E7%99%BE%EF%BC%9A%E5%B0%84%E5%87%BB%E9%98%9F%E5%B0%84%E8%90%BD%E7%AC%AC+100+%E9%87%91%EF%BC%8C%E8%BF%9E%E7%BB%AD%E5%8D%81%E5%B1%8A%E4%BA%9A%E8%BF%90%E7%A0%B4%E7%99%BE%E9%87%91" target="_blank" rel="noopener">中国代表团金牌破百：射击队射落第 100 金，连续十届亚运破百金</a></div>
+        <div class="d">女子 50 米步枪三姿团体决赛，由王子菲、韩佳予、张力元组成的中国队打出 1773 环强势夺冠，摘下中国代表团本届亚运会第 100 金；个人赛韩佳予以 359.0 环打破亚洲纪录，与张力元包揽金银。26 日中国再夺 9 金，以 107 金 41 银 28 铜领跑金牌榜，总奖牌逼近 200 枚。</div>
+        <div class="why"><b>看点：</b>从上周的 80 金到单周破百，“集团军式”夺金节奏已成中国亚运叙事的底色；今日第 8 个比赛日再产 35 金，纪录还在滚动刷新。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E4%BA%9A%E8%BF%90%E6%B7%B7%E5%8F%8C%E5%86%B3%E8%B5%9B%EF%BC%9A%E6%9E%97%E8%AF%97%E6%A0%8B%2F%E8%92%AF%E6%9B%BC+4%3A0+%E5%87%BB%E8%B4%A5%E7%8E%8B%E6%A5%9A%E9%92%A6%2F%E5%AD%99%E9%A2%96%E8%8E%8E%E9%A6%96%E5%A4%BA%E9%87%91" target="_blank" rel="noopener">亚运混双决赛：林诗栋/蒯曼 4:0 击败王楚钦/孙颖莎首夺金</a></div>
+        <div class="d">乒乓球混双决赛“内战”，林诗栋/蒯曼直落四局（11-9、13-11、11-9、11-9）战胜卫冕冠军王楚钦/孙颖莎，首次问鼎亚运混双金牌，“莎头组合”无缘三连冠，国乒包揽混双金银。林诗栋当天五战全胜，单打、男双亦双双晋级。</div>
+        <div class="why"><b>看点：</b>从前日会师到登顶，新生代正式接棒；单日五赛全胜的体能叙事与“莎头”三连冠梦碎，两条话题线都足够热。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E4%BC%8A%E6%9C%97%E8%80%81%E5%B0%86%E9%98%BF%E6%8B%89%E7%B1%B3%E6%89%AC%E7%88%86%E5%86%B7%E6%B7%98%E6%B1%B0%E5%BC%A0%E6%9C%AC%E6%99%BA%E5%92%8C%EF%BC%8C%E6%97%A5%E6%9C%AC%E7%94%B7%E5%8D%95%E5%85%A8%E5%86%9B%E8%A6%86%E6%B2%A1" target="_blank" rel="noopener">伊朗老将阿拉米扬爆冷淘汰张本智和，日本男单全军覆没</a></div>
+        <div class="d">乒乓球男单四分之一决赛，世界排名第 344 位、34 岁的伊朗选手诺沙迪·阿拉米扬 4:3 挑落世界排名第四的东道主名将张本智和，日本男单就此全军覆没。中国选手王楚钦、林诗栋晋级半决赛。</div>
+        <div class="why"><b>看点：</b>亚运赛场再现“排名不能当饭吃”的经典冷门，直板怪胶皮老将的故事性拉满，也替国乒扫清了最大劲敌之一。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E7%B2%9F%E6%96%87%E4%B8%89%E7%BA%A7%E8%B7%B3%E8%BF%9C+17.42+%E7%B1%B3%E5%A4%BA%E5%86%A0%EF%BC%8C%E6%89%93%E7%A0%B4%E5%B0%98%E5%B0%81+36+%E5%B9%B4%E7%9A%84%E4%BA%9A%E8%BF%90%E7%BA%AA%E5%BD%95" target="_blank" rel="noopener">粟文三级跳远 17.42 米夺冠，打破尘封 36 年的亚运纪录</a></div>
+        <div class="d">田径男子三级跳远决赛，粟文第三跳跳出 17.42 米，打破邹四新 1990 年北京亚运会创造的 17.31 米赛会纪录夺金，马英龙摘铜。同日马拉松赛场，丰配友以 2 小时 12 分 13 秒获男子铜牌，次仁措姆摘得女子银牌。</div>
+        <div class="why"><b>看点：</b>36 年的纪录被一跳改写，中国田径在跳跃项目上的厚度正在兑现；后半程短跨、接力、投掷还有奖牌潮。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E8%B7%B3%E6%B0%B4%E2%80%9C%E6%A2%A6%E4%B9%8B%E9%98%9F%E2%80%9D%E9%A6%96%E6%97%A5%E5%8F%8C%E9%87%91%EF%BC%8C%E4%B8%A4%E5%AF%B9%E7%BB%84%E5%90%88%E5%9D%87%E5%AE%9E%E7%8E%B0%E4%BA%9A%E8%BF%90%E4%B8%83%E8%BF%9E%E5%86%A0" target="_blank" rel="noopener">跳水“梦之队”首日双金，两对组合均实现亚运七连冠</a></div>
+        <div class="d">亚运跳水首个比赛日，陈芋汐/卢为夺得女子双人 10 米台金牌，王宗源/郑九源登顶男子双人 3 米板，两对组合双双实现项目七连冠；中国跳水队自 1974 年首次参赛以来累计亚运金牌已达 92 枚。皮划艇静水同日收官，中国队以 8 金 2 银结束征程。</div>
+        <div class="why"><b>看点：</b>“梦之队”开场即天花板，跳水单人多金属性将在后半程继续放大中国代表团的奖牌优势。</div>
+      </div>
+    </section>
+
+    <section class="card" id="hot" style="--ac:#6d28d9; --ac-deep:#551dab;">
+      <div class="sec-head"><span class="sec-num">05</span><h3>网络热点</h3><span class="en">Trending</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%9A%E5%9B%BD%E4%BB%A3%E8%A1%A8%E5%9B%A2%E5%90%90%E6%A7%BD%E4%BA%9A%E8%BF%90%E4%BD%8F%E5%AE%BF%E4%BA%A4%E9%80%9A%EF%BC%8C%E6%97%A5%E6%9C%AC%E4%BA%9A%E7%BB%84%E5%A7%94%E6%AD%A3%E5%BC%8F%E9%81%93%E6%AD%89" target="_blank" rel="noopener">多国代表团吐槽亚运住宿交通，日本亚组委正式道歉</a></div>
+        <div class="d">本届爱知·名古屋亚运会的住宿、交通、餐饮等保障环节遭多国代表团集体吐槽，日本亚组委就此正式道歉。赛场内金牌破纪录的热度与赛场外“组织拉胯”的吐槽形成鲜明反差。</div>
+        <div class="why"><b>看点：</b>“比赛精彩、组织掉链子”的强烈反差成为本届亚运场外最大谈资，也将在未来奥运周期的筹备复盘里被反复引用。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%A7%E4%BC%97%E5%85%A8%E7%90%83%E5%8F%AC%E5%9B%9E%E7%BA%A6+286+%E4%B8%87%E8%BE%86%E6%B1%BD%E8%BD%A6%EF%BC%8C%E8%BD%AC%E5%90%91%E7%B3%BB%E7%BB%9F%E5%AD%98%E5%9C%A8%E9%9A%90%E6%82%A3" target="_blank" rel="noopener">大众全球召回约 286 万辆汽车，转向系统存在隐患</a></div>
+        <div class="d">因转向系统存在安全隐患，大众宣布将在全球范围内召回约 286 万辆汽车，涉及多款主销车型，具体批次与处理方案陆续公布中。</div>
+        <div class="why"><b>看点：</b>近 300 万辆的召回规模近年罕见，涉及车型之广令车主群体高度关注，安全隐患与售后处理进展将持续发酵。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%AD%E7%A7%8B%E6%A1%A3%E7%A5%A8%E6%88%BF%E7%A0%B4+2+%E4%BA%BF%EF%BC%8C%E5%B7%B2%E8%B6%85+2025+%E5%B9%B4%E4%B8%AD%E7%A7%8B%E6%A1%A3" target="_blank" rel="noopener">中秋档票房破 2 亿，已超 2025 年中秋档</a></div>
+        <div class="d">网络平台数据显示，2026 中秋档（9 月 25 日—27 日）电影总票房突破 2.10 亿元、已超 2025 年中秋档同期，总出票 547.2 万张，平均票价 38.4 元；《复仇者联盟 4：终局之战（加码臻享版）》《欢迎来龙餐馆》《八仙！》暂列档期票房前三。</div>
+        <div class="why"><b>看点：</b>档期票房止跌回升验证了“重映加新片”组合的可行性，国庆档能否接棒（《长征一家人》等长征 90 周年题材在列）是下一个观察点。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%A7%E7%86%8A%E7%8C%AB%E2%80%9C%E5%B9%B3%E5%B9%B3%E2%80%9D%E2%80%9C%E7%A6%8F%E5%8F%8C%E2%80%9D%E5%B0%86%E8%B5%B4%E7%BE%8E%EF%BC%8C%E5%BC%80%E5%90%AF%E6%96%B0%E4%B8%80%E8%BD%AE%E4%BF%9D%E6%8A%A4%E5%90%88%E4%BD%9C" target="_blank" rel="noopener">大熊猫“平平”“福双”将赴美，开启新一轮保护合作</a></div>
+        <div class="d">国家林草局消息，来自成都大熊猫繁育研究基地的大熊猫“平平”和“福双”近日将赴美国亚特兰大动物园，开启新一轮大熊猫保护国际合作。</div>
+        <div class="why"><b>看点：</b>大熊猫赴美恰逢中美关系回暖窗口，“平平”“福双”成为继元首外交之后最柔软的民间注脚，海外养熊猫话题自带流量。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E7%9B%96%E8%8C%A8%E8%AD%A6%E5%91%8A+AI+%E5%8F%AF%E8%83%BD%E8%87%B4%E2%80%9C10+%E4%BA%BF%E4%BA%BA%E6%AD%BB%E4%BA%A1%E2%80%9D%EF%BC%9B%E6%99%BA%E8%83%BD%E4%BD%93%E8%87%AA%E5%88%9B%E4%BA%BA%E7%B1%BB%E7%9C%8B%E4%B8%8D%E6%87%82%E7%9A%84%E2%80%9C%E6%96%B9%E8%A8%80%E2%80%9D" target="_blank" rel="noopener">盖茨警告 AI 可能致“10 亿人死亡”；智能体自创人类看不懂的“方言”</a></div>
+        <div class="d">比尔·盖茨在一档节目采访片段中表示，AI 确实足够强大、能够引发造成 10 亿人死亡的事件，呼吁立法监管。同期，美国一家 AI 实验室发现，多个智能体在虚拟“社会”中协作时开始用一种超现实的“方言”聊天，人类根本看不懂；OpenAI 也披露已通知数十家可能受其 AI 模型活动影响的机构，其中包括政府和高校。</div>
+        <div class="why"><b>看点：</b>从“超级智能”写进联合公报，到盖茨的生存风险警告与智能体“方言”实验，AI 安全一天之内完成了从技术圈到大众舆论的破圈。</div>
+      </div>
+    </section>
+
+    <section class="card" id="ent" style="--ac:#db2777; --ac-deep:#ab1d5d;">
+      <div class="sec-head"><span class="sec-num">06</span><h3>娱乐八卦</h3><span class="en">Entertainment</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E8%91%97%E5%90%8D%E9%9F%B3%E4%B9%90%E5%AE%B6%E5%88%98%E6%AC%A2%E7%97%85%E9%80%9D%EF%BC%8C%E4%BA%AB%E5%B9%B4+63+%E5%B2%81" target="_blank" rel="noopener">著名音乐家刘欢病逝，享年 63 岁</a></div>
+        <div class="d">对外经济贸易大学 26 日发布讣告：著名音乐家刘欢于 9 月 25 日上午 9 时 52 分在上海病逝，享年 63 岁。从《便衣警察》到《好汉歌》，他的歌声陪伴了几代中国人的荧屏记忆。</div>
+        <div class="why"><b>看点：</b>一代音乐人的谢幕引发全网悼念，其作品几乎定义了国产影视剧主题曲的黄金年代，乐坛集体发声致敬。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%AE%E8%A7%86%E7%A7%8B%E6%99%9A%E4%BD%99%E6%B8%A9%E6%9C%AA%E6%95%A3%EF%BC%9A%E2%80%9C%E5%85%A8%E6%98%AF%E6%BC%94%E5%91%98%E5%9C%A8%E5%94%B1%E6%AD%8C%E2%80%9D%E4%BA%89%E8%AE%AE%E4%B8%8E%E9%AB%98%E5%85%89%E8%88%9E%E5%8F%B0%E5%90%8C%E5%9C%A8" target="_blank" rel="noopener">央视秋晚余温未散：“全是演员在唱歌”争议与高光舞台同在</a></div>
+        <div class="d">央视中秋晚会议论持续发酵：“中秋晚会全是演员在唱歌”登上热搜，有观众质疑演员跨界比例过高；但节目单上周深、莎拉·布莱曼、孙楠、谭维维等专业歌手一个没少，周深与莎拉·布莱曼合唱《夜之乐章》被评全场高光，首次登台的于和伟被称“赢麻了”。</div>
+        <div class="why"><b>看点：</b>一台晚会同时贡献热搜与口碑两个极端，“演员该不该站上专业歌手的舞台”的行业之问仍在延烧。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E3%80%8A%E5%85%B0%E9%A6%99%E5%A6%82%E6%95%85%E3%80%8B%E7%AB%99%E5%86%85%E7%83%AD%E5%BA%A6%E7%A0%B4+33000%EF%BC%8C%E5%88%9B+2026+%E5%B9%B4%E6%9C%80%E9%AB%98%E7%BA%AA%E5%BD%95" target="_blank" rel="noopener">《兰香如故》站内热度破 33000，创 2026 年最高纪录</a></div>
+        <div class="d">9 月 26 日晚，谭松韵、刘学义主演的《兰香如故》腾讯视频站内热度突破 33000，成为平台历史上第五部达成该成绩的剧集，并创下 2026 年热度值最高纪录；刘学义凭林锦岐一角打破多年“戏红人不红”的困局。</div>
+        <div class="why"><b>看点：</b>BE 结局收官反而催生二刷与讨论热潮，“意难平经济学”再次被验证；刘学义的爆红路径成为中生代男演员的新样本。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E6%9D%8E%E8%8D%A3%E6%B5%A9%E6%BC%94%E5%94%B1%E4%BC%9A%E4%B8%80%E5%8F%A5%E8%AF%9D%E5%BC%95%E7%88%86%E2%80%9C%E4%BA%95%E6%9F%8F%E7%84%B6%E5%88%98%E9%9B%AF%E2%80%9D%E8%AF%9D%E9%A2%98%EF%BC%8C%E5%88%98%E9%9B%AF%E6%94%B9%E7%AD%BE%E2%80%9C%E9%81%BF%E5%AB%8C%E2%80%9D%E4%B8%8A%E7%83%AD%E6%90%9C" target="_blank" rel="noopener">李荣浩演唱会一句话引爆“井柏然刘雯”话题，刘雯改签“避嫌”上热搜</a></div>
+        <div class="d">9 月 25 日李荣浩上海演唱会上，他以《早春晴朗》角色名 Luke 称呼到场支持的井柏然，并提及“Luke 身边重要的女士雯雯也在”，让井柏然与刘雯的恋情再度霸屏。随后“刘雯改签 避嫌”“早春晴朗剧粉列出井柏然 18 宗罪”等话题接连冲上热搜——剧粉坚持“人剧分离”，不满现实恋情与角色边界被打破。</div>
+        <div class="why"><b>看点：</b>一句即兴发言同时点燃 CP 粉、剧粉与吃瓜群众三方，“人剧分离”的边界之争成为本周末最热娱乐话题。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%BC%A0%E4%B8%80%E5%B1%B1%E3%80%8A%E4%BA%91%E9%9B%80%E5%8F%AB%E5%A4%A9%E5%BD%95%E3%80%8B%E4%BA%94%E5%88%86%E9%92%9F%E4%B8%80%E9%95%9C%E5%88%B0%E5%BA%95%E4%BA%89%E5%90%B5%E6%88%8F%EF%BC%8C%E2%80%9C%E6%AF%81%E5%AE%B9%E5%BC%8F%E6%BC%94%E6%8A%80%E2%80%9D%E8%8E%B7%E8%B5%9E" target="_blank" rel="noopener">张一山《云雀叫天录》五分钟一镜到底争吵戏，“毁容式演技”获赞</a></div>
+        <div class="d">在《云雀叫天录》最新剧情中，张一山与谭卓贡献了一段长达五分钟、一镜到底的夫妻争吵戏：从隐忍到爆发、青筋暴起乃至“面相都变了”，被观众直呼“毁容式演技”。同期，肖战自曝坚持多年为角色撰写人物小传的习惯也登上话题榜。</div>
+        <div class="why"><b>看点：</b>长镜头对台词、情绪与走位的极限考验成为演技讨论的新标杆，“剧抛脸”话题持续为口碑剧引流。</div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="risk">风险提示：本简报仅作信息汇总，其中涉及的数据不构成任何投资建议。</footer>
+</div>
+
+<script>
+(function () {
+  var ARCHIVE_DATES = [/*__ARCHIVE_DATES__*/"260923", "260924", "260925", "260926"/*__END__*/];
+  var PAGE_DATE = "2026-09-27";
+  var HIST_BASE = /\/history\//.test(location.pathname) ? "./" : "history/";
+
+  var btn = document.getElementById("calBtn");
+  var pop = document.getElementById("calPop");
+  var grid = document.getElementById("calGrid");
+  var title = document.getElementById("calTitle");
+  if (!btn || !pop || !grid || !title) { return; }
+
+  var parts = PAGE_DATE.split("-");
+  var todayKey = parts[0].slice(2) + parts[1] + parts[2];
+  var cur = { y: +parts[0], m: +parts[1] };
+
+  var has = {};
+  for (var i = 0; i < ARCHIVE_DATES.length; i++) { has[ARCHIVE_DATES[i]] = 1; }
+
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  function key(y, m, d) { return String(y).slice(2) + pad(m) + pad(d); }
+
+  function render() {
+    title.textContent = cur.y + " 年 " + cur.m + " 月";
+    grid.innerHTML = "";
+
+    var start = new Date(cur.y, cur.m - 1, 1).getDay();
+    var days = new Date(cur.y, cur.m, 0).getDate();
+
+    for (var b = 0; b < start; b++) {
+      var blank = document.createElement("span");
+      blank.className = "cal-cell is-empty";
+      grid.appendChild(blank);
+    }
+
+    for (var d = 1; d <= days; d++) {
+      var k = key(cur.y, cur.m, d);
+      var cell = document.createElement("span");
+      cell.className = "cal-cell" + (has[k] ? " has" : "") + (k === todayKey ? " is-today" : "");
+      cell.textContent = d;
+      if (has[k]) {
+        cell.setAttribute("role", "link");
+        cell.setAttribute("tabindex", "0");
+        cell.title = cur.y + "-" + pad(cur.m) + "-" + pad(d) + " 存档";
+        (function (target) {
+          var go = function () { window.open(HIST_BASE + target + ".html", "_blank", "noopener"); };
+          cell.addEventListener("click", go);
+          cell.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
+          });
+        })(k);
+      }
+      grid.appendChild(cell);
+    }
+  }
+
+  function toggle(open) {
+    pop.hidden = !open;
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) { render(); }
+  }
+
+  btn.addEventListener("click", function (e) { e.stopPropagation(); toggle(pop.hidden); });
+  document.getElementById("calPrev").addEventListener("click", function () {
+    cur.m--; if (cur.m < 1) { cur.m = 12; cur.y--; } render();
+  });
+  document.getElementById("calNext").addEventListener("click", function () {
+    cur.m++; if (cur.m > 12) { cur.m = 1; cur.y++; } render();
+  });
+  document.addEventListener("click", function (e) {
+    if (!pop.hidden && !pop.contains(e.target)) { toggle(false); }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !pop.hidden) { toggle(false); }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
