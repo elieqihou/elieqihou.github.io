@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>访问统计 · 提马早报</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  :root {
+    --ink: #1a1a18;
+    --ink-soft: #55534e;
+    --ink-faint: #8a877f;
+    --paper: #f7f5f0;
+    --card: #ffffff;
+    --line: #e4e0d6;
+    --accent: #b23a2f;
+    --accent-soft: #f6e8e6;
+    --teal: #1f6f66;
+    --gold: #a8801f;
+    --radius: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    min-height: 100vh;
+  }
+  .serif { font-family: Georgia, "Noto Serif SC", "Songti SC", SimSun, serif; }
+
+  /* ── 报头 ── */
+  header.mast {
+    background: var(--card);
+    border-bottom: 3px double var(--ink);
+    padding: 26px 6vw 20px;
+    display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  header.mast h1 { font-size: 30px; letter-spacing: 2px; }
+  header.mast h1 em { font-style: normal; color: var(--accent); }
+  header.mast .sub { font-size: 12px; color: var(--ink-faint); letter-spacing: 3px; }
+  .whoami { font-size: 13px; color: var(--ink-soft); display: flex; gap: 14px; align-items: center; }
+  .whoami button {
+    background: none; border: 1px solid var(--line); border-radius: 999px;
+    padding: 5px 14px; font-size: 12px; color: var(--ink-soft); cursor: pointer;
+  }
+  .whoami button:hover { border-color: var(--accent); color: var(--accent); }
+
+  main { max-width: 1080px; margin: 0 auto; padding: 28px 5vw 60px; }
+  [hidden] { display: none !important; }
+
+  /* ── 登录 ── */
+  .login-wrap { display: flex; justify-content: center; padding-top: 7vh; }
+  .login-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: 0 14px 40px rgba(30, 25, 15, .07);
+    width: min(400px, 92vw); padding: 38px 34px;
+  }
+  .login-card h2 { font-size: 21px; margin-bottom: 6px; }
+  .login-card p.tip { font-size: 13px; color: var(--ink-faint); margin-bottom: 22px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 12px; color: var(--ink-soft); margin-bottom: 6px; letter-spacing: 1px; }
+  .field input {
+    width: 100%; padding: 11px 13px; font-size: 14px;
+    border: 1px solid var(--line); border-radius: 10px; background: #fcfbf8; outline: none;
+  }
+  .field input:focus { border-color: var(--accent); background: #fff; }
+  .btn-primary {
+    width: 100%; padding: 12px; margin-top: 6px; font-size: 15px; letter-spacing: 4px;
+    background: var(--ink); color: #f7f5f0; border: 0; border-radius: 10px; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--accent); }
+  .err { color: var(--accent); font-size: 13px; margin-top: 12px; min-height: 18px; }
+
+  /* ── 仪表盘 ── */
+  .toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--card); }
+  .seg button {
+    border: 0; background: none; padding: 7px 16px; font-size: 13px; color: var(--ink-soft); cursor: pointer;
+  }
+  .seg button.on { background: var(--ink); color: #f7f5f0; }
+  .ghost {
+    border: 1px solid var(--line); background: var(--card); border-radius: 999px;
+    padding: 7px 16px; font-size: 13px; color: var(--ink-soft); cursor: pointer;
+  }
+  .ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 22px; }
+  .kpi {
+    background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--accent);
+    border-radius: 12px; padding: 16px 18px 14px;
+  }
+  .kpi:nth-child(2) { border-top-color: var(--teal); }
+  .kpi:nth-child(3) { border-top-color: var(--gold); }
+  .kpi:nth-child(4) { border-top-color: var(--ink); }
+  .kpi .n { font-size: 30px; font-weight: 700; font-family: Georgia, serif; line-height: 1.1; }
+  .kpi .l { font-size: 12px; color: var(--ink-faint); margin-top: 4px; letter-spacing: 1px; }
+
+  .grid { display: grid; grid-template-columns: 3fr 2fr; gap: 16px; margin-bottom: 16px; }
+  @media (max-width: 780px) { .grid { grid-template-columns: 1fr; } }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
+  .panel h3 { font-size: 14px; letter-spacing: 2px; color: var(--ink-soft); margin-bottom: 16px; }
+  .panel h3::before { content: "▍"; color: var(--accent); margin-right: 4px; }
+
+  .trend { display: flex; align-items: flex-end; gap: 6px; height: 160px; padding-top: 8px; }
+  .trend .col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 5px; height: 100%; }
+  .trend .bar {
+    width: 100%; max-width: 34px; min-height: 3px; border-radius: 5px 5px 0 0;
+    background: linear-gradient(180deg, var(--accent), #d98a80); position: relative;
+    transition: height .5s ease;
+  }
+  .trend .col:hover .bar { background: var(--ink); }
+  .trend .v { font-size: 11px; color: var(--ink-soft); }
+  .trend .d { font-size: 10px; color: var(--ink-faint); white-space: nowrap; }
+
+  .rank { display: flex; flex-direction: column; gap: 9px; }
+  .rank .row { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+  .rank .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .rank .meter { flex: 1.2; height: 8px; background: #f0ede5; border-radius: 99px; overflow: hidden; }
+  .rank .meter i { display: block; height: 100%; background: var(--teal); border-radius: 99px; }
+  .rank .num { width: 52px; text-align: right; font-family: Georgia, serif; font-weight: 600; }
+
+  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
+  @media (max-width: 780px) { .trio { grid-template-columns: 1fr; } }
+  .trio .panel .rank .meter { flex: 1; }
+  .trio .rank .meter i { background: var(--gold); }
+
+  table.detail { width: 100%; border-collapse: collapse; font-size: 13px; }
+  table.detail th {
+    text-align: left; font-weight: 600; color: var(--ink-faint); font-size: 12px;
+    border-bottom: 2px solid var(--ink); padding: 8px 10px; white-space: nowrap;
+  }
+  table.detail td { border-bottom: 1px solid var(--line); padding: 9px 10px; white-space: nowrap; }
+  table.detail tr:hover td { background: #faf8f3; }
+  .pager { display: flex; gap: 10px; justify-content: flex-end; align-items: center; margin-top: 14px; font-size: 13px; color: var(--ink-soft); }
+  .pager button { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 5px 12px; cursor: pointer; font-size: 12px; }
+  .pager button:disabled { opacity: .4; cursor: default; }
+  .empty { text-align: center; color: var(--ink-faint); font-size: 13px; padding: 30px 0; }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div>
+    <h1 class="serif">提马早报<em> · 访问统计</em></h1>
+    <div class="sub">TIMAB DAILY · TRAFFIC DESK</div>
+  </div>
+  <div class="whoami" id="whoami" hidden>
+    <span id="who"></span>
+    <button id="btnRefresh">刷新数据</button>
+    <button id="btnExport">导出 CSV</button>
+    <button id="btnLogout">退出</button>
+  </div>
+</header>
+
+<main>
+  <!-- 登录 -->
+  <section id="loginView" class="login-wrap" hidden>
+    <div class="login-card">
+      <h2 class="serif">管理员登录</h2>
+      <p class="tip">仅限管理员访问，访问记录只对登录用户可见。</p>
+      <div class="field">
+        <label>邮箱</label>
+        <input type="email" id="email" autocomplete="username" placeholder="admin@example.com">
+      </div>
+      <div class="field">
+        <label>密码</label>
+        <input type="password" id="pwd" autocomplete="current-password" placeholder="••••••••">
+      </div>
+      <button class="btn-primary" id="btnLogin">登 录</button>
+      <div class="err" id="loginErr"></div>
+    </div>
+  </section>
+
+  <!-- 仪表盘 -->
+  <section id="dashView" hidden>
+    <div class="toolbar">
+      <div class="seg" id="rangeSeg">
+        <button data-r="1" class="on">今天</button>
+        <button data-r="7">近 7 天</button>
+        <button data-r="30">近 30 天</button>
+        <button data-r="0">全部</button>
+      </div>
+      <span class="ghost" id="lastLoad" style="cursor:default;border-style:dashed"></span>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="n" id="kTodayPv">–</div><div class="l">今日 PV</div></div>
+      <div class="kpi"><div class="n" id="kTodayUv">–</div><div class="l">今日独立访客</div></div>
+      <div class="kpi"><div class="n" id="k7Pv">–</div><div class="l">近 7 天 PV</div></div>
+      <div class="kpi"><div class="n" id="kAllPv">–</div><div class="l">累计 PV</div></div>
+    </div>
+
+    <div class="grid">
+      <div class="panel">
+        <h3>近 14 日访问趋势（PV）</h3>
+        <div class="trend" id="trend"></div>
+      </div>
+      <div class="panel">
+        <h3>期号阅读排行</h3>
+        <div class="rank" id="rankIssue"></div>
+      </div>
+    </div>
+
+    <div class="grid" style="grid-template-columns:2fr 3fr">
+      <div class="panel">
+        <h3>访客地区 TOP</h3>
+        <div class="rank" id="rankGeo"></div>
+      </div>
+      <div class="trio" style="margin:0">
+        <div class="panel"><h3>设备</h3><div class="rank" id="rankDevice"></div></div>
+        <div class="panel"><h3>浏览器</h3><div class="rank" id="rankBrowser"></div></div>
+        <div class="panel"><h3>系统</h3><div class="rank" id="rankOs"></div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3 id="detailTitle">访问明细</h3>
+      <div style="overflow-x:auto">
+        <table class="detail">
+          <thead><tr>
+            <th>时间</th><th>期号</th><th>地区</th><th>设备</th><th>浏览器</th><th>系统</th><th>屏幕</th><th>来源</th>
+          </tr></thead>
+          <tbody id="detailBody"></tbody>
+        </table>
+      </div>
+      <div class="pager">
+        <span id="pageInfo"></span>
+        <button id="pgPrev">上一页</button>
+        <button id="pgNext">下一页</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var SB_URL = 'https://qujgzxqglluqjchssmyw.supabase.co';
+  var SB_KEY = 'sb_publishable_rb1Cy-_zWKsTQtoFMeKLNA_3bby10Rr';
+  var sb = supabase.createClient(SB_URL, SB_KEY);
+
+  var $ = function (id) { return document.getElementById(id); };
+  var rangeDays = 1;          // 明细筛选范围
+  var PAGE = 50, pageIdx = 0;
+  var CACHE = [];             // 全量已加载记录（近 30 天或全部）
+
+  /* ── 视图切换 ── */
+  function showLogin() { $('loginView').hidden = false; $('dashView').hidden = true; $('whoami').hidden = true; }
+  function showDash(email) {
+    $('loginView').hidden = true; $('dashView').hidden = false; $('whoami').hidden = false;
+    $('who').textContent = email || '';
+    load();
+  }
+  sb.auth.getSession().then(function (r) {
+    if (r.data.session) showDash(r.data.session.user.email); else showLogin();
+  });
+  sb.auth.onAuthStateChange(function (_e, session) {
+    if (session) showDash(session.user.email); else showLogin();
+  });
+
+  $('btnLogin').addEventListener('click', doLogin);
+  $('pwd').addEventListener('keydown', function (e) { if (e.key === 'Enter') doLogin(); });
+  function doLogin() {
+    $('loginErr').textContent = '';
+    sb.auth.signInWithPassword({ email: $('email').value.trim(), password: $('pwd').value })
+      .then(function (r) { if (r.error) $('loginErr').textContent = '登录失败：' + r.error.message; });
+  }
+  $('btnLogout').addEventListener('click', function () { sb.auth.signOut(); });
+  $('btnRefresh').addEventListener('click', load);
+  $('btnExport').addEventListener('click', exportCsv);
+
+  /* ── 范围切换 ── */
+  $('rangeSeg').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    rangeDays = +b.dataset.r; pageIdx = 0;
+    this.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
+    render();
+  });
+  $('pgPrev').addEventListener('click', function () { if (pageIdx > 0) { pageIdx--; renderDetail(); } });
+  $('pgNext').addEventListener('click', function () { pageIdx++; renderDetail(); });
+
+  /* ── 取数 ── */
+  function load() {
+    var since = new Date(Date.now() - 30 * 864e5).toISOString(); // 最多取近 30 天，全量统计也用它近似
+    var q = sb.from('visits').select('*').order('visited_at', { ascending: false }).limit(50000);
+    q.gte('visited_at', since).then(function (r) {
+      if (r.error) { console.error(r.error); return; }
+      CACHE = r.data || [];
+      $('lastLoad').textContent = '更新于 ' + new Date().toLocaleTimeString('zh-CN');
+      render();
+    });
+  }
+
+  /* ── 工具 ── */
+  function dayKey(iso) {
+    var d = new Date(iso);
+    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+  }
+  function inRange(iso) {
+    if (rangeDays === 0) return true;
+    var limit = new Date(); limit.setHours(0, 0, 0, 0);
+    limit = new Date(limit - (rangeDays - 1) * 864e5);
+    return new Date(iso) >= limit;
+  }
+  function countBy(rows, fn) {
+    var m = {};
+    rows.forEach(function (r) { var k = fn(r) || '未知'; m[k] = (m[k] || 0) + 1; });
+    return Object.entries(m).sort(function (a, b) { return b[1] - a[1]; });
+  }
+  function fillRank(el, pairs, total) {
+    var max = pairs.length ? pairs[0][1] : 1;
+    el.innerHTML = pairs.length ? pairs.slice(0, 8).map(function (p) {
+      return '<div class="row"><span class="name" title="' + esc(p[0]) + '">' + esc(p[0]) + '</span>' +
+        '<span class="meter"><i style="width:' + (p[1] / max * 100).toFixed(1) + '%"></i></span>' +
+        '<span class="num">' + p[1] + '</span></div>';
+    }).join('') : '<div class="empty">暂无数据</div>';
+  }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  /* ── 渲染 ── */
+  function render() {
+    var today = dayKey(new Date().toISOString());
+    var todayRows = CACHE.filter(function (r) { return dayKey(r.visited_at) === today; });
+    var seven = new Date(Date.now() - 7 * 864e5);
+    var rows = CACHE.filter(function (r) { return inRange(r.visited_at); });
+
+    $('kTodayPv').textContent = todayRows.length;
+    $('kTodayUv').textContent = new Set(todayRows.map(function (r) { return r.vid; })).size;
+    $('k7Pv').textContent = CACHE.filter(function (r) { return new Date(r.visited_at) >= seven; }).length;
+    $('kAllPv').textContent = CACHE.length;
+
+    // 14 日趋势
+    var days = [], counts = {};
+    for (var i = 13; i >= 0; i--) {
+      var k = dayKey(new Date(Date.now() - i * 864e5).toISOString());
+      days.push(k);
+    }
+    CACHE.forEach(function (r) { var k = dayKey(r.visited_at); counts[k] = (counts[k] || 0) + 1; });
+    var vals = days.map(function (k) { return counts[k] || 0; });
+    var maxV = Math.max.apply(null, vals.concat([1]));
+    $('trend').innerHTML = days.map(function (k, i) {
+      var h = Math.max(3, vals[i] / maxV * 118);
+      return '<div class="col" title="' + k + ' · ' + vals[i] + ' PV">' +
+        '<span class="v">' + (vals[i] || '') + '</span>' +
+        '<div class="bar" style="height:' + h + 'px"></div>' +
+        '<span class="d">' + k.slice(5) + '</span></div>';
+    }).join('');
+
+    // 各类排行（当前范围）
+    fillRank($('rankIssue'), countBy(rows, function (r) { return r.issue || '未知'; }));
+    fillRank($('rankGeo'), countBy(rows, function (r) {
+      return (r.province || '未知') + (r.city ? ' · ' + r.city : '');
+    }));
+    fillRank($('rankDevice'), countBy(rows, function (r) { return r.device; }));
+    fillRank($('rankBrowser'), countBy(rows, function (r) { return r.browser; }));
+    fillRank($('rankOs'), countBy(rows, function (r) { return r.os; }));
+
+    $('detailTitle').textContent = '访问明细（' + rows.length + ' 条）';
+    pageIdx = Math.min(pageIdx, Math.max(0, Math.ceil(rows.length / PAGE) - 1));
+    renderDetail();
+  }
+
+  function renderDetail() {
+    var rows = CACHE.filter(function (r) { return inRange(r.visited_at); });
+    var start = pageIdx * PAGE;
+    var slice = rows.slice(start, start + PAGE);
+    $('detailBody').innerHTML = slice.length ? slice.map(function (r) {
+      var t = new Date(r.visited_at);
+      var ts = ('0' + t.getMonth() + 1).slice(-2) + '-' + ('0' + t.getDate()).slice(-2) + ' ' +
+        ('0' + t.getHours()).slice(-2) + ':' + ('0' + t.getMinutes()).slice(-2);
+      var geo = [r.province, r.city].filter(Boolean).join(' · ') || '—';
+      return '<tr><td>' + ts + '</td><td>' + esc(r.issue || '—') + '</td><td>' + esc(geo) + '</td>' +
+        '<td>' + esc(r.device || '—') + '</td><td>' + esc(r.browser || '—') + '</td>' +
+        '<td>' + esc(r.os || '—') + '</td><td>' + esc(r.screen || '—') + '</td>' +
+        '<td>' + esc(r.referer || '直接打开') + '</td></tr>';
+    }).join('') : '<tr><td colspan="8"><div class="empty">该时间范围内暂无访问记录</div></td></tr>';
+    var totalPages = Math.max(1, Math.ceil(rows.length / PAGE));
+    $('pageInfo').textContent = '第 ' + (pageIdx + 1) + ' / ' + totalPages + ' 页';
+    $('pgPrev').disabled = pageIdx === 0;
+    $('pgNext').disabled = pageIdx >= totalPages - 1;
+  }
+
+  /* ── 导出 CSV（带 BOM，Excel 直开不乱码） ── */
+  function exportCsv() {
+    var rows = CACHE.filter(function (r) { return inRange(r.visited_at); });
+    var head = ['时间', '期号', '国家', '省份', '城市', '设备', '浏览器', '系统', '屏幕', '页面', '来源'];
+    var lines = rows.map(function (r) {
+      return [new Date(r.visited_at).toLocaleString('zh-CN'), r.issue, r.country, r.province, r.city,
+        r.device, r.browser, r.os, r.screen, r.page, r.referer]
+        .map(function (v) { return '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"'; }).join(',');
+    });
+    var blob = new Blob(['\ufeff' + head.join(',') + '\n' + lines.join('\n')], { type: 'text/csv' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'timab-visits-' + dayKey(new Date().toISOString()) + '.csv';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+})();
+</script>
+</body>
+</html>
