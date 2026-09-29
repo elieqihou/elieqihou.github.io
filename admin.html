@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>访问统计 · 提马早报</title>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.js"
+        integrity="sha384-Rj26LVGvoeRVR6+mwQmFfcR3QOBEwT+ZmuCWpuiqeTzJpCs0ER4ITAWGb4Hiy3Ok"
+        crossorigin="anonymous"></script>
 <style>
   :root {
     --ink: #1a1a18;
@@ -263,10 +265,27 @@
 
   $('btnLogin').addEventListener('click', doLogin);
   $('pwd').addEventListener('keydown', function (e) { if (e.key === 'Enter') doLogin(); });
+  var failCount = 0, lockUntil = 0;   // 客户端防爆破锁：连续失败 5 次锁定 60 秒（服务端另有 IP 限流兜底）
   function doLogin() {
+    if (Date.now() < lockUntil) {
+      $('loginErr').textContent = '尝试过于频繁，请 ' + Math.ceil((lockUntil - Date.now()) / 1000) + ' 秒后再试';
+      return;
+    }
     $('loginErr').textContent = '';
     sb.auth.signInWithPassword({ email: $('email').value.trim(), password: $('pwd').value })
-      .then(function (r) { if (r.error) $('loginErr').textContent = '登录失败：' + r.error.message; });
+      .then(function (r) {
+        if (r.error) {
+          failCount++;
+          if (failCount >= 5) {
+            lockUntil = Date.now() + 60000; failCount = 0;
+            $('loginErr').textContent = '连续失败次数过多，已锁定 60 秒';
+          } else {
+            $('loginErr').textContent = '登录失败：' + r.error.message;
+          }
+        } else {
+          failCount = 0;
+        }
+      });
   }
   $('btnLogout').addEventListener('click', function () { sb.auth.signOut(); });
   $('btnRefresh').addEventListener('click', load);
