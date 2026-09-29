@@ -46,7 +46,7 @@
   }
   .whoami button:hover { border-color: var(--accent); color: var(--accent); }
 
-  main { max-width: 1080px; margin: 0 auto; padding: 28px 5vw 60px; }
+  main { max-width: 1200px; margin: 0 auto; padding: 28px 5vw 60px; }
   [hidden] { display: none !important; }
 
   /* ── 登录 ── */
@@ -85,7 +85,7 @@
   }
   .ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin-bottom: 22px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin-bottom: 22px; }
   .kpi {
     background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--accent);
     border-radius: 12px; padding: 16px 18px 14px;
@@ -113,25 +113,29 @@
   .trend .v { font-size: 11px; color: var(--ink-soft); }
   .trend .d { font-size: 10px; color: var(--ink-faint); white-space: nowrap; }
 
-  .rank { display: flex; flex-direction: column; gap: 9px; }
-  .rank .row { display: flex; align-items: center; gap: 10px; font-size: 13px; }
-  .rank .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .rank .meter { flex: 1.2; height: 8px; background: #f0ede5; border-radius: 99px; overflow: hidden; }
+  .rank { display: flex; flex-direction: column; gap: 10px; }
+  .rank .row {
+    display: grid; grid-template-columns: minmax(0, 1fr) 64px 40px; gap: 10px;
+    align-items: center; font-size: 13px;
+  }
+  .rank .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .rank .meter { height: 8px; background: #f0ede5; border-radius: 99px; overflow: hidden; }
   .rank .meter i { display: block; height: 100%; background: var(--teal); border-radius: 99px; }
-  .rank .num { width: 52px; text-align: right; font-family: Georgia, serif; font-weight: 600; }
+  .rank .num { text-align: right; font-family: Georgia, serif; font-weight: 600; }
 
-  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
-  @media (max-width: 780px) { .trio { grid-template-columns: 1fr; } }
-  .trio .panel .rank .meter { flex: 1; }
-  .trio .rank .meter i { background: var(--gold); }
+  .grid4 { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  @media (max-width: 900px) { .grid4 { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .grid4 { grid-template-columns: 1fr; } }
+  .grid4 .rank .meter i { background: var(--gold); }
 
   table.detail { width: 100%; border-collapse: collapse; font-size: 13px; }
   table.detail th {
     text-align: left; font-weight: 600; color: var(--ink-faint); font-size: 12px;
     border-bottom: 2px solid var(--ink); padding: 8px 10px; white-space: nowrap;
   }
-  table.detail td { border-bottom: 1px solid var(--line); padding: 9px 10px; white-space: nowrap; }
-  table.detail tr:hover td { background: #faf8f3; }
+  table.detail td { border-bottom: 1px solid var(--line); padding: 10px; white-space: nowrap; }
+  table.detail tbody tr:nth-child(even) td { background: #fbfaf6; }
+  table.detail tr:hover td { background: #f3efe6; }
   .pager { display: flex; gap: 10px; justify-content: flex-end; align-items: center; margin-top: 14px; font-size: 13px; color: var(--ink-soft); }
   .pager button { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 5px 12px; cursor: pointer; font-size: 12px; }
   .pager button:disabled { opacity: .4; cursor: default; }
@@ -202,16 +206,14 @@
       </div>
     </div>
 
-    <div class="grid" style="grid-template-columns:2fr 3fr">
+    <div class="grid4">
       <div class="panel">
         <h3>访客地区 TOP</h3>
         <div class="rank" id="rankGeo"></div>
       </div>
-      <div class="trio" style="margin:0">
-        <div class="panel"><h3>设备</h3><div class="rank" id="rankDevice"></div></div>
-        <div class="panel"><h3>浏览器</h3><div class="rank" id="rankBrowser"></div></div>
-        <div class="panel"><h3>系统</h3><div class="rank" id="rankOs"></div></div>
-      </div>
+      <div class="panel"><h3>设备</h3><div class="rank" id="rankDevice"></div></div>
+      <div class="panel"><h3>浏览器</h3><div class="rank" id="rankBrowser"></div></div>
+      <div class="panel"><h3>系统</h3><div class="rank" id="rankOs"></div></div>
     </div>
 
     <div class="panel">
@@ -367,7 +369,7 @@
     var slice = rows.slice(start, start + PAGE);
     $('detailBody').innerHTML = slice.length ? slice.map(function (r) {
       var t = new Date(r.visited_at);
-      var ts = ('0' + t.getMonth() + 1).slice(-2) + '-' + ('0' + t.getDate()).slice(-2) + ' ' +
+      var ts = t.getFullYear() + '-' + ('0' + (t.getMonth() + 1)).slice(-2) + '-' + ('0' + t.getDate()).slice(-2) + ' ' +
         ('0' + t.getHours()).slice(-2) + ':' + ('0' + t.getMinutes()).slice(-2);
       var geo = [r.province, r.city].filter(Boolean).join(' · ') || '—';
       return '<tr><td>' + ts + '</td><td>' + esc(r.issue || '—') + '</td><td>' + esc(geo) + '</td>' +
