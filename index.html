@@ -17,6 +17,7 @@
     --line: #d9d2c3;
     --card: #fffdf8;
     --accent: #1c1b17; --accent-soft: #4c4a42;
+    --seal: #9e2b25;
     --c-intl: #1d4ed8; --c-intl-deep: #1e3fa8;
     --c-dom: #cf2f1e; --c-dom-deep: #a02315;
     --c-fin: #b45309; --c-fin-deep: #8a3f06;
@@ -53,6 +54,8 @@
     display: flex; align-items: flex-end; justify-content: space-between;
     gap: 24px; padding: 26px 0 22px;
   }
+  .mast-brand { display: flex; align-items: flex-end; gap: 20px; }
+  .mast-seal { width: clamp(54px, 7.5vw, 82px); height: auto; flex: none; }
   .mast-title {
     font-family: "Noto Serif SC", serif; font-weight: 900;
     font-size: clamp(44px, 7vw, 76px); line-height: 1.05; letter-spacing: .1em;
@@ -241,6 +244,7 @@
   .item .why { background: transparent; }
 </style>
 
+<link rel="icon" type="image/svg+xml" href="/logo-seal.svg">
 <script src="/tracker.js" defer></script>
 </head>
 <body>
@@ -252,7 +256,20 @@
       <span>星期三 · 农历八月二十 · 烈士纪念日 · timab.cn</span>
     </div>
     <div class="mast-title-row">
-      <h1 class="mast-title">提马<em>早报</em></h1>
+      <div class="mast-brand">
+        <svg class="mast-seal" viewBox="0 0 240 240" role="img" aria-label="提马早报印章标">
+          <rect x="16" y="16" width="208" height="208" rx="20" fill="var(--seal, #9e2b25)"/>
+          <rect x="34" y="34" width="172" height="172" rx="10" fill="none" stroke="var(--paper, #f7f3ec)" stroke-width="5" opacity=".85"/>
+          <g font-family="Noto Serif SC, STSong, SimSun, serif" font-weight="900" font-size="74"
+             fill="var(--paper, #f7f3ec)" text-anchor="middle" dominant-baseline="central">
+            <text x="83" y="86">提</text>
+            <text x="157" y="86">马</text>
+            <text x="83" y="160">早</text>
+            <text x="157" y="160">报</text>
+          </g>
+        </svg>
+        <h1 class="mast-title">提马<em>早报</em></h1>
+      </div>
       <div class="mast-side">
         <div class="mast-date">2026.09.30<small>DAILY BRIEFING</small></div>
         <div class="cal-anchor">
@@ -506,7 +523,7 @@
 
 <script>
 (function () {
-  var ARCHIVE_DATES = [/*__ARCHIVE_DATES__*/"260923", "260924", "260925", "260926", "260927", "260928", "260929"/*__END__*/];
+  var ARCHIVE_DATES = [/*__ARCHIVE_DATES__*/"260922", "260923"/*__END__*/];
   var PAGE_DATE = "2026-09-30";
   var HIST_BASE = /\/history\//.test(location.pathname) ? "./" : "history/";
 

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+  <!-- 提马早报 · 方案B 报社印章：四字方印（提马/早报），传统报头气质 -->
+  <!-- 印泥红 #9e2b25 可按主题替换；深色底上建议整印改用纸色描边版 -->
+  <rect x="16" y="16" width="208" height="208" rx="20" fill="#9e2b25"/>
+  <rect x="34" y="34" width="172" height="172" rx="10" fill="none" stroke="#f7f3ec" stroke-width="5" opacity=".85"/>
+  <g font-family="Noto Serif SC, STSong, SimSun, serif" font-weight="900" font-size="74"
+     fill="#f7f3ec" text-anchor="middle" dominant-baseline="central">
+    <text x="83"  y="86">提</text>
+    <text x="157" y="86">马</text>
+    <text x="83"  y="160">早</text>
+    <text x="157" y="160">报</text>
+  </g>
+</svg>
