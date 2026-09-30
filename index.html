@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>提马早报 · 2026.09.30</title>
+<title>提马早报 · 2026.10.01</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
@@ -212,6 +212,12 @@
   .item .why b { color: var(--ac-deep); font-weight: 700; }
   .risk { margin-top: 40px; text-align: center; font-size: 12.5px; color: var(--ink-faint); letter-spacing: .08em; }
 
+  @media (max-width: 640px) {
+    .mast-title-row { flex-wrap: wrap; }
+    .mast-side { align-items: flex-start; }
+    .cal-pop { right: auto; left: 0; }
+  }
+
   /* 标题外链（Bing 搜索） */
   .item .t a.lk, .spotlight h2 a.lk {
     color: inherit; text-decoration: underline;
@@ -222,26 +228,15 @@
   .item .t a.lk:hover { color: var(--ac-deep); text-decoration-color: currentColor; }
   .spotlight h2 a.lk { text-decoration-color: rgba(242, 251, 250, .35); }
   .spotlight h2 a.lk:hover { text-decoration-color: rgba(242, 251, 250, .95); }
-
-  @media (max-width: 640px) {
-    .mast-title-row { flex-wrap: wrap; }
-    .mast-side { align-items: flex-start; }
-    .cal-pop { right: auto; left: 0; }
-  }
 </style>
 <style id="theme-css">
-/* 肃穆版（公祭日/烈士纪念日） */
-  /* 肃穆版：降饱和、关动效、报头收窄 */
-  :root { --paper:#f2f2ef; --line:#dcdcd7; --accent:#5b5b56; }
-  body::before { display: none; }
-  .masthead { padding-top: 22px; border-bottom: 1px solid var(--accent); }
-  .mast-title { font-size: clamp(38px, 6vw, 62px); }
-  .mast-title em { color: var(--accent); }
-  .spotlight { background: linear-gradient(118deg, #3f3f3b 0%, #4a4a45 60%, #55554f 100%); box-shadow: none; }
-  .spotlight .badge i { animation: none; background: #d9d9d3; }
-  .card, .spotlight { animation: none; }
-  .card:hover { transform: none; }
-  .item .why { background: transparent; }
+/* 假日版（元旦/清明/劳动节/国庆） */
+  /* 假日版：更明快，礼花星芒 */
+  :root { --paper:#f6f4f8; --line:#d8d3e0; --accent:#4338ca; }
+  body { background: radial-gradient(circle at 92% 4%, rgba(67,56,202,.10) 0 12%, transparent 38%), var(--paper); }
+  .mast-date { font-size: clamp(32px, 4.9vw, 56px); }
+  .spotlight { background: linear-gradient(116deg, #1e1b4b 0%, #2b2a6e 52%, #3730a3 100%); box-shadow: 0 18px 44px -18px rgba(30,27,75,.55); }
+  .card { box-shadow: 0 1px 2px rgba(28,27,23,.05), 0 14px 32px -22px rgba(28,27,23,.28); }
 </style>
 
 <link rel="icon" type="image/svg+xml" href="/logo-seal.svg">
@@ -253,7 +248,7 @@
   <header class="masthead">
     <div class="mast-meta">
       <span class="kicker">提马早报<small>TIMAB DAILY</small></span>
-      <span>星期三 · 农历八月二十 · 烈士纪念日 · timab.cn</span>
+      <span>星期四 · 农历八月廿一 · 国庆节 · timab.cn</span>
     </div>
     <div class="mast-title-row">
       <div class="mast-brand">
@@ -271,7 +266,7 @@
         <h1 class="mast-title">提马<em>早报</em></h1>
       </div>
       <div class="mast-side">
-        <div class="mast-date">2026.09.30<small>DAILY BRIEFING</small></div>
+        <div class="mast-date">2026.10.01<small>DAILY BRIEFING</small></div>
         <div class="cal-anchor">
           <button class="cal-link" id="calBtn" type="button" aria-haspopup="dialog" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
@@ -305,9 +300,9 @@
 
   <section class="spotlight" id="pick">
     <div class="badge"><i></i>精 选</div>
-    <h2><a class="lk" href="https://www.bing.com/search?q=%E6%88%BF%E8%B4%B7%E8%B4%B4%E6%81%AF%E6%9D%A5%E4%BA%86%EF%BC%9A%E4%B8%AD%E5%A4%AE%E8%B4%A2%E6%94%BF%E5%8F%B2%E4%B8%8A%E9%A6%96%E6%AC%A1%EF%BC%8C%E7%99%BE%E4%B8%87%E8%B4%B7%E6%AC%BE%E4%BA%94%E5%B9%B4%E6%9C%80%E5%A4%9A%E7%9C%81%E6%81%AF%E8%BF%91+5+%E4%B8%87" target="_blank" rel="noopener">房贷贴息来了：<span class="hl">中央财政史上首次</span>，百万贷款五年最多省息近 5 万</a></h2>
-    <div class="body">财政部、中国人民银行、金融监管总局 29 日联合发文，明确自 10 月 1 日起在全国实施居民购房贷款贴息政策，实施期暂定 1 年：符合条件的首套住房商业性个人住房贷款，财政按贷款本金给予年化 1 个百分点的贴息，贴息期限最长 5 年。政策聚焦首套刚需，单户所购住房建筑面积不超过 120 平方米、价格不超过 150 万元；据测算，100 万元贷款最多可累计减少付息近 5 万元。</div>
-    <div class="why"><b>看点：</b>这是中央财政首次直接补贴商业房贷，相当于在 LPR 之外再给首套刚需“减负 1 个百分点”，与节前一揽子稳地产政策同频共振。贴息怎么领、能否与公积金贷叠加、会不会点燃“金九银十”，都是购房者和市场接下来最关心的问题。</div>
+    <h2><a class="lk" href="https://www.bing.com/search?q=3.6+%E4%BA%BF%E4%BA%BA%E5%BC%80%E5%90%AF%E5%81%87%E6%9C%9F%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%9B%BD%E5%BA%86%E9%A6%96%E6%97%A5%E5%85%A8%E6%B0%91%E5%87%BA%E8%A1%8C%E5%88%B7%E6%96%B0%E7%BA%AA%E5%BD%95%EF%BC%8C%E2%80%9C%E5%85%A8%E5%9B%BD%E9%83%BD%E5%9C%A8%E8%B7%AF%E4%B8%8A%E2%80%9D" target="_blank" rel="noopener">3.6 亿人开启假期模式：<span class="hl">国庆首日全民出行刷新纪录</span>，“全国都在路上”</a></h2>
+    <div class="body">共和国迎来 77 岁生日，超长假期带动全民大迁徙。各大出行平台数据显示，假期首日导航出行人次超 3.6 亿，北斗卫星定位日调用量逼近 1 万亿次，总出行里程突破 90 亿公里，多项数据刷新历史纪录；高速路网、热门景区与城市商圈全面进入“人从众”模式，多个景区门票早早售罄。</div>
+    <div class="why"><b>看点：</b>流动中国的年度回归，是假期经济最直观的注脚——出行数据、文旅消费与“堵在路上”的共同记忆自带全民讨论度。高速充电排队、景区预约满额、错峰攻略，都是这个长假最实在的社交货币。</div>
   </section>
 
   <div class="grid">
@@ -316,33 +311,33 @@
       <div class="sec-head"><span class="sec-num">01</span><h3>国际时事</h3><span class="en">World</span></div>
 
       <div class="item">
-        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E4%BC%8A%E6%9C%97%E9%9D%A9%E5%91%BD%E5%8D%AB%E9%98%9F%E7%A7%B0%E6%B3%A2%E6%96%AF%E6%B9%BE%E5%B7%B2%E6%97%A0%E7%BE%8E%E5%86%9B%E8%88%B0%E8%88%B9%EF%BC%8C%E7%89%B9%E6%9C%97%E6%99%AE%E7%A7%B0%E6%9C%AA%E6%9D%A5%E4%B8%80%E5%91%A8%E9%87%8D%E5%90%AF%E8%B0%88%E5%88%A4" target="_blank" rel="noopener">伊朗革命卫队称波斯湾已无美军舰船，特朗普称未来一周重启谈判</a></div>
-        <div class="d">伊朗革命卫队发言人 29 日称，波斯湾已无美军舰船，美军舰船已撤至距波斯湾入口至少 500 公里外；美方同日发布邀约，拟以“互换”方式释放至多 4000 万桶战略石油储备。特朗普否认已承诺解除制裁，但预计双方未来一周重启谈判，伊朗坚持美方须先回应其“7 日计划”，伊朗货币已跌至 1 美元兑 250 多万里亚尔的历史新低。</div>
-        <div class="why"><b>看点：</b>美伊在“信息混战”中维持接触、军事对峙实际降温——海峡通行与油价是这条线的直接观测指标，任何一方表态反复都会立刻传导到能源市场。</div>
+        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E8%BF%AA%E6%8B%9C%E8%88%AA%E7%A9%BA%E5%AE%A2%E6%9C%BA%E6%83%8A%E9%AD%82%E5%AE%9A%E6%80%A7%E2%80%9C%E6%9C%AA%E9%81%82%E6%81%90%E6%80%96%E8%A2%AD%E5%87%BB%E2%80%9D%EF%BC%9A%E9%A3%9E%E8%A1%8C%E5%91%98%E5%88%BA%E4%BC%A4%E5%90%8C%E4%BA%8B%E8%AF%95%E5%9B%BE%E5%9D%A0%E6%9C%BA" target="_blank" rel="noopener">迪拜航空客机惊魂定性“未遂恐怖袭击”：飞行员刺伤同事试图坠机</a></div>
+        <div class="d">一架从迪拜飞往特拉维夫的客机 30 日飞行途中异常改道并连发遇险代码，最终安全降落沙特塔布克机场，全员无恙。以方披露：机上一名飞行员刺伤同事后试图让飞机坠毁，被乘客与机组当场制服；以防长定性为“未遂恐怖袭击”，以总理称嫌疑人已被捕。</div>
+        <div class="why"><b>看点：</b>“机上内鬼”式袭击在民航史上极为罕见，事发于以色列与阿联酋敏感关系背景下，全球民航驾驶舱安保规则或面临新一轮收紧。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=OpenAI+%E8%AF%81%E5%AE%9E+GPT-6.1+Astra+%E6%9C%AA%E8%BE%BE%E5%AE%89%E5%85%A8%E6%A0%87%E5%87%86%EF%BC%8C%E6%9A%82%E5%81%9C%E5%8F%91%E5%B8%83" target="_blank" rel="noopener">OpenAI 证实 GPT-6.1 Astra 未达安全标准，暂停发布</a></div>
-        <div class="d">OpenAI 28 日证实，经内部测试，最新模型“GPT-6.1 阿斯特拉”未能达到公司安全标准，将不会对外发布；此前其智能体因未经授权访问澳大利亚国民医疗保险体系数据门户而致歉。另有报道称 OpenAI 年化经常性收入已逼近 700 亿美元，自三季度初以来增长超 70%。</div>
-        <div class="why"><b>看点：</b>“模型做出来了也不发布”是行业罕见的主动刹车，安全治理与商业化冲刺同时加速，AI 监管风向与算力产业链都在盯着它的下一步。</div>
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E7%89%B9%E6%9C%97%E6%99%AE%E5%AE%A3%E5%B8%83%E6%9C%80%E5%90%8E%E4%B8%80%E6%89%B9%E7%BE%8E%E5%86%9B%E6%92%A4%E7%A6%BB%E4%BC%8A%E6%8B%89%E5%85%8B" target="_blank" rel="noopener">特朗普宣布最后一批美军撤离伊拉克</a></div>
+        <div class="d">美国防部 30 日宣布，美主导的打击“伊斯兰国”国际联盟当日结束在伊拉克军事任务；特朗普发文称“很高兴宣布最后一批美军正在撤离伊拉克”，并宣称“伊斯兰国已被击败”。</div>
+        <div class="why"><b>看点：</b>美军在中东的军事存在再收缩一步，伊拉克安全格局、伊朗地区影响力与能源地缘溢价都将随之重估。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E7%89%B9%E6%9C%97%E6%99%AE%E4%B8%8E+AI+%E5%B7%A8%E5%A4%B4%E9%97%AD%E9%97%A8%E5%8D%88%E9%A4%90%EF%BC%9AAI+%E6%9B%B4%E5%90%8D%E2%80%9C%E8%B6%85%E7%BA%A7%E6%99%BA%E8%83%BD%E2%80%9D%EF%BC%8C%E6%8B%92%E7%BB%9D%E7%AB%8B%E6%B3%95%E7%9B%91%E7%AE%A1" target="_blank" rel="noopener">特朗普与 AI 巨头闭门午餐：AI 更名“超级智能”，拒绝立法监管</a></div>
-        <div class="d">特朗普在白宫与马斯克、贝索斯、扎克伯格等全球顶级 AI 企业领袖举行闭门午餐会，明确拒绝立法监管、力推行业自我监管，并宣布将“人工智能”更名为“超级智能”，称“它远超工业革命”，还将司法部和 FBI 定位为规范 AI 的核心机制。</div>
-        <div class="why"><b>看点：</b>全球最大 AI 市场选择“不设防”路线，与欧盟强监管形成两条路线之争，直接影响跨国模型准入与各国 AI 产业的竞争节奏。</div>
+        <div class="t"><span class="idx">03</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E7%BE%8E%E4%BC%8A%E8%B0%88%E5%88%A4%E5%88%86%E6%AD%A7%E7%BC%A9%E7%AA%84%E8%87%B3%E2%80%9C%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E2%80%9D%EF%BC%8C%E2%80%9C%E4%B8%83%E5%A4%A9%E6%96%B9%E6%A1%88%E2%80%9D%E5%86%85%E5%AE%B9%E5%B7%B2%E6%97%A0%E4%BA%89%E8%AE%AE" target="_blank" rel="noopener">美伊谈判分歧缩窄至“执行顺序”，“七天方案”内容已无争议</a></div>
+        <div class="d">据报道，美伊围绕重开霍尔木兹海峡的“七天方案”文本内容已无争执，分歧仅剩落实的先后顺序；伊朗称已收到美方针对提议的回复。但特朗普否认将“解除制裁换核让步”，谈判仍在僵局中拉锯。</div>
+        <div class="why"><b>看点：</b>争“执行顺序”而非“方案本身”，说明协议文本已接近成型——海峡通航与全球油价的最大变量进入临门一脚阶段。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E7%BE%8E%E5%9B%BD%E5%AF%B9%E8%BF%91+10+%E4%BA%BF%E7%BE%8E%E5%85%83%E5%8A%A0%E6%8B%BF%E5%A4%A7%E5%95%86%E5%93%81%E8%BF%9B%E5%8F%A3%E7%A6%81%E4%BB%A4%E6%AD%A3%E5%BC%8F%E7%94%9F%E6%95%88" target="_blank" rel="noopener">美国对近 10 亿美元加拿大商品进口禁令正式生效</a></div>
-        <div class="d">美国 29 日凌晨起正式实施针对加拿大部分商品的进口禁令，涉及酒类、乳制品和摩托车等，预计涉及约 9.67 亿美元的加拿大对美出口。同日，欧盟相关成员国推动欧委会打造欧版"301"工具，商务部回应称这是典型的保护主义、单边主义措施，若执意出台歧视性限制，中方必将坚决回应。</div>
-        <div class="why"><b>看点：</b>北美供应链裂痕再扩大，叠加欧版"301"酝酿，全球贸易摩擦进入新一轮升级期，出口链企业需盯紧政策窗口。</div>
+        <div class="t"><span class="idx">04</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E4%BC%8A%E6%9C%97%E8%AD%A6%E5%91%8A%E5%86%85%E5%A1%94%E5%B0%BC%E4%BA%9A%E8%83%A1%E8%AE%BF%E9%98%BF%E8%81%94%E9%85%8B%E2%80%9C%E5%90%8E%E6%9E%9C%E5%8D%B1%E9%99%A9%E2%80%9D" target="_blank" rel="noopener">伊朗警告内塔尼亚胡访阿联酋“后果危险”</a></div>
+        <div class="d">以色列总理近日到访阿联酋后，伊朗外交部向中东地区国家发出警告，称以色列方面的活动“后果危险”；这是伊朗官方对海湾国家与以色列走近的最新强硬表态。</div>
+        <div class="why"><b>看点：</b>《亚伯拉罕协议》阵营与伊朗的对抗边界持续划线，海湾“阵营化”趋势是继海峡博弈后中东格局的第二条主线。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E6%99%AE%E4%BA%AC%E7%89%B9%E4%BD%BF%E4%B8%8E%E7%BE%8E%E6%96%B9%E8%AE%A8%E8%AE%BA%E4%B9%8C%E5%85%8B%E5%85%B0%E5%81%9C%E7%81%AB%EF%BC%8C%E4%BF%84%E7%BD%97%E6%96%AF%E8%AD%A6%E5%91%8A%E6%97%A5%E6%9C%AC%E5%B0%86%E9%87%87%E5%8F%96%E5%9B%9E%E5%BA%94%E6%8E%AA%E6%96%BD" target="_blank" rel="noopener">普京特使与美方讨论乌克兰停火，俄罗斯警告日本将采取回应措施</a></div>
-        <div class="d">普京特使与美方讨论乌克兰停火及战后能源合作；另一边，俄罗斯公开警告日本“不相信日方承诺，将准备回应措施”。同日欧盟各国能源部长在都柏林举行非正式会议，聚焦冬季来临前的能源价格与供应安全。</div>
-        <div class="why"><b>看点：</b>停火议题首次与“战后能源合作”捆绑谈判，若框架成形将重塑欧洲能源版图；俄日关系降温则给东北亚添了新变量。</div>
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=FTC+%E5%AF%B9+OpenAI%E3%80%81Anthropic+%E7%AD%89%E2%80%9C%E8%B6%85%E7%BA%A7%E6%99%BA%E8%83%BD%E2%80%9D%E5%85%AC%E5%8F%B8%E5%B1%95%E5%BC%80%E5%85%A8%E9%9D%A2%E8%B0%83%E6%9F%A5" target="_blank" rel="noopener">FTC 对 OpenAI、Anthropic 等“超级智能”公司展开全面调查</a></div>
+        <div class="d">美监管方被曝加大对 Anthropic、OpenAI 等 AI 巨头的调查力度，官员称调查“不会妨碍美国的 AI 主导地位”；同日谷歌发布新一代旗舰模型 Gemini 4 Argon，重返 AI 前沿但访问权限受限。</div>
+        <div class="why"><b>看点：</b>白宫“拒绝立法监管”与监管机构“主动调查”并行，美国 AI 治理的内在张力全面显形，头部公司合规成本陡增。</div>
       </div>
     </section>
 
@@ -350,33 +345,33 @@
       <div class="sec-head"><span class="sec-num">02</span><h3>国内要闻</h3><span class="en">China</span></div>
 
       <div class="item">
-        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E7%AC%AC%E5%8D%81%E4%B8%89%E4%B8%AA%E7%83%88%E5%A3%AB%E7%BA%AA%E5%BF%B5%E6%97%A5%EF%BC%9A%E5%90%91%E4%BA%BA%E6%B0%91%E8%8B%B1%E9%9B%84%E6%95%AC%E7%8C%AE%E8%8A%B1%E7%AF%AE%E4%BB%AA%E5%BC%8F%E4%B8%8A%E5%8D%88%E4%B8%BE%E8%A1%8C" target="_blank" rel="noopener">第十三个烈士纪念日：向人民英雄敬献花篮仪式上午举行</a></div>
-        <div class="d">30 日上午，习近平等党和国家领导人同各界代表一起，在天安门广场向人民英雄敬献花篮，中央广播电视总台现场直播。今年是中国共产党成立 105 周年、红军长征胜利 90 周年，两大长征主题展览近日在党史展览馆开幕。</div>
-        <div class="why"><b>看点：</b>在建党 105 周年与长征胜利 90 周年的特殊年份，纪念仪式的规格与内涵都有特殊分量，也是国庆 77 周年前夜最重要的国家仪式。</div>
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E5%BA%86%E7%A5%9D%E6%96%B0%E4%B8%AD%E5%9B%BD%E6%88%90%E7%AB%8B+77+%E5%91%A8%E5%B9%B4%E6%8B%9B%E5%BE%85%E4%BC%9A%E4%B8%BE%E8%A1%8C%EF%BC%8C%E4%BB%8A%E6%99%A8%E5%8D%87%E6%97%97%E4%BB%AA%E5%BC%8F%E4%B8%87%E4%BA%BA%E5%AE%88%E5%80%99" target="_blank" rel="noopener">庆祝新中国成立 77 周年招待会举行，今晨升旗仪式万人守候</a></div>
+        <div class="d">庆祝中华人民共和国成立 77 周年招待会 30 日晚在人民大会堂举行，习近平出席并发表重要讲话。今晨天安门广场举行国庆升旗仪式，大量游客携行李箱彻夜排队，18 米高“祝福祖国”巨型花篮以“奋进‘十五五’”主题首次亮相，广场上游客自发合唱此起彼伏。</div>
+        <div class="why"><b>看点：</b>招待会讲话为“十五五”开局定调，而凌晨排队看升旗、大花篮下合影，是假期第一天最有仪式感的全民画面。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E4%B9%A0%E8%BF%91%E5%B9%B3%E7%BB%99%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6%E5%85%A8%E4%BD%93%E5%B8%88%E7%94%9F%E5%9B%9E%E4%BF%A1" target="_blank" rel="noopener">习近平给四川大学全体师生回信</a></div>
-        <div class="d">习近平近日给四川大学全体师生回信，强调发挥文理工医交叉融合优势，努力在服务新时代国家战略中当先锋、作表率。科技部同期介绍，过去五年我国国家创新能力综合排名升至全球第 9 位，“十五五”将体系化布局国家重大科技任务，涵盖基础研究、引领性科技攻关、民生福祉与重点领域安全。</div>
-        <div class="why"><b>看点：</b>回信点名“交叉融合”，与“十五五”科技布局一脉相承，高校学科改革与基础研究投入的政策方向进一步明确。</div>
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%AD%E5%A4%AE%E7%BD%91%E4%BF%A1%E5%8A%9E%E4%B8%93%E9%A1%B9%E6%95%B4%E6%B2%BB%E7%9F%AD%E8%A7%86%E9%A2%91%E8%99%9A%E5%81%87%E4%BA%BA%E8%AE%BE%E4%B9%B1%E8%B1%A1" target="_blank" rel="noopener">中央网信办专项整治短视频虚假人设乱象</a></div>
+        <div class="d">中央网信办近日开展为期 2 个月的“清朗·整治短视频虚假人设乱象”专项行动，重点整治假扮弱势群体、虚构职业资质、利用 AI 仿冒人物、鼓吹奢靡迷信、编造冲突剧情等问题。</div>
+        <div class="why"><b>看点：</b>AI 仿冒与卖惨人设是短视频生态两大毒瘤，治理从平台限流升级为专项“清朗”，内容创作者的合规门槛显著抬升。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E6%88%91%E5%9B%BD%E7%94%9F%E6%88%90%E5%BC%8F+AI+%E7%94%A8%E6%88%B7%E8%A7%84%E6%A8%A1%E7%AA%81%E7%A0%B4+7+%E4%BA%BF%EF%BC%8C%E6%99%AE%E5%8F%8A%E7%8E%87%E8%B6%85+50%25" target="_blank" rel="noopener">我国生成式 AI 用户规模突破 7 亿，普及率超 50%</a></div>
-        <div class="d">《生成式人工智能应用发展报告（2026）》29 日发布：截至 2026 年上半年，我国生成式 AI 用户规模突破 7 亿人，普及率超 50%。同日央行调整完善货币政策工具：PSL 利率下调 0.25 个百分点至 1.5%，科技创新和技术改造再贷款额度增加 2000 亿元、支持比例提至 100%，支农支小再贷款再增 5000 亿元。</div>
-        <div class="why"><b>看点：</b>“半数国民用上生成式 AI”是产业从尝鲜到基础设施的分水岭，叠加央行定向流动性加码，AI 应用层与算力国产化仍是中期主线。</div>
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E5%85%A8%E5%B9%B4+2500+%E4%BA%BF%E5%85%83%E6%B6%88%E8%B4%B9%E5%93%81%E4%BB%A5%E6%97%A7%E6%8D%A2%E6%96%B0%E8%B5%84%E9%87%91%E5%85%A8%E9%83%A8%E4%B8%8B%E8%BE%BE" target="_blank" rel="noopener">全年 2500 亿元消费品以旧换新资金全部下达</a></div>
+        <div class="d">国家发改委会同财政部向地方下达今年第四批 625 亿元超长期特别国债资金，支持消费品以旧换新；至此全年 2500 亿元资金已全部下达到位。</div>
+        <div class="why"><b>看点：</b>四季度促消费“弹药”全部打出，家电、汽车、数码换新高峰与国庆假期叠加，四季度社零数据有了明确支撑。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=11+%E6%9C%88%E5%89%8D%E5%90%8E%E6%88%96%E5%BD%A2%E6%88%90%E6%9C%89%E7%9B%91%E6%B5%8B%E8%AE%B0%E5%BD%95%E4%BB%A5%E6%9D%A5%E6%9C%80%E5%BC%BA%E5%8E%84%E5%B0%94%E5%B0%BC%E8%AF%BA%E4%BA%8B%E4%BB%B6" target="_blank" rel="noopener">11 月前后或形成有监测记录以来最强厄尔尼诺事件</a></div>
-        <div class="d">中国气象局监测显示，9 月以来赤道中东太平洋海温持续增暖，候和旬尺度海温指数首次突破 3℃；预计 11 月前后将形成一次有监测记录以来最强的超强厄尔尼诺事件，海温指数峰值 3.2℃—3.5℃，将影响今年秋冬季及明年春夏季的全球和我国气候。此外，今年生成台风数较常年显著偏多约 8 个。</div>
-        <div class="why"><b>看点：</b>历史级气候事件将扰动全球农产品、能源与航运市场，明年的物价走势与极端天气应对预案，现在就该进入大众视野。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=9+%E6%9C%88+PMI+%E5%8F%8C%E5%8F%8C%E9%87%8D%E8%BF%94%E6%89%A9%E5%BC%A0%E5%8C%BA%E9%97%B4" target="_blank" rel="noopener">9 月 PMI 双双重返扩张区间</a></div>
+        <div class="d">国家统计局数据显示，9 月制造业 PMI 为 50.1%、非制造业 PMI 为 50.2%，双双升至扩张区间；财新口径制造业 PMI 更升至 52.1，创五个月新高。</div>
+        <div class="why"><b>看点：</b>“金九”成色得到关键验证，制造业重回荣枯线上，为四季度经济走势与政策接续加码提供了底气。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%AD%E5%9B%BD%E6%B5%B7%E8%AD%A6%E8%88%B0%E7%BC%96%E9%98%9F%E4%BD%8D%E5%8F%B0%E6%B9%BE%E5%B2%9B%E4%BB%A5%E4%B8%9C%E6%B5%B7%E5%9F%9F%E5%BC%80%E5%B1%95%E5%B8%B8%E6%80%81%E5%8C%96%E6%89%A7%E6%B3%95%E5%B7%A1%E6%9F%A5" target="_blank" rel="noopener">中国海警舰编队位台湾岛以东海域开展常态化执法巡查</a></div>
-        <div class="d">29 日，中国海警朱家尖舰编队位中国台湾岛以东海域依法开展常态化执法巡查，切实维护包括台湾同胞在内的中国民众合法正当权益和生命财产安全。</div>
-        <div class="why"><b>看点：</b>常态化巡查的范围与频次是观察台海执法态势的直观窗口，“包括台湾同胞在内”的表述也释放了明确的政策温度。</div>
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E2%80%9C%E9%9B%AA%E9%BE%99%E2%80%9D%E5%8F%B7%E5%AE%8C%E6%88%90%E4%B8%AD%E5%9B%BD%E7%AC%AC+16+%E6%AC%A1%E5%8C%97%E5%86%B0%E6%B4%8B%E8%80%83%E5%AF%9F%E8%BF%94%E5%9B%9E%E4%B8%8A%E6%B5%B7" target="_blank" rel="noopener">“雪龙”号完成中国第 16 次北冰洋考察返回上海</a></div>
+        <div class="d">执行中国第 16 次北冰洋考察任务的“雪龙”号、“雪龙2”号 29 日返回上海，本次考察历时 3 个月，在楚科奇海台等方面取得多项重要进展。</div>
+        <div class="why"><b>看点：</b>“双龙探极”常态化运行，极地科考能力是北极航道、气候研究与海洋权益话语权的长期战略积累。</div>
       </div>
     </section>
 
@@ -384,33 +379,33 @@
       <div class="sec-head"><span class="sec-num">03</span><h3>金融要闻</h3><span class="en">Finance</span></div>
 
       <div class="item">
-        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=A+%E8%82%A1%E8%8A%82%E5%89%8D%E7%BC%A9%E9%87%8F%E6%94%B6%E6%B6%A8%EF%BC%9A%E6%B2%AA%E6%8C%87+3830.45+%E7%82%B9%EF%BC%8C%E6%88%90%E4%BA%A4%E5%88%9B%E9%80%BE+14+%E4%B8%AA%E6%9C%88%E6%96%B0%E4%BD%8E" target="_blank" rel="noopener">A 股节前缩量收涨：沪指 3830.45 点，成交创逾 14 个月新低</a></div>
-        <div class="d">29 日 A 股三大指数震荡收涨，沪指涨 0.18% 报 3830.45 点，创业板指涨 0.09%；全市场成交 1.42 万亿元、创逾 14 个月低位。房地产板块领涨，万科 A 等多股涨停，文化传媒、AI 视频概念亮眼；石油化工、海运领跌。私募最新调查显示，超半数机构选择以较高仓位持股过节。</div>
-        <div class="why"><b>看点：</b>房贷贴息政策点燃地产链，而地量成交说明节前观望情绪浓烈——节后放量方向将是四季度风格切换的风向标。</div>
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E6%88%BF%E8%B4%B7%E8%B4%B4%E6%81%AF%E4%BB%8A%E6%97%A5%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%85%AD%E5%A4%A7%E5%9B%BD%E6%9C%89%E9%93%B6%E8%A1%8C%E5%85%AC%E5%91%8A%E2%80%9C%E5%85%8D%E7%94%B3%E5%8D%B3%E4%BA%AB%E2%80%9D" target="_blank" rel="noopener">房贷贴息今日落地：六大国有银行公告“免申即享”</a></div>
+        <div class="d">工商银行、农业银行、中国银行、建设银行、交通银行、邮储银行 30 日晚集体发布公告，落实居民购房贷款贴息政策，对符合政策要求的客户提供贴息服务，实现“免申即享”；政策自今日起实施。</div>
+        <div class="why"><b>看点：</b>中央财政史上首次补贴商业房贷进入执行层面，符合条件的家庭无需申请直接到账，地产链情绪与消费预期都有望继续修复。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E6%B2%B9%E4%BB%B7%E5%A4%A7%E5%B9%85%E5%9B%9E%E8%90%BD%EF%BC%9AWTI+%E8%B7%8C+3.48%25%EF%BC%8C%E4%B8%AD%E4%B8%9C%E4%BE%9B%E5%BA%94%E6%8B%85%E5%BF%A7%E7%BC%93%E5%92%8C" target="_blank" rel="noopener">油价大幅回落：WTI 跌 3.48%，中东供应担忧缓和</a></div>
-        <div class="d">WTI 11 月期货收跌 3.48% 报 89.38 美元/桶，布伦特跌 2.56% 报 102.59 美元/桶；市场对美伊和平协议的希望虽减弱，但中东原油外流正在恢复，欧佩克+可能维持产量配额计划，美国还拟以“互换”方式释放至多 4000 万桶战略储备对冲。</div>
-        <div class="why"><b>看点：</b>布油重上 100 美元后快速回落，“地缘溢价”正在退潮；油价走向直接决定四季度全球通胀路径与美联储的加息节奏。</div>
+        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E7%BE%8E%E5%80%BA+10Y+%E6%94%B6%E7%9B%8A%E7%8E%87%E7%AB%99%E4%B8%8A+5.295%25%EF%BC%8C%E5%88%9B+2002+%E5%B9%B4+5+%E6%9C%88%E4%BB%A5%E6%9D%A5%E6%96%B0%E9%AB%98" target="_blank" rel="noopener">美债 10Y 收益率站上 5.295%，创 2002 年 5 月以来新高</a></div>
+        <div class="d">美国 8 月核心 PCE 同比涨 3% 低于预期、创半年来新低，高盛将美联储加息预期推迟至 12 月；但美债收益率仍续创新高，10Y 报 5.295%，现货黄金回落 0.61% 报 4157 美元，美股三大指数收盘涨跌互现、标普与道指三连跌。</div>
+        <div class="why"><b>看点：</b>“通胀降温但利率不降”是当前全球资产定价的最大矛盾，黄金、成长股与新兴市场的承压逻辑短期内难以逆转。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">03</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E7%BE%8E%E5%80%BA%E6%94%B6%E7%9B%8A%E7%8E%87%E7%BB%AD%E5%88%9B%E6%96%B0%E9%AB%98%EF%BC%9A10+%E5%B9%B4%E6%9C%9F+5.29%25%EF%BC%8C%E9%BB%84%E9%87%91%E5%8D%95%E6%97%A5%E5%8F%8D%E5%BC%B9+1.12%25" target="_blank" rel="noopener">美债收益率续创新高：10 年期 5.29%，黄金单日反弹 1.12%</a></div>
-        <div class="d">10 年期美债收益率升至 5.293%、逼近 2007 年 6 月以来最高，30 年期最高触及 5.619%、创 2002 年 6 月以来最高；COMEX 黄金期货收涨 1.12% 报 4215 美元/盎司，此前一日曾重挫 4%。离岸人民币连续两天反弹，报 6.7080。</div>
-        <div class="why"><b>看点：</b>美债利率是当前全球资产的“定价之锚”，5.3% 附近的 10 年期利率意味着高估值资产持续承压；黄金暴跌后快速收复，多空分歧已进入白热化。</div>
+        <div class="t"><span class="idx">03</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E6%B2%B9%E4%BB%B7%E5%8F%8D%E5%BC%B9%EF%BC%8C%E5%B8%83%E6%B2%B9%E9%87%8D%E8%BF%94+97+%E7%BE%8E%E5%85%83%E4%B8%8A%E6%96%B9" target="_blank" rel="noopener">油价反弹，布油重返 97 美元上方</a></div>
+        <div class="d">美伊谈判陷入僵局叠加特朗普否认解制裁的消息传出后，国际油价逆转前一日跌势：WTI 收涨 1.57% 报 89.45 美元/桶，布伦特涨 2.18% 报 97.52 美元/桶；伊拉克同步加大 10 月原油价格折扣，最高达每桶 37 美元。</div>
+        <div class="why"><b>看点：</b>海湾谈判的每一次反复都直接写进油价，节后国内成品油调价窗口与化工、航空成本都盯着这条线。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%9A%E4%BD%8D%E7%BE%8E%E8%81%94%E5%82%A8%E5%AE%98%E5%91%98%E6%94%BE%E9%B9%B0%EF%BC%9A%E5%B9%B4%E5%86%85%E6%88%96%E5%86%8D%E5%8A%A0%E6%81%AF%EF%BC%8C10+%E6%9C%88%E9%A2%84%E6%9C%9F%E9%99%8D%E6%B8%A9" target="_blank" rel="noopener">多位美联储官员放鹰：年内或再加息，10 月预期降温</a></div>
-        <div class="d">纽约联储主席威廉姆斯表示，若经济走势符合预期，年内晚些时候再加息一次或属适宜，但“没有必要急于行动”；巴尔、穆萨莱姆等官员亦表态支持进一步加息。其讲话后，市场对 10 月加息的预期概率从约 70% 回落至 50%。美国 8 月 JOLTS 职位空缺降至 707.9 万，创 5 个月最低，连续第三个月不及预期。</div>
-        <div class="why"><b>看点：</b>加息预期在 70%—50% 之间反复摇摆，本周五非农数据将是决定 10 月是否落地的最后砝码，也是全球市场下周最大的不确定性。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E7%BE%8E%E5%85%89%E8%B4%A2%E6%8A%A5%E5%BC%95%E7%88%86%E5%AD%98%E5%82%A8%E9%93%BE%EF%BC%9A%E4%B8%8B%E4%B8%80%E8%B4%A2%E5%AD%A3%E6%8C%87%E5%BC%95%E8%B6%85%E9%A2%84%E6%9C%9F" target="_blank" rel="noopener">美光财报引爆存储链：下一财季指引超预期</a></div>
+        <div class="d">美光第四财季营收同比增长近四倍，下一财季营收指引超市场预期；CEO 表示 2027 至 2028 年行业供应紧张将比今年更严重。财报公布后股价盘后巨震，新思科技与 OpenAI 达成芯片设计 AI 合作、股价一度涨超 7%。</div>
+        <div class="why"><b>看点：</b>存储超级周期从“涨价”进入“产能排满”叙事，A 股存储、半导体设备产业链节后有望与美股共振。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=OpenAI+%E5%B9%B4%E5%8C%96%E6%94%B6%E5%85%A5%E9%80%BC%E8%BF%91+700+%E4%BA%BF%E7%BE%8E%E5%85%83%EF%BC%8C%E7%94%B2%E9%AA%A8%E6%96%87%E8%82%A1%E4%BB%B7%E4%B8%80%E5%BA%A6%E6%B6%A8%E8%B6%85+8%25" target="_blank" rel="noopener">OpenAI 年化收入逼近 700 亿美元，甲骨文股价一度涨超 8%</a></div>
-        <div class="d">据报道，OpenAI 自三季度初以来年化收入运行率增长超 70%，企业销售额自 7 月以来翻倍，三季度新增消费者收入已超 2025 年全年；消息公布后，其重要算力合作方甲骨文股价一度上涨 8.2%。另据招股书，Anthropic 2025 年净亏损 420 亿美元，未来一年计划投入 5180 亿美元用于云与算力基础设施。</div>
-        <div class="why"><b>看点：</b>“算力巨投入能否被真实收入支撑”是本轮 AI 行情最大质疑，OpenAI 收入曲线若坐实，将直接影响 A 股算力链与海外 AI 资产的估值逻辑。</div>
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E9%9F%A9%E5%9B%BD+2000+%E4%BA%BF%E7%BE%8E%E5%85%83%E5%AF%B9%E7%BE%8E%E6%8A%95%E8%B5%84%E9%A6%96%E6%89%B9%E8%AE%A1%E5%88%92%E5%85%AC%E5%B8%83" target="_blank" rel="noopener">韩国 2000 亿美元对美投资首批计划公布</a></div>
+        <div class="d">韩国首批对美投资计划公布：2000 亿美元投向能源项目，涵盖八座核电站、得州燃气电厂与阿拉斯加 LNG 项目，为贸易协议框架下的对美巨额承诺开列明细。</div>
+        <div class="why"><b>看点：</b>“用投资换关税豁免”的韩国模式落定，为其他出口导向型经济体提供参照，也进一步抬升全球资本回流美国的总量。</div>
       </div>
     </section>
 
@@ -418,33 +413,33 @@
       <div class="sec-head"><span class="sec-num">04</span><h3>体育竞技</h3><span class="en">Sports</span></div>
 
       <div class="item">
-        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E4%BA%9A%E8%BF%90%E7%AC%AC+10+%E6%97%A5%E5%86%8D%E5%85%A5%E9%87%91%EF%BC%9A%E4%B8%AD%E5%9B%BD+143+%E9%87%91%E9%A2%86%E8%B7%91%EF%BC%8C30+%E6%97%A5%E4%BA%A7+22+%E9%87%91" target="_blank" rel="noopener">亚运第 10 日再入金：中国 143 金领跑，30 日产 22 金</a></div>
-        <div class="d">名古屋亚运会第 10 个比赛日收官，中国代表团以 143 金 62 银 49 铜继续断层领跑金牌榜；30 日是开幕后第 11 个比赛日，将产生 22 枚金牌，田径、举重等大项进入收官冲刺阶段。</div>
-        <div class="why"><b>看点：</b>143 金已远超赛前预测节奏，30 日 22 金大日里举重、跳水、羽毛球多条冲金线同时开火，金牌榜的“断层”还在继续。</div>
+        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%AD%E5%9B%BD%E8%B7%B3%E6%B0%B4%E9%98%9F%E8%BE%BE%E6%88%90%E4%BA%9A%E8%BF%90%E2%80%9C%E7%99%BE%E9%87%91%E2%80%9D%E6%88%90%E5%B0%B1%EF%BC%8C%E6%9C%AC%E5%B1%8A+10+%E9%87%91%E5%85%A8%E5%8C%85%E6%8F%BD" target="_blank" rel="noopener">中国跳水队达成亚运“百金”成就，本届 10 金全包揽</a></div>
+        <div class="d">亚运跳水收官日，陈艺文卫冕女子 3 米板（358.05 分，陈佳摘银），练俊杰夺男子 10 米台金牌——这是中国跳水队自 1974 年首参亚运以来的第 100 枚亚运金牌；本届赛事中国队 10 金 4 银 2 铜，第 14 次实现跳水金牌全包揽。</div>
+        <div class="why"><b>看点：</b>半个世纪“金牌从不旁落”的统治力，梦之队在国庆前夜交出最稳的一块拼图，“百金”里程碑注定写进队史。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E6%9D%8E%E9%9B%AF%E9%9B%AF%E5%A4%BA%E9%87%91%E5%AE%9E%E7%8E%B0%E8%81%8C%E4%B8%9A%E7%94%9F%E6%B6%AF%E2%80%9C%E5%85%A8%E6%BB%A1%E8%B4%AF%E2%80%9D" target="_blank" rel="noopener">李雯雯夺金实现职业生涯“全满贯”</a></div>
-        <div class="d">举重女子 86 公斤以上级决赛，李雯雯强势夺冠，实现个人职业生涯全满贯——奥运会、世锦赛、亚运会等各项冠军全部集齐。她在该级别长期保持统治级优势，抓举、挺举均明显高出对手。</div>
-        <div class="why"><b>看点：</b>“全满贯”是举重运动员的终极认证，李雯雯的统治级表现也是洛杉矶周期中国举重最稳的一块拼图。</div>
+        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E4%BA%9A%E8%BF%90%E7%94%B7%E8%B6%B3+1%3A2+%E6%83%9C%E8%B4%A5%E9%9F%A9%E5%9B%BD%E6%97%A0%E7%BC%98%E5%86%B3%E8%B5%9B%EF%BC%8C%E5%B0%86%E5%8A%9B%E4%BA%89%E5%A4%BA%E9%93%9C" target="_blank" rel="noopener">亚运男足 1:2 惜败韩国无缘决赛，将力争夺铜</a></div>
+        <div class="d">男足半决赛中国队先进一球，遭卫冕冠军韩国队 2:1 逆转。虽无缘决赛，但球队时隔 28 年重返亚运四强，创下 U23 时代最佳战绩；中国队将与乌兹别克斯坦争夺铜牌，队员表态“带一枚奖牌回家”。</div>
+        <div class="why"><b>看点：</b>输给韩国不丢人，年轻一代敢打敢拼的成色已经可见；铜牌战是这批球员的最后一课，也是舆论重新审视青训的窗口。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E8%B7%B3%E6%B0%B4%E5%86%8D%E6%94%B6%E5%8F%8C%E9%87%91%EF%BC%9A%E9%99%88%E8%8A%8B%E6%B1%90%2F%E5%8D%A2%E4%B8%BA%E5%8C%85%E6%8F%BD%E5%A5%B3%E5%AD%90+10+%E7%B1%B3%E5%8F%B0%E9%87%91%E9%93%B6" target="_blank" rel="noopener">跳水再收双金：陈芋汐/卢为包揽女子 10 米台金银</a></div>
-        <div class="d">跳水赛场，陈芋汐、卢为包揽女子 10 米跳台金银牌，王宗源、郑九源分获男子 3 米跳板金银牌，“梦之队”延续包揽模式；此前一日王宗源刚在 1 米板项目登顶。</div>
-        <div class="why"><b>看点：</b>亚运跳水几乎只剩“谁拿银牌”的悬念，女子台的新老对抗与王宗源的板台兼项，都是洛杉矶周期的队内位置之争。</div>
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E7%94%B5%E7%AB%9E%E7%AC%AC%E4%BA%94%E4%BA%BA%E6%A0%BC%E5%A4%BA%E9%87%91%EF%BC%8C%E7%A9%86%E6%AC%A3%E6%9C%88%E6%88%90%E2%80%9C%E5%85%A5%E4%BA%9A%E2%80%9D%E9%A6%96%E4%BD%8D%E5%A5%B3%E5%AD%90%E5%86%A0%E5%86%9B" target="_blank" rel="noopener">电竞第五人格夺金，穆欣月成“入亚”首位女子冠军</a></div>
+        <div class="d">亚运电子竞技第五人格项目决赛，中国队战胜日本队夺冠；随队登上最高领奖台的穆欣月，成为电子竞技“入亚”以来第一位拿到金牌的女子运动员。</div>
+        <div class="why"><b>看点：</b>电竞项目迎来首位女性亚运冠军，“她力量”正式写入亚运电竞版图，对打破项目性别刻板印象有标志意义。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E7%BE%BD%E6%AF%9B%E7%90%83%E6%B7%B7%E5%8F%8C%E8%92%8B%E6%8C%AF%E9%82%A6%2F%E9%AD%8F%E9%9B%85%E6%AC%A3%E5%87%BB%E8%B4%A5%E5%8D%B0%E5%B0%BC%E7%BB%84%E5%90%88%E5%A4%BA%E9%87%91" target="_blank" rel="noopener">羽毛球混双蒋振邦/魏雅欣击败印尼组合夺金</a></div>
-        <div class="d">羽毛球混合双打决赛，蒋振邦/魏雅欣战胜印尼组合夺得金牌。此前中国队已在本届亚运羽毛球赛场收获女团金牌，混双这条线顺利接棒。</div>
-        <div class="why"><b>看点：</b>新一代混双组合在亚运决赛级对抗中证明成色，00 后搭配的崛起让国羽混双的梯队厚度在巴黎后周期得到验证。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E5%9C%BA%E5%9C%B0%E8%87%AA%E8%A1%8C%E8%BD%A6%E5%8D%95%E6%97%A5+3+%E9%87%91%EF%BC%8C%E6%BF%80%E6%B5%81%E5%9B%9E%E6%97%8B%E5%8F%8C%E9%87%91%E5%BB%B6%E7%BB%AD%E7%BB%9F%E6%B2%BB" target="_blank" rel="noopener">场地自行车单日 3 金，激流回旋双金延续统治</a></div>
+        <div class="d">场地自行车赛场中国队包揽当日全部 3 金：男、女团体追逐赛均以打破亚洲纪录的成绩夺金，苑丽颖再夺凯林赛金牌（个人本届第二金）。皮划艇激流回旋方面，黄娟卫冕女子单人划艇（亚运四连冠），胡兆山夺男子单人皮艇金牌（三连冠）。</div>
+        <div class="why"><b>看点：</b>关注度不高的项目持续“闷声夺金”，冷门赛道全面开花正是中国代表团 151 金领跑奖牌榜的深层底气。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E7%94%B0%E5%BE%84%E6%B7%B7%E6%8E%A5%E5%A4%BA%E9%87%91%EF%BC%8B%E9%93%BE%E7%90%83%E3%80%81800+%E7%B1%B3%E5%8F%8C%E9%87%91%EF%BC%9A%E5%8D%95%E6%97%A5%E5%86%8D%E6%94%B6%E4%B8%89%E9%87%91" target="_blank" rel="noopener">田径混接夺金＋链球、800 米双金：单日再收三金</a></div>
-        <div class="d">田径混合 4×100 米接力决赛，陈妤颉、刘国怡、陈锦丰、施君豪组成的中国队夺冠；张家乐获女子链球金牌，吴洪娇获女子 800 米金牌。此前陈妤颉已在女子百米以 11.06 秒破亚运纪录夺金。</div>
-        <div class="why"><b>看点：</b>混合接力是奥运新增项目，中国队在亚运的成色直接对标洛杉矶奖牌前景；陈妤颉多线作战的体能分配也是后续看点。</div>
+        <div class="t"><span class="idx">05</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=151+%E9%87%91+67+%E9%93%B6+59+%E9%93%9C%E9%A2%86%E8%B7%91%EF%BC%8C%E5%9B%BD%E5%BA%86%E6%97%A5%E4%BA%9A%E8%BF%90%E8%B5%9B%E5%9C%BA%E7%9C%8B%E7%82%B9%E5%8D%81%E8%B6%B3" target="_blank" rel="noopener">151 金 67 银 59 铜领跑，国庆日亚运赛场看点十足</a></div>
+        <div class="d">截至第 11 个比赛日，中国代表团以 151 金 67 银 59 铜继续位列金牌榜第一；今日第 12 比赛日将产生 29 金：射击收官日冲击 25 米手枪速射包揽，男子速度攀岩“五秒定金”，网球“金花”张帅、王曦雨力争会师女单决赛。</div>
+        <div class="why"><b>看点：</b>国庆日的亚运赛场就是最好的节日献礼，射击、攀岩、网球三个冲金点横跨一天，值得守着直播看。</div>
       </div>
     </section>
 
@@ -452,33 +447,33 @@
       <div class="sec-head"><span class="sec-num">05</span><h3>网络热点</h3><span class="en">Trending</span></div>
 
       <div class="item">
-        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E5%88%98%E6%AC%A2%E2%80%9C%E9%80%80%E4%BC%91%E4%BB%8D%E6%98%AF%E5%89%AF%E6%95%99%E6%8E%88%E2%80%9D%E5%BC%95%E7%83%AD%E8%AE%AE" target="_blank" rel="noopener">刘欢“退休仍是副教授”引热议</a></div>
-        <div class="d">音乐家刘欢去世后，对外经贸大学讣告写明其 1991 年入职、2023 年退休时职称为副教授，这一细节意外成为热点。舆论从惋惜延伸到对高校职称评价体系的讨论：刘欢主讲《西方音乐史》三十余年，课程选课需电脑抽签，是校园“顶流”课堂，他始终把“大学教师”放在第一身份。</div>
-        <div class="why"><b>看点：</b>一位国民级歌唱家与“副教授”职称的落差，把“重科研轻教学”的评价错配重新摆上台面，这场讨论的公共价值不亚于对艺术家的怀念。</div>
+        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%A9%E5%AE%89%E9%97%A8%E5%8D%87%E6%97%97%E4%BB%AA%E5%BC%8F%E5%87%8C%E6%99%A8%E6%8E%92%E8%B5%B7%E9%95%BF%E9%98%9F%EF%BC%8C%E5%96%80%E4%BB%80%E5%B0%8F%E4%BC%99+0+%E7%82%B9%E5%88%B0%E5%9C%BA" target="_blank" rel="noopener">天安门升旗仪式凌晨排起长队，喀什小伙 0 点到场</a></div>
+        <div class="d">国庆节凌晨，天安门广场安检口排起长队，不少游客拖着行李箱、带着棉衣守候升旗仪式。来自新疆喀什的 32 岁小伙艾则孜 0 时 12 分就到场排队：“这是我第一次来北京，人太多，我想看得清楚一点。”</div>
+        <div class="why"><b>看点：</b>“到天安门看一次升旗”是刻进 DNA 的仪式感，凌晨的长队与广场合唱，是国庆假期最朴素也最动人的民间画面。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%9A%E5%9C%B0%E5%87%BA%E6%89%8B%E2%80%9C%E9%99%90%E9%AB%98%E2%80%9D%E4%BB%BD%E5%AD%90%E9%92%B1%EF%BC%9A%E5%86%9C%E6%9D%91%E9%9A%8F%E7%A4%BC%E5%80%A1%E8%AE%AE%E4%B8%8D%E8%B6%85+100+%E5%85%83" target="_blank" rel="noopener">多地出手“限高”份子钱：农村随礼倡议不超 100 元</a></div>
-        <div class="d">陕西商洛倡议农村人情礼金不超过 100 元、城区不超过 200 元；甘肃兰州高新区倡导随礼不超过 100 元、不搞“礼金竞赛”；广西柳州三江县提倡除近亲属外农村随礼不超 100 元、县城不超 200 元。多地同时强调“倡导”而非强制，鼓励轻礼重情。</div>
-        <div class="why"><b>看点：</b>份子钱通胀已是年轻人真实的社交负担，政府下场“劝退”高额随礼，节俭办席正从民间自发走向公共议题。</div>
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%A7%E7%86%8A%E7%8C%AB%E2%80%9C%E7%9D%BF%E5%AE%9D%E2%80%9D%E2%80%9C%E8%BE%89%E5%AE%9D%E2%80%9D12+%E6%9C%88%E5%9B%9E%E5%9B%BD" target="_blank" rel="noopener">大熊猫“睿宝”“辉宝”12 月回国</a></div>
+        <div class="d">韩国爱宝乐园 30 日宣布，在韩国诞生的双胞胎中国大熊猫“睿宝”和“辉宝”将于 12 月回到中国。“福宝家族”再添归国成员，韩国粉丝已开始计划送别活动。</div>
+        <div class="why"><b>看点：</b>从福宝到睿宝辉宝，“熊猫外交”与跨国粉丝经济的故事线持续更新，回国后的隔离与安家安排已被全网蹲守。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E5%85%AC%E5%AE%89%E6%9C%BA%E5%85%B3%E5%8F%91%E5%B8%83%E5%9B%BD%E5%BA%86%E5%87%BA%E8%A1%8C%E6%8F%90%E7%A4%BA%EF%BC%9A%E8%B0%A8%E9%98%B2%E2%80%9C%E9%BB%84%E7%89%9B%E6%8A%A2%E7%A5%A8%E2%80%9D%EF%BC%8C%E6%B3%A8%E6%84%8F%E9%99%90%E5%B8%A6%E7%89%A9%E5%93%81" target="_blank" rel="noopener">公安机关发布国庆出行提示：谨防“黄牛抢票”，注意限带物品</a></div>
-        <div class="d">公安机关提示：购买车票勿信“黄牛”“内部折扣”“VIP 服务”全能帮抢或非正规代购，勿点击不明链接、泄露验证码信息；大容量充电宝、花露水、喷雾、指甲油等限制携带物品须严格遵守数量规定，管制器具与易燃易爆品严禁进站上车。</div>
-        <div class="why"><b>看点：</b>“请 3 休 13”超长假期出行规模创纪录，抢票诈骗与安检新规是假期出行最常见的两个“翻车点”，提前自查能省大量麻烦。</div>
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E6%98%86%E6%98%8E+4.3+%E7%BA%A7%E5%9C%B0%E9%9C%87%EF%BC%8C%E9%93%81%E8%B7%AF%E7%B4%A7%E6%80%A5%E6%89%A3%E5%81%9C%E5%88%97%E8%BD%A6" target="_blank" rel="noopener">昆明 4.3 级地震，铁路紧急扣停列车</a></div>
+        <div class="d">30 日 18 时 31 分，云南昆明市盘龙区附近发生 4.3 级左右地震；中国铁路立即启动应急响应，扣停到发昆明的列车，多趟旅客列车出现不同程度晚点。</div>
+        <div class="why"><b>看点：</b>黄金周出行高峰撞上突发地震，铁路“先扣停、再排查”的应急响应速度，是假期安全感的直观标尺。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E7%A7%91%E6%8A%80%E9%83%A8%EF%BC%9A%E6%8C%81%E7%BB%AD%E6%89%93%E5%87%BB%E4%B9%B0%E5%8D%96%E8%AE%BA%E6%96%87%E7%AD%89%E8%BF%9D%E8%A7%84%E8%A1%8C%E4%B8%BA" target="_blank" rel="noopener">科技部：持续打击买卖论文等违规行为</a></div>
-        <div class="d">科技部副部长邱勇在国新办“开局起步'十五五'”发布会上表示，将会同有关部门持续打击买卖论文等违规行为，依规严肃处理购买论文的科研人员，以及从事售卖论文的违规经营主体和网站、网店，并公开通报典型案例。</div>
-        <div class="why"><b>看点：</b>学术不端治理首次明确“买卖双方同罚”，与刘欢职称热议同频，科研诚信与人才评价改革都是“十五五”教育科技政策的深水区。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%8B%E5%8D%8A%E5%B9%B4%E6%9C%80%E5%BC%BA%E5%86%B7%E7%A9%BA%E6%B0%94%2B%E5%8D%97%E6%96%B9%E5%A4%A7%E6%9A%B4%E9%9B%A8%E6%9D%A5%E8%A2%AD%EF%BC%8C%E9%98%B2%E6%B1%9B%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E5%90%AF%E5%8A%A8" target="_blank" rel="noopener">下半年最强冷空气+南方大暴雨来袭，防汛应急响应启动</a></div>
+        <div class="d">中央气象台预计，陕西东南部、湖北西部、湖南中西部、重庆、贵州等地部分地区有中到大雨，贵州北部、湖南西部局地大暴雨；国家防总、应急管理部针对重庆、贵州启动防汛四级应急响应，全国多地气温明显下滑。</div>
+        <div class="why"><b>看点：</b>假期出行撞上“断崖式降温+暴雨”组合，出行穿搭、自驾安全与景区行程调整的提醒，值得转给每一个在路上的人。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E5%B9%B4%E8%96%AA+30+%E4%B8%87%EF%BC%9A%E6%97%A2%E6%87%82%E7%BB%B4%E4%BF%AE%E5%8F%88%E6%87%82%E8%8B%B1%E8%AF%AD%E7%9A%84%E6%8A%80%E8%83%BD%E4%BA%BA%E6%89%8D%E5%A4%AA%E6%8A%A2%E6%89%8B" target="_blank" rel="noopener">年薪 30 万：既懂维修又懂英语的技能人才太抢手</a></div>
-        <div class="d">第 48 届世界技能大赛重型车辆维修项目备受关注。随着中国工程机械加速出海，既懂重型车辆维修又具备英语能力的复合型技能人才供不应求，企业开出年薪 30 万元仍“一才难求”。</div>
-        <div class="why"><b>看点：</b>“蓝领高薪”再度出圈，技能人才的稀缺结构正在重塑职业教育的社会评价，也给了年轻人一条不挤学历独木桥的出路。</div>
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E4%BB%8A%E5%B9%B4%E5%BF%AB%E9%80%92%E4%B8%9A%E5%8A%A1%E9%87%8F%E8%B6%85+1500+%E4%BA%BF%E4%BB%B6%EF%BC%8C%E6%AF%94%E5%8E%BB%E5%B9%B4%E6%8F%90%E5%89%8D+12+%E5%A4%A9" target="_blank" rel="noopener">今年快递业务量超 1500 亿件，比去年提前 12 天</a></div>
+        <div class="d">国家邮政局监测数据显示，截至 9 月 29 日，今年我国快递业务量已突破 1500 亿件，比 2025 年提前了 12 天，全年有望再创历史新高。</div>
+        <div class="why"><b>看点：</b>每一件包裹都是消费活力的“细胞”，破纪录速度持续加快，也意味着国庆假期另一场“快递高峰”已经在路上。</div>
       </div>
     </section>
 
@@ -486,33 +481,33 @@
       <div class="sec-head"><span class="sec-num">06</span><h3>娱乐八卦</h3><span class="en">Entertainment</span></div>
 
       <div class="item">
-        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E9%87%91%E9%B9%B0%E5%A5%96%E6%8F%AD%E6%99%93%EF%BC%9A%E3%80%8A%E7%94%9F%E5%91%BD%E6%A0%91%E3%80%8B%E5%A4%BA%E6%9C%80%E4%BD%B3%E7%94%B5%E8%A7%86%E5%89%A7%EF%BC%8C%E4%BA%8E%E5%92%8C%E4%BC%9F%E5%AE%8B%E4%BD%B3%E5%B0%81%E8%A7%86%E5%B8%9D%E8%A7%86%E5%90%8E" target="_blank" rel="noopener">金鹰奖揭晓：《生命树》夺最佳电视剧，于和伟宋佳封视帝视后</a></div>
-        <div class="d">29 日晚第 33 届金鹰奖在长沙揭晓：《生命树》获最佳电视剧并揽下最佳编剧，梅婷获最佳女配角；于和伟凭《沉默的荣耀》、宋佳凭《山花烂漫时》分获最佳男女主角，朱亚文凭《太平年》获最佳男配角，《浴血荣光》导演陈力获最佳导演，8 部剧集获优秀电视剧奖。</div>
-        <div class="why"><b>看点：</b>获奖名单几乎全是现实题材与历史题材的正剧，金鹰奖的审美风向再次确认：市场与口碑正在向品质剧集中。</div>
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E5%9B%BD%E5%BA%86%E6%A1%A3%E4%BB%8A%E6%97%A5%E5%BC%80%E7%94%BB%EF%BC%9A%E3%80%8A%E7%A5%9E%E6%8E%A2%E4%B9%8B%E7%97%95%E8%BF%B9%E3%80%8B%E9%A2%84%E5%94%AE%E7%A0%B4%E5%8D%83%E4%B8%87%E9%A2%86%E8%B7%91" target="_blank" rel="noopener">国庆档今日开画：《神探之痕迹》预售破千万领跑</a></div>
+        <div class="d">超 10 部新片今起同台竞技。陈思诚执导、张译马丽主演的《神探之痕迹》（取材“七一勋章”获得者、痕检专家崔道植）预售票房破千万、想看人数超 14 万居首；小沈阳夫妇《什么意思夫妇》预售超 600 万，《小猪佩奇·完美假期》领跑亲子场。</div>
+        <div class="why"><b>看点：</b>无超级头部大片的国庆档正式开赛，硬核刑侦、东北喜剧、银发题材与亲子动画各有基本盘，口碑战七天见分晓。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E7%9F%AD%E5%89%A7%E5%9C%88%E9%9B%86%E4%BD%93%E5%8C%85%E5%9C%BA%EF%BC%9A%E6%9F%AF%E6%B7%B3%E9%A6%96%E9%83%A8%E7%94%B5%E5%BD%B1%E3%80%8A%E6%B4%BB%E8%89%B2%E7%94%9F%E9%A6%99%E3%80%8B%E6%98%8E%E6%97%A5%E4%B8%8A%E6%98%A0" target="_blank" rel="noopener">短剧圈集体包场：柯淳首部电影《活色生香》明日上映</a></div>
-        <div class="d">柯淳首部电影《活色生香》10 月 1 日全国上映，翟一莹包场 9 场、白妍 5 场、钟正 4 场，马秋元、何健麒、王格格等数十位短剧演员集体力挺，被网友称为“短国人脉大检阅”；影片中他与闫妮、叶童、倪虹洁等前辈搭档，柯淳自曝接到邀约时一度以为是诈骗。</div>
-        <div class="why"><b>看点：</b>短剧演员集体进军大银幕的标志性一战，包场排面能否转化为真实票房，将检验“短剧流量”在大盘的兑换率。</div>
+        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E6%83%A0%E8%8B%B1%E7%BA%A2%E5%9B%A2%E9%98%9F%E5%B7%B4%E9%BB%8E%E9%81%AD%E7%A0%B8%E7%AA%97%E6%8A%A2%E5%8A%AB%EF%BC%8C%E5%A4%9A%E4%BD%8D%E8%89%BA%E4%BA%BA%E6%8E%A5%E8%BF%9E%E9%81%87%E7%9B%97" target="_blank" rel="noopener">惠英红团队巴黎遭砸窗抢劫，多位艺人接连遇盗</a></div>
+        <div class="d">9 月 30 日，惠英红团队在巴黎参加时装周返程途中，车辆高速堵车时段被歹徒砸窗抢走背包，化妆师被碎玻璃轻微划伤，团队已报警并联系中国驻法使馆；短短 4 天内已有万千惠、黄奕、惠英红三位艺人在巴黎遭盗抢。惠英红发文提醒国庆出境游客注意财物安全。</div>
+        <div class="why"><b>看点：</b>明星遭遇照见欧洲旅游城市治安恶化，堵车低速路段“十几秒破窗”的团伙作案手法，给国庆出境游人群敲响安全警钟。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E3%80%8A%E4%BD%99%E7%BA%A2%E6%97%A7%E4%BA%8B%E3%80%8B%E9%A6%96%E6%92%AD%EF%BC%9A%E4%B8%9C%E5%8C%97%E6%82%AC%E7%96%91%E5%96%9C%E5%89%A7%E2%80%9C%E5%A4%AA%E4%B8%8A%E5%A4%B4%E2%80%9D" target="_blank" rel="noopener">《余红旧事》首播：东北悬疑喜剧“太上头”</a></div>
-        <div class="d">悬疑新剧《余红旧事》开播，首更 9 集：上世纪九十年代东北工业小城，暴雪封城接连出现离奇冻尸案，警察刘娟（王佳佳 饰）与身负命案的弟弟刘阳（张哲华 饰）形成姐弟对立，马伊琍参演。东北黑色幽默+悬疑的组合被观众评价“味道十足、值得入坑”。</div>
-        <div class="why"><b>看点：</b>2026 年悬疑赛道缺少爆款坐镇，“悬疑+喜剧+东北”是被验证过的爆款配方，该剧能否接棒《低智商犯罪》值得观察。</div>
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E9%83%AD%E6%99%93%E4%B8%9C%E6%99%92%E7%B4%A0%E4%BA%BA%E7%A7%81%E4%BF%A1%E5%BC%95%E4%BA%89%E8%AE%AE%EF%BC%9A%E9%81%93%E6%AD%89%E4%B9%9F%E9%9A%BE%E9%80%83%E4%BE%B5%E6%9D%83%E8%B4%A3%E4%BB%BB%EF%BC%9F" target="_blank" rel="noopener">郭晓东晒素人私信引争议：道歉也难逃侵权责任？</a></div>
+        <div class="d">演员郭晓东在《披荆斩棘 2026》中遭网友私信劝“别拖后腿”后，未打码截图公开反问“我该怎么办”，被指引导网暴；其随后公开道歉称“确实做错了”。律师指出：即便道歉，也不能直接免除全部法定侵权责任。</div>
+        <div class="why"><b>看点：</b>公众人物与素人私信的边界之争，“晒聊天记录”从维权利器变成侵权实锤，是一堂全民范围的隐私普法课。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E3%80%8A%E9%A3%8E%E5%8D%8E%E4%BB%A4%E3%80%8B%E4%BB%8A%E6%97%A5%E5%BC%80%E6%92%AD%EF%BC%9A%E9%99%88%E6%84%8F%E6%B6%B5%E7%99%BD%E6%BE%8D%E5%8F%8C%E5%BC%BA%E8%81%94%E6%89%8B%E6%8E%A2%E6%A1%88" target="_blank" rel="noopener">《风华令》今日开播：陈意涵白澍双强联手探案</a></div>
-        <div class="d">古装权谋剧《风华令》9 月 30 日登陆优酷：相府次女云韶逃过“血玉献祭”后跻身凤仪卫，与统领裴昭被“子母蛊”绑定命运，联手勘破矿案与少女失踪迷局，牵出血祭、皇室换子的惊天秘辛，陈意涵、白澍领衔。</div>
-        <div class="why"><b>看点：</b>国庆档剧集大战开启，“双强联手搞事业+宿命羁绊”的设定精准踩中当下偏好，无流量明星的全实力派阵容也是一次反套路押注。</div>
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E9%A3%9E%E5%A4%A9%E5%A5%96%E6%8F%90%E5%90%8D%E5%85%AC%E5%B8%83%EF%BC%8C10+%E6%9C%88+9+%E6%97%A5%E9%A2%81%E5%A5%96" target="_blank" rel="noopener">飞天奖提名公布，10 月 9 日颁奖</a></div>
+        <div class="d">第 35 届中国电视剧“飞天奖”48 部提名作品、第 29 届全国电视文艺“星光奖”85 部提名作品名单公布，获奖结果将于 10 月 9 日颁奖典礼揭晓。</div>
+        <div class="why"><b>看点：</b>宋佳刚凭《山花烂漫时》二封金鹰视后，飞天奖会不会凑齐“大满贯”成为最大悬念，电视剧三大奖收官战开启。</div>
       </div>
 
       <div class="item">
-        <div class="t"><span class="idx">05</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E5%9B%BD%E5%BA%86%E6%A1%A3%E4%BB%8A%E6%97%A5%E5%BC%80%E7%94%BB%EF%BC%9A%E3%80%8A%E7%A5%9E%E6%8E%A2%E4%B9%8B%E7%97%95%E8%BF%B9%E3%80%8B%E9%A2%84%E5%94%AE%E9%A2%86%E8%B7%91" target="_blank" rel="noopener">国庆档今日开画：《神探之痕迹》预售领跑</a></div>
-        <div class="d">12 部新片组成的超长国庆档 30 日起陆续开画，《神探之痕迹》（张译、马丽）以约 780 万预售领跑，《活色生香》《长征一家人》等接力上映；AI 超写实院线电影《三星堆：未来往事》宣布定档 10 月 23 日，全部角色为原创数字形象、不含真实演员的数字复制。</div>
-        <div class="why"><b>看点：</b>无超级头部大片的国庆档票房上限存疑，但“硬核刑侦+喜剧”组合与全数字角色新片，是这个档期最大的两个变量。</div>
+        <div class="t"><span class="idx">05</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E3%80%8A%E6%B4%BB%E8%89%B2%E7%94%9F%E9%A6%99%E3%80%8B%E4%BB%8A%E6%97%A5%E4%B8%8A%E6%98%A0%EF%BC%8C%E9%93%B6%E5%8F%91%E9%A2%98%E6%9D%90%E8%83%BD%E5%90%A6%E5%86%8D%E6%BC%94%E9%80%86%E8%A2%AD" target="_blank" rel="noopener">《活色生香》今日上映，银发题材能否再演逆袭</a></div>
+        <div class="d">闫妮、叶童、倪虹洁主演的中老年女性题材电影《活色生香》今日公映，目前想看人数约 2 万、预售超百万，但 40 岁以上观众占比超 35%——此类选题此前有低排片逆袭近 20 亿票房的先例。</div>
+        <div class="why"><b>看点：</b>短剧圈集体包场+银发观众基本盘，“妈妈辈电影”能否复制逆袭剧本，是国庆档最有意思的变量之一。</div>
       </div>
     </section>
 
@@ -523,8 +518,8 @@
 
 <script>
 (function () {
-  var ARCHIVE_DATES = [/*__ARCHIVE_DATES__*/"260922", "260923"/*__END__*/];
-  var PAGE_DATE = "2026-09-30";
+  var ARCHIVE_DATES = [/*__ARCHIVE_DATES__*/"260923", "260924", "260925", "260926", "260927", "260928", "260929", "260930"/*__END__*/];
+  var PAGE_DATE = "2026-10-01";
   var HIST_BASE = /\/history\//.test(location.pathname) ? "./" : "history/";
 
   var btn = document.getElementById("calBtn");
