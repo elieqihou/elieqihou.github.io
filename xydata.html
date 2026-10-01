@@ -304,8 +304,13 @@
   /* ── 取数 ── */
   function load() {
     var since = new Date(Date.now() - 30 * 864e5).toISOString(); // 最多取近 30 天，全量统计也用它近似
-    var q = sb.from('visits').select('*').order('visited_at', { ascending: false }).limit(50000);
-    q.gte('visited_at', since).then(function (r) {
+    // 注意：supabase-js v2 中 order()/limit() 返回 TransformBuilder（无过滤方法），
+    // 过滤条件 gte() 必须放在 order()/limit() 之前，否则抛 TypeError 导致查不出数据
+    sb.from('visits').select('*')
+      .gte('visited_at', since)
+      .order('visited_at', { ascending: false })
+      .limit(50000)
+      .then(function (r) {
       if (r.error) { console.error(r.error); return; }
       CACHE = r.data || [];
       $('lastLoad').textContent = '更新于 ' + new Date().toLocaleTimeString('zh-CN');
