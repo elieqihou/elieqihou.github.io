@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>提马早报 · 2026.10.01 国庆</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* 工作日默认版令牌（节气/节日主题由 apply_theme.py 追加覆盖，勿把主题色写死在这里） */
+    --paper: #f7f3ec;
+    --ink: #1c1b17;
+    --ink-soft: #4c4a42;
+    --ink-faint: #8a867a;
+    --line: #d9d2c3;
+    --card: #fffdf8;
+    --accent: #1c1b17; --accent-soft: #4c4a42;
+    --seal: #9e2b25;
+    --c-intl: #1d4ed8; --c-intl-deep: #1e3fa8;
+    --c-dom: #cf2f1e; --c-dom-deep: #a02315;
+    --c-fin: #b45309; --c-fin-deep: #8a3f06;
+    --c-spo: #15803d; --c-spo-deep: #105c2c;
+    --c-hot: #6d28d9; --c-hot-deep: #551dab;
+    --c-ent: #db2777; --c-ent-deep: #ab1d5d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Sans SC", sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    padding: 0 16px 48px;
+    position: relative;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .35;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; position: relative; z-index: 1; }
+
+  /* ===== 报头 ===== */
+  .masthead { padding: 34px 0 0; border-bottom: 3px double var(--accent); }
+  .mast-meta {
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+    border-bottom: 1px solid var(--line); padding-bottom: 10px;
+    font-size: 12.5px; letter-spacing: .18em; color: var(--ink-faint);
+  }
+  .mast-meta .kicker { font-weight: 700; color: var(--ink-soft); }
+  .mast-meta .kicker small { font-weight: 400; letter-spacing: .3em; margin-left: 8px; color: var(--ink-faint); }
+  .mast-title-row {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 24px; padding: 26px 0 22px;
+  }
+  .mast-brand { display: flex; align-items: flex-end; gap: 20px; }
+  .mast-seal { width: clamp(54px, 7.5vw, 82px); height: auto; flex: none; }
+  .mast-title {
+    font-family: "Noto Serif SC", serif; font-weight: 900;
+    font-size: clamp(44px, 7vw, 76px); line-height: 1.05; letter-spacing: .1em;
+  }
+  .mast-title em { font-style: normal; color: var(--c-dom); }
+  .mast-side { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+  .mast-date {
+    font-family: "Playfair Display", serif; font-style: italic; font-weight: 600;
+    font-size: clamp(30px, 4.6vw, 52px); color: var(--ink); white-space: nowrap; line-height: 1;
+  }
+  .mast-date small {
+    display: block; font-family: "Noto Sans SC", sans-serif; font-style: normal;
+    font-size: 12px; letter-spacing: .3em; color: var(--accent); margin-top: 8px; text-align: right;
+  }
+
+  /* ===== 往期日历 ===== */
+  .cal-anchor { position: relative; }
+  .cal-link {
+    display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+    font-family: inherit; font-size: 13px; font-weight: 700; letter-spacing: .1em;
+    color: var(--ink-soft); background: var(--card);
+    border: 1.5px solid var(--line); border-radius: 999px; padding: 5px 15px 5px 12px;
+    transition: all .2s ease;
+  }
+  .cal-link:hover { border-color: var(--accent); color: var(--accent); }
+  .cal-link svg { width: 14px; height: 14px; display: block; }
+  .cal-pop {
+    position: absolute; top: calc(100% + 10px); right: 0; z-index: 60;
+    width: 274px; padding: 14px 14px 10px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 18px 44px -18px rgba(28, 27, 23, .45), 0 2px 8px rgba(28, 27, 23, .06);
+    animation: calIn .18s ease both;
+  }
+  .cal-pop[hidden] { display: none; }
+  @keyframes calIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .cal-title { font-size: 14px; font-weight: 700; letter-spacing: .08em; color: var(--ink); }
+  .cal-nav {
+    width: 26px; height: 26px; line-height: 1; cursor: pointer;
+    font-family: inherit; font-size: 17px; color: var(--ink-soft);
+    background: transparent; border: 1px solid var(--line); border-radius: 8px;
+    transition: all .18s ease;
+  }
+  .cal-nav:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .cal-week, .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .cal-week span {
+    text-align: center; font-size: 11px; letter-spacing: .06em;
+    color: var(--ink-faint); padding-bottom: 6px;
+  }
+  .cal-cell {
+    position: relative; height: 32px; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: var(--ink-faint); border-radius: 8px;
+    transition: background .18s ease, color .18s ease;
+  }
+  .cal-cell.is-empty { visibility: hidden; }
+  .cal-cell.has { color: var(--ink); font-weight: 700; cursor: pointer; }
+  .cal-cell.has::after {
+    content: ""; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
+  }
+  .cal-cell.has:hover, .cal-cell.has:focus-visible {
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+    color: var(--accent); outline: none;
+  }
+  .cal-cell.is-today { box-shadow: inset 0 0 0 1.5px var(--line); color: var(--ink-soft); }
+  .cal-foot {
+    margin-top: 9px; padding-top: 8px; border-top: 1px dashed var(--line);
+    font-size: 11.5px; color: var(--ink-faint); letter-spacing: .04em;
+  }
+
+  /* ===== 导航 ===== */
+  .nav-chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 0 18px; }
+  .nav-chips a {
+    text-decoration: none; font-size: 13.5px; font-weight: 700; letter-spacing: .08em;
+    color: var(--ink-soft); border: 1.5px solid var(--line);
+    border-radius: 999px; padding: 5px 16px; transition: all .2s ease;
+  }
+  .nav-chips a:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .nav-chips a.chip-pick { border-color: #0f766e; color: #0b5a54; }
+  .nav-chips a.chip-pick:hover { background: #0f766e; color: #fff; }
+
+  /* ===== 精选 ===== */
+  .spotlight {
+    margin-top: 30px; border-radius: 18px; overflow: hidden;
+    background: linear-gradient(120deg, #0f766e 0%, #115e59 46%, #134e4a 100%);
+    color: #f2fbfa; padding: 34px 38px 30px; position: relative;
+    box-shadow: 0 18px 44px -18px rgba(15, 118, 110, .55);
+  }
+  .spotlight::after {
+    content: ""; position: absolute; right: -60px; top: -60px; width: 240px; height: 240px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.14), transparent 68%);
+  }
+  .spotlight .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12.5px; font-weight: 700; letter-spacing: .3em;
+    border: 1.5px solid rgba(242, 251, 250, .55); border-radius: 999px;
+    padding: 5px 18px 5px 20px; margin-bottom: 18px;
+  }
+  .spotlight .badge i {
+    width: 8px; height: 8px; border-radius: 50%; background: #5eead4; display: inline-block;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1);} 50% { opacity: .45; transform: scale(.78);} }
+  .spotlight h2 {
+    font-family: "Noto Serif SC", serif; font-weight: 900;
+    font-size: clamp(24px, 3.4vw, 34px); line-height: 1.35; margin-bottom: 14px;
+  }
+  .spotlight h2 .hl { color: #99f6e4; border-bottom: 3px solid rgba(153, 246, 228, .5); padding-bottom: 2px; }
+  .spotlight .body { font-size: 15px; color: #d3efec; max-width: 62em; }
+  .spotlight .why {
+    margin-top: 18px; padding: 14px 18px; border-left: 3px solid #5eead4;
+    background: rgba(255,255,255,.07); border-radius: 0 10px 10px 0;
+    font-size: 14px; color: #e8fbf9; max-width: 62em;
+  }
+  .spotlight .why b { color: #99f6e4; font-weight: 700; }
+
+  /* ===== 分类卡片 ===== */
+  .grid { margin-top: 30px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  @media (max-width: 880px) { .grid { grid-template-columns: 1fr; } .spotlight { padding: 26px 22px; } }
+  .card {
+    background: var(--card); border-radius: 4px 4px 14px 14px;
+    box-shadow: 0 1px 3px rgba(28, 27, 23, .07), 0 12px 30px -22px rgba(28,27,23,.35);
+    padding: 24px 26px 12px; position: relative; border-top: 6px solid var(--ac);
+    animation: rise .6s ease both;
+  }
+  .card:nth-child(1) { animation-delay: .05s; } .card:nth-child(2) { animation-delay: .12s; }
+  .card:nth-child(3) { animation-delay: .19s; } .card:nth-child(4) { animation-delay: .26s; }
+  .card:nth-child(5) { animation-delay: .33s; } .card:nth-child(6) { animation-delay: .40s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px);} to { opacity: 1; transform: none;} }
+  .card:hover { transform: translateY(-3px); transition: transform .25s ease; }
+  .sec-head {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 6px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--line);
+  }
+  .sec-num { font-family: "Playfair Display", serif; font-style: italic; font-weight: 700; font-size: 26px; color: var(--ac); line-height: 1; }
+  .sec-head h3 { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 21px; letter-spacing: .1em; color: var(--ink); }
+  .sec-head .en { margin-left: auto; font-size: 11px; letter-spacing: .22em; color: var(--ink-faint); text-transform: uppercase; }
+  .item { padding: 14px 0 12px; border-bottom: 1px dashed var(--line); }
+  .item:last-child { border-bottom: none; }
+  .item .idx { font-family: "Playfair Display", serif; font-style: italic; font-weight: 700; font-size: 15px; color: var(--ac); margin-right: 8px; }
+  .item .t { font-size: 15.5px; font-weight: 700; color: var(--ink); line-height: 1.5; }
+  .item .t .tag {
+    display: inline-block; font-size: 11px; font-weight: 700; color: #fff;
+    background: var(--ac); border-radius: 3px; padding: 1px 7px; margin-right: 7px;
+    vertical-align: 2px; letter-spacing: .06em;
+  }
+  .item .d { margin-top: 6px; font-size: 14px; color: var(--ink-soft); }
+  .item .why {
+    margin-top: 9px; font-size: 13.5px; color: var(--ink-faint);
+    padding: 8px 12px; border-left: 3px solid var(--ac);
+    background: color-mix(in srgb, var(--ac) 6%, transparent);
+    border-radius: 0 8px 8px 0;
+  }
+  .item .why b { color: var(--ac-deep); font-weight: 700; }
+  .risk { margin-top: 40px; text-align: center; font-size: 12.5px; color: var(--ink-faint); letter-spacing: .08em; }
+
+  @media (max-width: 640px) {
+    .mast-title-row { flex-wrap: wrap; }
+    .mast-side { align-items: flex-start; }
+    .cal-pop { right: auto; left: 0; }
+  }
+
+  /* 标题外链（Bing 搜索） */
+  .item .t a.lk, .spotlight h2 a.lk {
+    color: inherit; text-decoration: underline;
+    text-decoration-thickness: 1px; text-underline-offset: 4px;
+    text-decoration-color: color-mix(in srgb, currentColor 32%, transparent);
+    transition: text-decoration-color .18s ease, color .18s ease;
+  }
+  .item .t a.lk:hover { color: var(--ac-deep); text-decoration-color: currentColor; }
+  .spotlight h2 a.lk { text-decoration-color: rgba(242, 251, 250, .35); }
+  .spotlight h2 a.lk:hover { text-decoration-color: rgba(242, 251, 250, .95); }
+</style>
+<style id="theme-css">
+/* 国庆版（中国红·金 庆典） */
+  /* 国庆版：中国红·金 庆典 */
+  :root {
+    --paper:#fcf5ec; --line:#eddcc4; --card:#fffcf6;
+    --accent:#c8102e; --accent-soft:#e6b422;
+  }
+  body {
+    background:
+      radial-gradient(circle at 90% 2%, rgba(230,180,34,.20) 0 10%, transparent 36%),
+      radial-gradient(circle at 4% 16%, rgba(200,16,46,.09) 0 14%, transparent 40%),
+      radial-gradient(circle at 96% 60%, rgba(230,180,34,.10) 0 8%, transparent 30%),
+      var(--paper);
+  }
+  .masthead { border-bottom: none; position: relative; }
+  .masthead::before {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 5px; z-index: 2;
+    background: linear-gradient(90deg,#c8102e 0%,#e6b422 26%,#c8102e 52%,#e6b422 78%,#c8102e 100%);
+  }
+  .mast-title em { color: #c8102e; }
+  .mast-date { color: #c8102e; }
+  .mast-date small { color: #b8860b; }
+  .spotlight {
+    background: linear-gradient(116deg,#8f0e1a 0%,#c8102e 42%,#d4342f 68%,#9c1120 100%);
+    box-shadow: 0 18px 44px -18px rgba(163,18,31,.55);
+  }
+  .spotlight::before {
+    content: "\2605"; position: absolute; right: 170px; top: -26px;
+    font-size: 110px; line-height: 1; transform: rotate(18deg); pointer-events: none;
+    color: rgba(255,224,138,.30); text-shadow: 0 0 34px rgba(255,224,138,.45);
+  }
+  .spotlight h2 .hl { color: #ffe08a; border-bottom-color: rgba(255,224,138,.5); }
+  .spotlight .why { border-left-color: #ffd970; }
+  .spotlight .why b { color: #ffe08a; }
+  .spotlight .badge i { background: #ffd970; }
+  .card { border-radius: 6px 6px 18px 18px; }
+  .card:hover { box-shadow: 0 1px 3px rgba(28,27,23,.07), 0 16px 36px -20px rgba(163,18,31,.35); }
+  .nav-chips a.chip-pick { border-color: #c8102e; color: #a30d1e; }
+  .nav-chips a.chip-pick:hover { background: #c8102e; color: #fff5e0; }
+</style>
+
+
+<link rel="icon" type="image/svg+xml" href="/logo-seal.svg">
+<script src="/tracker.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="mast-meta">
+      <span class="kicker">提马早报<small>TIMAB DAILY</small></span>
+      <span>星期四 · 农历八月廿一 · 国庆节 · timab.cn</span>
+    </div>
+    <div class="mast-title-row">
+      <div class="mast-brand">
+        <svg class="mast-seal" viewBox="0 0 240 240" role="img" aria-label="提马早报印章标">
+          <rect x="16" y="16" width="208" height="208" rx="20" fill="var(--seal, #9e2b25)"/>
+          <rect x="34" y="34" width="172" height="172" rx="10" fill="none" stroke="var(--paper, #f7f3ec)" stroke-width="5" opacity=".85"/>
+          <g font-family="Noto Serif SC, STSong, SimSun, serif" font-weight="900" font-size="74"
+             fill="var(--paper, #f7f3ec)" text-anchor="middle" dominant-baseline="central">
+            <text x="83" y="86">提</text>
+            <text x="157" y="86">马</text>
+            <text x="83" y="160">早</text>
+            <text x="157" y="160">报</text>
+          </g>
+        </svg>
+        <h1 class="mast-title">提马<em>早报</em></h1>
+      </div>
+      <div class="mast-side">
+        <div class="mast-date">2026.10.01<small>DAILY BRIEFING</small></div>
+        <div class="cal-anchor">
+          <button class="cal-link" id="calBtn" type="button" aria-haspopup="dialog" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+              <path d="M3 10h18M8 3v4M16 3v4"></path>
+            </svg>往期日历
+          </button>
+          <div class="cal-pop" id="calPop" role="dialog" aria-label="往期日历" hidden>
+            <div class="cal-head">
+              <button class="cal-nav" id="calPrev" type="button" aria-label="上一个月">‹</button>
+              <span class="cal-title" id="calTitle"></span>
+              <button class="cal-nav" id="calNext" type="button" aria-label="下一个月">›</button>
+            </div>
+            <div class="cal-week"><span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span></div>
+            <div class="cal-grid" id="calGrid"></div>
+            <div class="cal-foot">带圆点的日期可查看当日存档</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="nav-chips">
+      <a class="chip-pick" href="#pick">精选</a>
+      <a href="#intl" style="border-color:#1d4ed8;color:#1e3fa8">国际时事</a>
+      <a href="#dom" style="border-color:#cf2f1e;color:#a02315">国内要闻</a>
+      <a href="#fin" style="border-color:#b45309;color:#8a3f06">金融要闻</a>
+      <a href="#spo" style="border-color:#15803d;color:#105c2c">体育竞技</a>
+      <a href="#hot" style="border-color:#6d28d9;color:#551dab">网络热点</a>
+      <a href="#ent" style="border-color:#db2777;color:#ab1d5d">娱乐八卦</a>
+    </nav>
+  </header>
+
+  <section class="spotlight" id="pick">
+    <div class="badge"><i></i>精 选</div>
+    <h2><a class="lk" href="https://www.bing.com/search?q=3.6+%E4%BA%BF%E4%BA%BA%E5%BC%80%E5%90%AF%E5%81%87%E6%9C%9F%E6%A8%A1%E5%BC%8F%EF%BC%9A%E5%9B%BD%E5%BA%86%E9%A6%96%E6%97%A5%E5%85%A8%E6%B0%91%E5%87%BA%E8%A1%8C%E5%88%B7%E6%96%B0%E7%BA%AA%E5%BD%95%EF%BC%8C%E2%80%9C%E5%85%A8%E5%9B%BD%E9%83%BD%E5%9C%A8%E8%B7%AF%E4%B8%8A%E2%80%9D" target="_blank" rel="noopener">3.6 亿人开启假期模式：<span class="hl">国庆首日全民出行刷新纪录</span>，“全国都在路上”</a></h2>
+    <div class="body">共和国迎来 77 岁生日，超长假期带动全民大迁徙。各大出行平台数据显示，假期首日导航出行人次超 3.6 亿，北斗卫星定位日调用量逼近 1 万亿次，总出行里程突破 90 亿公里，多项数据刷新历史纪录；高速路网、热门景区与城市商圈全面进入“人从众”模式，多个景区门票早早售罄。</div>
+    <div class="why"><b>看点：</b>流动中国的年度回归，是假期经济最直观的注脚——出行数据、文旅消费与“堵在路上”的共同记忆自带全民讨论度。高速充电排队、景区预约满额、错峰攻略，都是这个长假最实在的社交货币。</div>
+  </section>
+
+  <div class="grid">
+
+    <section class="card" id="intl" style="--ac:#1d4ed8; --ac-deep:#1e3fa8;">
+      <div class="sec-head"><span class="sec-num">01</span><h3>国际时事</h3><span class="en">World</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E8%BF%AA%E6%8B%9C%E8%88%AA%E7%A9%BA%E5%AE%A2%E6%9C%BA%E6%83%8A%E9%AD%82%E5%AE%9A%E6%80%A7%E2%80%9C%E6%9C%AA%E9%81%82%E6%81%90%E6%80%96%E8%A2%AD%E5%87%BB%E2%80%9D%EF%BC%9A%E9%A3%9E%E8%A1%8C%E5%91%98%E5%88%BA%E4%BC%A4%E5%90%8C%E4%BA%8B%E8%AF%95%E5%9B%BE%E5%9D%A0%E6%9C%BA" target="_blank" rel="noopener">迪拜航空客机惊魂定性“未遂恐怖袭击”：飞行员刺伤同事试图坠机</a></div>
+        <div class="d">一架从迪拜飞往特拉维夫的客机 30 日飞行途中异常改道并连发遇险代码，最终安全降落沙特塔布克机场，全员无恙。以方披露：机上一名飞行员刺伤同事后试图让飞机坠毁，被乘客与机组当场制服；以防长定性为“未遂恐怖袭击”，以总理称嫌疑人已被捕。</div>
+        <div class="why"><b>看点：</b>“机上内鬼”式袭击在民航史上极为罕见，事发于以色列与阿联酋敏感关系背景下，全球民航驾驶舱安保规则或面临新一轮收紧。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E7%89%B9%E6%9C%97%E6%99%AE%E5%AE%A3%E5%B8%83%E6%9C%80%E5%90%8E%E4%B8%80%E6%89%B9%E7%BE%8E%E5%86%9B%E6%92%A4%E7%A6%BB%E4%BC%8A%E6%8B%89%E5%85%8B" target="_blank" rel="noopener">特朗普宣布最后一批美军撤离伊拉克</a></div>
+        <div class="d">美国防部 30 日宣布，美主导的打击“伊斯兰国”国际联盟当日结束在伊拉克军事任务；特朗普发文称“很高兴宣布最后一批美军正在撤离伊拉克”，并宣称“伊斯兰国已被击败”。</div>
+        <div class="why"><b>看点：</b>美军在中东的军事存在再收缩一步，伊拉克安全格局、伊朗地区影响力与能源地缘溢价都将随之重估。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E7%BE%8E%E4%BC%8A%E8%B0%88%E5%88%A4%E5%88%86%E6%AD%A7%E7%BC%A9%E7%AA%84%E8%87%B3%E2%80%9C%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E2%80%9D%EF%BC%8C%E2%80%9C%E4%B8%83%E5%A4%A9%E6%96%B9%E6%A1%88%E2%80%9D%E5%86%85%E5%AE%B9%E5%B7%B2%E6%97%A0%E4%BA%89%E8%AE%AE" target="_blank" rel="noopener">美伊谈判分歧缩窄至“执行顺序”，“七天方案”内容已无争议</a></div>
+        <div class="d">据报道，美伊围绕重开霍尔木兹海峡的“七天方案”文本内容已无争执，分歧仅剩落实的先后顺序；伊朗称已收到美方针对提议的回复。但特朗普否认将“解除制裁换核让步”，谈判仍在僵局中拉锯。</div>
+        <div class="why"><b>看点：</b>争“执行顺序”而非“方案本身”，说明协议文本已接近成型——海峡通航与全球油价的最大变量进入临门一脚阶段。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E4%BC%8A%E6%9C%97%E8%AD%A6%E5%91%8A%E5%86%85%E5%A1%94%E5%B0%BC%E4%BA%9A%E8%83%A1%E8%AE%BF%E9%98%BF%E8%81%94%E9%85%8B%E2%80%9C%E5%90%8E%E6%9E%9C%E5%8D%B1%E9%99%A9%E2%80%9D" target="_blank" rel="noopener">伊朗警告内塔尼亚胡访阿联酋“后果危险”</a></div>
+        <div class="d">以色列总理近日到访阿联酋后，伊朗外交部向中东地区国家发出警告，称以色列方面的活动“后果危险”；这是伊朗官方对海湾国家与以色列走近的最新强硬表态。</div>
+        <div class="why"><b>看点：</b>《亚伯拉罕协议》阵营与伊朗的对抗边界持续划线，海湾“阵营化”趋势是继海峡博弈后中东格局的第二条主线。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=FTC+%E5%AF%B9+OpenAI%E3%80%81Anthropic+%E7%AD%89%E2%80%9C%E8%B6%85%E7%BA%A7%E6%99%BA%E8%83%BD%E2%80%9D%E5%85%AC%E5%8F%B8%E5%B1%95%E5%BC%80%E5%85%A8%E9%9D%A2%E8%B0%83%E6%9F%A5" target="_blank" rel="noopener">FTC 对 OpenAI、Anthropic 等“超级智能”公司展开全面调查</a></div>
+        <div class="d">美监管方被曝加大对 Anthropic、OpenAI 等 AI 巨头的调查力度，官员称调查“不会妨碍美国的 AI 主导地位”；同日谷歌发布新一代旗舰模型 Gemini 4 Argon，重返 AI 前沿但访问权限受限。</div>
+        <div class="why"><b>看点：</b>白宫“拒绝立法监管”与监管机构“主动调查”并行，美国 AI 治理的内在张力全面显形，头部公司合规成本陡增。</div>
+      </div>
+    </section>
+
+    <section class="card" id="dom" style="--ac:#cf2f1e; --ac-deep:#a02315;">
+      <div class="sec-head"><span class="sec-num">02</span><h3>国内要闻</h3><span class="en">China</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E5%BA%86%E7%A5%9D%E6%96%B0%E4%B8%AD%E5%9B%BD%E6%88%90%E7%AB%8B+77+%E5%91%A8%E5%B9%B4%E6%8B%9B%E5%BE%85%E4%BC%9A%E4%B8%BE%E8%A1%8C%EF%BC%8C%E4%BB%8A%E6%99%A8%E5%8D%87%E6%97%97%E4%BB%AA%E5%BC%8F%E4%B8%87%E4%BA%BA%E5%AE%88%E5%80%99" target="_blank" rel="noopener">庆祝新中国成立 77 周年招待会举行，今晨升旗仪式万人守候</a></div>
+        <div class="d">庆祝中华人民共和国成立 77 周年招待会 30 日晚在人民大会堂举行，习近平出席并发表重要讲话。今晨天安门广场举行国庆升旗仪式，大量游客携行李箱彻夜排队，18 米高“祝福祖国”巨型花篮以“奋进‘十五五’”主题首次亮相，广场上游客自发合唱此起彼伏。</div>
+        <div class="why"><b>看点：</b>招待会讲话为“十五五”开局定调，而凌晨排队看升旗、大花篮下合影，是假期第一天最有仪式感的全民画面。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%AD%E5%A4%AE%E7%BD%91%E4%BF%A1%E5%8A%9E%E4%B8%93%E9%A1%B9%E6%95%B4%E6%B2%BB%E7%9F%AD%E8%A7%86%E9%A2%91%E8%99%9A%E5%81%87%E4%BA%BA%E8%AE%BE%E4%B9%B1%E8%B1%A1" target="_blank" rel="noopener">中央网信办专项整治短视频虚假人设乱象</a></div>
+        <div class="d">中央网信办近日开展为期 2 个月的“清朗·整治短视频虚假人设乱象”专项行动，重点整治假扮弱势群体、虚构职业资质、利用 AI 仿冒人物、鼓吹奢靡迷信、编造冲突剧情等问题。</div>
+        <div class="why"><b>看点：</b>AI 仿冒与卖惨人设是短视频生态两大毒瘤，治理从平台限流升级为专项“清朗”，内容创作者的合规门槛显著抬升。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E5%85%A8%E5%B9%B4+2500+%E4%BA%BF%E5%85%83%E6%B6%88%E8%B4%B9%E5%93%81%E4%BB%A5%E6%97%A7%E6%8D%A2%E6%96%B0%E8%B5%84%E9%87%91%E5%85%A8%E9%83%A8%E4%B8%8B%E8%BE%BE" target="_blank" rel="noopener">全年 2500 亿元消费品以旧换新资金全部下达</a></div>
+        <div class="d">国家发改委会同财政部向地方下达今年第四批 625 亿元超长期特别国债资金，支持消费品以旧换新；至此全年 2500 亿元资金已全部下达到位。</div>
+        <div class="why"><b>看点：</b>四季度促消费“弹药”全部打出，家电、汽车、数码换新高峰与国庆假期叠加，四季度社零数据有了明确支撑。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=9+%E6%9C%88+PMI+%E5%8F%8C%E5%8F%8C%E9%87%8D%E8%BF%94%E6%89%A9%E5%BC%A0%E5%8C%BA%E9%97%B4" target="_blank" rel="noopener">9 月 PMI 双双重返扩张区间</a></div>
+        <div class="d">国家统计局数据显示，9 月制造业 PMI 为 50.1%、非制造业 PMI 为 50.2%，双双升至扩张区间；财新口径制造业 PMI 更升至 52.1，创五个月新高。</div>
+        <div class="why"><b>看点：</b>“金九”成色得到关键验证，制造业重回荣枯线上，为四季度经济走势与政策接续加码提供了底气。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E2%80%9C%E9%9B%AA%E9%BE%99%E2%80%9D%E5%8F%B7%E5%AE%8C%E6%88%90%E4%B8%AD%E5%9B%BD%E7%AC%AC+16+%E6%AC%A1%E5%8C%97%E5%86%B0%E6%B4%8B%E8%80%83%E5%AF%9F%E8%BF%94%E5%9B%9E%E4%B8%8A%E6%B5%B7" target="_blank" rel="noopener">“雪龙”号完成中国第 16 次北冰洋考察返回上海</a></div>
+        <div class="d">执行中国第 16 次北冰洋考察任务的“雪龙”号、“雪龙2”号 29 日返回上海，本次考察历时 3 个月，在楚科奇海台等方面取得多项重要进展。</div>
+        <div class="why"><b>看点：</b>“双龙探极”常态化运行，极地科考能力是北极航道、气候研究与海洋权益话语权的长期战略积累。</div>
+      </div>
+    </section>
+
+    <section class="card" id="fin" style="--ac:#b45309; --ac-deep:#8a3f06;">
+      <div class="sec-head"><span class="sec-num">03</span><h3>金融要闻</h3><span class="en">Finance</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E6%88%BF%E8%B4%B7%E8%B4%B4%E6%81%AF%E4%BB%8A%E6%97%A5%E8%90%BD%E5%9C%B0%EF%BC%9A%E5%85%AD%E5%A4%A7%E5%9B%BD%E6%9C%89%E9%93%B6%E8%A1%8C%E5%85%AC%E5%91%8A%E2%80%9C%E5%85%8D%E7%94%B3%E5%8D%B3%E4%BA%AB%E2%80%9D" target="_blank" rel="noopener">房贷贴息今日落地：六大国有银行公告“免申即享”</a></div>
+        <div class="d">工商银行、农业银行、中国银行、建设银行、交通银行、邮储银行 30 日晚集体发布公告，落实居民购房贷款贴息政策，对符合政策要求的客户提供贴息服务，实现“免申即享”；政策自今日起实施。</div>
+        <div class="why"><b>看点：</b>中央财政史上首次补贴商业房贷进入执行层面，符合条件的家庭无需申请直接到账，地产链情绪与消费预期都有望继续修复。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E7%BE%8E%E5%80%BA+10Y+%E6%94%B6%E7%9B%8A%E7%8E%87%E7%AB%99%E4%B8%8A+5.295%25%EF%BC%8C%E5%88%9B+2002+%E5%B9%B4+5+%E6%9C%88%E4%BB%A5%E6%9D%A5%E6%96%B0%E9%AB%98" target="_blank" rel="noopener">美债 10Y 收益率站上 5.295%，创 2002 年 5 月以来新高</a></div>
+        <div class="d">美国 8 月核心 PCE 同比涨 3% 低于预期、创半年来新低，高盛将美联储加息预期推迟至 12 月；但美债收益率仍续创新高，10Y 报 5.295%，现货黄金回落 0.61% 报 4157 美元，美股三大指数收盘涨跌互现、标普与道指三连跌。</div>
+        <div class="why"><b>看点：</b>“通胀降温但利率不降”是当前全球资产定价的最大矛盾，黄金、成长股与新兴市场的承压逻辑短期内难以逆转。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E6%B2%B9%E4%BB%B7%E5%8F%8D%E5%BC%B9%EF%BC%8C%E5%B8%83%E6%B2%B9%E9%87%8D%E8%BF%94+97+%E7%BE%8E%E5%85%83%E4%B8%8A%E6%96%B9" target="_blank" rel="noopener">油价反弹，布油重返 97 美元上方</a></div>
+        <div class="d">美伊谈判陷入僵局叠加特朗普否认解制裁的消息传出后，国际油价逆转前一日跌势：WTI 收涨 1.57% 报 89.45 美元/桶，布伦特涨 2.18% 报 97.52 美元/桶；伊拉克同步加大 10 月原油价格折扣，最高达每桶 37 美元。</div>
+        <div class="why"><b>看点：</b>海湾谈判的每一次反复都直接写进油价，节后国内成品油调价窗口与化工、航空成本都盯着这条线。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E7%BE%8E%E5%85%89%E8%B4%A2%E6%8A%A5%E5%BC%95%E7%88%86%E5%AD%98%E5%82%A8%E9%93%BE%EF%BC%9A%E4%B8%8B%E4%B8%80%E8%B4%A2%E5%AD%A3%E6%8C%87%E5%BC%95%E8%B6%85%E9%A2%84%E6%9C%9F" target="_blank" rel="noopener">美光财报引爆存储链：下一财季指引超预期</a></div>
+        <div class="d">美光第四财季营收同比增长近四倍，下一财季营收指引超市场预期；CEO 表示 2027 至 2028 年行业供应紧张将比今年更严重。财报公布后股价盘后巨震，新思科技与 OpenAI 达成芯片设计 AI 合作、股价一度涨超 7%。</div>
+        <div class="why"><b>看点：</b>存储超级周期从“涨价”进入“产能排满”叙事，A 股存储、半导体设备产业链节后有望与美股共振。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E9%9F%A9%E5%9B%BD+2000+%E4%BA%BF%E7%BE%8E%E5%85%83%E5%AF%B9%E7%BE%8E%E6%8A%95%E8%B5%84%E9%A6%96%E6%89%B9%E8%AE%A1%E5%88%92%E5%85%AC%E5%B8%83" target="_blank" rel="noopener">韩国 2000 亿美元对美投资首批计划公布</a></div>
+        <div class="d">韩国首批对美投资计划公布：2000 亿美元投向能源项目，涵盖八座核电站、得州燃气电厂与阿拉斯加 LNG 项目，为贸易协议框架下的对美巨额承诺开列明细。</div>
+        <div class="why"><b>看点：</b>“用投资换关税豁免”的韩国模式落定，为其他出口导向型经济体提供参照，也进一步抬升全球资本回流美国的总量。</div>
+      </div>
+    </section>
+
+    <section class="card" id="spo" style="--ac:#15803d; --ac-deep:#105c2c;">
+      <div class="sec-head"><span class="sec-num">04</span><h3>体育竞技</h3><span class="en">Sports</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%AD%E5%9B%BD%E8%B7%B3%E6%B0%B4%E9%98%9F%E8%BE%BE%E6%88%90%E4%BA%9A%E8%BF%90%E2%80%9C%E7%99%BE%E9%87%91%E2%80%9D%E6%88%90%E5%B0%B1%EF%BC%8C%E6%9C%AC%E5%B1%8A+10+%E9%87%91%E5%85%A8%E5%8C%85%E6%8F%BD" target="_blank" rel="noopener">中国跳水队达成亚运“百金”成就，本届 10 金全包揽</a></div>
+        <div class="d">亚运跳水收官日，陈艺文卫冕女子 3 米板（358.05 分，陈佳摘银），练俊杰夺男子 10 米台金牌——这是中国跳水队自 1974 年首参亚运以来的第 100 枚亚运金牌；本届赛事中国队 10 金 4 银 2 铜，第 14 次实现跳水金牌全包揽。</div>
+        <div class="why"><b>看点：</b>半个世纪“金牌从不旁落”的统治力，梦之队在国庆前夜交出最稳的一块拼图，“百金”里程碑注定写进队史。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E4%BA%9A%E8%BF%90%E7%94%B7%E8%B6%B3+1%3A2+%E6%83%9C%E8%B4%A5%E9%9F%A9%E5%9B%BD%E6%97%A0%E7%BC%98%E5%86%B3%E8%B5%9B%EF%BC%8C%E5%B0%86%E5%8A%9B%E4%BA%89%E5%A4%BA%E9%93%9C" target="_blank" rel="noopener">亚运男足 1:2 惜败韩国无缘决赛，将力争夺铜</a></div>
+        <div class="d">男足半决赛中国队先进一球，遭卫冕冠军韩国队 2:1 逆转。虽无缘决赛，但球队时隔 28 年重返亚运四强，创下 U23 时代最佳战绩；中国队将与乌兹别克斯坦争夺铜牌，队员表态“带一枚奖牌回家”。</div>
+        <div class="why"><b>看点：</b>输给韩国不丢人，年轻一代敢打敢拼的成色已经可见；铜牌战是这批球员的最后一课，也是舆论重新审视青训的窗口。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E7%94%B5%E7%AB%9E%E7%AC%AC%E4%BA%94%E4%BA%BA%E6%A0%BC%E5%A4%BA%E9%87%91%EF%BC%8C%E7%A9%86%E6%AC%A3%E6%9C%88%E6%88%90%E2%80%9C%E5%85%A5%E4%BA%9A%E2%80%9D%E9%A6%96%E4%BD%8D%E5%A5%B3%E5%AD%90%E5%86%A0%E5%86%9B" target="_blank" rel="noopener">电竞第五人格夺金，穆欣月成“入亚”首位女子冠军</a></div>
+        <div class="d">亚运电子竞技第五人格项目决赛，中国队战胜日本队夺冠；随队登上最高领奖台的穆欣月，成为电子竞技“入亚”以来第一位拿到金牌的女子运动员。</div>
+        <div class="why"><b>看点：</b>电竞项目迎来首位女性亚运冠军，“她力量”正式写入亚运电竞版图，对打破项目性别刻板印象有标志意义。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E5%9C%BA%E5%9C%B0%E8%87%AA%E8%A1%8C%E8%BD%A6%E5%8D%95%E6%97%A5+3+%E9%87%91%EF%BC%8C%E6%BF%80%E6%B5%81%E5%9B%9E%E6%97%8B%E5%8F%8C%E9%87%91%E5%BB%B6%E7%BB%AD%E7%BB%9F%E6%B2%BB" target="_blank" rel="noopener">场地自行车单日 3 金，激流回旋双金延续统治</a></div>
+        <div class="d">场地自行车赛场中国队包揽当日全部 3 金：男、女团体追逐赛均以打破亚洲纪录的成绩夺金，苑丽颖再夺凯林赛金牌（个人本届第二金）。皮划艇激流回旋方面，黄娟卫冕女子单人划艇（亚运四连冠），胡兆山夺男子单人皮艇金牌（三连冠）。</div>
+        <div class="why"><b>看点：</b>关注度不高的项目持续“闷声夺金”，冷门赛道全面开花正是中国代表团 151 金领跑奖牌榜的深层底气。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=151+%E9%87%91+67+%E9%93%B6+59+%E9%93%9C%E9%A2%86%E8%B7%91%EF%BC%8C%E5%9B%BD%E5%BA%86%E6%97%A5%E4%BA%9A%E8%BF%90%E8%B5%9B%E5%9C%BA%E7%9C%8B%E7%82%B9%E5%8D%81%E8%B6%B3" target="_blank" rel="noopener">151 金 67 银 59 铜领跑，国庆日亚运赛场看点十足</a></div>
+        <div class="d">截至第 11 个比赛日，中国代表团以 151 金 67 银 59 铜继续位列金牌榜第一；今日第 12 比赛日将产生 29 金：射击收官日冲击 25 米手枪速射包揽，男子速度攀岩“五秒定金”，网球“金花”张帅、王曦雨力争会师女单决赛。</div>
+        <div class="why"><b>看点：</b>国庆日的亚运赛场就是最好的节日献礼，射击、攀岩、网球三个冲金点横跨一天，值得守着直播看。</div>
+      </div>
+    </section>
+
+    <section class="card" id="hot" style="--ac:#6d28d9; --ac-deep:#551dab;">
+      <div class="sec-head"><span class="sec-num">05</span><h3>网络热点</h3><span class="en">Trending</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%A9%E5%AE%89%E9%97%A8%E5%8D%87%E6%97%97%E4%BB%AA%E5%BC%8F%E5%87%8C%E6%99%A8%E6%8E%92%E8%B5%B7%E9%95%BF%E9%98%9F%EF%BC%8C%E5%96%80%E4%BB%80%E5%B0%8F%E4%BC%99+0+%E7%82%B9%E5%88%B0%E5%9C%BA" target="_blank" rel="noopener">天安门升旗仪式凌晨排起长队，喀什小伙 0 点到场</a></div>
+        <div class="d">国庆节凌晨，天安门广场安检口排起长队，不少游客拖着行李箱、带着棉衣守候升旗仪式。来自新疆喀什的 32 岁小伙艾则孜 0 时 12 分就到场排队：“这是我第一次来北京，人太多，我想看得清楚一点。”</div>
+        <div class="why"><b>看点：</b>“到天安门看一次升旗”是刻进 DNA 的仪式感，凌晨的长队与广场合唱，是国庆假期最朴素也最动人的民间画面。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><a class="lk" href="https://www.bing.com/search?q=%E5%A4%A7%E7%86%8A%E7%8C%AB%E2%80%9C%E7%9D%BF%E5%AE%9D%E2%80%9D%E2%80%9C%E8%BE%89%E5%AE%9D%E2%80%9D12+%E6%9C%88%E5%9B%9E%E5%9B%BD" target="_blank" rel="noopener">大熊猫“睿宝”“辉宝”12 月回国</a></div>
+        <div class="d">韩国爱宝乐园 30 日宣布，在韩国诞生的双胞胎中国大熊猫“睿宝”和“辉宝”将于 12 月回到中国。“福宝家族”再添归国成员，韩国粉丝已开始计划送别活动。</div>
+        <div class="why"><b>看点：</b>从福宝到睿宝辉宝，“熊猫外交”与跨国粉丝经济的故事线持续更新，回国后的隔离与安家安排已被全网蹲守。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E6%98%86%E6%98%8E+4.3+%E7%BA%A7%E5%9C%B0%E9%9C%87%EF%BC%8C%E9%93%81%E8%B7%AF%E7%B4%A7%E6%80%A5%E6%89%A3%E5%81%9C%E5%88%97%E8%BD%A6" target="_blank" rel="noopener">昆明 4.3 级地震，铁路紧急扣停列车</a></div>
+        <div class="d">30 日 18 时 31 分，云南昆明市盘龙区附近发生 4.3 级左右地震；中国铁路立即启动应急响应，扣停到发昆明的列车，多趟旅客列车出现不同程度晚点。</div>
+        <div class="why"><b>看点：</b>黄金周出行高峰撞上突发地震，铁路“先扣停、再排查”的应急响应速度，是假期安全感的直观标尺。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E4%B8%8B%E5%8D%8A%E5%B9%B4%E6%9C%80%E5%BC%BA%E5%86%B7%E7%A9%BA%E6%B0%94%2B%E5%8D%97%E6%96%B9%E5%A4%A7%E6%9A%B4%E9%9B%A8%E6%9D%A5%E8%A2%AD%EF%BC%8C%E9%98%B2%E6%B1%9B%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E5%90%AF%E5%8A%A8" target="_blank" rel="noopener">下半年最强冷空气+南方大暴雨来袭，防汛应急响应启动</a></div>
+        <div class="d">中央气象台预计，陕西东南部、湖北西部、湖南中西部、重庆、贵州等地部分地区有中到大雨，贵州北部、湖南西部局地大暴雨；国家防总、应急管理部针对重庆、贵州启动防汛四级应急响应，全国多地气温明显下滑。</div>
+        <div class="why"><b>看点：</b>假期出行撞上“断崖式降温+暴雨”组合，出行穿搭、自驾安全与景区行程调整的提醒，值得转给每一个在路上的人。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><a class="lk" href="https://www.bing.com/search?q=%E4%BB%8A%E5%B9%B4%E5%BF%AB%E9%80%92%E4%B8%9A%E5%8A%A1%E9%87%8F%E8%B6%85+1500+%E4%BA%BF%E4%BB%B6%EF%BC%8C%E6%AF%94%E5%8E%BB%E5%B9%B4%E6%8F%90%E5%89%8D+12+%E5%A4%A9" target="_blank" rel="noopener">今年快递业务量超 1500 亿件，比去年提前 12 天</a></div>
+        <div class="d">国家邮政局监测数据显示，截至 9 月 29 日，今年我国快递业务量已突破 1500 亿件，比 2025 年提前了 12 天，全年有望再创历史新高。</div>
+        <div class="why"><b>看点：</b>每一件包裹都是消费活力的“细胞”，破纪录速度持续加快，也意味着国庆假期另一场“快递高峰”已经在路上。</div>
+      </div>
+    </section>
+
+    <section class="card" id="ent" style="--ac:#db2777; --ac-deep:#ab1d5d;">
+      <div class="sec-head"><span class="sec-num">06</span><h3>娱乐八卦</h3><span class="en">Entertainment</span></div>
+
+      <div class="item">
+        <div class="t"><span class="idx">01</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E5%9B%BD%E5%BA%86%E6%A1%A3%E4%BB%8A%E6%97%A5%E5%BC%80%E7%94%BB%EF%BC%9A%E3%80%8A%E7%A5%9E%E6%8E%A2%E4%B9%8B%E7%97%95%E8%BF%B9%E3%80%8B%E9%A2%84%E5%94%AE%E7%A0%B4%E5%8D%83%E4%B8%87%E9%A2%86%E8%B7%91" target="_blank" rel="noopener">国庆档今日开画：《神探之痕迹》预售破千万领跑</a></div>
+        <div class="d">超 10 部新片今起同台竞技。陈思诚执导、张译马丽主演的《神探之痕迹》（取材“七一勋章”获得者、痕检专家崔道植）预售票房破千万、想看人数超 14 万居首；小沈阳夫妇《什么意思夫妇》预售超 600 万，《小猪佩奇·完美假期》领跑亲子场。</div>
+        <div class="why"><b>看点：</b>无超级头部大片的国庆档正式开赛，硬核刑侦、东北喜剧、银发题材与亲子动画各有基本盘，口碑战七天见分晓。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">02</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E6%83%A0%E8%8B%B1%E7%BA%A2%E5%9B%A2%E9%98%9F%E5%B7%B4%E9%BB%8E%E9%81%AD%E7%A0%B8%E7%AA%97%E6%8A%A2%E5%8A%AB%EF%BC%8C%E5%A4%9A%E4%BD%8D%E8%89%BA%E4%BA%BA%E6%8E%A5%E8%BF%9E%E9%81%87%E7%9B%97" target="_blank" rel="noopener">惠英红团队巴黎遭砸窗抢劫，多位艺人接连遇盗</a></div>
+        <div class="d">9 月 30 日，惠英红团队在巴黎参加时装周返程途中，车辆高速堵车时段被歹徒砸窗抢走背包，化妆师被碎玻璃轻微划伤，团队已报警并联系中国驻法使馆；短短 4 天内已有万千惠、黄奕、惠英红三位艺人在巴黎遭盗抢。惠英红发文提醒国庆出境游客注意财物安全。</div>
+        <div class="why"><b>看点：</b>明星遭遇照见欧洲旅游城市治安恶化，堵车低速路段“十几秒破窗”的团伙作案手法，给国庆出境游人群敲响安全警钟。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">03</span><a class="lk" href="https://www.bing.com/search?q=%E9%83%AD%E6%99%93%E4%B8%9C%E6%99%92%E7%B4%A0%E4%BA%BA%E7%A7%81%E4%BF%A1%E5%BC%95%E4%BA%89%E8%AE%AE%EF%BC%9A%E9%81%93%E6%AD%89%E4%B9%9F%E9%9A%BE%E9%80%83%E4%BE%B5%E6%9D%83%E8%B4%A3%E4%BB%BB%EF%BC%9F" target="_blank" rel="noopener">郭晓东晒素人私信引争议：道歉也难逃侵权责任？</a></div>
+        <div class="d">演员郭晓东在《披荆斩棘 2026》中遭网友私信劝“别拖后腿”后，未打码截图公开反问“我该怎么办”，被指引导网暴；其随后公开道歉称“确实做错了”。律师指出：即便道歉，也不能直接免除全部法定侵权责任。</div>
+        <div class="why"><b>看点：</b>公众人物与素人私信的边界之争，“晒聊天记录”从维权利器变成侵权实锤，是一堂全民范围的隐私普法课。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">04</span><a class="lk" href="https://www.bing.com/search?q=%E9%A3%9E%E5%A4%A9%E5%A5%96%E6%8F%90%E5%90%8D%E5%85%AC%E5%B8%83%EF%BC%8C10+%E6%9C%88+9+%E6%97%A5%E9%A2%81%E5%A5%96" target="_blank" rel="noopener">飞天奖提名公布，10 月 9 日颁奖</a></div>
+        <div class="d">第 35 届中国电视剧“飞天奖”48 部提名作品、第 29 届全国电视文艺“星光奖”85 部提名作品名单公布，获奖结果将于 10 月 9 日颁奖典礼揭晓。</div>
+        <div class="why"><b>看点：</b>宋佳刚凭《山花烂漫时》二封金鹰视后，飞天奖会不会凑齐“大满贯”成为最大悬念，电视剧三大奖收官战开启。</div>
+      </div>
+
+      <div class="item">
+        <div class="t"><span class="idx">05</span><span class="tag">进展</span><a class="lk" href="https://www.bing.com/search?q=%E3%80%8A%E6%B4%BB%E8%89%B2%E7%94%9F%E9%A6%99%E3%80%8B%E4%BB%8A%E6%97%A5%E4%B8%8A%E6%98%A0%EF%BC%8C%E9%93%B6%E5%8F%91%E9%A2%98%E6%9D%90%E8%83%BD%E5%90%A6%E5%86%8D%E6%BC%94%E9%80%86%E8%A2%AD" target="_blank" rel="noopener">《活色生香》今日上映，银发题材能否再演逆袭</a></div>
+        <div class="d">闫妮、叶童、倪虹洁主演的中老年女性题材电影《活色生香》今日公映，目前想看人数约 2 万、预售超百万，但 40 岁以上观众占比超 35%——此类选题此前有低排片逆袭近 20 亿票房的先例。</div>
+        <div class="why"><b>看点：</b>短剧圈集体包场+银发观众基本盘，“妈妈辈电影”能否复制逆袭剧本，是国庆档最有意思的变量之一。</div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="risk">风险提示：本简报仅作信息汇总，其中涉及的数据不构成任何投资建议。</footer>
+</div>
+
+<script>
+(function () {
+  var ARCHIVE_DATES = ["260923", "260924", "260925", "260926", "260927", "260928", "260929", "260930"];
+  var PAGE_DATE = "2026-10-01";
+  var HIST_BASE = /\/history\//.test(location.pathname) ? "./" : "history/";
+
+  var btn = document.getElementById("calBtn");
+  var pop = document.getElementById("calPop");
+  var grid = document.getElementById("calGrid");
+  var title = document.getElementById("calTitle");
+  if (!btn || !pop || !grid || !title) { return; }
+
+  var parts = PAGE_DATE.split("-");
+  var todayKey = parts[0].slice(2) + parts[1] + parts[2];
+  var cur = { y: +parts[0], m: +parts[1] };
+
+  var has = {};
+  for (var i = 0; i < ARCHIVE_DATES.length; i++) { has[ARCHIVE_DATES[i]] = 1; }
+
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  function key(y, m, d) { return String(y).slice(2) + pad(m) + pad(d); }
+
+  function render() {
+    title.textContent = cur.y + " 年 " + cur.m + " 月";
+    grid.innerHTML = "";
+
+    var start = new Date(cur.y, cur.m - 1, 1).getDay();
+    var days = new Date(cur.y, cur.m, 0).getDate();
+
+    for (var b = 0; b < start; b++) {
+      var blank = document.createElement("span");
+      blank.className = "cal-cell is-empty";
+      grid.appendChild(blank);
+    }
+
+    for (var d = 1; d <= days; d++) {
+      var k = key(cur.y, cur.m, d);
+      var cell = document.createElement("span");
+      cell.className = "cal-cell" + (has[k] ? " has" : "") + (k === todayKey ? " is-today" : "");
+      cell.textContent = d;
+      if (has[k]) {
+        cell.setAttribute("role", "link");
+        cell.setAttribute("tabindex", "0");
+        cell.title = cur.y + "-" + pad(cur.m) + "-" + pad(d) + " 存档";
+        (function (target) {
+          var go = function () { window.open(HIST_BASE + target + ".html", "_blank", "noopener"); };
+          cell.addEventListener("click", go);
+          cell.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
+          });
+        })(k);
+      }
+      grid.appendChild(cell);
+    }
+  }
+
+  function toggle(open) {
+    pop.hidden = !open;
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) { render(); }
+  }
+
+  btn.addEventListener("click", function (e) { e.stopPropagation(); toggle(pop.hidden); });
+  document.getElementById("calPrev").addEventListener("click", function () {
+    cur.m--; if (cur.m < 1) { cur.m = 12; cur.y--; } render();
+  });
+  document.getElementById("calNext").addEventListener("click", function () {
+    cur.m++; if (cur.m > 12) { cur.m = 1; cur.y++; } render();
+  });
+  document.addEventListener("click", function (e) {
+    if (!pop.hidden && !pop.contains(e.target)) { toggle(false); }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !pop.hidden) { toggle(false); }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
