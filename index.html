@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>提马早报 · 2026.10.01</title>
+<title>提马早报 · 2026.10.01 国庆</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
@@ -230,14 +230,46 @@
   .spotlight h2 a.lk:hover { text-decoration-color: rgba(242, 251, 250, .95); }
 </style>
 <style id="theme-css">
-/* 假日版（元旦/清明/劳动节/国庆） */
-  /* 假日版：更明快，礼花星芒 */
-  :root { --paper:#f6f4f8; --line:#d8d3e0; --accent:#4338ca; }
-  body { background: radial-gradient(circle at 92% 4%, rgba(67,56,202,.10) 0 12%, transparent 38%), var(--paper); }
-  .mast-date { font-size: clamp(32px, 4.9vw, 56px); }
-  .spotlight { background: linear-gradient(116deg, #1e1b4b 0%, #2b2a6e 52%, #3730a3 100%); box-shadow: 0 18px 44px -18px rgba(30,27,75,.55); }
-  .card { box-shadow: 0 1px 2px rgba(28,27,23,.05), 0 14px 32px -22px rgba(28,27,23,.28); }
+/* 国庆版（中国红·金 庆典） */
+  /* 国庆版：中国红·金 庆典 */
+  :root {
+    --paper:#fcf5ec; --line:#eddcc4; --card:#fffcf6;
+    --accent:#c8102e; --accent-soft:#e6b422;
+  }
+  body {
+    background:
+      radial-gradient(circle at 90% 2%, rgba(230,180,34,.20) 0 10%, transparent 36%),
+      radial-gradient(circle at 4% 16%, rgba(200,16,46,.09) 0 14%, transparent 40%),
+      radial-gradient(circle at 96% 60%, rgba(230,180,34,.10) 0 8%, transparent 30%),
+      var(--paper);
+  }
+  .masthead { border-bottom: none; position: relative; }
+  .masthead::before {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 5px; z-index: 2;
+    background: linear-gradient(90deg,#c8102e 0%,#e6b422 26%,#c8102e 52%,#e6b422 78%,#c8102e 100%);
+  }
+  .mast-title em { color: #c8102e; }
+  .mast-date { color: #c8102e; }
+  .mast-date small { color: #b8860b; }
+  .spotlight {
+    background: linear-gradient(116deg,#8f0e1a 0%,#c8102e 42%,#d4342f 68%,#9c1120 100%);
+    box-shadow: 0 18px 44px -18px rgba(163,18,31,.55);
+  }
+  .spotlight::before {
+    content: "\2605"; position: absolute; right: 170px; top: -26px;
+    font-size: 110px; line-height: 1; transform: rotate(18deg); pointer-events: none;
+    color: rgba(255,224,138,.30); text-shadow: 0 0 34px rgba(255,224,138,.45);
+  }
+  .spotlight h2 .hl { color: #ffe08a; border-bottom-color: rgba(255,224,138,.5); }
+  .spotlight .why { border-left-color: #ffd970; }
+  .spotlight .why b { color: #ffe08a; }
+  .spotlight .badge i { background: #ffd970; }
+  .card { border-radius: 6px 6px 18px 18px; }
+  .card:hover { box-shadow: 0 1px 3px rgba(28,27,23,.07), 0 16px 36px -20px rgba(163,18,31,.35); }
+  .nav-chips a.chip-pick { border-color: #c8102e; color: #a30d1e; }
+  .nav-chips a.chip-pick:hover { background: #c8102e; color: #fff5e0; }
 </style>
+
 
 <link rel="icon" type="image/svg+xml" href="/logo-seal.svg">
 <script src="/tracker.js" defer></script>
@@ -518,7 +550,7 @@
 
 <script>
 (function () {
-  var ARCHIVE_DATES = [/*__ARCHIVE_DATES__*/"260923", "260924", "260925", "260926", "260927", "260928", "260929", "260930"/*__END__*/];
+  var ARCHIVE_DATES = ["260923", "260924", "260925", "260926", "260927", "260928", "260929", "260930"];
   var PAGE_DATE = "2026-10-01";
   var HIST_BASE = /\/history\//.test(location.pathname) ? "./" : "history/";
 
