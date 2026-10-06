@@ -3,6 +3,7 @@
  * 上报内容：随机访客标识、SHA-256 哈希后的 IP（不存明文）、地区、设备、来源页。
  * 任何一步失败都静默跳过，不影响读者浏览。
  */
+(function () {
   'use strict';
   var SB_URL = 'https://qujgzxqglluqjchssmyw.supabase.co';
   var SB_KEY = 'sb_publishable_rb1Cy-_zWKsTQtoFMeKLNA_3bby10Rr';
