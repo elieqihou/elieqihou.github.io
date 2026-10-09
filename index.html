@@ -50,6 +50,7 @@
     border-bottom: 1px solid var(--line); padding-bottom: 10px;
     font-size: 12.5px; letter-spacing: .18em; color: var(--ink-faint);
   }
+  .mast-meta-right { display: inline-flex; align-items: center; gap: 12px; }
   .mast-meta .kicker { font-weight: 700; color: var(--ink-soft); }
   .mast-meta .kicker small { font-weight: 400; letter-spacing: .3em; margin-left: 8px; color: var(--ink-faint); }
   .mast-title-row {
@@ -73,18 +74,39 @@
     font-size: 12px; letter-spacing: .3em; color: var(--accent); margin-top: 8px; text-align: right;
   }
 
-  /* ===== 语言切换 ===== */
-  .lang-switch {
-    display: inline-flex; gap: 3px; background: var(--card);
-    border: 1.5px solid var(--line); border-radius: 999px; padding: 3px;
+  /* ===== 语言切换（国旗触发 + 下拉） ===== */
+  .lang-switch { position: relative; display: inline-block; }
+  .lang-trigger {
+    display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+    background: var(--card); border: 1.5px solid var(--line); border-radius: 999px;
+    padding: 3px 9px 3px 4px; font-family: inherit; color: var(--ink-soft);
+    transition: border-color .18s ease, color .18s ease;
   }
-  .lang-switch button {
-    font-family: inherit; font-size: 12px; font-weight: 700; letter-spacing: .03em;
-    color: var(--ink-soft); background: transparent; border: none; border-radius: 999px;
-    padding: 4px 11px; cursor: pointer; transition: all .18s ease; line-height: 1.2;
+  .lang-trigger:hover { border-color: var(--accent); color: var(--accent); }
+  .lang-switch.open .lang-trigger { border-color: var(--accent); }
+  .lang-trigger .caret { font-size: 9px; line-height: 1; opacity: .7; }
+  .fl {
+    display: block; width: 22px; height: 15px; border-radius: 2px; flex: none;
+    box-shadow: 0 0 0 1px rgba(28, 27, 23, .14);
   }
-  .lang-switch button:hover { color: var(--accent); }
-  .lang-switch button.active { background: var(--accent); color: var(--paper); }
+  .lang-menu {
+    position: absolute; top: calc(100% + 8px); right: 0; z-index: 70;
+    min-width: 150px; padding: 6px; background: var(--card);
+    border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 18px 44px -18px rgba(28, 27, 23, .45), 0 2px 8px rgba(28, 27, 23, .06);
+    display: none; animation: langIn .16s ease both;
+  }
+  .lang-switch.open .lang-menu { display: block; }
+  @keyframes langIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  .lang-item {
+    display: flex; align-items: center; gap: 10px; width: 100%; cursor: pointer;
+    background: transparent; border: none; border-radius: 8px; padding: 7px 9px;
+    font-family: inherit; font-size: 13px; font-weight: 600; color: var(--ink-soft);
+    text-align: left; transition: background .16s ease, color .16s ease;
+  }
+  .lang-item:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent); }
+  .lang-item.sel { color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+  .lang-item .lbl { letter-spacing: .02em; }
 
   /* ===== 往期日历 ===== */
   .cal-anchor { position: relative; }
@@ -256,7 +278,10 @@
   <header class="masthead">
     <div class="mast-meta">
       <span class="kicker">提马早报<small>TIMAB DAILY</small></span>
-      <span id="metaRow">星期五 · 农历八月廿九 · timab.cn</span>
+      <span class="mast-meta-right">
+        <span id="metaRow">星期五 · 农历八月廿九 · timab.cn</span>
+        <div class="lang-switch" id="langSwitch" role="group" aria-label="语言切换"></div>
+      </span>
     </div>
     <div class="mast-title-row">
       <div class="mast-brand">
@@ -274,7 +299,6 @@
         <h1 class="mast-title">提马<em>早报</em></h1>
       </div>
       <div class="mast-side">
-        <div class="lang-switch" id="langSwitch" role="group" aria-label="语言切换"></div>
         <div class="mast-date" id="mastDate">2026.10.09<small>DAILY BRIEFING</small></div>
         <div class="cal-anchor">
           <button class="cal-link" id="calBtn" type="button" aria-haspopup="dialog" aria-expanded="false">
@@ -348,7 +372,16 @@
   };
   var LANGS = ["zh", "en", "es", "ja"];
   var LANG_LABEL = { "zh": "中文", "en": "EN", "es": "ES", "ja": "日本語" };
+  var LANG_LABEL_FULL = { "zh": "中文", "en": "English", "es": "Español", "ja": "日本語" };
   var LANG_HTML = { "zh": "zh-CN", "en": "en", "es": "es", "ja": "ja" };
+
+  // 小国旗（内联 SVG，避免外部图标依赖与 emoji 平台差异）
+  function flag(lang) {
+    if (lang === "zh") return '<svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#de2910"/><g fill="#ffde00"><circle cx="5" cy="4" r="2.2"/><circle cx="9" cy="2.4" r="0.8"/><circle cx="10" cy="4" r="0.8"/><circle cx="9" cy="5.6" r="0.8"/><circle cx="7" cy="6.6" r="0.8"/></g></svg>';
+    if (lang === "en") return '<svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#c8102e" stroke-width="2"/><rect x="13" width="4" height="20" fill="#fff"/><rect y="8" width="30" height="4" fill="#fff"/><rect x="14" width="2" height="20" fill="#c8102e"/><rect y="9" width="30" height="2" fill="#c8102e"/></svg>';
+    if (lang === "es") return '<svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#aa151b"/><rect y="5" width="30" height="10" fill="#f1bf00"/></svg>';
+    return '<svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="5.5" fill="#bc002d"/></svg>';
+  }
 
   /* ===== 工具 ===== */
   function T(obj, lang) {
@@ -397,6 +430,7 @@
   }
 
   var curLang = "zh";
+  var langOpen = false;
 
   /* ===== 渲染 ===== */
   function renderChrome(lang) {
@@ -442,17 +476,37 @@
     var cw = document.getElementById("calWeek");
     if (cw) { cw.innerHTML = ""; i18n.calWeek.forEach(function (w) { var s = document.createElement("span"); s.textContent = w; cw.appendChild(s); }); }
     var cf = document.getElementById("calFoot"); if (cf) cf.textContent = i18n.calFoot;
-    // 语言切换器
+    // 语言切换器（国旗触发 + 下拉）
     var ls = document.getElementById("langSwitch");
     if (ls) {
+      ls.className = "lang-switch" + (langOpen ? " open" : "");
       ls.innerHTML = "";
-      LANGS.forEach(function (l) {
-        var btn = document.createElement("button");
-        btn.type = "button"; btn.textContent = LANG_LABEL[l]; btn.setAttribute("data-lang", l);
-        if (l === curLang) btn.className = "active";
-        btn.addEventListener("click", function () { setLang(l); });
-        ls.appendChild(btn);
+      var trig = document.createElement("button");
+      trig.type = "button"; trig.className = "lang-trigger"; trig.id = "langTrigger";
+      trig.setAttribute("aria-haspopup", "true");
+      trig.setAttribute("aria-expanded", langOpen ? "true" : "false");
+      trig.innerHTML = flag(curLang) + '<span class="caret">▾</span>';
+      trig.addEventListener("click", function (e) {
+        e.stopPropagation();
+        langOpen = !langOpen;
+        ls.classList.toggle("open", langOpen);
+        trig.setAttribute("aria-expanded", langOpen ? "true" : "false");
       });
+      ls.appendChild(trig);
+      var menu = document.createElement("div");
+      menu.className = "lang-menu"; menu.setAttribute("role", "menu");
+      LANGS.forEach(function (l) {
+        var item = document.createElement("button");
+        item.type = "button"; item.className = "lang-item" + (l === curLang ? " sel" : "");
+        item.setAttribute("role", "menuitem"); item.setAttribute("data-lang", l);
+        item.innerHTML = flag(l) + '<span class="lbl">' + LANG_LABEL_FULL[l] + "</span>";
+        item.addEventListener("click", function (e) {
+          e.stopPropagation();
+          setLang(l);
+        });
+        menu.appendChild(item);
+      });
+      ls.appendChild(menu);
     }
   }
 
@@ -496,6 +550,7 @@
   function setLang(lang) {
     if (LANGS.indexOf(lang) < 0) lang = "zh";
     curLang = lang;
+    langOpen = false;
     try { localStorage.setItem("timab_lang", lang); } catch (e) {}
     renderChrome(lang);
     renderContent(lang);
@@ -563,6 +618,25 @@
     renderChrome(curLang);
     renderContent(curLang);
     initCalendar();
+    // 关闭语言下拉：点击外部 / Esc
+    document.addEventListener("click", function (e) {
+      var ls = document.getElementById("langSwitch");
+      if (ls && langOpen && !ls.contains(e.target)) {
+        langOpen = false;
+        ls.classList.remove("open");
+        var t = document.getElementById("langTrigger");
+        if (t) t.setAttribute("aria-expanded", "false");
+      }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && langOpen) {
+        langOpen = false;
+        var ls = document.getElementById("langSwitch");
+        if (ls) ls.classList.remove("open");
+        var t = document.getElementById("langTrigger");
+        if (t) t.setAttribute("aria-expanded", "false");
+      }
+    });
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
