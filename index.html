@@ -418,7 +418,7 @@
       var i = title.indexOf(hl);
       inner = esc(title.slice(0, i)) + '<span class="hl">' + esc(hl) + "</span>" + esc(title.slice(i + hl.length));
     }
-    return '' + inner + "";
+    return '<a class="lk" href="' + bing(title) + '" target="_blank" rel="noopener">' + inner + "</a>";
   }
 
   /* ===== 语言检测：localStorage > 浏览器语言 > 系统时区 > 中文 ===== */
@@ -525,7 +525,7 @@
     var sp = BRIEFING.spotlight;
     html += '<section class="spotlight" id="pick">'
       + '<div class="badge"><i></i>' + esc(T(sp.badge, lang)) + "</div>"
-      + "<h2><a class="lk" href="https://www.bing.com/search?q=%22+%2B+titleHtml%28sp.title%2C+sp.hl%2C+lang%29+%2B+%22" target="_blank" rel="noopener">" + titleHtml(sp.title, sp.hl, lang) + "</a></h2>"
+      + "<h2>" + titleHtml(sp.title, sp.hl, lang) + "</h2>"
       + '<div class="body">' + esc(T(sp.body, lang)) + "</div>"
       + '<div class="why"><b>' + esc(i18n.why) + "</b>" + esc(T(sp.why, lang)) + "</div>"
       + "</section>";
@@ -539,8 +539,8 @@
       (sec.items || []).forEach(function (it) {
         html += '<div class="item">';
         html += '<div class="t"><span class="idx">' + it.idx + "</span>";
-        if (it.tag) html += '<span class="tag">' + esc(it.tag[lang] != null ? it.tag[lang] : i18n.tag) + "</span><a class="lk" href="https://www.bing.com/search?q=%22%3B%0A++++++++html+%2B%3D+titleHtml%28it.title%2C+it.hl%2C+lang%29+%2B+%22" target="_blank" rel="noopener">";
-        html += titleHtml(it.title, it.hl, lang) + "</a></div>";
+        if (it.tag) html += '<span class="tag">' + esc(it.tag[lang] != null ? it.tag[lang] : i18n.tag) + "</span>";
+        html += titleHtml(it.title, it.hl, lang) + "</div>";
         html += '<div class="d">' + esc(T(it.body, lang)) + "</div>";
         html += '<div class="why"><b>' + esc(i18n.why) + "</b>" + esc(T(it.why, lang)) + "</div>";
         html += "</div>";
