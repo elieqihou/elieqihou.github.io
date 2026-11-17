@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>提马早报 · 2026.11.17</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,600&family=Noto+Serif+JP:wght@600;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+ES:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* 工作日默认版令牌（节气/节日主题由 apply_theme.py 追加覆盖，勿把主题色写死在这里） */
+    --paper: #f7f3ec;
+    --ink: #1c1b17;
+    --ink-soft: #4c4a42;
+    --ink-faint: #8a867a;
+    --line: #d9d2c3;
+    --card: #fffdf8;
+    --accent: #1c1b17; --accent-soft: #4c4a42;
+    --seal: #9e2b25;
+    --c-intl: #1d4ed8; --c-intl-deep: #1e3fa8;
+    --c-dom: #cf2f1e; --c-dom-deep: #a02315;
+    --c-fin: #b45309; --c-fin-deep: #8a3f06;
+    --c-spo: #15803d; --c-spo-deep: #105c2c;
+    --c-hot: #6d28d9; --c-hot-deep: #551dab;
+    --c-ent: #db2777; --c-ent-deep: #ab1d5d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Sans SC", "Noto Sans JP", "Noto Sans ES", sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    padding: 0 16px 48px;
+    position: relative;
+  }
+  html[lang="ja"] body { font-family: "Noto Sans JP", "Noto Sans SC", sans-serif; }
+  html[lang="es"] body { font-family: "Noto Sans ES", "Noto Sans SC", sans-serif; }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .35;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; position: relative; z-index: 1; }
+
+  /* ===== 报头 ===== */
+  .masthead { padding: 34px 0 0; border-bottom: 3px double var(--accent); }
+  .mast-meta {
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+    border-bottom: 1px solid var(--line); padding-bottom: 10px;
+    font-size: 12.5px; letter-spacing: .18em; color: var(--ink-faint);
+  }
+  .mast-meta-right { display: inline-flex; align-items: center; gap: 12px; }
+  .mast-meta .kicker { font-weight: 700; color: var(--ink-soft); }
+  .mast-meta .kicker small { font-weight: 400; letter-spacing: .3em; margin-left: 8px; color: var(--ink-faint); }
+  .mast-title-row {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 24px; padding: 26px 0 22px;
+  }
+  .mast-brand { display: flex; align-items: flex-end; gap: 20px; }
+  .mast-seal { width: clamp(54px, 7.5vw, 82px); height: auto; flex: none; }
+  .mast-title {
+    font-family: "Noto Serif SC", "Noto Serif JP", serif; font-weight: 900;
+    font-size: clamp(44px, 7vw, 76px); line-height: 1.05; letter-spacing: .1em;
+  }
+  .mast-title em { font-style: normal; color: var(--c-dom); }
+  .mast-side { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+  .mast-date {
+    font-family: "Playfair Display", serif; font-style: italic; font-weight: 600;
+    font-size: clamp(30px, 4.6vw, 52px); color: var(--ink); white-space: nowrap; line-height: 1;
+  }
+  .mast-date small {
+    display: block; font-family: "Noto Sans SC", sans-serif; font-style: normal;
+    font-size: 12px; letter-spacing: .3em; color: var(--accent); margin-top: 8px; text-align: right;
+  }
+
+  /* ===== 语言切换（国旗触发 + 下拉） ===== */
+  .lang-switch { position: relative; display: inline-block; }
+  .lang-trigger {
+    display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+    background: var(--card); border: 1.5px solid var(--line); border-radius: 999px;
+    padding: 3px 9px 3px 4px; font-family: inherit; color: var(--ink-soft);
+    transition: border-color .18s ease, color .18s ease;
+  }
+  .lang-trigger:hover { border-color: var(--accent); color: var(--accent); }
+  .lang-switch.open .lang-trigger { border-color: var(--accent); }
+  .lang-trigger .caret { font-size: 9px; line-height: 1; opacity: .7; }
+  .fl {
+    display: block; width: 22px; height: 15px; border-radius: 2px; flex: none;
+    box-shadow: 0 0 0 1px rgba(28, 27, 23, .14);
+  }
+  .lang-menu {
+    position: absolute; top: calc(100% + 8px); right: 0; z-index: 70;
+    min-width: 150px; padding: 6px; background: var(--card);
+    border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 18px 44px -18px rgba(28, 27, 23, .45), 0 2px 8px rgba(28, 27, 23, .06);
+    display: none; animation: langIn .16s ease both;
+  }
+  .lang-switch.open .lang-menu { display: block; }
+  @keyframes langIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  .lang-item {
+    display: flex; align-items: center; gap: 10px; width: 100%; cursor: pointer;
+    background: transparent; border: none; border-radius: 8px; padding: 7px 9px;
+    font-family: inherit; font-size: 13px; font-weight: 600; color: var(--ink-soft);
+    text-align: left; transition: background .16s ease, color .16s ease;
+  }
+  .lang-item:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent); }
+  .lang-item.sel { color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+  .lang-item .lbl { letter-spacing: .02em; }
+
+  /* ===== 往期日历 ===== */
+  .cal-anchor { position: relative; }
+  .cal-link {
+    display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+    font-family: inherit; font-size: 13px; font-weight: 700; letter-spacing: .1em;
+    color: var(--ink-soft); background: var(--card);
+    border: 1.5px solid var(--line); border-radius: 999px; padding: 5px 15px 5px 12px;
+    transition: all .2s ease;
+  }
+  .cal-link:hover { border-color: var(--accent); color: var(--accent); }
+  .cal-link svg { width: 14px; height: 14px; display: block; }
+  .cal-pop {
+    position: absolute; top: calc(100% + 10px); right: 0; z-index: 60;
+    width: 274px; padding: 14px 14px 10px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 18px 44px -18px rgba(28, 27, 23, .45), 0 2px 8px rgba(28, 27, 23, .06);
+    animation: calIn .18s ease both;
+  }
+  .cal-pop[hidden] { display: none; }
+  @keyframes calIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .cal-title { font-size: 14px; font-weight: 700; letter-spacing: .08em; color: var(--ink); }
+  .cal-nav {
+    width: 26px; height: 26px; line-height: 1; cursor: pointer;
+    font-family: inherit; font-size: 17px; color: var(--ink-soft);
+    background: transparent; border: 1px solid var(--line); border-radius: 8px;
+    transition: all .18s ease;
+  }
+  .cal-nav:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .cal-week, .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .cal-week span {
+    text-align: center; font-size: 11px; letter-spacing: .06em;
+    color: var(--ink-faint); padding-bottom: 6px;
+  }
+  .cal-cell {
+    position: relative; height: 32px; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: var(--ink-faint); border-radius: 8px;
+    transition: background .18s ease, color .18s ease;
+  }
+  .cal-cell.is-empty { visibility: hidden; }
+  .cal-cell.has { color: var(--ink); font-weight: 700; cursor: pointer; }
+  .cal-cell.has::after {
+    content: ""; position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
+  }
+  .cal-cell.has:hover, .cal-cell.has:focus-visible {
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+    color: var(--accent); outline: none;
+  }
+  .cal-cell.is-today { box-shadow: inset 0 0 0 1.5px var(--line); color: var(--ink-soft); }
+  .cal-foot {
+    margin-top: 9px; padding-top: 8px; border-top: 1px dashed var(--line);
+    font-size: 11.5px; color: var(--ink-faint); letter-spacing: .04em;
+  }
+
+  /* ===== 导航 ===== */
+  .nav-chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 0 18px; }
+  .nav-chips a {
+    text-decoration: none; font-size: 13.5px; font-weight: 700; letter-spacing: .08em;
+    color: var(--ink-soft); border: 1.5px solid var(--line);
+    border-radius: 999px; padding: 5px 16px; transition: all .2s ease;
+  }
+  .nav-chips a:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .nav-chips a.chip-pick { border-color: #0f766e; color: #0b5a54; }
+  .nav-chips a.chip-pick:hover { background: #0f766e; color: #fff; }
+
+  /* ===== 精选 ===== */
+  .spotlight {
+    margin-top: 30px; border-radius: 18px; overflow: hidden;
+    background: linear-gradient(120deg, #0f766e 0%, #115e59 46%, #134e4a 100%);
+    color: #f2fbfa; padding: 34px 38px 30px; position: relative;
+    box-shadow: 0 18px 44px -18px rgba(15, 118, 110, .55);
+  }
+  .spotlight::after {
+    content: ""; position: absolute; right: -60px; top: -60px; width: 240px; height: 240px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.14), transparent 68%);
+  }
+  .spotlight .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12.5px; font-weight: 700; letter-spacing: .3em;
+    border: 1.5px solid rgba(242, 251, 250, .55); border-radius: 999px;
+    padding: 5px 18px 5px 20px; margin-bottom: 18px;
+  }
+  .spotlight .badge i {
+    width: 8px; height: 8px; border-radius: 50%; background: #5eead4; display: inline-block;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1);} 50% { opacity: .45; transform: scale(.78);} }
+  .spotlight h2 {
+    font-family: "Noto Serif SC", "Noto Serif JP", serif; font-weight: 900;
+    font-size: clamp(24px, 3.4vw, 34px); line-height: 1.35; margin-bottom: 14px;
+  }
+  .spotlight h2 .hl { color: #99f6e4; border-bottom: 3px solid rgba(153, 246, 228, .5); padding-bottom: 2px; }
+  .spotlight .body { font-size: 15px; color: #d3efec; max-width: 62em; }
+  .spotlight .why {
+    margin-top: 18px; padding: 14px 18px; border-left: 3px solid #5eead4;
+    background: rgba(255,255,255,.07); border-radius: 0 10px 10px 0;
+    font-size: 14px; color: #e8fbf9; max-width: 62em;
+  }
+  .spotlight .why b { color: #99f6e4; font-weight: 700; }
+
+  /* ===== 分类卡片 ===== */
+  .grid { margin-top: 30px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  @media (max-width: 880px) { .grid { grid-template-columns: 1fr; } .spotlight { padding: 26px 22px; } }
+  .card {
+    background: var(--card); border-radius: 4px 4px 14px 14px;
+    box-shadow: 0 1px 3px rgba(28, 27, 23, .07), 0 12px 30px -22px rgba(28,27,23,.35);
+    padding: 24px 26px 12px; position: relative; border-top: 6px solid var(--ac);
+    animation: rise .6s ease both;
+  }
+  .card:nth-child(1) { animation-delay: .05s; } .card:nth-child(2) { animation-delay: .12s; }
+  .card:nth-child(3) { animation-delay: .19s; } .card:nth-child(4) { animation-delay: .26s; }
+  .card:nth-child(5) { animation-delay: .33s; } .card:nth-child(6) { animation-delay: .40s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(16px);} to { opacity: 1; transform: none;} }
+  .card:hover { transform: translateY(-3px); transition: transform .25s ease; }
+  .sec-head {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 6px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--line);
+  }
+  .sec-num { font-family: "Playfair Display", serif; font-style: italic; font-weight: 700; font-size: 26px; color: var(--ac); line-height: 1; }
+  .sec-head h3 { font-family: "Noto Serif SC", "Noto Serif JP", serif; font-weight: 900; font-size: 21px; letter-spacing: .1em; color: var(--ink); }
+  .sec-head .en { margin-left: auto; font-size: 11px; letter-spacing: .22em; color: var(--ink-faint); text-transform: uppercase; }
+  .item { padding: 14px 0 12px; border-bottom: 1px dashed var(--line); }
+  .item:last-child { border-bottom: none; }
+  .item .idx { font-family: "Playfair Display", serif; font-style: italic; font-weight: 700; font-size: 15px; color: var(--ac); margin-right: 8px; }
+  .item .t { font-size: 15.5px; font-weight: 700; color: var(--ink); line-height: 1.5; }
+  .item .t .tag {
+    display: inline-block; font-size: 11px; font-weight: 700; color: #fff;
+    background: var(--ac); border-radius: 3px; padding: 1px 7px; margin-right: 7px;
+    vertical-align: 2px; letter-spacing: .06em;
+  }
+  .item .d { margin-top: 6px; font-size: 14px; color: var(--ink-soft); }
+  .item .why {
+    margin-top: 9px; font-size: 13.5px; color: var(--ink-faint);
+    padding: 8px 12px; border-left: 3px solid var(--ac);
+    background: color-mix(in srgb, var(--ac) 6%, transparent);
+    border-radius: 0 8px 8px 0;
+  }
+  .item .why b { color: var(--ac-deep); font-weight: 700; }
+  .risk { margin-top: 40px; text-align: center; font-size: 12.5px; color: var(--ink-faint); letter-spacing: .08em; }
+
+  /* 标题外链（Bing 搜索） */
+  .item .t a.lk, .spotlight h2 a.lk {
+    color: inherit; text-decoration: underline;
+    text-decoration-thickness: 1px; text-underline-offset: 4px;
+    text-decoration-color: color-mix(in srgb, currentColor 32%, transparent);
+    transition: text-decoration-color .18s ease, color .18s ease;
+  }
+  .item .t a.lk:hover { color: var(--ac-deep); text-decoration-color: currentColor; }
+  .spotlight h2 a.lk { text-decoration-color: rgba(242, 251, 250, .35); }
+  .spotlight h2 a.lk:hover { text-decoration-color: rgba(242, 251, 250, .95); }
+
+  .noscript-note { padding: 40px 0; text-align: center; color: var(--ink-faint); }
+
+  @media (max-width: 640px) {
+    .mast-title-row { flex-wrap: wrap; }
+    .mast-side { align-items: flex-start; }
+    .cal-pop { right: auto; left: 0; }
+  }
+</style>
+
+<link rel="icon" type="image/svg+xml" href="/logo-seal.svg">
+<script src="/tracker.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="mast-meta">
+      <span class="kicker">提马早报<small>TIMAB DAILY</small></span>
+      <span class="mast-meta-right">
+        <span id="metaRow">星期二 · 农历十月初九 · timab.cn</span>
+        <div class="lang-switch" id="langSwitch" role="group" aria-label="语言切换"></div>
+      </span>
+    </div>
+    <div class="mast-title-row">
+      <div class="mast-brand">
+        <svg class="mast-seal" viewBox="0 0 240 240" role="img" aria-label="提马早报印章标">
+          <rect x="16" y="16" width="208" height="208" rx="20" fill="var(--seal, #9e2b25)"/>
+          <rect x="34" y="34" width="172" height="172" rx="10" fill="none" stroke="var(--paper, #f7f3ec)" stroke-width="5" opacity=".85"/>
+          <g font-family="Noto Serif SC, STSong, SimSun, serif" font-weight="900" font-size="74"
+             fill="var(--paper, #f7f3ec)" text-anchor="middle" dominant-baseline="central">
+            <text x="83" y="86">提</text>
+            <text x="157" y="86">马</text>
+            <text x="83" y="160">早</text>
+            <text x="157" y="160">报</text>
+          </g>
+        </svg>
+        <h1 class="mast-title">提马<em>早报</em></h1>
+      </div>
+      <div class="mast-side">
+        <div class="mast-date" id="mastDate">2026.11.17<small>DAILY BRIEFING</small></div>
+        <div class="cal-anchor">
+          <button class="cal-link" id="calBtn" type="button" aria-haspopup="dialog" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+              <path d="M3 10h18M8 3v4M16 3v4"></path>
+            </svg><span id="calBtnText">往期日历</span>
+          </button>
+          <div class="cal-pop" id="calPop" role="dialog" aria-label="往期日历" hidden>
+            <div class="cal-head">
+              <button class="cal-nav" id="calPrev" type="button" aria-label="上一个月">‹</button>
+              <span class="cal-title" id="calTitle"></span>
+              <button class="cal-nav" id="calNext" type="button" aria-label="下一个月">›</button>
+            </div>
+            <div class="cal-week" id="calWeek"></div>
+            <div class="cal-grid" id="calGrid"></div>
+            <div class="cal-foot" id="calFoot">带圆点的日期可查看当日存档</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="nav-chips" id="navChips">
+      <a class="chip-pick" href="#pick" data-nav="pick">精选</a>
+      <a href="#intl" data-nav="intl" style="border-color:#1d4ed8;color:#1e3fa8">国际时事</a>
+      <a href="#dom" data-nav="dom" style="border-color:#cf2f1e;color:#a02315">国内要闻</a>
+      <a href="#fin" data-nav="fin" style="border-color:#b45309;color:#8a3f06">金融要闻</a>
+      <a href="#spo" data-nav="spo" style="border-color:#15803d;color:#105c2c">体育竞技</a>
+      <a href="#hot" data-nav="hot" style="border-color:#6d28d9;color:#551dab">网络热点</a>
+      <a href="#ent" data-nav="ent" style="border-color:#db2777;color:#ab1d5d">娱乐八卦</a>
+    </nav>
+  </header>
+
+  <div id="content"><noscript class="noscript-note">本页内容需启用 JavaScript 查看。</noscript></div>
+
+  <footer class="risk" id="risk">风险提示：本简报仅作信息汇总，其中涉及的数据不构成任何投资建议。</footer>
+</div>
+
+<script>
+(function () {
+  /* ===== 数据（每日构建时由 build_i18n.py 注入，缺语言回退中文） ===== */
+  var PAGE_DATE = "2026-11-17";
+  var ARCHIVE_DATES = [/*__ARCHIVE_DATES__*/"260923", "260924", "260925", "260926", "260927", "260928", "260929", "260930", "261001", "261002", "261003", "261004", "261005", "261006", "261007", "261008", "261009", "261010", "261011", "261012", "261013", "261014", "261015", "261016", "261017", "261018", "261019", "261020", "261021", "261022", "261023", "261024", "261025", "261026", "261027", "261028", "261029", "261030", "261031", "261101", "261102", "261103", "261104", "261105", "261106", "261107", "261108", "261109", "261110", "261111", "261112", "261113", "261114", "261115", "261116"/*__END__*/];
+  var BRIEFING = /*__BRIEFING_DATA__*/{"date": "2026-11-17", "meta": {"zh": "星期二 · 农历十月初九 · timab.cn", "en": "Tuesday · 9th day of the 10th lunar month · timab.cn", "es": "Martes · 9.º día del 10.º mes lunar · timab.cn", "ja": "火曜日 · 旧暦十月九日 · timab.cn"}, "spotlight": {"badge": {"zh": "精选", "en": "SPOTLIGHT", "es": "DESTACADO", "ja": "注目"}, "title": {"zh": "三个人的第一次同框，地点在深圳", "en": "The first time all three sit at one table — and the table is in Shenzhen", "es": "La primera vez que los tres se sientan a la misma mesa, y la mesa está en Shenzhen", "ja": "3 人が初めて同じ卓に着く。その場所は深セン"}, "hl": {"zh": "外交部 11 月 16 日宣布：11 月 19 日，习近平主席将同俄罗斯总统普京、美国总统特朗普在深圳举行中俄美元首会晤。发言人毛宁称，这是三国元首历史上首次面对面会晤，将围绕维护世界和平、促进大国关系战略稳定深入交换意见，具有开创性意义。", "en": "China's foreign ministry announced on 16 November that President Xi Jinping will meet President Vladimir Putin of Russia and President Donald Trump of the United States in Shenzhen on 19 November. Spokeswoman Mao Ning said it is the first face-to-face meeting of the three heads of state in history, and that they will exchange views on safeguarding world peace and promoting strategic stability among major countries.", "es": "El Ministerio de Asuntos Exteriores de China anunció el 16 de noviembre que el presidente Xi Jinping se reunirá el 19 de noviembre en Shenzhen con el presidente ruso, Vladímir Putin, y el presidente estadounidense, Donald Trump. La portavoz Mao Ning dijo que es el primer encuentro presencial de los tres jefes de Estado en la historia y que abordarán la salvaguarda de la paz mundial y la estabilidad estratégica entre grandes potencias.", "ja": "中国外務省は 11 月 16 日、習近平国家主席が 11 月 19 日に深センでロシアのプーチン大統領、米国のトランプ大統領と中露米首脳会談を行うと発表した。報道官の毛寧氏は、3 か国首脳が顔を合わせるのは史上初であり、世界平和の維持と大国関係の戦略的安定をめぐって意見を交わすと述べた。"}, "body": {"zh": "会晤安排在亚太经合组织第三十三次领导人非正式会议（11 月 18 日至 19 日，深圳）期间。毛宁表示，中俄美都是联合国创始会员国和安理会常任理事国，历史上曾并肩赢得世界反法西斯战争的胜利；当前形势下，三国肩负合作应对全球性挑战、促进世界和平稳定的重要责任，加强沟通、管控分歧、稳定关系符合三国利益，也是国际社会的期待。受访专家认为，三方更可能在共识较大的议题上交换意见——人工智能治理、国际产供链稳定、中东局势，重在校准方向、畅通渠道，而非强求在某一具体问题上达成协议。今年以来，中俄元首已在北京、比什凯克两次会晤，中美元首半年内实现互访。", "en": "The meeting is scheduled around the 33rd APEC Economic Leaders' Meeting, held in Shenzhen on 18-19 November. Mao noted that China, Russia and the United States are all founding members of the United Nations and permanent members of the Security Council, and fought side by side to win the world anti-fascist war; today the three carry a shared responsibility for global challenges and for stability, and better communication, managed differences and stable relations serve their own interests and the world's expectations. Analysts quoted by Chinese media expect the three to focus on areas of broader consensus — AI governance, stable industrial and supply chains, the Middle East — aiming to calibrate direction and keep channels open rather than force agreement on any single file. This year Xi and Putin have met twice, in Beijing and Bishkek, while China and the United States have exchanged visits within six months.", "es": "La cita se enmarca en la 33.ª Reunión de Líderes Económicos de APEC, que se celebra en Shenzhen los días 18 y 19 de noviembre. Mao recordó que China, Rusia y Estados Unidos son miembros fundadores de la ONU y miembros permanentes del Consejo de Seguridad, y que lucharon juntos en la guerra antifascista; hoy comparten la responsabilidad ante los desafíos globales, y más comunicación, diferencias gestionadas y relaciones estables benefician a los tres países y responden a la expectativa internacional. Los expertos citados por medios chinos esperan que las partes se centren en temas de mayor consenso —gobernanza de la IA, estabilidad de las cadenas industriales y de suministro, Oriente Medio— para calibrar el rumbo y mantener abiertos los canales, más que forzar un acuerdo concreto. Este año Xi y Putin se han reunido dos veces, en Pekín y Biskek, y China y EE. UU. han intercambiado visitas en seis meses.", "ja": "会談は 11 月 18〜19 日に深センで開かれる APEC 第 33 回首脳会議に合わせて行われる。毛氏は、中露米はいずれも国連創設メンバーで安保理常任理事国であり、かつて世界反ファシズム戦争の勝利を共に勝ち取ったと指摘。現在、3 か国は世界的課題への協力と世界の平和・安定に責任を負い、意思疎通の強化、分歧の管理、関係の安定は 3 か国の利益にかなうとし、国際社会の期待でもあると述べた。中国メディアが引用した専門家は、AI ガバナンス、国際的な産業・供給網の安定、中東情勢など合意可能な議題が中心になり、特定の案件で合意を迫るのではなく、方向の調整とチャネルの確保が狙いだと分析する。今年、中露首脳は北京とビシュケクで 2 回会談し、中米は半年のうちに相互訪問を実現した。"}, "why": {"zh": "三边会晤的稀缺性本身就是信息：三个核大国、三个安理会常任理事国，此前从未以这个组合坐在同一张桌子前。看点不在能签什么文件，而在于三方是否愿意把各自的关切放进同一份议程——哪怕只是同意「继续保持沟通」，对市场与地区局势也是可定价的确定性。", "en": "The rarity is the story. Three nuclear powers, three permanent Security Council members, have never sat at one table in this formation. The point is not what document gets signed, but whether each side is willing to put its concerns on a shared agenda — even agreeing to keep talking would be a priceable certainty for markets and for the region.", "es": "Lo excepcional es la propia rareza: tres potencias nucleares, tres miembros permanentes del Consejo de Seguridad, nunca se habían sentado así. Lo relevante no es qué documento se firme, sino si cada parte acepta poner sus preocupaciones en una agenda común; incluso acordar seguir hablando sería una certeza tasable para los mercados y para la región.", "ja": "希少性そのものがメッセージだ。核保有国であり安保理常任理事国でもある 3 か国が、この組み合わせで同じ卓に着いたことは一度もない。焦点はどの文書に署名するかではなく、3 国がそれぞれの懸念を同じ議題に載せる用意があるかどうか。「対話を続ける」でさえ合意できれば、市場と地域にとって価格のつく不確実性の減少になる。"}}, "sections": [{"key": "intl", "num": "01", "color": "#1d4ed8", "deep": "#1e3fa8", "name": {"zh": "国际时事", "en": "World", "es": "Mundo", "ja": "国際"}, "items": [{"idx": "01", "tag": {"zh": "进展"}, "title": {"zh": "24 小时内第四艘油轮在霍尔木兹触雷，伊朗外长 17 日赴阿曼", "en": "A fourth tanker hits a mine off Hormuz in 24 hours; Iran's foreign minister heads to Oman", "es": "Un cuarto petrolero choca con una mina frente a Ormuz en 24 horas; el canciller iraní viaja a Omán", "ja": "ホルムズ沖で 24 時間に 4 隻目のタンカーが触雷、イラン外相は 17 日オマーンへ"}, "body": {"zh": "当地时间 11 月 16 日晚，伊朗军队海军宣布，一艘油轮在霍尔木兹海峡以东限制区内关闭导航系统航行时触雷起火并严重受损，这是过去 24 小时内该海域受损的第四艘油轮。伊朗官方媒体报道，其中一艘载油超过 200 万桶的油轮已经沉没；另有两艘船在遭遇同样情况前放弃穿越、折返波斯湾。伊朗军方称，要确保海峡安全通行，必须遵守相关规定并与伊朗武装部队协调。同日，伊朗伊斯法罕省负责安全事务的副省长否认当地防空系统启动，称该省领空未发现敌对飞行器。伊朗外长计划 17 日访问阿曼。", "en": "Late on 16 November, Iran's navy announced that a tanker navigating without its navigation system inside the restricted zone east of the Strait of Hormuz struck a mine, caught fire and was severely damaged — the fourth tanker damaged in those waters in 24 hours. Iranian state media said one vessel carrying more than two million barrels had sunk, and that two other ships abandoned the crossing and turned back into the Gulf before suffering the same fate. Iran's military said safe passage requires complying with the rules and coordinating with Iran's armed forces. The same day, the deputy governor of Isfahan for security affairs denied reports that air defences had been activated there, saying no hostile aircraft had been detected. Iran's foreign minister is due to visit Oman on 17 November.", "es": "En la noche del 16 de noviembre, la marina iraní anunció que un petrolero que navegaba sin su sistema de navegación dentro de la zona restringida al este del estrecho de Ormuz chocó con una mina, se incendió y sufrió graves daños: es el cuarto buque dañado en esas aguas en 24 horas. Medios estatales iraníes indicaron que uno de los barcos, con más de dos millones de barriles a bordo, se hundió, y que otros dos abandonaron el cruce y regresaron al Golfo antes de correr la misma suerte. El ejército iraní afirmó que la travesía segura exige cumplir las normas y coordinarse con sus fuerzas armadas. Ese mismo día, el vicegobernador de Isfahán para asuntos de seguridad desmintió que se hubieran activado defensas antiaéreas en la provincia y dijo que no se detectó ninguna aeronave hostil. El canciller iraní tiene previsto visitar Omán el 17 de noviembre.", "ja": "11 月 16 日夜、イラン海軍は、ホルムズ海峡東側の制限海域で航法装置を切って航行していたタンカーが触雷・炎上し、大きく損傷したと発表した。24 時間で同海域で被害が出た 4 隻目となる。イラン国営メディアによると、200 万バレル超を積んだ 1 隻は沈没し、別の 2 隻は同じ事態を避けるため通過を断念してペルシャ湾へ引き返した。イラン軍は、安全な通航には規則の順守とイラン軍との調整が不可欠だとしている。同日、イスファハーン州の治安担当副知事は、同州で防空システムが起動したとの報道を否定し、敵性航空機は確認されていないと述べた。イラン外相は 17 日にオマーンを訪れる予定。"}, "why": {"zh": "「关闭导航系统秘密通行」这个细节值得留意：它意味着布雷的一方与航运的一方在互相试探底线。船东现在面对的不是保险费率问题，而是「走不走得过去」的问题——这比任何一份议会决议都更直接影响油价。", "en": "The detail worth noting is that the ship was sailing with its transponders off: it means the side laying mines and the side shipping are probing each other's limits. Shipowners now face not an insurance rate but a blunter question — can the passage be made at all? That moves oil prices far more directly than any parliamentary vote.", "es": "El detalle relevante es que navegaba con los sistemas apagados: significa que quien coloca minas y quien navega están tanteando los límites del otro. Los armadores ya no discuten una prima de seguro, sino algo más básico: si el paso es posible. Eso influye en el crudo mucho más que cualquier votación parlamentaria.", "ja": "注目すべきは「航法装置を切って航行していた」という点だ。機雷を敷設する側と航行する側が互いの限界を探っていることを意味する。船主が直面しているのは保険料ではなく、「そもそも通れるのか」という問いであり、それは議会の決議よりはるかに直接的に原油価格へ響く。"}}, {"idx": "02", "tag": {"zh": "进展"}, "title": {"zh": "三艘航母将同时出现在中东，特朗普暂缓对伊打击", "en": "Three US carriers converge on the Middle East as Trump holds back a strike on Iran", "es": "Tres portaaviones de EE. UU. convergen en Oriente Medio mientras Trump frena un ataque contra Irán", "ja": "米空母 3 隻が中東に集結へ、トランプ氏は対イラン攻撃を先送り"}, "body": {"zh": "据美国媒体报道，美军「罗斯福」号航母预计当地时间 16 日抵达中东，届时美军在该地区将同时部署三个航母打击群。美国中央司令部称，在美国的保护下，海湾伙伴国家已通过霍尔木兹海峡运输超过 17 亿桶原油。报道称，特朗普正考虑暂缓对伊朗的军事打击，同时要求美军做好升级行动的准备，并保留打击伊朗核设施的选项。伊朗外交部发言人此前表示，现阶段排除暂停或降低铀浓缩水平的可能性。", "en": "US media reported that the carrier USS Theodore Roosevelt was expected to reach the Middle East on 16 November, giving the US military three carrier strike groups in the region at once. US Central Command said Gulf partner states have shipped more than 1.7 billion barrels of crude through the Strait of Hormuz under American protection. Reports said Trump is weighing holding back a military strike on Iran while ordering the military to prepare for escalation and keeping the option of hitting Iranian nuclear facilities. Iran's foreign ministry has ruled out suspending or reducing uranium enrichment at this stage.", "es": "Medios estadounidenses informaron de que el portaaviones USS Theodore Roosevelt llegaría a Oriente Medio el 16 de noviembre, lo que daría a EE. UU. tres grupos de ataque de portaaviones en la región a la vez. El Mando Central afirmó que los países socios del Golfo han transportado más de 1.700 millones de barriles de crudo por el estrecho de Ormuz bajo protección estadounidense. Según esos informes, Trump evalúa frenar un ataque militar contra Irán mientras ordena preparar una escalada y mantiene la opción de golpear instalaciones nucleares iraníes. Teherán ha descartado suspender o reducir el enriquecimiento de uranio en esta etapa.", "ja": "米メディアによると、空母セオドア・ルーズベルトが 11 月 16 日に中東へ到着し、米軍は同地域に 3 つの空母打撃群を同時展開することになる。米中央軍は、米国の保護の下で湾岸のパートナー国がホルムズ海峡経由で 17 億バレル超の原油を輸送したと発表した。報道では、トランプ氏はイランへの軍事攻撃を先送りする一方、事態のエスカレートに備えるよう軍に指示し、イラン核施設への攻撃選択肢も保持しているとされる。イラン外務省は現段階でウラン濃縮の停止・縮小を排除している。"}, "why": {"zh": "航母是姿态，17 亿桶是账本。华盛顿现在同时做两件事：把军事选项摆在桌上，又反复强调航道「一直在通」——前者给国内政治看，后者给油价看。这两句话之间留出的空间，就是接下来一周的谈判余地。", "en": "The carriers are posture; the 1.7 billion barrels are the ledger. Washington is doing two things at once — putting military options on the table while insisting the waterway has stayed open. The first is for domestic politics, the second for oil prices. The gap between those two sentences is the room left for talks this week.", "es": "Los portaaviones son gesto; los 1.700 millones de barriles son la contabilidad. Washington hace dos cosas a la vez: pone opciones militares sobre la mesa y a la vez insiste en que la vía sigue abierta. Lo primero es para la política interna, lo segundo para el precio del crudo. El hueco entre ambas frases es el margen de negociación de esta semana.", "ja": "空母は姿勢、17 億バレルは台帳だ。ワシントンは同時に二つのことをしている。軍事オプションを机に置きつつ、航路は「ずっと通っている」と繰り返す。前者は国内政治向け、後者は原油価格向けである。その二つの文の間の隙間が、今週残された交渉の余地だ。"}}, {"idx": "03", "tag": {"zh": "进展"}, "title": {"zh": "胡塞称导弹打到利雅得机场，也门政府军撤出曼德海峡附近", "en": "Houthis say missiles reached Riyadh airport; Yemeni government forces pull back near Bab al-Mandab", "es": "Los hutíes dicen haber alcanzado el aeropuerto de Riad; fuerzas del Gobierno yemení se retiran cerca de Bab al-Mandab", "ja": "フーシ派がリヤド空港への攻撃を主張、イエメン政府軍はバブ・エル・マンデブ付近から撤退"}, "body": {"zh": "也门胡塞武装称，使用弹道导弹袭击了利雅得哈立德国王国际机场与金融中心区域，并击落一架沙特 CH-4 无人机、袭击了一处输油泵站。沙特主导的多国联军称拦截了射向利雅得的两枚弹道导弹。与此同时，也门政府军方面的南方武装撤出曼德海峡附近的控制区，该区域转由胡塞武装控制。胡塞方面还宣布单方面释放 600 名被俘人员。", "en": "Yemen's Houthi movement said it fired ballistic missiles at Riyadh's King Khalid International Airport and the financial district, shot down a Saudi CH-4 drone and hit an oil pumping station. The Saudi-led coalition said it intercepted two ballistic missiles fired at Riyadh. At the same time, southern forces aligned with Yemen's government withdrew from positions near the Bab al-Mandab strait, which the Houthis now control. The Houthis also announced the unilateral release of 600 detainees.", "es": "El movimiento hutí de Yemen afirmó haber lanzado misiles balísticos contra el aeropuerto internacional Rey Khalid y el distrito financiero de Riad, derribado un dron saudí CH-4 y atacado una estación de bombeo de petróleo. La coalición liderada por Arabia Saudí dijo haber interceptado dos misiles balísticos lanzados contra Riad. Al mismo tiempo, fuerzas del sur alineadas con el Gobierno yemení se retiraron de posiciones cercanas al estrecho de Bab al-Mandab, ahora bajo control hutí. Los hutíes anunciaron además la liberación unilateral de 600 detenidos.", "ja": "イエメンのフーシ派は、リヤドのハリド国王国際空港と金融街に弾道ミサイルを撃ち込み、サウジの CH-4 無人機を撃墜し、石油ポンプ場を攻撃したと主張した。サウジ主導の連合軍は、リヤドに向けて発射された弾道ミサイル 2 発を迎撃したと発表。一方、イエメン政府側の南部勢力はバブ・エル・マンデブ海峡付近の拠点から撤退し、同地域はフーシ派の支配下に入った。フーシ派は捕虜 600 人の一方的な解放も発表した。"}, "why": {"zh": "两个海峡同时出问题，是这轮局势最麻烦的地方：霍尔木兹卡住波斯湾的出口，曼德海峡卡住红海的入口。沙特能拦下导弹，却拦不住船东改道——绕好望角一圈，运费和到货时间都要重新算。", "en": "Two chokepoints failing at once is what makes this round so awkward: Hormuz gates the Gulf's exit, Bab al-Mandab gates the Red Sea's entrance. Riyadh can intercept missiles; it cannot stop shipowners from rerouting. A run around the Cape of Good Hope resets both freight rates and delivery dates.", "es": "Lo complicado de esta ronda es que fallan dos estrechos a la vez: Ormuz cierra la salida del Golfo y Bab al-Mandab la entrada al mar Rojo. Riad puede interceptar misiles, pero no puede impedir que los armadores cambien de ruta. Rodear el cabo de Buena Esperanza obliga a recalcular fletes y plazos.", "ja": "二つの海峡が同時に機能不全になるのが、今回の厄介さだ。ホルムズは湾の出口を、バブ・エル・マンデブは紅海の入口を塞ぐ。リヤドはミサイルを迎撃できても、船主の航路変更は止められない。喜望峰回りになれば、運賃も納期も計算し直しになる。"}}, {"idx": "04", "tag": {"zh": "进展"}, "title": {"zh": "俄称单日击落 2049 架无人机创纪录，下一轮三方会谈时间待定", "en": "Russia reports a record 2,049 drones downed in a day; next trilateral talks still unscheduled", "es": "Rusia dice haber derribado 2.049 drones en un día, récord; la próxima ronda tripartita sigue sin fecha", "ja": "ロシア、1 日で無人機 2,049 機撃墜と発表　次回 3 者協議は日程未定"}, "body": {"zh": "俄罗斯国防部 11 月 16 日通报，过去 24 小时俄防空部队击落 7 枚制导航空炸弹、4 枚「火烈鸟」巡航导弹和 2049 架固定翼无人机。据俄新社统计，这是俄军单日击落乌克兰固定翼无人机的最高纪录，此前纪录为 9 月 20 日的 1951 架。同日，俄总统助理乌沙科夫表示，下一轮乌克兰问题俄美乌三方会谈将继续在阿布扎比举行，时间待定；只有收到欧洲方面关于调解的建设性建议，欧洲国家参与会谈的问题才会提上日程。克里姆林宫发言人佩斯科夫称，下一轮谈判将很快举行。", "en": "Russia's defence ministry said on 16 November that air defences downed seven guided aerial bombs, four Flamingo cruise missiles and 2,049 fixed-wing drones in the previous 24 hours. RIA Novosti said that is the highest single-day figure for Ukrainian fixed-wing drones, beating the 1,951 recorded on 20 September. The same day, Kremlin aide Yuri Ushakov said the next round of Russia-US-Ukraine talks will again be held in Abu Dhabi, with the date to be set; the question of European participation would only arise once Moscow receives constructive proposals from Europe. Spokesman Dmitry Peskov said the next round would take place soon.", "es": "El Ministerio de Defensa ruso informó el 16 de noviembre de que la defensa antiaérea derribó en las 24 horas previas siete bombas aéreas guiadas, cuatro misiles de crucero Flamingo y 2.049 drones de ala fija. RIA Novosti señaló que es la cifra diaria más alta de drones ucranianos de ala fija, por encima de los 1.951 del 20 de septiembre. Ese mismo día, el asesor del Kremlin Yuri Ushakov dijo que la próxima ronda de conversaciones Rusia-EE. UU.-Ucrania se celebrará de nuevo en Abu Dabi, con fecha por determinar, y que la participación europea solo se planteará cuando Moscú reciba propuestas constructivas de Europa. El portavoz Dmitri Peskov afirmó que la próxima ronda será pronto.", "ja": "ロシア国防省は 11 月 16 日、過去 24 時間で誘導航空爆弾 7 発、巡航ミサイル「フラミンゴ」4 発、固定翼無人機 2,049 機を撃墜したと発表した。RIA ノーボスチによると、ウクライナの固定翼無人機としては 1 日として最多で、9 月 20 日の 1,951 機を上回る。同日、ロシア大統領補佐官ウシャコフ氏は、次回の露米ウクライナ 3 者協議もアブダビで開くが日程は未定と述べ、欧州の参加はロシアが建設的な提案を受けた場合に議題になると説明した。ペスコフ報道官は次回協議が近く行われると述べた。"}, "why": {"zh": "2049 这个数字说明战场形态已经变了：无人机从「战术补充」变成「消耗主体」，防空弹药的单位成本成了新的战略资源。而三方会谈卡在「地点有了、时间没有」，欧洲仍在门外——外交的节奏，比战场的节奏慢得多。", "en": "The number 2,049 says the shape of the war has changed: drones have gone from tactical supplement to the main consumable, and the unit cost of interceptors is now a strategic resource. Meanwhile the talks are stuck at having a venue but no date, with Europe still outside the room — diplomacy is moving far slower than the battlefield.", "es": "La cifra 2.049 indica que la guerra cambió de forma: los drones pasaron de complemento táctico a principal material consumible, y el coste unitario de los interceptores es ya un recurso estratégico. Mientras tanto, las conversaciones tienen sede pero no fecha y Europa sigue fuera de la sala: la diplomacia avanza mucho más despacio que el frente.", "ja": "2,049 という数字は戦場の形が変わったことを示す。無人機は「戦術的補完」から「消耗の主体」になり、迎撃弾の単価が新たな戦略資源になった。一方、協議は会場だけ決まって日程が決まらず、欧州は依然として扉の外にいる。外交の速度は戦場よりはるかに遅い。"}}, {"idx": "05", "title": {"zh": "通讯故障让全美航班大面积停飞，超 1.3 万架次受影响", "en": "A communications failure grounds flights across the US, hitting more than 13,000 services", "es": "Un fallo de comunicaciones paraliza vuelos en EE. UU. y afecta a más de 13.000 servicios", "ja": "通信障害で米国内の航空便が大幅欠航、1 万 3 千便超に影響"}, "body": {"zh": "美国全国航班因通讯故障大面积停飞，已导致超过 13000 架次航班延误或取消。美国交通部长表示，L3Harris 技术公司可能要为美国航空管制系统此次停摆负责。有旅客拍到乐队在万米高空即兴演奏的画面，在社交平台流传。相关话题在多个平台登上热搜榜。", "en": "Flights across the United States were grounded by a communications failure, with more than 13,000 services delayed or cancelled. The US transportation secretary said L3Harris Technologies may bear responsibility for the outage that halted the air traffic control system. A video of a band jamming mid-flight at cruising altitude circulated on social media, and the topic trended on several platforms.", "es": "Los vuelos en Estados Unidos quedaron en tierra por un fallo de comunicaciones, con más de 13.000 servicios demorados o cancelados. El secretario de Transporte dijo que L3Harris Technologies podría ser responsable de la caída que paralizó el control del tráfico aéreo. Un vídeo de una banda tocando en pleno vuelo se difundió en redes y el tema se volvió tendencia en varias plataformas.", "ja": "米国で通信障害により航空便が大規模に運航停止となり、1 万 3 千便以上が遅延または欠航した。米運輸長官は、航空管制システムの停止について L3Harris 社に責任がある可能性があると述べた。巡航高度でバンドが演奏する様子を撮影した動画が SNS で拡散し、関連話題が各プラットフォームの热搜に入った。"}, "why": {"zh": "空管是那种「平时没人注意、出事就是全国性」的基础设施。这次故障同时暴露两件事：老系统靠修补维持，关键环节又高度集中于少数承包商。它更像一个提醒——低空经济、智慧民航推进得越快，冗余设计越不能省。", "en": "Air traffic control is the kind of infrastructure nobody notices until a failure becomes national. This one exposed two things at once: an ageing system kept alive by patching, and critical links concentrated in a handful of contractors. The lesson for anyone building new aviation systems is that redundancy is the last place to economise.", "es": "El control aéreo es la infraestructura que nadie mira hasta que el fallo es nacional. Este episodio mostró dos cosas: un sistema antiguo sostenido a parches y eslabones críticos concentrados en pocos contratistas. Para quien diseñe sistemas nuevos, la lección es que la redundancia es lo último que se recorta.", "ja": "航空管制は、事故が全国規模になるまで誰も見ないインフラだ。今回の障害は二つのことを同時に示した。改修で延命してきた旧システムと、重要部分が少数の請負企業に集中している構造である。新しい航空システムを設計する側への教訓は、冗長性を削る順番を間違えてはいけないということだ。"}}]}, {"key": "dom", "num": "02", "color": "#cf2f1e", "deep": "#a8251a", "name": {"zh": "国内要闻", "en": "China", "es": "China", "ja": "中国"}, "items": [{"idx": "01", "title": {"zh": "习近平在广东中山考察，强调大湾区要发挥先导作用", "en": "Xi inspects Zhongshan, urging the Greater Bay Area to play a pioneering role", "es": "Xi inspecciona Zhongshan y pide un papel pionero para la Gran Área de la Bahía", "ja": "習主席が広東省中山市を視察、大湾区の先導的役割を強調"}, "body": {"zh": "11 月 16 日，习近平总书记在广东中山考察，就粤港澳大湾区建设、交通一体化、科技创新和产业创新深度融合等提出要求。他强调，建设粤港澳大湾区首先要推进交通一体化，中山等地要发挥先导作用。考察期间，总书记还就中国式现代化建设、科技自立自强等作出指示。此前同日，习近平致信祝贺暨南大学建校 120 周年。各地干部群众表示，将立足本职推动大湾区建设与产业创新。", "en": "On 16 November Xi Jinping inspected Zhongshan in Guangdong province, setting out requirements on building the Guangdong-Hong Kong-Macao Greater Bay Area, integrating transport, and deepening the fusion of technological and industrial innovation. He stressed that transport integration comes first in building the Greater Bay Area, and that cities such as Zhongshan should play a pioneering role. He also gave instructions on Chinese-style modernisation and self-reliance in science and technology. The same day he sent a letter congratulating Jinan University on its 120th anniversary.", "es": "El 16 de noviembre, Xi Jinping inspeccionó Zhongshan, en la provincia de Guangdong, y fijó exigencias sobre la construcción de la Gran Área de la Bahía de Guangdong-Hong Kong-Macao, la integración del transporte y la combinación profunda de innovación tecnológica e industrial. Subrayó que la integración del transporte es lo primero y que ciudades como Zhongshan deben desempeñar un papel pionero. También dio indicaciones sobre la modernización china y la autosuficiencia científica y tecnológica. Ese mismo día envió una carta de felicitación a la Universidad Jinan por su 120.º aniversario.", "ja": "11 月 16 日、習近平氏は広東省中山市を視察し、粤港澳大湾区の建設、交通一体化、科学技術革新と産業革新の深度融合について要件を示した。大湾区の建設ではまず交通一体化を進めるべきであり、中山市などが先導的役割を果たすよう強調した。視察中には中国式現代化や科学技術の自立自強についても指示した。同日、習氏は暨南大学創立 120 周年を祝う書簡を送った。"}, "why": {"zh": "中山是深中通道的西岸落点——考察选在这里，指向的是「通勤圈」而不是「产业园」。大湾区一体化走到今天，最难的已不是修桥修路，而是让人才、资金、数据跨过珠江口自由流动。这类调研通常会在数月后变成具体政策。", "en": "Zhongshan is the western landing point of the Shenzhen-Zhongshan Link, so the choice points at commuting zones rather than industrial parks. The hard part of Greater Bay Area integration is no longer bridges and roads but letting talent, capital and data move freely across the Pearl River estuary. Inspections like this usually turn into concrete policy within months.", "es": "Zhongshan es el extremo occidental del enlace Shenzhen-Zhongshan, así que la elección apunta a áreas de commuting más que a parques industriales. Lo difícil de la integración ya no son puentes y carreteras, sino que el talento, el capital y los datos crucen el estuario del río de las Perlas. Este tipo de visitas suele convertirse en política concreta en pocos meses.", "ja": "中山は深セン・中山リンクの西側の取り付け部であり、視察先の選択は産業団地よりも通勤圏を指している。大湾区一体化の難所はもはや橋や道路ではなく、人材・資金・データが珠江口を越えて自由に動けるようにすることだ。こうした視察は数か月後に具体的な政策になることが多い。"}}, {"idx": "02", "title": {"zh": "10 月失业率 5.1%，工业机器人产量同比涨 26%", "en": "October unemployment at 5.1% as industrial robot output jumps 26%", "es": "El desempleo de octubre se sitúa en el 5,1 % y la producción de robots industriales sube un 26 %", "ja": "10 月の失業率 5.1％、産業用ロボット生産は前年比 26％増"}, "body": {"zh": "国家统计局 11 月 16 日公布 10 月国民经济运行情况：10 月全国城镇调查失业率 5.1%，比上月下降 0.1 个百分点；1—10 月平均值为 5.2%，与上年同期持平。10 月高技术制造业增加值同比增长 17.6%，工业机器人产量增长 26%，3D 打印设备增长 85.9%，锂电池增长 30%。国家统计局表示，10 月国民经济运行总体平稳、向新向优。", "en": "The National Bureau of Statistics said on 16 November that the surveyed urban unemployment rate stood at 5.1% in October, down 0.1 percentage point from September; the average for January-October was 5.2%, unchanged year on year. Value added in high-tech manufacturing rose 17.6% in October from a year earlier, industrial robot output rose 26%, 3D printing equipment 85.9% and lithium batteries 30%. The bureau described October activity as broadly stable and shifting towards new and better-quality growth.", "es": "La Oficina Nacional de Estadística informó el 16 de noviembre de que la tasa de desempleo urbano encuestada fue del 5,1 % en octubre, 0,1 puntos menos que en septiembre; el promedio de enero a octubre fue del 5,2 %, igual que un año antes. El valor añadido de la manufactura de alta tecnología creció un 17,6 % interanual en octubre, la producción de robots industriales un 26 %, la de equipos de impresión 3D un 85,9 % y la de baterías de litio un 30 %. La oficina calificó la actividad de octubre de estable y orientada a un crecimiento nuevo y de mayor calidad.", "ja": "国家統計局は 11 月 16 日、10 月の都市調査失業率が 5.1％（前月比 0.1 ポイント低下）、1〜10 月平均が 5.2％（前年同期並み）と発表した。10 月のハイテク製造業付加価値は前年同月比 17.6％増、産業用ロボット生産は 26％増、3D プリンティング装置は 85.9％増、リチウム電池は 30％増。統計局は 10 月の国民経済は総じて安定し、新しく質の高い方向へ向かっているとしている。"}, "why": {"zh": "两个数字放在一起看最有意思：失业率微降 0.1 个点，机器人产量涨 26%。这不是矛盾，而是同一件事的两面——制造业在用更少的人扩张。对个体来说，「进厂」的门槛在变高，「会用设备」比「肯加班」更值钱。", "en": "Put the two numbers together: unemployment down 0.1 point, robot output up 26%. That is not a contradiction but two sides of one shift — manufacturing expanding with fewer people. For individuals, the factory gate is getting higher: knowing how to run equipment now counts for more than willingness to work overtime.", "es": "Los dos datos juntos son lo interesante: el desempleo baja 0,1 puntos y la producción de robots sube un 26 %. No es contradicción, son dos caras de un mismo cambio: la industria crece con menos gente. Para las personas, la puerta de la fábrica se vuelve más alta: saber operar equipos vale más que estar dispuesto a hacer horas extra.", "ja": "二つの数字を並べると面白い。失業率は 0.1 ポイント下がり、ロボット生産は 26％伸びた。矛盾ではなく同じ変化の両面で、製造業はより少ない人数で拡大している。個人にとっては「工場に入る」敷居が上がり、残業をいとわないことより設備を扱えることの価値が高くなったということだ。"}}, {"idx": "03", "title": {"zh": "70 城 10 月房价：一线环比转涨，二三线还在跌", "en": "October home prices: tier-1 cities turn up month on month, smaller cities still falling", "es": "Precios de la vivienda en octubre: las ciudades de primer nivel suben, las demás siguen bajando", "ja": "10 月の 70 都市住宅価格、一線都市は前月比で上昇・二三相は下落続く"}, "body": {"zh": "国家统计局 11 月 16 日发布 10 月 70 个大中城市商品住宅销售价格变动情况：一线城市新建商品住宅和二手住宅销售价格环比总体上涨，二三线城市环比下降，一二三线城市同比降幅继续收窄。国家统计局同日表示，房地产市场出现积极变化。", "en": "The National Bureau of Statistics released October price data for new and second-hand homes in 70 major cities on 16 November: tier-1 cities posted overall month-on-month increases, tier-2 and tier-3 cities posted declines, and year-on-year falls narrowed at all three tiers. The bureau said the property market had shown positive changes.", "es": "La Oficina Nacional de Estadística publicó el 16 de noviembre los precios de vivienda nueva y de segunda mano en 70 ciudades: las de primer nivel subieron en conjunto respecto al mes anterior, las de segundo y tercer nivel bajaron, y las caídas interanuales se moderaron en los tres niveles. La oficina afirmó que el mercado inmobiliario muestra cambios positivos.", "ja": "国家統計局は 11 月 16 日、70 大中都市の新築・中古住宅価格（10 月）を発表した。一線都市は前月比で総じて上昇、二・三線都市は下落、前年同月比の下げ幅はいずれも縮小した。統計局は不動産市場に前向きな変化が現れているとしている。"}, "why": {"zh": "「一线转涨、二三线还在跌、同比降幅收窄」这三句话，描述的是同一个分化过程：人口与产业继续向少数城市集中。对普通家庭来说，判断标准不该是「全国均价」，而是自己所在城市的人口净流入和二手房挂牌量。", "en": "Turn up in tier-1, still falling in tier-2 and tier-3, narrowing year on year — three sentences describing one divergence: people and industry keep concentrating in a few cities. For a household, the relevant gauge is not the national average but net migration and second-hand listings in your own city.", "es": "Suben en primera línea, siguen bajando en segunda y tercera, y el descenso interanual se modera: tres frases que describen una misma divergencia, la concentración de población y actividad en pocas ciudades. Para una familia, el dato útil no es la media nacional sino la migración neta y la oferta de segunda mano de su propia ciudad.", "ja": "一線は上昇、二・三線は下落、前年比の下げ幅は縮小——この三つの文が語るのは同じ分化だ。人口と産業が少数の都市に集まり続けている。家庭にとって判断材料は全国平均ではなく、自分の街の純流入と中古住宅の売り出し件数である。"}}, {"idx": "04", "title": {"zh": "PET/CT 局部显像降约 47%，肿瘤标志物五项从 500 元降到 220 元", "en": "PET/CT scans cut by about 47%, five tumour markers from 500 yuan to 220", "es": "La PET/TC baja cerca de un 47 % y cinco marcadores tumorales pasan de 500 a 220 yuanes", "ja": "PET/CT 局所撮像は約 47％減、腫瘍マーカー5 項目は 500 元から 220 元へ"}, "body": {"zh": "国家医保局规范检查类医疗服务价格：PET/CT 局部显像价格下降约 47%，肿瘤标志物五项检测从约 500 元降至 220 元。具体价格以各地医保局公布为准。此前，2026 年国家医保药品目录新增 107 种药品，其中 51 种为 1 类创新药，自 2027 年 1 月 1 日起施行。", "en": "China's National Healthcare Security Administration has standardised prices for diagnostic imaging: local PET/CT imaging falls by about 47%, and a five-marker tumour panel drops from roughly 500 yuan to 220 yuan. Final prices are set by provincial authorities. The 2026 national medical insurance drug list, announced earlier, adds 107 medicines including 51 class-1 innovative drugs, effective 1 January 2027.", "es": "La Administración Nacional de Seguridad Sanitaria de China ha estandarizado los precios de las pruebas diagnósticas: la imagen local por PET/TC baja cerca de un 47 % y un panel de cinco marcadores tumorales pasa de unos 500 a 220 yuanes. Los precios finales los fijan las autoridades provinciales. La lista de medicamentos del seguro médico de 2026, anunciada antes, suma 107 fármacos, 51 de ellos innovadores de clase 1, con entrada en vigor el 1 de enero de 2027.", "ja": "中国国家医療保障局は画像検査の価格を整理し、PET/CT の局所撮像は約 47％下落、腫瘍マーカー5 項目は約 500 元から 220 元に下がる。実際の価格は各省の医療保障局が定める。先に発表された 2026 年版国家医療保険薬品リストは 107 品目を追加し、うち 51 品目がクラス 1 の新薬で、2027 年 1 月 1 日から施行される。"}, "why": {"zh": "药品降价是「买药便宜」，检查降价是「查病便宜」，后者对早期发现的意义更大。真正决定患者负担的还有一步：降价之后医院愿不愿意开、医保能不能报——价格与支付两条线一起动，才轮到患者少掏钱。", "en": "Cheaper drugs mean cheaper treatment; cheaper scans mean cheaper diagnosis, and early detection matters more. But one step remains: after the price cut, will hospitals order the tests and will insurance reimburse them? Price and payment have to move together before patients actually pay less.", "es": "Medicamentos más baratos abaratan el tratamiento; pruebas más baratas abaratan el diagnóstico, y la detección temprana pesa más. Falta un paso: tras el recorte, ¿los hospitales pedirán la prueba y el seguro la cubrirá? Precio y pago deben moverse juntos para que el paciente pague menos.", "ja": "薬価の引き下げは「薬が安くなる」、検査価格の引き下げは「検査が安くなる」ことで、早期発見への意味は後者が大きい。ただし残る工程がある。値下げ後に病院が検査を出し、保険が支払うかどうかだ。価格と支払いの両方が動いて初めて、患者の負担は減る。"}}, {"idx": "05", "title": {"zh": "中国—东盟自贸区 3.0 版议定书 12 月 1 日生效", "en": "China-ASEAN free trade upgrade takes effect on 1 December", "es": "El protocolo 3.0 del TLC China-ASEAN entra en vigor el 1 de diciembre", "ja": "中国・ASEAN 自由貿易区 3.0 版議定書、12 月 1 日発効"}, "body": {"zh": "11 月 16 日，国务院总理李强在马尼拉出席第 29 次中国—东盟领导人会议，双方宣布中国—东盟自贸区 3.0 版升级议定书将于 12 月 1 日生效。3.0 版在货物贸易、服务贸易、数字经济和绿色经济等领域升级规则。前三季度，中国对亚太经合组织经济体进出口占外贸总值超过六成，自这些经济体的农产品进口额约占进口总额的一半。", "en": "Premier Li Qiang attended the 29th China-ASEAN Summit in Manila on 16 November, where both sides announced that the upgraded protocol of the China-ASEAN Free Trade Area 3.0 will take effect on 1 December. The upgrade adds rules on goods, services, the digital economy and the green economy. In the first three quarters, trade with APEC economies accounted for more than 60% of China's total goods trade, and agricultural imports from those economies about half of all farm imports.", "es": "El primer ministro Li Qiang asistió el 16 de noviembre en Manila a la 29.ª Cumbre China-ASEAN, donde ambas partes anunciaron que el protocolo de actualización del TLC 3.0 entrará en vigor el 1 de diciembre. La versión 3.0 incorpora reglas sobre bienes, servicios, economía digital y economía verde. En los tres primeros trimestres, el comercio con las economías de APEC superó el 60 % del comercio total chino de mercancías, y las importaciones agrícolas de esas economías representaron cerca de la mitad del total.", "ja": "11 月 16 日、李強首相はマニラで第 29 回中国・ASEAN 首脳会議に出席し、双方は中国・ASEAN 自由貿易区 3.0 版の議定書が 12 月 1 日に発効すると発表した。3.0 版は物品貿易、サービス貿易、デジタル経済、グリーン経済などのルールを高度化する。1〜9 月、中国の APEC 経済圏との貿易額は貿易総額の 6 割超、同圏からの農産物輸入は輸入総額の約半分を占めた。"}, "why": {"zh": "3.0 版的重点不在关税——绝大多数商品早已零关税——而在数字贸易、绿色经济、供应链联通这些「规则型」条款。对普通人最直观的感受可能是东南亚水果和生鲜到货更快、更便宜；对企业的意义则是原产地规则更清楚，跨境布局少一层不确定性。", "en": "The focus of 3.0 is not tariffs — most goods are already duty-free — but rule-based chapters on digital trade, the green economy and supply-chain connectivity. For consumers the visible effect is faster, cheaper Southeast Asian fruit and fresh produce; for companies it means clearer rules of origin and one less layer of uncertainty when spreading production across borders.", "es": "El foco del 3.0 no son los aranceles —casi todo está ya libre de derechos— sino los capítulos normativos sobre comercio digital, economía verde y conectividad de cadenas de suministro. El consumidor notará fruta y productos frescos del sudeste asiático más rápidos y baratos; las empresas ganan reglas de origen más claras y una capa menos de incertidumbre al producir fuera.", "ja": "3.0 版の焦点は関税ではない（ほとんどの品目はすでに無税）。デジタル貿易、グリーン経済、サプライチェーン連結といった「ルール型」の章にある。消費者にとっては東南アジアの果物や生鮮がより速く安く届くこと、企業にとっては原産地規則が明確になり、海外配置の不確実性が一段階減ることだ。"}}]}, {"key": "fin", "num": "03", "color": "#b45309", "deep": "#8f4208", "name": {"zh": "金融要闻", "en": "Markets", "es": "Mercados", "ja": "市場"}, "items": [{"idx": "01", "title": {"zh": "创业板指跌 4.37% 创年内新低，银行股却在批量新高", "en": "ChiNext falls 4.37% to a 2026 low while bank shares hit record highs", "es": "El ChiNext cae un 4,37 % hasta mínimos del año mientras los bancos marcan récords", "ja": "創業板指数は 4.37％安で年初来安値、銀行株は相次ぎ最高値"}, "body": {"zh": "11 月 16 日，A 股三大指数集体下跌：上证指数跌 0.87% 报 3602.57 点，盘中一度失守 3600 点；深证成指跌 2.53% 报 10690.78 点；创业板指跌 4.37% 报 2320.02 点，较 6 月下旬高点累计下跌约 47%，再创年内新低。北证 50 跌 4.54%，科创综指跌 5.41%。两市成交约 1.49 万亿元，较前一交易日缩量逾 1700 亿元。全市场 4341 只个股下跌、63 只跌停。银行、煤炭、交通运输板块逆势上涨，工商银行、建设银行、中国银行等多股创历史新高；通信、电子板块分别下跌 7.06% 和 5.99%。", "en": "All three main A-share indices fell on 16 November: the Shanghai Composite lost 0.87% to 3,602.57, briefly slipping below 3,600; the Shenzhen Component fell 2.53% to 10,690.78; ChiNext dropped 4.37% to 2,320.02, about 47% below its late-June peak and a fresh low for the year. The BSE 50 fell 4.54% and the STAR Composite 5.41%. Turnover was about 1.49 trillion yuan, down more than 170 billion from the previous session. Some 4,341 stocks fell, 63 by the daily limit. Banks, coal and transport rose, with ICBC, China Construction Bank and Bank of China among those at record highs, while telecom and electronics fell 7.06% and 5.99%.", "es": "Los tres índices principales de la bolsa china cayeron el 16 de noviembre: el Compuesto de Shanghái perdió un 0,87 % hasta 3.602,57 puntos, tras perder brevemente los 3.600; el Componente de Shenzhen bajó un 2,53 % a 10.690,78; el ChiNext cedió un 4,37 % a 2.320,02, cerca de un 47 % por debajo de su máximo de finales de junio y nuevo mínimo del año. El BSE 50 cayó un 4,54 % y el STAR Composite un 5,41 %. El volumen fue de unos 1,49 billones de yuanes, 170.000 millones menos que la sesión anterior. Cayeron 4.341 valores, 63 en el límite. Bancos, carbón y transporte subieron, con ICBC, CCB y Bank of China en máximos históricos, mientras telecomunicaciones y electrónica perdieron un 7,06 % y un 5,99 %.", "ja": "11 月 16 日、A 株の主要 3 指数はそろって下落した。上海総合指数は 0.87％安の 3,602.57、取引中に 3,600 を一時割り込んだ。深セン成分指数は 2.53％安の 10,690.78、創業板指数は 4.37％安の 2,320.02 で 6 月下旬の高値から約 47％下落し年初来安値を更新。北証 50 は 4.54％安、科創総合指数は 5.41％安。売買代金は約 1 兆 4,900 億元で前日比 1,700 億元超の減少。4,341 銘柄が下落し 63 銘柄がストップ安。銀行・石炭・運輸が逆行高となり、工商銀行、建設銀行、中国銀行などが史上最高値を更新した一方、通信は 7.06％安、電子は 5.99％安だった。"}, "why": {"zh": "指数在磨底、结构在换血，这是同一天的两种叙事。资金没有离场，只是从「想象空间」搬到了「现金流」——银行创新高和算力硬件跌停出现在同一张盘面上。同一天里追高的怕套、割肉的怕踏空，这种两边打脸的行情，最考验的其实是耐心。", "en": "An index grinding a bottom and a market swapping its leaders are two narratives from the same session. Money has not left; it moved from growth stories to cash flow — record-high banks and limit-down computing hardware on the same board. On a day like this the buyer chases and fears a trap, the seller exits and fears missing out; what it really tests is patience.", "es": "Un índice que busca suelo y un mercado que cambia de líderes son dos relatos de la misma sesión. El dinero no se fue: pasó de las historias de crecimiento al flujo de caja. Bancos en máximos y hardware de cálculo en el límite de caída en el mismo tablero. En una jornada así, quien compra teme quedar atrapado y quien vende teme perderse algo; lo que se pone a prueba es la paciencia.", "ja": "指数が底を探る一方で主役が入れ替わる——同じ一日の二つの物語だ。資金は逃げておらず、「成長の物語」から「キャッシュフロー」へ移っただけである。銀行の最高値と計算系ハードのストップ安が同じ板に並ぶ。こうした日は、買う側は捕まることを、売る側は乗り遅れることを恐れる。試されるのは結局、忍耐である。"}}, {"idx": "02", "title": {"zh": "隔夜美股：纳指跌 2.49%，费城半导体指数重挫逾 5%", "en": "US stocks slide: Nasdaq down 2.49%, Philadelphia chip index off more than 5%", "es": "Wall Street cae: el Nasdaq pierde un 2,49 % y el índice de semiconductores más del 5 %", "ja": "米株下落、ナスダック 2.49％安・フィラデルフィア半導体指数は 5％超安"}, "body": {"zh": "11 月 16 日美股低开低走，道琼斯指数跌 1.41%，标普 500 跌 1.92%，纳斯达克综合指数跌 2.49%；费城半导体指数重挫逾 5%，英伟达跌超 4%，台积电跌超 6%，美光科技跌超 7%，消费零售股逆势走高。国际油价显著下跌：WTI 原油收于每桶 85.72 美元，跌 3.21%；布伦特原油收于 92.44 美元，跌 3.55%。市场人士称，中东出口恢复提振了供应过剩预期。", "en": "US stocks opened and stayed lower on 16 November: the Dow fell 1.41%, the S&P 500 1.92% and the Nasdaq Composite 2.49%. The Philadelphia Semiconductor Index dropped more than 5%, with Nvidia down over 4%, TSMC over 6% and Micron over 7%, while consumer retail names gained. Oil fell sharply: WTI settled at 85.72 dollars a barrel, down 3.21%, and Brent at 92.44, down 3.55%. Traders cited recovering Middle East exports and a growing sense of oversupply.", "es": "Las bolsas estadounidenses abrieron y cerraron en baja el 16 de noviembre: el Dow cedió un 1,41 %, el S&P 500 un 1,92 % y el Nasdaq un 2,49 %. El índice de semiconductores de Filadelfia cayó más del 5 %, con Nvidia por encima del 4 %, TSMC del 6 % y Micron del 7 %, mientras el consumo minorista subía. El crudo bajó con fuerza: el WTI cerró en 85,72 dólares (-3,21 %) y el Brent en 92,44 (-3,55 %). El mercado citó la recuperación de las exportaciones de Oriente Medio y el exceso de oferta.", "ja": "11 月 16 日の米国株は軟調に推移し、ダウは 1.41％安、S&P500 は 1.92％安、ナスダック総合は 2.49％安。フィラデルフィア半導体指数は 5％超下落し、エヌビディアは 4％超安、TSMC は 6％超安、マイクロンは 7％超安となった一方、消費関連小売は上昇した。原油も急落し、WTI は 1 バレル 85.72 ドル（3.21％安）、ブレントは 92.44 ドル（3.55％安）。中東輸出の回復で供給過剰観測が強まったとの見方が出ている。"}, "why": {"zh": "半导体重挫与油价下跌同时发生，指向同一个词：需求。AI 资本开支的可持续性被重新定价，而中东供应一旦恢复，油价的战争溢价就迅速蒸发。这两条线过去一年互相支撑，现在开始各自寻找新的锚。", "en": "Chips sliding and oil falling point to the same word: demand. The sustainability of AI capital spending is being repriced, and once Middle East supply returns, the war premium in crude evaporates fast. The two trades propped each other up for a year; now each is looking for a new anchor.", "es": "La caída de los chips y del crudo apuntan a la misma palabra: demanda. Se reprecisa la sostenibilidad del gasto de capital en IA y, cuando la oferta de Oriente Medio se recupera, la prima de guerra del petróleo se evapora. Ambas operaciones se sostuvieron mutuamente durante un año; ahora buscan anclas propias.", "ja": "半導体安と原油安は同じ言葉を指している。需要だ。AI 設備投資の持続性が再評価され、中東の供給が戻れば原油の戦争プレミアムは急速に消える。この一年、二つの取引は互いを支えてきたが、今はそれぞれ新しい錨を探している。"}}, {"idx": "03", "tag": {"zh": "进展"}, "title": {"zh": "英伟达今晚发财报，同一天推出 Vera CPU 机架级平台", "en": "Nvidia reports tonight, unveiling a rack-scale Vera CPU platform the same day", "es": "Nvidia presenta resultados hoy y lanza su plataforma Vera de CPU a escala de rack", "ja": "エヌビディアが今夜決算、同日に Vera CPU ラックスケール基盤を発表"}, "body": {"zh": "英伟达将于 11 月 17 日美股盘后发布 2027 财年第三季度财报。16 日，公司宣布推出面向高性能计算的 Vera CPU 机架级平台，称能效比 x86 CPU 提升一倍，完整平台将由戴尔、HPE、联想和 Supermicro 提供；同时宣布与 IBM 及费米国家加速器实验室合作推出量子—经典协同设计平台。美国总统特朗普 16 日表示，不介意黄仁勋重新出任英伟达首席执行官，「这当然不是一个坏主意」。要求黄仁勋复职的请愿已获超 12 万人签名。", "en": "Nvidia reports third-quarter results for fiscal 2027 after the US close on 17 November. On 16 November the company announced a rack-scale Vera CPU platform for high-performance computing, claiming twice the energy efficiency of x86 CPUs, with full systems to be offered by Dell, HPE, Lenovo and Supermicro; it also unveiled a quantum-classical co-design platform with IBM and Fermilab. President Trump said the same day that he would not mind Jensen Huang returning as chief executive, calling it not a bad idea. A petition calling for Huang's return has passed 120,000 signatures.", "es": "Nvidia publicará el 17 de noviembre, tras el cierre de Wall Street, sus resultados del tercer trimestre del ejercicio 2027. El 16 anunció una plataforma Vera de CPU a escala de rack para cálculo de alto rendimiento, con el doble de eficiencia energética que las CPU x86, con sistemas de Dell, HPE, Lenovo y Supermicro; también presentó con IBM y Fermilab una plataforma de diseño cuántico-clásico. El presidente Trump dijo ese día que no le importaría que Jensen Huang volviera como consejero delegado. Una petición para su regreso supera las 120.000 firmas.", "ja": "エヌビディアは 11 月 17 日の米国市場引け後に 2027 年度第 3 四半期決算を発表する。16 日には HPC 向けの Vera CPU ラックスケール基盤を発表し、x86 CPU 比で電力効率 2 倍とし、Dell、HPE、レノボ、Supermicro が完成システムを提供するとした。IBM とフェルミ国立加速器研究所との量子・古典協調設計基盤も公表した。トランプ大統領は同日、ジェンスン・フアン氏の CEO 復帰を「悪くない考えだ」と述べた。復帰を求める請願は 12 万筆を超えている。"}, "why": {"zh": "一家公司在发财报前一天发布新产品，通常不是为了财报，而是为了叙事：告诉市场「我不只有 GPU」。黄仁勋离任后的英伟达正在被重新估值，而估值的关键变量已不是订单，而是「这家公司能不能在创始人不在的情况下继续定义标准」。", "en": "Launching a product the day before earnings is rarely about the quarter; it is about the story — telling the market it is not only a GPU company. Post-Huang Nvidia is being repriced, and the key variable is no longer orders but whether the company can keep defining the standard without its founder.", "es": "Lanzar un producto la víspera de resultados no va del trimestre sino del relato: decir al mercado que no es solo una empresa de GPU. Nvidia se revaloriza tras la salida de Huang y la variable clave ya no son los pedidos, sino si puede seguir definiendo el estándar sin su fundador.", "ja": "決算前日に新製品を出すのは、四半期の数字のためではなく物語のためだ。「GPU だけの会社ではない」と市場に伝える意味がある。フアン氏退任後のエヌビディアは再評価の途上にあり、鍵となる変数は受注ではなく「創業者不在でも標準を定義し続けられるか」である。"}}, {"idx": "04", "tag": {"zh": "进展"}, "title": {"zh": "金价上周跌 4.63%，深圳水贝金价跌了三分之一", "en": "Gold fell 4.63% last week; Shenzhen's Shuibei market cuts prices by a third", "es": "El oro cayó un 4,63 % la semana pasada; en Shuibei los precios bajan un tercio", "ja": "金は先週 4.63％安、深セン水貝の金価格は 3 分の 1 下落"}, "body": {"zh": "上周纽约黄金期价一度跌至一年多来低点，全周累计跌幅达 4.63%。市场普遍认为，本轮下跌的首要原因是美联储进一步加息预期升温：美元指数走高，10 年期美债收益率徘徊在 2007 年以来高位区域，持有黄金的机会成本上升。深圳水贝市场金价大幅回落，1 公斤金块价格从 120 多万元降至 80 多万元，部分商户客流激增。高盛表示，在各国央行持续购金推动下，金价到 2027 年底将逐步升至每盎司 4650 美元。", "en": "New York gold futures touched a more than one-year low last week and fell 4.63% over the five sessions. The market broadly attributes the slide to rising expectations of further Federal Reserve rate hikes: a firmer dollar, 10-year Treasury yields near their highest since 2007, and a higher opportunity cost of holding bullion. In Shenzhen's Shuibei jewellery hub prices fell sharply, with a one-kilogram bar dropping from over 1.2 million yuan to the low 800,000s, drawing crowds to some shops. Goldman Sachs said central bank buying should lift gold towards 4,650 dollars an ounce by the end of 2027.", "es": "Los futuros del oro en Nueva York tocaron la semana pasada mínimos de más de un año y cayeron un 4,63 % en el conjunto de la semana. El mercado atribuye el descenso a las mayores expectativas de subidas de tipos de la Reserva Federal: dólar más firme, rendimientos del bono a 10 años cerca de máximos desde 2007 y mayor coste de oportunidad de tener metal. En el mercado de Shuibei, en Shenzhen, los precios bajaron con fuerza: una barra de un kilo pasó de más de 1,2 millones de yuanes a poco más de 800.000, con clientes agolpados en algunos locales. Goldman Sachs prevé 4.650 dólares la onza a finales de 2027 por las compras de bancos centrales.", "ja": "ニューヨーク金先物は先週 1 年余りの安値をつけ、週間で 4.63％下落した。市場は米連邦準備制度の追加利上げ観測の高まりを主因とみる。ドル高、10 年債利回りの 2007 年以来の高水準圏、金保有の機会費用の上昇である。深センの水貝市場では価格が大きく下がり、1 キロの金塊が 120 万元台から 80 万元台に下落、一部の店には客が殺到した。ゴールドマン・サックスは中央銀行の購入継続により 2027 年末に 1 オンス 4,650 ドルへ上昇するとの見方を示した。"}, "why": {"zh": "金饰店排队和金价下跌并不矛盾——买金的人和卖金的人，对同一个价格有完全不同的解读。真正的分歧在于：这轮下跌是「加息预期」造成的短期错杀，还是避险叙事退潮的开始。高盛的 4650 美元和柜台的抢购，押的是两个不同的未来。", "en": "Queues at jewellery counters and falling prices are not a contradiction — buyers and sellers read the same number differently. The real question is whether this is a rate-driven mispricing or the start of an unwind in the safe-haven story. Goldman's 4,650 dollars and the queue at the counter are bets on two different futures.", "es": "Las colas en las joyerías y la caída del precio no se contradicen: compradores y vendedores leen la misma cifra de forma distinta. La duda real es si esto es un error de precio por los tipos o el inicio del desmontaje del relato de refugio. Los 4.650 dólares de Goldman y la cola en el mostrador apuestan a futuros distintos.", "ja": "宝飾店の行列と金価格の下落は矛盾しない。買う人と売る人が同じ値段を別に読んでいるだけだ。争点は、これが利上げ観測による一時的な価格の歪みなのか、逃避資産という物語の退潮の始まりなのか。ゴールドマンの 4,650 ドルと店頭の行列は、別々の未来に賭けている。"}}, {"idx": "05", "title": {"zh": "10 月跨境资金净流入 769 亿美元，前 10 个月跨境收支增 20%", "en": "October cross-border inflows reach 76.9 billion dollars as receipts rise 20% this year", "es": "Las entradas transfronterizas de octubre llegan a 76.900 millones de dólares", "ja": "10 月の越境資金は 769 億ドルの純流入、1〜10 月の越境収支は 20％増"}, "body": {"zh": "国家外汇管理局 11 月 16 日发布数据：10 月企业、个人等非银行部门跨境收支合计 1.45 万亿美元，较 9 月日均增长 10%；外汇市场交易量 3.77 万亿美元，较 9 月日均增长 7%。前 10 个月，跨境收支规模、外汇市场交易量同比分别增长 20% 和 9%。10 月跨境资金净流入 769 亿美元，较 9 月有所增加。", "en": "The State Administration of Foreign Exchange said on 16 November that cross-border receipts and payments by non-bank sectors totalled 1.45 trillion dollars in October, up 10% on September's daily average, while foreign exchange market turnover reached 3.77 trillion dollars, up 7%. For January-October, cross-border flows grew 20% year on year and FX turnover 9%. Net cross-border inflows in October were 76.9 billion dollars, higher than in September.", "es": "La Administración Estatal de Divisas informó el 16 de noviembre de que los cobros y pagos transfronterizos del sector no bancario sumaron 1,45 billones de dólares en octubre, un 10 % más que el promedio diario de septiembre, y el volumen del mercado de divisas alcanzó 3,77 billones, un 7 % más. Entre enero y octubre, los flujos crecieron un 20 % interanual y el volumen un 9 %. Las entradas netas de octubre fueron de 76.900 millones de dólares, por encima de septiembre.", "ja": "国家外貨管理局は 11 月 16 日、10 月の銀行以外部門の越境収支が合計 1 兆 4,500 億ドル（9 月の 1 日平均比 10％増）、外国為替市場の取引量が 3 兆 7,700 億ドル（同 7％増）だったと発表した。1〜10 月では越境収支が前年同期比 20％増、取引量が 9％増。10 月の越境資金の純流入は 769 億ドルで、9 月より増加した。"}, "why": {"zh": "净流入 769 亿美元、跨境收支日均增 10%，说明 10 月的资金面比 9 月更活跃。在美元走强、外围市场波动的背景下，这个数字对人民币汇率的支撑意义，比单日中间价更值得看。", "en": "Net inflows of 76.9 billion dollars and a 10% daily gain in cross-border flows point to a more active October than September. With the dollar firm and offshore markets choppy, that number says more about support for the renminbi than any single daily fixing.", "es": "Entradas netas de 76.900 millones y un alza del 10 % en el flujo diario indican un octubre más activo que septiembre. Con el dólar firme y los mercados externos volátiles, ese dato dice más sobre el soporte al renminbi que cualquier fijación diaria.", "ja": "769 億ドルの純流入と越境収支の 1 日平均 10％増は、10 月の資金フローが 9 月より活発だったことを示す。ドル高と海外市場の変動が続くなか、この数字は単日の基準値よりも人民元相場の支えを語っている。"}}]}, {"key": "spo", "num": "04", "color": "#15803d", "deep": "#116231", "name": {"zh": "体育竞技", "en": "Sports", "es": "Deportes", "ja": "スポーツ"}, "items": [{"idx": "01", "tag": {"zh": "进展"}, "title": {"zh": "国足今晚 20 时肇庆对巴林，邵佳一：每一场都不容有失", "en": "China face Bahrain in Zhaoqing at 20:00 tonight: 'no match is expendable'", "es": "China recibe a Baréin en Zhaoqing a las 20:00: «ningún partido es prescindible»", "ja": "中国代表は今夜 20 時から肇慶でバーレーン戦、邵佳一監督「一戦も落とせない」"}, "body": {"zh": "中国男足将于 11 月 17 日 20 时在肇庆国际邀请赛第 2 轮迎战巴林队，央视体育与咪咕视频直播。主帅邵佳一 16 日在赛前发布会上表示，两场比赛只间隔两天，球队没有安排额外技战术训练，重点放在身体恢复，「每一场国家队比赛都不容有失」。张玉宁称巴林是「非常难缠的对手」，上届世预赛 18 强赛主客场均 1:0 小胜、客场由他绝杀。巴林主帅桑切斯曾率卡塔尔夺得 2019 年亚洲杯冠军，今年 10 月接手巴林队。国足 11 月 14 日 2:0 胜马来西亚，世界排名回升至亚洲第 15 位，已锁定 2030 年世界杯亚洲区预选赛 40 强赛第二档。", "en": "China play Bahrain in the second round of the Zhaoqing international tournament at 20:00 on 17 November, broadcast on CCTV Sports and Migu. Coach Shao Jiayi said on 16 November that with only two days between matches the squad skipped extra tactical work and focused on recovery: no national team match is expendable. Zhang Yuning called Bahrain a difficult opponent, recalling two 1-0 wins in the previous World Cup qualifying campaign, the away leg settled by his late goal. Bahrain are coached by Felix Sanchez, who led Qatar to the 2019 Asian Cup and took over in October. China beat Malaysia 2-0 on 14 November and have climbed back to 15th in Asia, locking a pot-two place for the 2030 qualifiers.", "es": "China se enfrenta a Baréin en la segunda jornada del torneo de Zhaoqing el 17 de noviembre a las 20:00, con emisión de CCTV Sports y Migu. El seleccionador Shao Jiayi dijo el 16 que, con solo dos días entre partidos, el equipo no hizo trabajo táctico extra y se centró en la recuperación: ningún partido de la selección es prescindible. Zhang Yuning calificó a Baréin de rival incómodo y recordó los dos 1-0 de la fase anterior, con gol suyo en el descuento fuera de casa. Baréin lo dirige Felix Sánchez, campeón de la Copa Asiática 2019 con Catar, al frente desde octubre. China ganó 2-0 a Malasia el 14 y recuperó el 15.º puesto asiático, asegurando el bombo dos para 2030.", "ja": "中国代表は 11 月 17 日 20 時、肇慶国際招待大会の第 2 戦でバーレーンと対戦する。CCTV スポーツと咪咕で中継。邵佳一監督は 16 日の会見で、中 2 日しかないため追加の戦術練習は行わず回復に重点を置いたとし、「代表の一戦も落とせない」と述べた。張玉寧はバーレーンを「非常に手強い相手」と評し、前回予選ではホームもアウェーも 1 対 0 の辛勝で、アウェーは自身の決勝点だったと振り返った。バーレーンは 2019 年アジア杯でカタールを優勝に導いたサンチェス監督が 10 月に就任。中国は 14 日にマレーシアを 2 対 0 で破り、アジア 15 位に戻して 2030 年予選の第 2 ポットを確保した。"}, "why": {"zh": "这场球的看点不是胜负，而是「能不能连着赢」。三连败之后赢一场，说明不了什么；两天内再赢一场，才说明更衣室真的换了气场。邵佳一还提到亚洲杯延期到 12 月——赛程一变，热身赛的价值就从「练兵」变成「定人」。", "en": "The point is not the result but whether this team can win twice in a row. One win after three defeats proves little; a second inside two days would suggest the dressing room has actually changed. Shao also noted the Asian Cup has moved to December — with the calendar shifted, friendlies stop being practice and start deciding who makes the squad.", "es": "Lo relevante no es el resultado sino si el equipo puede ganar dos seguidos. Un triunfo tras tres derrotas prueba poco; el segundo en dos días indicaría que el vestuario cambió de verdad. Shao mencionó además que la Copa Asiática se traslada a diciembre: con el calendario movido, los amistosos dejan de ser ensayo y pasan a definir la lista.", "ja": "焦点は勝敗ではなく「連勝できるか」だ。3 連敗のあとの 1 勝では何も証明できない。中 2 日で 2 勝目を挙げれば、ロッカーの空気が本当に変わったことになる。邵監督はアジア杯が 12 月に延期されたとも語った。日程が変われば、親善試合は「練習」から「選考」になる。"}}, {"idx": "02", "title": {"zh": "英格兰 3:2 客胜西班牙，终结对手 43 场正式比赛不败", "en": "England win 3-2 in Spain, ending a 43-match unbeaten run", "es": "Inglaterra gana 3-2 en España y corta 43 partidos sin perder", "ja": "イングランドがスペインに 3 対 2 で勝利、43 戦無敗を止める"}, "body": {"zh": "北京时间 11 月 16 日凌晨，欧国联 A3 组第 6 轮，英格兰客场 3:2 战胜西班牙，终结对手连续 43 场正式比赛不败的纪录。凯恩点球首开纪录，孔萨头球、本·怀特低射将比分扩大为 3:0；此后英格兰被罚下一人，西班牙由奥亚萨瓦尔点球、尼科·威廉姆斯连扳两球，门将特拉福德关键扑救守住胜果。英格兰以净胜球优势反超西班牙，拿下小组头名。同轮比利时 4:1 战胜意大利。", "en": "England won 3-2 away to Spain in the sixth round of Nations League Group A3 in the early hours of 16 November, ending Spain's 43-match unbeaten run in competitive games. Kane opened from the penalty spot, Konsa headed the second and Ben White added a third; England then had a man sent off, and Spain pulled two back through an Oyarzabal penalty and Nico Williams, before keeper Trafford made a decisive save. England topped the group on goal difference. Belgium beat Italy 4-1 in the same round.", "es": "Inglaterra ganó 3-2 en España en la sexta jornada del grupo A3 de la Liga de Naciones, en la madrugada del 16 de noviembre, y cortó una racha de 43 partidos oficiales sin perder. Kane abrió de penalti, Konsa marcó de cabeza y Ben White hizo el tercero; después Inglaterra se quedó con uno menos y España recortó con un penalti de Oyarzabal y dos de Nico Williams, hasta que el portero Trafford salvó el resultado. Inglaterra lidera el grupo por diferencia de goles. Bélgica goleó 4-1 a Italia.", "ja": "11 月 16 日未明（現地時間）、ネーションズリーグ A3 組第 6 節でイングランドが敵地でスペインを 3 対 2 で破り、スペインの公式戦 43 試合無敗を止めた。ケインの PK で先制し、コンサのヘッド、ベン・ホワイトの追加点で 3 対 0。その後イングランドは退場者を出し、スペインはオヤルサバルの PK とニコ・ウィリアムズの 2 点で追い上げたが、GK トラフォードの好セーブで逃げ切った。イングランドは得失点差で首位。同節ベルギーはイタリアを 4 対 1 で下した。"}, "why": {"zh": "43 场不败是个漂亮的数字，也是一层心理护甲。这场球真正的信息量在 3:0 之后——少打一人的英格兰被追到 3:2，说明顶级球队之间的差距，往往只够撑 60 分钟。明年的夺冠赔率，大概会因为这 30 分钟重新排一次。", "en": "Forty-three unbeaten is a fine number and also a layer of psychological armour. The real information came after 3-0: down to ten men, England were pulled back to 3-2, which suggests the gap between elite sides often lasts about 60 minutes. Title odds for next year will probably be re-ranked on the strength of those 30 minutes.", "es": "Cuarenta y tres partidos sin perder es una cifra bonita y también una coraza psicológica. La información real llegó tras el 3-0: con uno menos, Inglaterra se quedó en 3-2, lo que sugiere que la distancia entre élites suele durar unos 60 minutos. Las cuotas para el próximo año se reordenarán por esos 30 minutos.", "ja": "43 戦無敗は美しい数字であり、心理的な鎧でもある。本当の情報は 3 対 0 のあとにあった。1 人少なくなったイングランドは 3 対 2 まで追い詰められた。トップ同士の差は往々にして 60 分しかもたないということだ。来年の優勝オッズは、この 30 分で並び替えられるだろう。"}}, {"idx": "03", "title": {"zh": "火箭 147:119 大胜奇才，11 胜 3 负升到西部第三", "en": "Rockets rout Wizards 147-119 to move to 11-3 and third in the West", "es": "Los Rockets aplastan 147-119 a los Wizards y suben al tercer puesto del Oeste", "ja": "ロケッツが 147 対 119 でウィザーズを圧倒、11 勝 3 敗で西 3 位"}, "body": {"zh": "北京时间 11 月 16 日，NBA 常规赛火箭客场 147:119 战胜奇才。火箭半场 73:54 领先，全场篮板 56:35、助攻 40:27 占优；阿门·汤普森得到 26 分 7 篮板 7 助攻，杜兰特 25 分，伊森 25 分；奇才方面萨尔 25 分 9 篮板。火箭战绩来到 11 胜 3 负，位列西部第三。同日 76 人战胜步行者。", "en": "The Houston Rockets beat the Washington Wizards 147-119 on the road on 16 November. Houston led 73-54 at half-time and dominated the boards 56-35 and assists 40-27; Amen Thompson had 26 points, seven rebounds and seven assists, Kevin Durant and Tari Eason scored 25 each, while Alex Sarr led Washington with 25 points and nine rebounds. The Rockets are 11-3 and third in the Western Conference. Philadelphia beat Indiana the same day.", "es": "Los Houston Rockets ganaron 147-119 a los Washington Wizards como visitantes el 16 de noviembre. Houston mandaba 73-54 al descanso y dominó los rebotes (56-35) y las asistencias (40-27); Amen Thompson sumó 26 puntos, siete rebotes y siete asistencias, Kevin Durant y Tari Eason anotaron 25 cada uno, y Alex Sarr lideró a Washington con 25 y nueve rebotes. Los Rockets están 11-3 y terceros del Oeste. Philadelphia ganó a Indiana ese mismo día.", "ja": "11 月 16 日、NBA レギュラーシーズンでヒューストン・ロケッツが敵地でワシントン・ウィザーズに 147 対 119 で快勝した。前半を 73 対 54 で折り返し、リバウンド 56 対 35、アシスト 40 対 27 と圧倒。アメン・トンプソンが 26 得点 7 リバウンド 7 アシスト、ケビン・デュラントとタリ・イーソンが各 25 得点、ウィザーズはサールが 25 得点 9 リバウンド。ロケッツは 11 勝 3 敗で西 3 位。同日フィラデルフィアはインディアナを破った。"}, "why": {"zh": "147 分不是靠某个人爆种，而是 40 次助攻堆出来的。这支火箭过去两年被讨论的是天赋，现在被讨论的是「球权分配」——当一支年轻球队开始用传球解决问题，它就从「有潜力」变成了「有体系」。", "en": "The 147 points came from 40 assists, not from one hot hand. For two years the conversation about these Rockets was talent; now it is shot distribution. When a young team starts solving problems by passing, it stops being promising and starts being a system.", "es": "Los 147 puntos salieron de 40 asistencias, no de una mano inspirada. Durante dos años se habló del talento de estos Rockets; ahora se habla de reparto de tiros. Cuando un equipo joven empieza a resolver con pases, deja de ser promesa y pasa a ser sistema.", "ja": "147 点は誰かの爆発ではなく 40 アシストの積み上げだ。この 2 年、このロケッツは才能を語られてきたが、今はショットの配分を語られている。若いチームがパスで問題を解き始めると、「伸びしろ」から「仕組み」に変わる。"}}, {"idx": "04", "title": {"zh": "ATP 年终总决赛开打：阿尔卡拉斯 6:2、6:2 取 10 连胜", "en": "ATP Finals open with Alcaraz winning 6-2, 6-2 for a 10th straight victory", "es": "Las Finales ATP arrancan con Alcaraz ganando 6-2 y 6-2 para su décimo triunfo seguido", "ja": "ATP ファイナル開幕、アルカラスが 6 対 2、6 対 2 で 10 連勝"}, "body": {"zh": "当地时间 11 月 16 日，2026 ATP 年终总决赛在都灵继续进行。阿尔卡拉斯在小组赛首战以 6:2、6:2 击败蒂亚福，取得赛季第二个 10 连胜；他右膝缠着绷带，但移动未见明显影响。此前一天，兹维列夫在都灵领取年终世界第一奖杯，他今年拿下法网与美网，但对阵世界前十的战绩为 4 胜 9 负，且未击败过阿尔卡拉斯与辛纳。辛纳因右膝伤势提前结束赛季，无缘三连冠。", "en": "The 2026 ATP Finals continued in Turin on 16 November. Carlos Alcaraz beat Frances Tiafoe 6-2, 6-2 in his opening group match for a second 10-match winning streak this season; he wore strapping on his right knee but moved without obvious trouble. A day earlier Alexander Zverev collected the year-end world number one trophy in Turin, having won the French Open and US Open but holding a 4-9 record against top-10 opponents and no wins over Alcaraz or Jannik Sinner. Sinner ended his season early with a right knee injury and will not defend his title.", "es": "Las Finales ATP 2026 continuaron en Turín el 16 de noviembre. Carlos Alcaraz venció 6-2 y 6-2 a Frances Tiafoe en su debut de grupo y suma su segunda racha de diez victorias de la temporada; llevaba vendaje en la rodilla derecha pero se movió sin problemas visibles. Un día antes, Alexander Zverev recogió en Turín el trofeo de número uno del año: ganó Roland Garros y el US Open, aunque tiene un balance de 4-9 ante top-10 y no ha vencido a Alcaraz ni a Jannik Sinner. Sinner cerró su temporada antes de tiempo por una lesión de rodilla y no defenderá el título.", "ja": "11 月 16 日、トリノで ATP ファイナルが続いた。カルロス・アルカラスは初戦でフランシス・ティアフォーを 6 対 2、6 対 2 で下し、今季 2 度目の 10 連勝。右膝にテーピングを巻いていたが動きに支障は見えなかった。前日、アレクサンダー・ズベレフが年間世界ランク 1 位のトロフィーを受け取った。全仏と全米を制した一方、トップ 10 との対戦は 4 勝 9 敗で、アルカラスとシナーには勝っていない。シナーは右膝の故障で今季を終え、3 連覇はならない。"}, "why": {"zh": "年终第一和「最强球员」在这一年第一次分开了：兹维列夫靠出勤与稳定拿到奖杯，阿尔卡拉斯和辛纳靠上限拿走讨论度。这种分裂不是坏事，它提醒我们排名是「赛季总和」，而人们记住的永远是「那几场球」。", "en": "Year-end number one and best player came apart this year: Zverev took the trophy through availability and consistency, while Alcaraz and Sinner took the conversation through their ceilings. The split is useful — it reminds us rankings are a season total, while memory keeps only a handful of matches.", "es": "El número uno del año y el mejor jugador se separaron esta temporada: Zverev se llevó el trofeo por disponibilidad y regularidad, y Alcaraz y Sinner se quedaron la conversación por su techo. La división es útil: el ranking es una suma de temporada, pero la memoria guarda solo unos pocos partidos.", "ja": "年間 1 位と「最強」が今季は分かれた。ズベレフは出場と安定でトロフィーを取り、アルカラスとシナーは上限の高さで話題を取った。この分裂は悪くない。ランキングはシーズンの合計であり、記憶に残るのはほんの数試合だということを思い出させる。"}}, {"idx": "05", "title": {"zh": "18 岁王天佑一站四金，中国队登顶短道青年世界杯金牌榜", "en": "18-year-old Wang Tianyou takes four golds as China tops the short-track junior World Cup", "es": "Wang Tianyou, de 18 años, logra cuatro oros y China lidera la Copa del Mundo júnior de pista corta", "ja": "18 歳の王天佑が 1 大会 4 冠、中国はショートトラック・ジュニア W 杯で金メダル首位"}, "body": {"zh": "2026—2027 赛季国际滑联短道速滑青年世界杯博尔米奥站 11 月 15 日在意大利结束。18 岁的中国选手王天佑独揽四金：男子 500 米、1000 米、男女混合 2000 米接力和男子 3000 米接力；其中 1000 米决赛压制韩国选手李飞虎夺冠。中国队在该站登顶金牌榜与奖牌榜。出生于黑龙江的王天佑，2024 年 16 岁时曾在全国第十四届冬运会青年组 1000 米、1500 米晋级 A 组决赛，今年初世青赛获 1500 米亚军。", "en": "The ISU Short Track Junior World Cup stop in Bormio, Italy, ended on 15 November. China's 18-year-old Wang Tianyou won four golds: the men's 500m and 1000m, the mixed 2000m relay and the men's 3000m relay, beating South Korea's Lee Pil-ho to the 1000m title. China topped both the gold and overall medal tables at the event. Born in Heilongjiang, Wang reached A finals in the 1000m and 1500m at the 2024 National Winter Games youth competition aged 16, and took 1500m silver at this year's world junior championships.", "es": "La prueba de la Copa del Mundo júnior de pista corta de la ISU en Bormio (Italia) terminó el 15 de noviembre. El chino Wang Tianyou, de 18 años, ganó cuatro oros: 500 y 1.000 metros masculinos, el relevo mixto de 2.000 y el relevo masculino de 3.000, además de imponerse al surcoreano Lee Pil-ho en los 1.000. China lideró las tablas de oro y de medallas. Nacido en Heilongjiang, Wang llegó a finales A de 1.000 y 1.500 en los Juegos Nacionales de Invierno juveniles de 2024 con 16 años, y fue plata en 1.500 en el mundial júnior de este año.", "ja": "2026〜27 季の ISU ショートトラック・ジュニアワールドカップ、ボルミオ大会が 11 月 15 日に閉幕した。18 歳の王天佑が男子 500 メートル、1000 メートル、混合 2000 メートルリレー、男子 3000 メートルリレーの 4 冠。1000 メートル決勝では韓国の李飛虎を抑えて優勝した。中国は同大会で金メダル数とメダル総数の首位。黒竜江省出身の王天佑は 2024 年、16 歳で全国冬運会ユースの 1000 メートルと 1500 メートルで A 決勝に進み、今年初めの世界ジュニア選手権では 1500 メートル銀メダルだった。"}, "why": {"zh": "中国短道已进入 2030 年冬奥周期，王天佑的出现恰好补在最缺的位置——起跑爆发力强的 500 米选手。但一站四金的说服力有限，真正的考验是他能不能把「青年组的绝对速度」转换成「成年组的对抗能力」。", "en": "China's short-track team is now building towards 2030, and Wang fills the position it lacks most: a 500m skater with explosive starts. Four golds at one event prove only so much; the real test is converting junior top speed into senior-race contact skills.", "es": "El equipo chino ya trabaja para 2030 y Wang cubre justo el hueco más evidente: un especialista de 500 con salida explosiva. Cuatro oros en una prueba demuestran hasta cierto punto; la prueba real es convertir la velocidad júnior en capacidad de choque en categoría absoluta.", "ja": "中国ショートトラックは 2030 年冬季五輪へ向かう周期に入り、王天佑は最も欠けていた位置、スタート爆發力のある 500 メートル型を埋める。ただ 1 大会 4 冠の説得力は限られる。真の試練は「ジュニアの絶対速度」を「シニアの接触戦」に変換できるかどうかだ。"}}]}, {"key": "hot", "num": "05", "color": "#6d28d9", "deep": "#5b21b6", "name": {"zh": "网络热点", "en": "Trending", "es": "Tendencias", "ja": "ネット"}, "items": [{"idx": "01", "title": {"zh": "399 元的北大羽绒服卖断货，高校文创开始抢服装生意", "en": "Peking University's 399-yuan puffer sells out as campus merch moves into clothing", "es": "El plumífero de 399 yuanes de la Universidad de Pekín se agota", "ja": "北京大学の 399 元ダウンが完売、大学グッズが衣料市場へ"}, "body": {"zh": "北京大学推出的文创冬季羽绒外套因 399 元定价与充绒指标，在社交平台走红后热门尺码迅速售罄，店方称预计 12 月底补货。该款填充物为鹅绒、绒子含量 90%，S 码至 3XL 码充绒量 20.5 克至 30.5 克，属薄款。有消费者认为款式轻便、价格合适，也有网友对充绒量提出疑问。同期中央戏剧学院、北京电影学院等高校羽绒服销量亦达千件以上。", "en": "A winter puffer released as Peking University merchandise sold out in popular sizes after going viral, with the campus shop saying restocking is expected by late December. It is filled with goose down at 90% down content, with 20.5 to 30.5 grams of fill from size S to 3XL — a light version. Some buyers praised the weight and price; others questioned the fill weight. Down jackets from the Central Academy of Drama and the Beijing Film Academy also sold over a thousand units each.", "es": "Un plumífero de invierno lanzado como producto oficial de la Universidad de Pekín se agotó en las tallas más pedidas tras viralizarse, y la tienda prevé reponer a finales de diciembre. Lleva plumón de ganso con 90 % de contenido y entre 20,5 y 30,5 gramos de relleno de la talla S a la 3XL: es un modelo ligero. Hubo elogios al peso y al precio, y también dudas sobre el gramaje. Los plumíferos de la Academia Central de Drama y de la Academia de Cine de Pekín superaron las mil unidades.", "ja": "北京大学のオリジナル冬用ダウンが 399 元という価格で SNS で話題になり、人気サイズが完売した。店側は 12 月末の入荷を見込む。グースダウンでダウン含有率 90％、S から 3XL までの充填量は 20.5〜30.5 グラムの薄手モデル。軽さと価格を評価する声がある一方、充填量を疑問視する声もあった。中央戯劇学院や北京電影学院のダウンも 1,000 着以上を売り上げている。"}, "why": {"zh": "高校文创过去卖的是情怀，现在卖的是供应链——同样的鹅绒、同样的充绒标准，价格比商业品牌低一截，Logo 还自带稀缺性。真正被挑战的是中间层品牌：既没有高校的信任背书，也没有白牌的价格。", "en": "Campus merch used to sell nostalgia; now it sells supply chain — the same goose down, comparable fill specs, a lower price than commercial brands, and a logo that carries scarcity. The squeezed party is the mid-tier brand: no institutional trust to borrow, no white-label price to match.", "es": "El merchandising universitario vendía nostalgia; ahora vende cadena de suministro: el mismo plumón, especificaciones comparables, precio más bajo que las marcas comerciales y un logo que aporta escasez. Quien queda atrapado es la marca intermedia: sin el aval de una universidad y sin el precio de una marca blanca.", "ja": "大学グッズはかつて「思い入れ」を売っていたが、今は「サプライチェーン」を売っている。同じグースダウン、同水準の充填量、商業ブランドより安い価格、そして希少性のあるロゴ。挟まれるのは中間ブランドだ。大学の信用も白ブランドの価格も持たない。"}}, {"idx": "02", "title": {"zh": "「亲肤棉」「水洗棉」不含棉，热搜第一教你看水洗标", "en": "'Skin-friendly cotton' and 'washed cotton' may contain no cotton at all", "es": "El «algodón hipoalergénico» y el «algodón lavado» pueden no tener algodón", "ja": "「親膚綿」「水洗綿」に綿が入っていないことも、表示の見方を話題に"}, "body": {"zh": "「买衣服别被面料名字忽悠」登上微博热搜第一。纺织纤维规范中，「亲肤棉」「水洗棉」等名称并不代表真实含棉量，部分商家利用这类词汇强化天然材质的联想，实际成分可能是聚酯纤维等化纤。业内人士提示，选购时应查看水洗标上的法定「纤维成分」标注，而不是商品名称。", "en": "'Don't be fooled by fabric names when buying clothes' topped Weibo's trending list. Under China's textile fibre rules, labels such as 'skin-friendly cotton' or 'washed cotton' say nothing about actual cotton content; some sellers use them to imply a natural material while the real composition may be polyester or another synthetic. Industry specialists advise checking the statutory fibre-composition panel on the care label rather than the product name.", "es": "«No te dejes engañar por el nombre del tejido al comprar ropa» fue lo más visto en Weibo. Según la normativa china de fibras textiles, nombres como «algodón hipoalergénico» o «algodón lavado» no indican el contenido real de algodón; algunos vendedores los usan para sugerir un material natural cuando la composición puede ser poliéster. Los especialistas recomiendan leer la composición obligatoria en la etiqueta de cuidado, no el nombre del producto.", "ja": "「服を買うとき生地の名前に騙されないで」が Weibo の热搜 1 位に。中国の繊維表示規格では「親膚綿」「水洗綿」といった名称は実際の綿含有率を示さず、一部の事業者が天然素材を連想させるために使っているが、実際はポリエステルなどの化学繊維のことがある。業界関係者は、商品名ではなく洗濯表示の法定「繊維組成」を見るよう呼びかけている。"}, "why": {"zh": "这类「名字游戏」之所以有效，是因为它踩在监管的缝隙上：商品名不受成分标注规则约束，而消费者又习惯用名字判断材质。一条热搜能教会千万人翻水洗标，传播效率比十次抽检都高。", "en": "The name game works because it sits in a regulatory gap: product names are not bound by composition rules, while shoppers judge material by name out of habit. One trending topic teaching millions to read a care label does more than ten rounds of spot checks.", "es": "El juego de nombres funciona porque vive en un hueco regulatorio: el nombre del producto no está sujeto a las reglas de composición, y el comprador juzga por el nombre por costumbre. Un tema viral que enseña a millones a leer la etiqueta rinde más que diez inspecciones.", "ja": "この「名前遊び」が効くのは規制の隙間を突いているからだ。商品名は組成表示の規則に縛られず、消費者は習慣で名前から素材を判断する。何百万人に洗濯表示の見方を教える热搜 1 本は、抜き打ち検査 10 回より効率がよい。"}}, {"idx": "03", "title": {"zh": "「酸奶界的爱马仕」一年关掉 66 家店", "en": "The 'Hermès of yoghurt' closes 66 stores in a year", "es": "El «Hermès del yogur» cierra 66 tiendas en un año", "ja": "「ヨーグルト界のエルメス」が 1 年で 66 店閉鎖"}, "body": {"zh": "网红酸奶品牌 Blueglass 一年内门店数量净减 66 家，降幅约 31%。单杯定价接近 50 元的高溢价模式，在消费趋于理性的背景下正面临需求收缩。相关话题登上百度热点榜首。", "en": "Premium yoghurt brand Blueglass closed a net 66 stores over the past year, a decline of about 31%. Its high-price model — nearly 50 yuan a cup — is meeting weaker demand as consumption turns more rational. The topic topped Baidu's trending list.", "es": "La marca premium de yogur Blueglass redujo 66 locales netos en un año, cerca de un 31 %. Su modelo de precio alto —casi 50 yuanes por vaso— enfrenta una demanda menor en un consumo más racional. El tema encabezó las tendencias de Baidu.", "ja": "プレミアムヨーグルトブランド Blueglass は 1 年で 66 店舗純減、約 31％の減少となった。1 杯 50 元近い高価格モデルは、消費の合理化を背景に需要が縮んでいる。関連話題は百度の話題ランキング首位になった。"}, "why": {"zh": "50 元一杯的酸奶，卖的不是酸奶，是「我在善待自己」这个瞬间。当这个瞬间可以用 15 元的替代品满足时，溢价就失去了支点。网红餐饮的退潮通常不是慢慢发生的，而是某一天突然发现：隔壁新开的店，比你便宜一半还更好拍。", "en": "A 50-yuan yoghurt is not selling yoghurt; it sells the moment of treating yourself. Once a 15-yuan substitute delivers that moment, the premium loses its fulcrum. The retreat of viral food brands rarely happens gradually — one day the shop next door is half the price and photographs better.", "es": "Un yogur de 50 yuanes no vende yogur: vende el instante de consentirse. Cuando un sustituto de 15 yuanes entrega ese instante, la prima pierde su apoyo. La retirada de las marcas virales rara vez es gradual: un día la tienda de al lado cuesta la mitad y sale mejor en las fotos.", "ja": "50 元のヨーグルトが売っているのはヨーグルトではなく、「自分を大切にする瞬間」だ。15 元の代替品がその瞬間を提供できれば、プレミアムは支点を失う。流行る飲食ブランドの退潮はゆっくり起きるのではなく、ある日突然、隣の新店のほうが半額で写真映えもよいと気づく形で訪れる。"}}, {"idx": "04", "title": {"zh": "多地医院调整配置，部分院区停止接诊急诊", "en": "Hospitals in several cities stop taking emergencies at some campuses", "es": "Varios hospitales dejan de atender urgencias en algunas sedes", "ja": "複数の都市で病院が配置見直し、一部院区で救急受け入れ停止"}, "body": {"zh": "贵州、石家庄、郴州等地部分医院近期公告，将优化医疗资源配置，停止部分院区的急诊接诊，需求向主院区集中。院方口径是整合分散的急救力量、提升急危重症抢救能力；对周边居民而言，急诊资源的物理收缩改变了就医可及性与急救响应时间。相关话题登上微博热搜。", "en": "Hospitals in Guizhou, Shijiazhuang, Chenzhou and elsewhere have announced they will optimise resource allocation and stop receiving emergency patients at some campuses, concentrating demand at main sites. Administrators say the aim is to consolidate scattered emergency capacity and improve critical care; for nearby residents, the physical withdrawal of emergency services changes access and response times. The topic trended on Weibo.", "es": "Hospitales de Guizhou, Shijiazhuang, Chenzhou y otras ciudades anunciaron que optimizarán recursos y dejarán de atender urgencias en algunas sedes, concentrando la demanda en la principal. La dirección sostiene que busca consolidar capacidad dispersa y mejorar la atención crítica; para los vecinos, la retirada física de las urgencias cambia el acceso y los tiempos de respuesta. El tema fue tendencia en Weibo.", "ja": "貴州省、石家荘、郴州などの一部病院が、医療資源の最適化として一部院区での救急受け入れを停止し、需要を本院に集めると公告した。病院側は分散した救急体制を集約し、重症対応力を高めるためと説明する。周辺住民にとっては救急資源の物理的な縮小であり、受診のしやすさと応答時間が変わる。関連話題は Weibo の热搜に入った。"}, "why": {"zh": "「优化配置」在管理上说得通，在急救上却要算另一笔账：心梗和卒中的黄金救治时间以分钟计，急诊搬走 5 公里，可能就是另一套结局。资源整合该有配套——转运能力、社区首诊、急救地图，缺一环都会把成本转给患者。", "en": "Optimising allocation makes sense on a spreadsheet; emergency care runs a different ledger. Golden hours for heart attack and stroke are counted in minutes, and moving an ER five kilometres away can change outcomes. Consolidation needs companions — transfer capacity, community first contact, an emergency map — or the cost shifts to patients.", "es": "Optimizar recursos tiene sentido en un balance; las urgencias llevan otra contabilidad. La hora dorada del infarto y el ictus se mide en minutos, y mover urgencias cinco kilómetros puede cambiar el desenlace. La consolidación necesita acompañantes: traslados, primer contacto comunitario, un mapa de emergencias; sin ellos, el coste pasa al paciente.", "ja": "「配置の最適化」は管理の理屈では通るが、救急では別の勘定になる。心筋梗塞と脳卒中のゴールデンタイムは分単位で、救急が 5 キロ離れれば結末が変わりうる。統合には搬送力、地域のかかりつけ、救急マップという伴走者が要る。一つ欠ければコストは患者に移る。"}}, {"idx": "05", "title": {"zh": "「烤红薯香是加了香精」被指捕风捉影", "en": "'Roasted sweet potatoes are perfumed with additives' debunked", "es": "Desmienten que las batatas asadas lleven aromas artificiales", "ja": "「焼き芋の香りは香料」説は根拠薄いと専門家"}, "body": {"zh": "针对网络流传的「烤红薯特别香是加了香精」，专家辟谣指出，烤红薯的浓郁香味主要来自高温烤制时的美拉德反应，与香精无关。部分消费者因「闻着香吃着不算甜」产生疑虑，实为红薯品种与糖化程度的差异。此类以「可能」为起点的避雷帖，在传播中容易演变成对食品安全的普遍恐慌。", "en": "Responding to claims that the strong aroma of roasted sweet potatoes comes from added flavouring, specialists said the smell mainly results from the Maillard reaction during high-temperature roasting and has nothing to do with additives. Some shoppers puzzled that a sweet potato smells sweeter than it tastes are seeing differences between varieties and degrees of starch-to-sugar conversion. Warnings that begin with 'it might be' easily turn into broad anxiety about food safety.", "es": "Ante la versión de que el intenso aroma de las batatas asadas se debe a aromatizantes, los expertos señalaron que proviene principalmente de la reacción de Maillard durante el asado a alta temperatura y nada tiene que ver con aditivos. Que algunas se huelan más dulces de lo que saben se explica por la variedad y el grado de conversión del almidón en azúcar. Las advertencias que empiezan con «podría» acaban en alarma alimentaria general.", "ja": "「焼き芋の強い香りは香料によるもの」とのネット上の指摘に対し、専門家は、香りの主因は高温で焼く際のメイラード反応であり香料とは無関係だと説明した。「香りほど甘くない」と感じるのは品種と糖化の度合いの違いによるもの。「かもしれない」から始まる注意喚起は、拡散の中で食品安全への漠然とした不安に変わりやすい。"}, "why": {"zh": "辟谣最难的地方不是给出正确答案，而是解释「为什么听起来像真的」。美拉德反应这个知识点并不新，但它需要一个具体的场景才会被记住。对内容生产者来说，这类题材的价值在于：把常识重新讲一遍，本身就是公共服务。", "en": "The hard part of debunking is not supplying the right answer but explaining why the wrong one sounded plausible. The Maillard reaction is old knowledge, but it sticks only when attached to a concrete scene. For anyone producing content, restating the obvious is itself a public service.", "es": "Lo difícil de desmentir no es dar la respuesta correcta, sino explicar por qué el error sonaba creíble. La reacción de Maillard no es nueva, pero solo se recuerda cuando se ata a una escena concreta. Para quien produce contenido, volver a contar lo obvio es en sí un servicio público.", "ja": "否定するのが難しいのは正解を示すことではなく、「なぜ間違いが本当らしく聞こえるか」を説明することだ。メイラード反応は新しい知識ではないが、具体的な場面と結びついて初めて記憶に残る。当たり前を語り直すこと自体が公共サービスになる。"}}]}, {"key": "ent", "num": "06", "color": "#db2777", "deep": "#be185d", "name": {"zh": "娱乐八卦", "en": "Showbiz", "es": "Espectáculos", "ja": "エンタメ"}, "items": [{"idx": "01", "title": {"zh": "蒋欣李光洁从夫妻变叔嫂，《多喜一家人》央视一套开播", "en": "Jiang Xin and Li Guangjie go from spouses to in-laws in new CCTV drama", "es": "Jiang Xin y Li Guangjie pasan de esposos a cuñados en el nuevo drama de CCTV", "ja": "蒋欣と李光潔が夫婦から義理の叔嫂に、CCTV 新ドラマが放送開始"}, "body": {"zh": "11 月 16 日晚 8 点，梁冠华、蒋欣领衔的胶东家庭群像剧《多喜一家人》在央视一套黄金档开播，腾讯视频同步独播。故事围绕 2008 年胶东半岛一笔 1428 万元拆迁款展开，五兄妹的代际矛盾由此撕开，全程在青岛取景。蒋欣饰演大嫂闻佳音，李光洁饰演老二赛秀亮——两人上一次同框还是《小巷人家》里的夫妻，这次成了针锋相对的叔嫂。", "en": "A family drama set on the Jiaodong peninsula, starring Liang Guanhua and Jiang Xin, premiered in CCTV-1's prime slot at 8pm on 16 November and streams exclusively on Tencent Video. The plot turns on 14.28 million yuan of demolition compensation in 2008 that cracks open old fault lines among five siblings; it was shot entirely in Qingdao. Jiang Xin plays the eldest sister-in-law Wen Jiayin and Li Guangjie the second brother Sai Xiuliang — the pair last appeared together as a married couple in 'Romance in the Alley'.", "es": "El drama familiar «Una familia feliz», protagonizado por Liang Guanhua y Jiang Xin, se estrenó el 16 de noviembre a las 20:00 en el horario estelar de CCTV-1 y en exclusiva en Tencent Video. La trama gira en torno a 14,28 millones de yuanes de indemnización por derribo en 2008 que abren grietas entre cinco hermanos; se rodó íntegramente en Qingdao. Jiang Xin interpreta a la cuñada mayor Wen Jiayin y Li Guangjie al segundo hermano Sai Xiuliang, que en su anterior serie eran matrimonio.", "ja": "梁冠華と蒋欣が主演する家族ドラマ『多喜一家人』が 11 月 16 日午後 8 時、CCTV-1 のゴールデンタイムに始まり、Tencent Video でも独占配信された。2008 年の膠東半島で支払われた 1,428 万元の立ち退き補償をめぐり、5 人きょうだいの世代間対立が噴き出す物語で、全編を青島で撮影。蒋欣は長男の妻・聞佳音、李光潔は次男・賽秀亮を演じ、前作『小巷人家』では夫婦役だった 2 人が今回は義理の叔嫂となる。"}, "why": {"zh": "家庭剧的胜负手从来不是「撕得多狠」，而是「像不像」。1428 万这个数字选得准：它刚好够改变一个普通家庭的命运，又不够让所有人满意。观众看的不是剧情，是自己家饭桌上那些没说完的话。", "en": "Family dramas are decided not by how vicious the fights are but by how recognisable they feel. The 14.28 million figure is well chosen: enough to change an ordinary family's fate, not enough to satisfy everyone. Viewers are not watching plot; they are watching the unfinished sentences at their own dinner tables.", "es": "Los dramas familiares no se deciden por la dureza de las peleas sino por el reconocimiento. La cifra de 14,28 millones está bien elegida: basta para cambiar el destino de una familia y no alcanza para contentar a todos. El público no ve trama, ve las frases sin terminar de su propia mesa.", "ja": "家族ドラマの勝負は「どれだけ激しく撕るか」ではなく「どれだけリアルに見えるか」だ。1,428 万元という数字は絶妙で、普通の家の運命を変えるには足り、全員を満足させるには足りない。視聴者が見ているのは筋書きではなく、自分の食卓で言い終わらなかった言葉である。"}}, {"idx": "02", "title": {"zh": "总台首部精品短剧集《奇迹》开播，张颂文演《红树流年》", "en": "CCTV's first premium short-drama series 'Miracle' opens with Zhang Songwen", "es": "CCTV estrena «Milagro», su primera serie de microdramas, con Zhang Songwen", "ja": "CCTV 初の本格ショートドラマ『奇跡』開始、張頌文が出演"}, "body": {"zh": "中央广播电视总台首部精品短剧集《奇迹》11 月 16 日在 CCTV-8 下午档开播，共 24 集单元剧，主打「以小见大」的现实题材，试图跳出段子合集式的短剧逻辑。张颂文参演其中《红树流年》单元。同日，央视一套《多喜一家人》开播、《折月亮》迎来大结局，长剧与短剧在同一周正面相遇。", "en": "China Media Group's first premium short-drama collection, 'Miracle', began airing in CCTV-8's afternoon slot on 16 November: 24 standalone episodes with a realistic, small-story tone, an attempt to break away from the gag-compilation logic of short drama. Zhang Songwen appears in the episode 'Years of the Mangroves'. The same day saw CCTV-1's family drama premiere and the finale of 'Zhe Yue Liang', putting long and short formats head to head in one week.", "es": "La primera colección de microdramas de calidad de China Media Group, «Milagro», se estrenó el 16 de noviembre en la franja de tarde de CCTV-8: 24 episodios unitarios de tono realista que buscan romper la lógica de recopilación de sketches. Zhang Songwen participa en el episodio «Años de los manglares». Ese mismo día se estrenó el drama familiar de CCTV-1 y terminó «Zhe Yue Liang».", "ja": "中国中央広播電視総台の初となる本格ショートドラマ集『奇跡』が 11 月 16 日、CCTV-8 の午後に始まった。全 24 話の単元ドラマで、「小さく見て大きく描く」リアリズム路線を掲げ、ギャグ寄せ集め型のショートドラマから脱しようとしている。張頌文は「紅樹流年」の回に出演。同日、CCTV-1 の家族ドラマが始まり、『折月亮』が最終回を迎え、長編と短編が同じ週にぶつかった。"}, "why": {"zh": "总台下场做短剧，改的不是时长，是「谁来定义短剧」。过去两年这个赛道的关键词是「爽点密度」，现在多了一个变量：主流平台能不能用十几分钟讲完一个有分量的故事。如果成了，短剧就从流量生意变成内容品类。", "en": "When the national broadcaster enters short drama, what changes is not runtime but who defines the form. For two years the keyword in this lane was density of gratification; now there is another variable — whether a mainstream platform can tell a substantial story in fifteen minutes. If it works, short drama stops being a traffic business and becomes a content genre.", "es": "Cuando la radiotelevisión pública entra en el microdrama, lo que cambia no es la duración sino quién define el formato. Durante dos años la palabra clave fue la densidad de estímulos; ahora hay otra variable: si una plataforma generalista puede contar una historia con peso en quince minutos. Si funciona, el microdrama deja de ser negocio de tráfico y pasa a ser género.", "ja": "公共放送がショートドラマに参入して変わるのは尺ではなく、「誰がショートドラマを定義するか」だ。この 2 年、この領域のキーワードは「快感の密度」だったが、今はもう一つの変数がある。主流プラットフォームが十数分で重みのある物語を語れるか。成功すれば、ショートドラマはトラフィック事業からコンテンツのジャンルになる。"}}, {"idx": "03", "title": {"zh": "范丞丞一天官宣两部：新剧开机，综艺定档 11 月 21 日", "en": "Fan Chengcheng announces two projects in one day", "es": "Fan Chengcheng anuncia dos proyectos en un solo día", "ja": "范丞丞が 1 日に 2 作品を発表、新ドラマ撮影開始とバラエティ放送決定"}, "body": {"zh": "11 月 16 日，范丞丞一天内接连官宣两部作品：电视剧《璀璨之上》开机，陈畅执导，孙千、范丞丞领衔主演，金世佳、唐艺昕特别出演，腾讯视频独播；综艺《奔跑吧·风起大湾区》定档 11 月 21 日起每周六 20:30 在浙江卫视播出，常驻阵容包括李晨、郑恺、沙溢、白鹿、张真源、孟子义、李昀锐等。", "en": "On 16 November Fan Chengcheng announced two projects in a single day: shooting began on the drama 'Above the Brilliance', directed by Chen Chang and starring Sun Qian and Fan, with Jin Shijia and Tang Yixin in special appearances, for exclusive release on Tencent Video; and the variety show 'Keep Running: Greater Bay Area' was scheduled from 21 November, Saturdays at 20:30 on Zhejiang Satellite TV, with Li Chen, Zheng Kai, Sha Yi, Bai Lu, Zhang Zhenyuan, Meng Ziyi and Li Yunrui in the regular cast.", "es": "El 16 de noviembre Fan Chengcheng anunció dos proyectos en un día: el inicio de rodaje de la serie «Above the Brilliance», dirigida por Chen Chang y protagonizada por Sun Qian y Fan, con Jin Shijia y Tang Yixin como invitados, en exclusiva para Tencent Video; y el estreno del programa «Keep Running: Gran Área de la Bahía» desde el 21 de noviembre, sábados a las 20:30 en Zhejiang TV, con Li Chen, Zheng Kai, Sha Yi, Bai Lu, Zhang Zhenyuan, Meng Ziyi y Li Yunrui.", "ja": "11 月 16 日、范丞丞が 1 日のうちに 2 作品を発表した。ドラマ『璀璨之上』がクランクインし、陳暢監督、孫千と范丞丞が主演、金世佳と唐芸昕が特別出演、Tencent Video で独占配信。バラエティ『奔跑吧・風起大湾区』は 11 月 21 日から毎週土曜 20:30 に浙江衛視で放送され、レギュラーは李晨、鄭愷、沙溢、白鹿、張真源、孟子義、李昀鋭ら。"}, "why": {"zh": "上午开机、傍晚定档，一天两条赛道的官宣是当下艺人团队的标准动作：综艺保曝光，剧集攒作品。真正的考题在后面——两部作品的口碑会同时到账，观众不会因为「他很忙」而降低标准。", "en": "Shooting announcement in the morning, broadcast date in the evening: hitting two lanes in one day is standard practice now — variety for exposure, drama for body of work. The real test comes later, when both are judged at once; audiences do not lower the bar because someone is busy.", "es": "Rodaje por la mañana y fecha de estreno por la tarde: anunciar en dos frentes el mismo día es ya la norma, variedades para visibilidad y series para obra. La prueba llega después, cuando ambas se juzgan a la vez; el público no baja el listón porque alguien esté ocupado.", "ja": "午前にクランクイン、夕方に放送決定。1 日で二つの路線を発表するのは今の定石だ。バラエティで露出、ドラマで作品を積む。試されるのはその後で、二作品の評価は同時に届く。多忙だからといって観客の基準は下がらない。"}}, {"idx": "04", "title": {"zh": "69 岁赵本山进棚录音，正面打假「AI 赵本山」", "en": "At 69, Zhao Benshan records in studio to counter AI voice clones", "es": "Zhao Benshan, de 69 años, graba en estudio contra los clones de voz con IA", "ja": "69 歳の趙本山がスタジオ録音、「AI 趙本山」に対抗"}, "body": {"zh": "针对网络上出现的 AI 仿声内容，69 岁的赵本山进棚录制《慌啥子嘛》，花絮中逐句打磨唱腔。相关视频发布后被视为对 AI 深度伪造的正面回应，也被业内看作「用真声当凭证」的样本。此前，多起 AI 合成名人声音、形象带货的事件引发关注。", "en": "Responding to AI-cloned versions of his voice circulating online, 69-year-old Zhao Benshan went into a studio to record a song, honing each line of the vocal in behind-the-scenes footage. The video is being read as a direct answer to deepfakes and, in the industry, as a template for using one's real voice as proof. Several recent cases of AI-synthesised celebrity voices and likenesses being used to sell goods have drawn attention.", "es": "Ante las versiones clonadas de su voz que circulan en internet, Zhao Benshan, de 69 años, entró en un estudio para grabar un tema, puliendo cada frase en el metraje detrás de cámaras. El vídeo se lee como respuesta directa a los deepfakes y, en el sector, como modelo de usar la voz real como prueba. Varios casos de voces e imágenes de famosos sintetizadas con IA para vender productos han llamado la atención.", "ja": "ネット上に出回る自身の声の AI 複製に対し、69 歳の趙本山がスタジオに入り楽曲を録音、メイキング映像で一節ずつ歌い方を詰めた。この映像はディープフェイクへの正面からの回答と受け止められ、業界では「本物の声を証拠にする」事例とも見られている。著名人の声や姿を AI で合成して商品販売に使う事例が相次ぎ、注目を集めていた。"}, "why": {"zh": "对付 AI 仿声，最有效的办法可能不是打官司，而是「本人再唱一遍」。当一个 69 岁的演员用一条花絮证明「我还在」，它同时完成了两件事：辟谣，以及把「真实」变成可消费的内容。这大概是深度伪造时代最体面的反击。", "en": "The most effective answer to a voice clone may not be a lawsuit but the original performer singing again. When a 69-year-old actor uses a behind-the-scenes clip to prove he is still here, he does two things at once: debunks the fake and turns authenticity into content. It may be the most dignified counterattack available in the deepfake era.", "es": "La respuesta más eficaz a un clon de voz quizá no sea un juicio, sino que el original vuelva a cantar. Cuando un actor de 69 años usa un clip de rodaje para demostrar que sigue aquí, hace dos cosas: desmiente y convierte la autenticidad en contenido. Probablemente sea el contraataque más decoroso posible en la era del deepfake.", "ja": "声の複製への最も有効な対抗は訴訟ではなく、「本人がもう一度歌う」ことかもしれない。69 歳の俳優がメイキング映像で「まだここにいる」と示すとき、二つのことが同時に起きる。噂を否定し、「本物」を消費可能なコンテンツに変える。ディープフェイク時代で最も品位ある反撃だろう。"}}, {"idx": "05", "title": {"zh": "赵丽颖坐进金鸡创投评审席，85 后演员第一次", "en": "Zhao Liying joins the Golden Rooster project-market jury, a first for her generation", "es": "Zhao Liying se suma al jurado del mercado de proyectos del Golden Rooster", "ja": "趙麗穎が金鶏映画創投の審査員に、85 後世代として初"}, "body": {"zh": "第八届金鸡电影创投大会公布评审阵容，赵丽颖与导演黄建新、演员闫妮同坐主评审席，成为首位担任该位置主评审的 85 后演员。据现场报道，她全程听取项目陈述并给出具体建议。此前，赵丽颖起诉红果短剧等运营方 AI 换脸侵权的案件已于 11 月 10 日在北京门头沟法院云法庭开庭，尚未宣判。", "en": "The 8th Golden Rooster project market announced its jury, with Zhao Liying seated alongside director Huang Jianxin and actress Yan Ni on the main panel — the first actress of her generation to hold that position. Reports from the session said she listened to every pitch and gave specific notes. Separately, her lawsuit against the operators of Hongguo short drama over AI face-swapping opened at Beijing's Mentougou court via cloud hearing on 10 November and has yet to be ruled on.", "es": "El 8.º mercado de proyectos del Golden Rooster anunció su jurado: Zhao Liying se sienta con el director Huang Jianxin y la actriz Yan Ni en el panel principal, la primera actriz de su generación en ese puesto. Según crónicas del evento, escuchó todas las presentaciones y dio sugerencias concretas. Su demanda contra los operadores de la plataforma de microdramas Hongguo por intercambio de rostros con IA se celebró el 10 de noviembre en el juzgado de Mentougou, sin fallo aún.", "ja": "第 8 回金鶏映画創投大会の審査員が発表され、趙麗穎が黄建新監督、閻妮とともに主審査員席に就き、85 後世代として初の同職となる。現地報道によれば、全プロジェクトの説明を聞き具体的な助言を行った。彼女が紅果（Hongguo）の運営側を AI 顔入れ替えの権利侵害で訴えた件は 11 月 10 日、北京門頭溝法院のオンライン法廷で審理され、判決はまだ出ていない。"}, "why": {"zh": "创投评审席是个信号位：它意味着演员开始参与「项目从哪来」这一环，而不只是「演哪个角色」。对行业来说，这比任何一部爆款都更能说明 85 花的位置变化——从被选择，到参与选择。", "en": "A project-market jury seat is a signal position: it means an actor participates in where projects come from, not just which role to play. For the industry that says more about the standing of her generation than any single hit — from being chosen to helping choose.", "es": "Un asiento en el jurado de un mercado de proyectos es una posición simbólica: la actriz pasa a participar en el origen de los proyectos, no solo en qué papel interpretar. Para el sector dice más del lugar de su generación que cualquier éxito: de ser elegida a participar en elegir.", "ja": "創投の審査員席は象徴的な位置だ。俳優が「どの役を演じるか」ではなく「企画がどこから来るか」に関わることを意味する。業界にとっては、一つのヒット作よりも彼女の世代の位置の変化をよく示している。選ばれる側から、選ぶ側へ。"}}]}], "risk": {"zh": "风险提示：本简报仅作信息汇总，其中涉及的数据不构成任何投资建议。", "en": "Risk notice: this briefing is an information summary only; the data mentioned does not constitute investment advice.", "es": "Aviso de riesgo: este boletín solo resume información; los datos mencionados no constituyen asesoramiento financiero.", "ja": "リスク表示：本ブリーフィングは情報の要約であり、記載のデータは投資助言ではありません。"}}/*__END__*/;
+
+  /* ===== UI 文案（与内容分离，四语齐全） ===== */
+  var I18N = {
+    "zh": {
+      "dateSub": "每日简报", "calBtn": "往期日历", "calFoot": "带圆点的日期可查看当日存档",
+      "tag": "进展", "why": "看点：", "badge": "精 选",
+      "calWeek": ["日", "一", "二", "三", "四", "五", "六"],
+      "calTitle": function (y, m) { return y + " 年 " + m + " 月"; }
+    },
+    "en": {
+      "dateSub": "DAILY BRIEFING", "calBtn": "Archive", "calFoot": "Dots mark dates with a saved issue",
+      "tag": "UPDATE", "why": "Why: ", "badge": "EDITOR'S PICK",
+      "calWeek": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      "calTitle": function (y, m) { return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][m-1] + " " + y; }
+    },
+    "es": {
+      "dateSub": "BOLETÍN DIARIO", "calBtn": "Archivo", "calFoot": "Los puntos marcan fechas con ejemplar guardado",
+      "tag": "ACTUALIZACIÓN", "why": "Por qué: ", "badge": "DESTACADO",
+      "calWeek": ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+      "calTitle": function (y, m) { return m + " · " + y; }
+    },
+    "ja": {
+      "dateSub": "デイリーブリーフィング", "calBtn": "バックナンバー", "calFoot": "点のついた日付は保存された号があります",
+      "tag": "続報", "why": "見どころ：", "badge": "特集",
+      "calWeek": ["日", "月", "火", "水", "木", "金", "土"],
+      "calTitle": function (y, m) { return y + "年" + m + "月"; }
+    }
+  };
+  var LANGS = ["zh", "en", "es", "ja"];
+  var LANG_LABEL = { "zh": "中文", "en": "EN", "es": "ES", "ja": "日本語" };
+  var LANG_LABEL_FULL = { "zh": "中文", "en": "English", "es": "Español", "ja": "日本語" };
+  var LANG_HTML = { "zh": "zh-CN", "en": "en", "es": "es", "ja": "ja" };
+
+  // 小国旗（内联 SVG，避免外部图标依赖与 emoji 平台差异）
+  function flag(lang) {
+    if (lang === "zh") return '<svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#de2910"/><g fill="#ffde00"><circle cx="5" cy="4" r="2.2"/><circle cx="9" cy="2.4" r="0.8"/><circle cx="10" cy="4" r="0.8"/><circle cx="9" cy="5.6" r="0.8"/><circle cx="7" cy="6.6" r="0.8"/></g></svg>';
+    if (lang === "en") return '<svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#c8102e" stroke-width="2"/><rect x="13" width="4" height="20" fill="#fff"/><rect y="8" width="30" height="4" fill="#fff"/><rect x="14" width="2" height="20" fill="#c8102e"/><rect y="9" width="30" height="2" fill="#c8102e"/></svg>';
+    if (lang === "es") return '<svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#aa151b"/><rect y="5" width="30" height="10" fill="#f1bf00"/></svg>';
+    return '<svg class="fl" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="5.5" fill="#bc002d"/></svg>';
+  }
+
+  /* ===== 工具 ===== */
+  function T(obj, lang) {
+    if (obj == null) return "";
+    if (typeof obj === "string") return obj;
+    if (obj[lang] != null) return obj[lang];
+    return obj.zh != null ? obj.zh : "";
+  }
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  function bing(q) { return "https://www.bing.com/search?q=" + encodeURIComponent(q); }
+  function fmtDate(d, lang) {
+    var y = d.getFullYear(), m = d.getMonth() + 1, day = d.getDate();
+    if (lang === "zh") return y + "." + pad(m) + "." + pad(day);
+    if (lang === "ja") return y + "年" + m + "月" + day + "日";
+    if (lang === "es") return day + " " + ["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"][m-1] + " " + y;
+    return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][m-1] + " " + day + ", " + y;
+  }
+  function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  function titleHtml(titleObj, hlObj, lang) {
+    var title = T(titleObj, lang);
+    var hl = T(hlObj, lang);
+    var inner = esc(title);
+    if (hl && title.indexOf(hl) >= 0) {
+      var i = title.indexOf(hl);
+      inner = esc(title.slice(0, i)) + '<span class="hl">' + esc(hl) + "</span>" + esc(title.slice(i + hl.length));
+    }
+    return '<a class="lk" href="' + bing(title) + '" target="_blank" rel="noopener">' + inner + "</a>";
+  }
+
+  /* ===== 语言检测：localStorage > 浏览器语言 > 系统时区 > 中文 ===== */
+  function detectLang() {
+    try { var s = localStorage.getItem("timab_lang"); if (s && LANGS.indexOf(s) >= 0) return s; } catch (e) {}
+    var nav = (navigator.language || "").toLowerCase();
+    if (/^zh/.test(nav)) return "zh";
+    if (/^ja/.test(nav)) return "ja";
+    if (/^es/.test(nav)) return "es";
+    if (/^en/.test(nav)) return "en";
+    var tz = "";
+    try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (e) {}
+    if (/^Asia\/Tokyo/.test(tz)) return "ja";
+    if (/Europe\/Madrid|America\/(Mexico_City|Bogota|Lima|Santiago|Caracas|Guatemala|La_Paz|San_Jose|Panama|Asuncion|Montevideo|Havana|El_Salvador|Managua|Tegucigalpa|Costa_Rica|San_Salvador)|America\/Argentina\//.test(tz)) return "es";
+    if (/^(Europe|America|Australia)\//.test(tz)) return "en";
+    return "zh";
+  }
+
+  var curLang = "zh";
+  var langOpen = false;
+
+  /* ===== 渲染 ===== */
+  function renderChrome(lang) {
+    var i18n = I18N[lang];
+    document.documentElement.lang = LANG_HTML[lang];
+    // 报头信息行
+    var metaEl = document.getElementById("metaRow");
+    if (metaEl) metaEl.textContent = T(BRIEFING.meta, lang);
+    // 大日期
+    var md = document.getElementById("mastDate");
+    if (md) {
+      var d = new Date(BRIEFING.date + "T00:00:00");
+      md.innerHTML = fmtDate(d, lang) + "<small>" + esc(i18n.dateSub) + "</small>";
+    }
+    // 文档标题
+    var siteName = (lang === "zh") ? "提马早报" : "TIMAB DAILY";
+    document.title = siteName + " · " + fmtDate(new Date(BRIEFING.date + "T00:00:00"), lang);
+    // 导航签
+    var nav = document.getElementById("navChips");
+    if (nav) {
+      var order = ["pick"].concat(BRIEFING.sections.map(function (s) { return s.key; }));
+      nav.innerHTML = "";
+      order.forEach(function (key) {
+        if (key === "pick") {
+          var a = document.createElement("a");
+          a.className = "chip-pick"; a.href = "#pick"; a.setAttribute("data-nav", "pick");
+          a.textContent = T(BRIEFING.spotlight.badge, lang);
+          nav.appendChild(a);
+        } else {
+          var sec = null;
+          BRIEFING.sections.forEach(function (s) { if (s.key === key) sec = s; });
+          if (!sec) return;
+          var b = document.createElement("a");
+          b.href = "#" + key; b.setAttribute("data-nav", key);
+          b.style.borderColor = sec.color; b.style.color = sec.deep;
+          b.textContent = T(sec.name, lang);
+          nav.appendChild(b);
+        }
+      });
+    }
+    // 日历文案
+    var cb = document.getElementById("calBtnText"); if (cb) cb.textContent = i18n.calBtn;
+    var cw = document.getElementById("calWeek");
+    if (cw) { cw.innerHTML = ""; i18n.calWeek.forEach(function (w) { var s = document.createElement("span"); s.textContent = w; cw.appendChild(s); }); }
+    var cf = document.getElementById("calFoot"); if (cf) cf.textContent = i18n.calFoot;
+    // 语言切换器（国旗触发 + 下拉）
+    var ls = document.getElementById("langSwitch");
+    if (ls) {
+      ls.className = "lang-switch" + (langOpen ? " open" : "");
+      ls.innerHTML = "";
+      var trig = document.createElement("button");
+      trig.type = "button"; trig.className = "lang-trigger"; trig.id = "langTrigger";
+      trig.setAttribute("aria-haspopup", "true");
+      trig.setAttribute("aria-expanded", langOpen ? "true" : "false");
+      trig.innerHTML = flag(curLang) + '<span class="caret">▾</span>';
+      trig.addEventListener("click", function (e) {
+        e.stopPropagation();
+        langOpen = !langOpen;
+        ls.classList.toggle("open", langOpen);
+        trig.setAttribute("aria-expanded", langOpen ? "true" : "false");
+      });
+      ls.appendChild(trig);
+      var menu = document.createElement("div");
+      menu.className = "lang-menu"; menu.setAttribute("role", "menu");
+      LANGS.forEach(function (l) {
+        var item = document.createElement("button");
+        item.type = "button"; item.className = "lang-item" + (l === curLang ? " sel" : "");
+        item.setAttribute("role", "menuitem"); item.setAttribute("data-lang", l);
+        item.innerHTML = flag(l) + '<span class="lbl">' + LANG_LABEL_FULL[l] + "</span>";
+        item.addEventListener("click", function (e) {
+          e.stopPropagation();
+          setLang(l);
+        });
+        menu.appendChild(item);
+      });
+      ls.appendChild(menu);
+    }
+  }
+
+  function renderContent(lang) {
+    var i18n = I18N[lang];
+    var html = "";
+    // 精选
+    var sp = BRIEFING.spotlight;
+    html += '<section class="spotlight" id="pick">'
+      + '<div class="badge"><i></i>' + esc(T(sp.badge, lang)) + "</div>"
+      + "<h2>" + titleHtml(sp.title, sp.hl, lang) + "</h2>"
+      + '<div class="body">' + esc(T(sp.body, lang)) + "</div>"
+      + '<div class="why"><b>' + esc(i18n.why) + "</b>" + esc(T(sp.why, lang)) + "</div>"
+      + "</section>";
+    // 分类
+    html += '<div class="grid">';
+    BRIEFING.sections.forEach(function (sec) {
+      html += '<section class="card" id="' + sec.key + '" style="--ac:' + sec.color + "; --ac-deep:" + sec.deep + ';">'
+        + '<div class="sec-head"><span class="sec-num">' + sec.num + "</span>"
+        + "<h3>" + esc(T(sec.name, lang)) + "</h3>"
+        + '<span class="en">' + sec.key.toUpperCase() + "</span></div>";
+      (sec.items || []).forEach(function (it) {
+        html += '<div class="item">';
+        html += '<div class="t"><span class="idx">' + it.idx + "</span>";
+        if (it.tag) html += '<span class="tag">' + esc(it.tag[lang] != null ? it.tag[lang] : i18n.tag) + "</span>";
+        html += titleHtml(it.title, it.hl, lang) + "</div>";
+        html += '<div class="d">' + esc(T(it.body, lang)) + "</div>";
+        html += '<div class="why"><b>' + esc(i18n.why) + "</b>" + esc(T(it.why, lang)) + "</div>";
+        html += "</div>";
+      });
+      html += "</section>";
+    });
+    html += "</div>";
+    var content = document.getElementById("content");
+    if (content) content.innerHTML = html;
+    // 页脚
+    var risk = document.getElementById("risk");
+    if (risk) risk.textContent = T(BRIEFING.risk, lang);
+  }
+
+  function setLang(lang) {
+    if (LANGS.indexOf(lang) < 0) lang = "zh";
+    curLang = lang;
+    langOpen = false;
+    try { localStorage.setItem("timab_lang", lang); } catch (e) {}
+    renderChrome(lang);
+    renderContent(lang);
+  }
+
+  /* ===== 往期日历（保留原逻辑，文案随语言） ===== */
+  function initCalendar() {
+    var btn = document.getElementById("calBtn");
+    var pop = document.getElementById("calPop");
+    var grid = document.getElementById("calGrid");
+    var title = document.getElementById("calTitle");
+    if (!btn || !pop || !grid || !title) return;
+
+    var parts = BRIEFING.date.split("-");
+    var todayKey = parts[0].slice(2) + parts[1] + parts[2];
+    var cur = { y: +parts[0], m: +parts[1] };
+    var has = {};
+    for (var i = 0; i < ARCHIVE_DATES.length; i++) { has[ARCHIVE_DATES[i]] = 1; }
+    var HIST_BASE = /\/history\//.test(location.pathname) ? "./" : "history/";
+
+    function ckey(y, m, d) { return String(y).slice(2) + pad(m) + pad(d); }
+
+    function render() {
+      var i18n = I18N[curLang];
+      title.textContent = i18n.calTitle(cur.y, cur.m);
+      grid.innerHTML = "";
+      var start = new Date(cur.y, cur.m - 1, 1).getDay();
+      var days = new Date(cur.y, cur.m, 0).getDate();
+      for (var b = 0; b < start; b++) {
+        var blank = document.createElement("span");
+        blank.className = "cal-cell is-empty"; grid.appendChild(blank);
+      }
+      for (var d = 1; d <= days; d++) {
+        var k = ckey(cur.y, cur.m, d);
+        var cell = document.createElement("span");
+        cell.className = "cal-cell" + (has[k] ? " has" : "") + (k === todayKey ? " is-today" : "");
+        cell.textContent = d;
+        if (has[k]) {
+          cell.setAttribute("role", "link"); cell.setAttribute("tabindex", "0");
+          cell.title = cur.y + "-" + pad(cur.m) + "-" + pad(d) + " 存档";
+          (function (target) {
+            var go = function () { window.open(HIST_BASE + target + ".html", "_blank", "noopener"); };
+            cell.addEventListener("click", go);
+            cell.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+          })(k);
+        }
+        grid.appendChild(cell);
+      }
+    }
+    function toggle(open) {
+      pop.hidden = !open;
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open) render();
+    }
+    btn.addEventListener("click", function (e) { e.stopPropagation(); toggle(pop.hidden); });
+    document.getElementById("calPrev").addEventListener("click", function () { cur.m--; if (cur.m < 1) { cur.m = 12; cur.y--; } render(); });
+    document.getElementById("calNext").addEventListener("click", function () { cur.m++; if (cur.m > 12) { cur.m = 1; cur.y++; } render(); });
+    document.addEventListener("click", function (e) { if (!pop.hidden && !pop.contains(e.target)) toggle(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !pop.hidden) toggle(false); });
+  }
+
+  /* ===== 启动 ===== */
+  function boot() {
+    curLang = detectLang();
+    renderChrome(curLang);
+    renderContent(curLang);
+    initCalendar();
+    // 关闭语言下拉：点击外部 / Esc
+    document.addEventListener("click", function (e) {
+      var ls = document.getElementById("langSwitch");
+      if (ls && langOpen && !ls.contains(e.target)) {
+        langOpen = false;
+        ls.classList.remove("open");
+        var t = document.getElementById("langTrigger");
+        if (t) t.setAttribute("aria-expanded", "false");
+      }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && langOpen) {
+        langOpen = false;
+        var ls = document.getElementById("langSwitch");
+        if (ls) ls.classList.remove("open");
+        var t = document.getElementById("langTrigger");
+        if (t) t.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else { boot(); }
+})();
+</script>
+</body>
+</html>
